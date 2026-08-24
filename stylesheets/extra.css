@@ -1,477 +1,197 @@
-/* Meta-Evolve docs theme: minimal neutral, hairline borders, copper accent.
-   Fonts load in overrides/main.html; theme.font is false, so the two
-   declarations below are the single source of truth. */
-
 :root {
-  --md-text-font: "Inter";
-  --md-code-font: "JetBrains Mono";
-  --me-radius: 6px;
-  --me-radius-sm: 4px;
+  --me-teal: #0d9488;
+  --me-teal-bright: #2dd4bf;
+  --me-ocean: #0e4a5a;
+  --me-ink: #142026;
+  --me-radius: 0.9rem;
+  --me-shadow: 0 10px 30px rgba(14, 74, 90, 0.08);
 }
-
-/* ---------------------------------------------------------------- tokens */
 
 :root,
 [data-md-color-scheme="default"] {
-  color-scheme: light;
-
-  --me-bg: #ffffff;
+  --md-primary-fg-color: #0e4a5a;
+  --md-primary-fg-color--light: #15687c;
+  --md-primary-fg-color--dark: #0a3540;
+  --md-accent-fg-color: #0d9488;
+  --md-accent-fg-color--transparent: rgba(13, 148, 136, 0.12);
+  --md-default-bg-color: #f3f7f8;
+  --md-default-fg-color: #142026;
+  --md-default-fg-color--light: #4d5d66;
+  --md-default-fg-color--lighter: #7b8c95;
+  --md-code-bg-color: #e8f0f2;
+  --md-code-fg-color: #0e4a5a;
+  --md-typeset-a-color: #0c7a72;
+  --md-footer-bg-color: #0e4a5a;
+  --md-footer-bg-color--dark: #0a3540;
   --me-surface: #ffffff;
-  --me-sunken: #f6f7f8;
-  --me-ink: #18181b;
-  --me-fg-2: #55575c;
-  --me-fg-3: #8b8d93;
-  --me-border: #e6e7ea;
-  --me-rail: #f7f7f8;
-  --me-accent: #b45f3c;
-  --me-accent-hover: #9a4f31;
-  --me-accent-subtle: rgba(180, 95, 60, 0.08);
-
-  --md-default-bg-color: var(--me-bg);
-  --md-default-fg-color: var(--me-ink);
-  --md-default-fg-color--light: var(--me-fg-2);
-  --md-default-fg-color--lighter: var(--me-fg-3);
-  --md-default-fg-color--lightest: rgba(24, 24, 27, 0.06);
-  /* Page-bg primary + ink "primary-bg" inverts Material's colored header. */
-  --md-primary-fg-color: #ffffff;
-  --md-primary-fg-color--light: #f6f7f8;
-  --md-primary-fg-color--dark: #ffffff;
-  --md-primary-bg-color: var(--me-ink);
-  --md-primary-bg-color--light: var(--me-fg-2);
-  --md-accent-fg-color: var(--me-accent);
-  --md-accent-fg-color--transparent: var(--me-accent-subtle);
-  --md-accent-bg-color: #ffffff;
-  --md-typeset-color: var(--me-ink);
-  --md-typeset-a-color: var(--me-accent);
-  --md-code-bg-color: var(--me-sunken);
-  --md-code-fg-color: #2d2f34;
-  --md-typeset-kbd-color: #f6f7f8;
-  --md-typeset-kbd-accent-color: #ffffff;
-  --md-typeset-kbd-border-color: #d8dadd;
-  --md-typeset-mark-color: rgba(180, 95, 60, 0.15);
-  --md-typeset-table-color: var(--me-border);
-  --md-typeset-table-color--light: rgba(24, 24, 27, 0.035);
-  --md-admonition-fg-color: var(--me-ink);
-  --md-admonition-bg-color: #ffffff;
-  --md-footer-bg-color: #ffffff;
-  --md-footer-bg-color--dark: #ffffff;
-  --md-footer-fg-color: var(--me-fg-2);
-  --md-footer-fg-color--light: var(--me-fg-3);
-  --md-footer-fg-color--lighter: #b6b8bd;
-  --md-shadow-z1: none;
-  --md-shadow-z2: 0 0 0 1px var(--me-border);
-  --md-shadow-z3: 0 0 0 1px var(--me-border), 0 8px 24px rgba(0, 0, 0, 0.05);
-
-  /* Syntax: GitHub-light-derived. */
-  --md-code-hl-color: rgba(180, 95, 60, 0.12);
-  --md-code-hl-color--light: rgba(180, 95, 60, 0.06);
-  --md-code-hl-number-color: #0550ae;
-  --md-code-hl-special-color: #a0111f;
-  --md-code-hl-function-color: #6639ba;
-  --md-code-hl-constant-color: #0550ae;
-  --md-code-hl-keyword-color: #cf222e;
-  --md-code-hl-string-color: #0a3069;
-  --md-code-hl-name-color: #24292f;
-  --md-code-hl-operator-color: #57606a;
-  --md-code-hl-punctuation-color: #57606a;
-  --md-code-hl-comment-color: #74787f;
-  --md-code-hl-generic-color: #57606a;
-  --md-code-hl-variable-color: #953800;
+  --me-border: rgba(14, 74, 90, 0.12);
+  --me-hero-from: #0e4a5a;
+  --me-hero-to: #134e4a;
+  --me-card-hover: rgba(13, 148, 136, 0.14);
 }
 
 [data-md-color-scheme="slate"] {
-  color-scheme: dark;
-
-  --me-bg: #0e1013;
-  --me-surface: #131519;
-  --me-sunken: #16181d;
-  --me-ink: #e6e8ea;
-  --me-fg-2: #a2a6ad;
-  --me-fg-3: #6e7178;
-  --me-border: #24262b;
-  --me-rail: #14161a;
-  --me-accent: #d99a7a;
-  --me-accent-hover: #e4ad90;
-  --me-accent-subtle: rgba(217, 154, 122, 0.10);
-
-  --md-default-bg-color: var(--me-bg);
-  --md-default-bg-color--light: rgba(14, 16, 19, 0.72);
-  --md-default-bg-color--lighter: rgba(14, 16, 19, 0.48);
-  --md-default-bg-color--lightest: rgba(14, 16, 19, 0.16);
-  --md-default-fg-color: var(--me-ink);
-  --md-default-fg-color--light: var(--me-fg-2);
-  --md-default-fg-color--lighter: var(--me-fg-3);
-  --md-default-fg-color--lightest: rgba(230, 232, 234, 0.07);
-  --md-primary-fg-color: #0e1013;
-  --md-primary-fg-color--light: #16181d;
-  --md-primary-fg-color--dark: #0e1013;
-  --md-primary-bg-color: var(--me-ink);
-  --md-primary-bg-color--light: var(--me-fg-2);
-  --md-accent-fg-color: var(--me-accent);
-  --md-accent-fg-color--transparent: var(--me-accent-subtle);
-  --md-accent-bg-color: #0e1013;
-  --md-typeset-color: var(--me-ink);
-  --md-typeset-a-color: var(--me-accent);
-  --md-code-bg-color: var(--me-sunken);
-  --md-code-fg-color: #d4d6da;
-  --md-typeset-kbd-color: #1a1c21;
-  --md-typeset-kbd-accent-color: #1a1c21;
-  --md-typeset-kbd-border-color: #2c2e34;
-  --md-typeset-mark-color: rgba(217, 154, 122, 0.18);
-  --md-typeset-table-color: var(--me-border);
-  --md-typeset-table-color--light: rgba(230, 232, 234, 0.035);
-  --md-admonition-fg-color: var(--me-ink);
-  --md-admonition-bg-color: var(--me-surface);
-  --md-footer-bg-color: #0e1013;
-  --md-footer-bg-color--dark: #0e1013;
-  --md-footer-fg-color: var(--me-fg-2);
-  --md-footer-fg-color--light: var(--me-fg-3);
-  --md-footer-fg-color--lighter: #4a4d53;
-  --md-shadow-z1: none;
-  --md-shadow-z2: 0 0 0 1px var(--me-border);
-  --md-shadow-z3: 0 0 0 1px var(--me-border), 0 8px 24px rgba(0, 0, 0, 0.4);
-
-  /* Syntax: GitHub-dark-dimmed-derived. */
-  --md-code-hl-color: rgba(217, 154, 122, 0.14);
-  --md-code-hl-color--light: rgba(217, 154, 122, 0.07);
-  --md-code-hl-number-color: #6cb6ff;
-  --md-code-hl-special-color: #f47067;
-  --md-code-hl-function-color: #dcbdfb;
-  --md-code-hl-constant-color: #6cb6ff;
-  --md-code-hl-keyword-color: #f47067;
-  --md-code-hl-string-color: #96d0ff;
-  --md-code-hl-name-color: #e6e8ea;
-  --md-code-hl-operator-color: #a2a6ad;
-  --md-code-hl-punctuation-color: #a2a6ad;
-  --md-code-hl-comment-color: #768390;
-  --md-code-hl-generic-color: #a2a6ad;
-  --md-code-hl-variable-color: #f69d50;
+  --md-primary-fg-color: #07141a;
+  --md-primary-fg-color--light: #0e4a5a;
+  --md-primary-fg-color--dark: #050e12;
+  --md-accent-fg-color: #2dd4bf;
+  --md-accent-fg-color--transparent: rgba(45, 212, 191, 0.16);
+  --md-default-bg-color: #0b1216;
+  --md-default-fg-color: #e8eef1;
+  --md-default-fg-color--light: #b7c5cc;
+  --md-default-fg-color--lighter: #7f929c;
+  --md-code-bg-color: #121c22;
+  --md-code-fg-color: #99f6e4;
+  --md-typeset-a-color: #5eead4;
+  --md-footer-bg-color: #050e12;
+  --md-footer-bg-color--dark: #03090c;
+  --md-code-hl-color: rgba(45, 212, 191, 0.18);
+  --me-surface: #121b21;
+  --me-border: rgba(94, 234, 212, 0.14);
+  --me-hero-from: #07141a;
+  --me-hero-to: #0e3a40;
+  --me-card-hover: rgba(45, 212, 191, 0.18);
+  --me-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
 }
-
-/* ------------------------------------------------------------------ base */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-feature-settings: "kern" 1, "cv05" 1;
-  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" 1, "kern" 1;
 }
-
-::selection {
-  background: var(--me-accent-subtle);
-}
-
-:focus-visible {
-  outline: 2px solid var(--me-accent);
-  outline-offset: 2px;
-}
-
-/* ---------------------------------------------------------------- header */
 
 .md-header {
+  background:
+    radial-gradient(1200px 180px at 12% -40%, rgba(45, 212, 191, 0.22), transparent 60%),
+    linear-gradient(135deg, var(--me-hero-from), var(--me-hero-to));
   box-shadow: none;
-  border-bottom: 1px solid var(--me-border);
-}
-
-.md-header--shadow {
-  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .md-header__title {
+  font-family: "Sora", var(--md-text-font), sans-serif;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .md-header .md-logo {
   margin-right: 0.35rem;
 }
 
-.md-header .md-logo :is(svg, img) {
-  height: 1.4rem;
-  width: auto;
-  color: var(--md-default-fg-color);
+.md-header .md-logo svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  color: #5eead4;
 }
-
-.md-progress {
-  background: var(--me-accent);
-}
-
-/* ---------------------------------------------------------------- search */
 
 .md-search__form {
-  background-color: var(--me-sunken);
-  border: 1px solid var(--me-border);
-  border-radius: var(--me-radius);
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.md-header__button:hover,
 .md-search__form:hover {
-  background-color: var(--me-sunken);
-  border-color: var(--me-fg-3);
+  background-color: rgba(255, 255, 255, 0.16);
 }
 
-.md-search__input {
-  color: var(--md-default-fg-color);
-}
-
-.md-search__input::placeholder,
-.md-search__icon {
-  color: var(--md-default-fg-color--lighter);
-}
-
-[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
-  background-color: var(--md-default-bg-color);
-  border-color: var(--me-border);
-  border-radius: var(--me-radius) var(--me-radius) 0 0;
-}
-
-.md-search__output {
-  border: 1px solid var(--me-border);
-  border-top: 0;
-  border-radius: 0 0 var(--me-radius) var(--me-radius);
-}
-
-.md-search-result__meta {
-  background: var(--me-sunken);
-  color: var(--me-fg-2);
-}
-
-/* ------------------------------------------------------------------- nav */
-
-.md-nav {
-  font-size: 0.68rem;
-}
-
-.md-nav__item--section > .md-nav__link {
-  font-weight: 600;
-  color: var(--md-default-fg-color);
-}
-
-.md-nav__link {
-  color: var(--md-default-fg-color--light);
-}
-
-.md-nav__link:hover {
-  color: var(--md-default-fg-color);
-}
-
-.md-nav__link--active,
-.md-nav--primary .md-nav__item--active > .md-nav__link {
-  color: var(--me-accent);
-  font-weight: 500;
+.md-tabs {
+  background: transparent;
 }
 
 .md-sidebar__scrollwrap {
-  scrollbar-color: var(--me-border) transparent;
-  scrollbar-width: thin;
+  scrollbar-color: var(--md-accent-fg-color) transparent;
 }
 
-/* Desktop-only sunken rail behind the left nav, bleeding to the viewport
-   edge. The sidebar element itself has no usable height in Material, so the
-   rail is painted on .md-main as a gradient aligned to the centered
-   61rem grid: rail width = grid left margin + 12.1rem sidebar column. */
-@media screen and (min-width: 76.25em) {
-  .md-main {
-    --me-rail-edge: calc(max(0px, 50vw - 30.5rem) + 12.1rem);
-    background: linear-gradient(
-      to right,
-      var(--me-rail) var(--me-rail-edge),
-      var(--me-border) var(--me-rail-edge),
-      var(--me-border) calc(var(--me-rail-edge) + 1px),
-      transparent calc(var(--me-rail-edge) + 1px)
-    );
-  }
-
-  /* The sticky sidebar title masks scrolling items with the page background;
-     re-point that mask at the rail color so it disappears into the panel. */
-  .md-sidebar--primary .md-nav__title {
-    background: var(--me-rail);
-    box-shadow: 0 0 0.4rem 0.4rem var(--me-rail);
-  }
+.md-nav__title {
+  font-family: "Sora", var(--md-text-font), sans-serif;
 }
 
-.md-nav--secondary .md-nav__title {
-  color: var(--md-default-fg-color--lighter);
-  font-size: 0.62rem;
+.md-nav--primary .md-nav__item--active > .md-nav__link {
+  color: var(--md-accent-fg-color);
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  box-shadow: none;
 }
 
-.md-nav--secondary .md-nav__link--active {
-  color: var(--me-accent);
+.md-nav__link:hover {
+  color: var(--md-accent-fg-color);
 }
-
-/* -------------------------------------------------------------- typeset */
 
 .md-typeset {
-  font-size: 0.8rem;
-  line-height: 1.65;
+  font-size: 0.82rem;
 }
 
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
 .md-typeset h4 {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--md-default-fg-color);
+  font-family: "Sora", var(--md-text-font), sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 650;
 }
 
 .md-typeset h1 {
-  font-size: 1.9rem;
-  margin-bottom: 0.8em;
+  font-size: 2rem;
+  margin-bottom: 0.6em;
 }
 
 .md-typeset h2 {
-  font-size: 1.3rem;
-  margin-top: 2.2em;
-}
-
-.md-typeset h3 {
-  font-size: 1.05rem;
-}
-
-.md-typeset h4 {
-  font-size: 0.9rem;
+  border-bottom: 1px solid var(--me-border);
+  padding-bottom: 0.35rem;
 }
 
 .md-typeset a {
-  text-underline-offset: 0.2em;
+  text-underline-offset: 0.18em;
 }
 
 .md-typeset a:hover {
-  color: var(--me-accent-hover);
+  color: var(--md-accent-fg-color);
 }
-
-.md-typeset .headerlink {
-  color: var(--md-default-fg-color--lighter);
-}
-
-.md-typeset .headerlink:hover {
-  color: var(--me-accent);
-}
-
-/* ------------------------------------------------------------------ code */
 
 .md-typeset code {
-  border-radius: var(--me-radius-sm);
-  font-size: 0.9em;
-  padding: 0.1em 0.35em;
-  font-weight: 400;
-}
-
-/* Block code: one border on the wrapper, nothing nested inside it. */
-.md-typeset div.highlight {
-  background: var(--md-code-bg-color);
-  border: 1px solid var(--me-border);
-  border-radius: var(--me-radius);
-  box-shadow: none;
-  margin: 1em 0;
-  overflow: hidden;
-}
-
-.md-typeset div.highlight pre {
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  margin: 0;
+  border-radius: 0.35rem;
+  padding: 0.12em 0.38em;
+  font-weight: 500;
 }
 
 .md-typeset pre > code {
-  font-size: 0.74rem;
-  line-height: 1.62;
-  padding: 0.85em 1.1em;
+  padding: 0;
+  font-weight: 400;
 }
 
-/* Notebook cells carry their own chrome via the --jp tokens. */
-.md-typeset .jupyter-wrapper div.highlight {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  margin: 0;
-  overflow: visible;
+.md-typeset .highlight,
+.md-typeset pre {
+  border: 1px solid var(--me-border);
+  border-radius: 0.8rem;
+  box-shadow: var(--me-shadow);
 }
-
-.md-typeset .highlight .filename {
-  background: var(--me-sunken);
-  border-bottom: 1px solid var(--me-border);
-  font-weight: 500;
-}
-
-.md-clipboard {
-  color: var(--md-default-fg-color--lighter);
-}
-
-.md-clipboard:hover {
-  color: var(--md-default-fg-color);
-}
-
-/* ---------------------------------------------------------------- tables */
 
 .md-typeset table:not([class]) {
   border: 1px solid var(--me-border);
-  border-radius: var(--me-radius);
+  border-radius: 0.8rem;
   box-shadow: none;
   overflow: hidden;
-  font-size: 0.72rem;
 }
 
 .md-typeset table:not([class]) th {
-  background: transparent;
-  color: var(--md-default-fg-color);
+  background: color-mix(in srgb, var(--md-accent-fg-color) 10%, var(--me-surface));
+  font-family: "Sora", var(--md-text-font), sans-serif;
   font-weight: 600;
   font-size: 0.72rem;
-  border-bottom: 1px solid var(--me-border);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-/* ----------------------------------------------------------- admonitions */
+.md-typeset table:not([class]) tr:hover td {
+  background: color-mix(in srgb, var(--md-accent-fg-color) 7%, transparent);
+}
 
 .md-typeset .admonition,
 .md-typeset details {
-  border-width: 1px;
-  border-radius: var(--me-radius);
-  box-shadow: none;
+  border-radius: 0.8rem;
+  border-width: 0 0 0 0.28rem;
+  box-shadow: var(--me-shadow);
 }
-
-.md-typeset .admonition-title,
-.md-typeset summary {
-  font-weight: 600;
-}
-
-/* --------------------------------------------------------------- buttons */
-
-.md-typeset .md-button {
-  border: 1px solid var(--me-border);
-  border-radius: var(--me-radius);
-  color: var(--md-default-fg-color);
-  font-weight: 500;
-  padding: 0.45em 1em;
-  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
-}
-
-.md-typeset .md-button:hover {
-  background: var(--md-default-fg-color--lightest);
-  border-color: var(--me-fg-3);
-  color: var(--md-default-fg-color);
-}
-
-.md-typeset .md-button--primary {
-  background: var(--md-default-fg-color);
-  border-color: var(--md-default-fg-color);
-  color: var(--md-default-bg-color);
-}
-
-.md-typeset .md-button--primary:hover {
-  background: var(--me-fg-2);
-  border-color: var(--me-fg-2);
-  color: var(--md-default-bg-color);
-}
-
-/* ------------------------------------------------------------ grid cards */
 
 .md-typeset .grid.cards > ol > li,
 .md-typeset .grid.cards > ul > li,
@@ -479,170 +199,145 @@ body {
   background: var(--me-surface);
   border: 1px solid var(--me-border);
   border-radius: var(--me-radius);
-  box-shadow: none;
-  padding: 1rem 1.1rem;
-  transition: border-color 0.15s ease;
+  box-shadow: var(--me-shadow);
+  padding: 1.05rem 1.1rem;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .md-typeset .grid.cards > ol > li:hover,
 .md-typeset .grid.cards > ul > li:hover,
 .md-typeset .grid > .card:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: var(--me-fg-3);
+  transform: translateY(-3px);
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 16px 36px var(--me-card-hover);
 }
 
-/* ------------------------------------------------------------------ hero */
+.md-typeset .md-button {
+  border-radius: 999px;
+  font-family: "Sora", var(--md-text-font), sans-serif;
+  font-weight: 600;
+  padding: 0.55em 1.15em;
+}
+
+.md-typeset .md-button--primary {
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: #042f2e;
+}
+
+[data-md-color-scheme="default"] .md-typeset .md-button--primary {
+  color: #ffffff;
+  background: var(--me-ocean);
+  border-color: var(--me-ocean);
+}
+
+.md-typeset .md-button--primary:hover {
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: #042f2e;
+}
 
 .me-hero {
-  background: none;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  color: inherit;
-  margin: 1rem 0 2rem;
-  overflow: visible;
-  padding: 1.5rem 0 0.5rem;
+  background:
+    radial-gradient(720px 240px at 90% -20%, rgba(45, 212, 191, 0.28), transparent 58%),
+    linear-gradient(135deg, var(--me-hero-from), var(--me-hero-to) 72%);
+  border: 1px solid var(--me-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--me-shadow);
+  color: #f3fffd;
+  margin: 0 0 1.8rem;
+  overflow: hidden;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  position: relative;
 }
 
 .me-hero::after {
-  content: none;
+  background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.45), transparent);
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .me-hero h1 {
   border: 0;
-  color: var(--md-default-fg-color);
-  font-size: clamp(2.1rem, 5vw, 2.7rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin: 0 0 0.4rem;
+  color: #ffffff;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin: 0 0 0.45rem;
 }
 
 .me-hero p {
-  color: var(--md-default-fg-color--light);
-  font-size: 0.95rem;
-  max-width: 38rem;
+  color: rgba(243, 255, 253, 0.86);
+  font-size: 1.05rem;
+  max-width: 42rem;
 }
 
 .me-hero .me-kicker {
-  color: var(--me-accent);
-  font-family: var(--md-code-font-family, monospace);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  margin: 0 0 1rem;
+  color: #99f6e4;
+  font-family: "Sora", var(--md-text-font), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin: 0 0 0.7rem;
   text-transform: uppercase;
 }
 
 .me-hero .md-button {
-  margin: 0.5rem 0.5rem 0 0;
+  margin: 0.35rem 0.55rem 0 0;
+}
+
+.me-hero .md-button--primary {
+  background: #5eead4;
+  border-color: #5eead4;
+  color: #042f2e;
+}
+
+.me-hero .md-button:not(.md-button--primary) {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.38);
+  color: #f3fffd;
 }
 
 .me-chip {
-  background: transparent;
+  background: color-mix(in srgb, var(--md-accent-fg-color) 14%, var(--me-surface));
   border: 1px solid var(--me-border);
   border-radius: 999px;
-  color: var(--md-default-fg-color--light);
+  color: var(--md-accent-fg-color);
   display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  margin: 0 0.3rem 0.35rem 0;
-  padding: 0.18rem 0.6rem;
-  text-transform: uppercase;
-}
-
-/* --------------------------------------------------------- status badges */
-/* "**Status: X.**" lines are tagged by javascripts/status-badge.js. */
-
-.md-typeset strong.me-status {
-  align-items: center;
-  border: 1px solid var(--me-border);
-  border-radius: 999px;
-  color: var(--md-default-fg-color--light);
-  display: inline-flex;
-  font-size: 0.6rem;
-  font-weight: 500;
-  gap: 0.5em;
-  letter-spacing: 0.05em;
-  padding: 0.16rem 0.65rem;
-  text-transform: uppercase;
-  vertical-align: baseline;
-}
-
-.md-typeset strong.me-status::before {
-  background: var(--me-status-dot, var(--me-fg-3));
-  border-radius: 50%;
-  content: "";
-  flex: none;
-  height: 0.42em;
-  width: 0.42em;
-}
-
-.me-status--shipped {
-  --me-status-dot: #2f9e6e;
-}
-
-.me-status--experimental {
-  --me-status-dot: #c08a2d;
-}
-
-[data-md-color-scheme="slate"] .me-status--shipped {
-  --me-status-dot: #57c98c;
-}
-
-[data-md-color-scheme="slate"] .me-status--experimental {
-  --me-status-dot: #d9a94f;
-}
-
-/* ------------------------------------------------- mkdocstrings API page */
-
-.md-typeset .doc-heading code {
-  background: transparent;
-  padding: 0;
-}
-
-.md-typeset .doc-labels .doc-label {
-  background: transparent;
-  border: 1px solid var(--me-border);
-  border-radius: var(--me-radius-sm);
-  color: var(--md-default-fg-color--light);
-  font-size: 0.6rem;
-  font-weight: 500;
-  padding: 0.05rem 0.4rem;
-}
-
-.md-typeset .doc-object {
-  margin-bottom: 1.6em;
-}
-
-.md-typeset .doc-contents .doc-section-title {
+  font-family: "Sora", var(--md-text-font), sans-serif;
+  font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0 0.25rem 0.35rem 0;
+  padding: 0.2rem 0.65rem;
+  text-transform: uppercase;
 }
-
-/* ---------------------------------------------------------------- footer */
 
 .md-footer {
-  border-top: 1px solid var(--me-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.md-footer,
 .md-footer-meta {
-  background: var(--md-footer-bg-color);
+  background: var(--md-footer-bg-color--dark);
 }
 
-.md-footer__link:hover {
-  color: var(--me-accent);
+.md-typeset .headerlink {
+  color: var(--md-accent-fg-color);
 }
 
-/* -------------------------------------------------------- reduced motion */
+@media (max-width: 76.25em) {
+  .me-hero {
+    border-radius: 1rem;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .md-typeset .md-button,
   .md-typeset .grid.cards > ol > li,
   .md-typeset .grid.cards > ul > li,
   .md-typeset .grid > .card {
