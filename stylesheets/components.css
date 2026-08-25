@@ -1,0 +1,268 @@
+/* ------------------------------------------------------------------ code */
+
+.md-typeset code {
+  border-radius: var(--me-radius-sm);
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  font-weight: 400;
+}
+
+/* Block code: one border on the wrapper, nothing nested inside it. */
+.md-typeset div.highlight {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  box-shadow: none;
+  margin: 1em 0;
+  overflow: hidden;
+}
+
+.md-typeset div.highlight pre {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.md-typeset pre > code {
+  font-size: 0.74rem;
+  line-height: 1.62;
+  padding: 0.85em 1.1em;
+}
+
+/* Notebook cells carry their own chrome via the --jp tokens. */
+.md-typeset .jupyter-wrapper div.highlight {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.md-typeset .highlight .filename {
+  background: var(--me-sunken);
+  border-bottom: 1px solid var(--me-border);
+  font-weight: 500;
+}
+
+.md-clipboard {
+  color: var(--md-default-fg-color--lighter);
+}
+
+.md-clipboard:hover {
+  color: var(--md-default-fg-color);
+}
+
+/* ---------------------------------------------------------------- tables */
+
+.md-typeset table:not([class]) {
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  box-shadow: none;
+  overflow: hidden;
+  font-size: 0.72rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: transparent;
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--me-border);
+}
+
+/* ----------------------------------------------------------- admonitions */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 1px;
+  border-radius: var(--me-radius);
+  box-shadow: none;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.md-typeset .md-button {
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  color: var(--md-default-fg-color);
+  font-weight: 500;
+  padding: 0.45em 1em;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.md-typeset .md-button:hover {
+  background: var(--md-default-fg-color--lightest);
+  border-color: var(--me-fg-3);
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset .md-button--primary {
+  background: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.md-typeset .md-button--primary:hover {
+  background: var(--me-fg-2);
+  border-color: var(--me-fg-2);
+  color: var(--md-default-bg-color);
+}
+
+/* ------------------------------------------------------------ grid cards */
+
+.md-typeset .grid.cards > ol > li,
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  background: var(--me-surface);
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  box-shadow: none;
+  padding: 1rem 1.1rem;
+  transition: border-color 0.15s ease;
+}
+
+.md-typeset .grid.cards > ol > li:hover,
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > .card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--me-fg-3);
+}
+
+/* ------------------------------------------------------------------ hero */
+
+.me-hero {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  margin: 1rem 0 2rem;
+  overflow: visible;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.me-hero::after {
+  content: none;
+}
+
+.me-hero h1 {
+  border: 0;
+  color: var(--md-default-fg-color);
+  font-size: clamp(2.1rem, 5vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.4rem;
+}
+
+.me-hero p {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+  max-width: 38rem;
+}
+
+.me-hero .me-kicker {
+  color: var(--me-accent);
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.me-hero .md-button {
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+.me-chip {
+  background: transparent;
+  border: 1px solid var(--me-border);
+  border-radius: 999px;
+  color: var(--md-default-fg-color--light);
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  margin: 0 0.3rem 0.35rem 0;
+  padding: 0.18rem 0.6rem;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------- status badges */
+/* "**Status: X.**" lines are tagged by javascripts/status-badge.js. */
+
+.md-typeset strong.me-status {
+  align-items: center;
+  border: 1px solid var(--me-border);
+  border-radius: 999px;
+  color: var(--md-default-fg-color--light);
+  display: inline-flex;
+  font-size: 0.6rem;
+  font-weight: 500;
+  gap: 0.5em;
+  letter-spacing: 0.05em;
+  padding: 0.16rem 0.65rem;
+  text-transform: uppercase;
+  vertical-align: baseline;
+}
+
+.md-typeset strong.me-status::before {
+  background: var(--me-status-dot, var(--me-fg-3));
+  border-radius: 50%;
+  content: "";
+  flex: none;
+  height: 0.42em;
+  width: 0.42em;
+}
+
+.me-status--shipped {
+  --me-status-dot: #2f9e6e;
+}
+
+.me-status--experimental {
+  --me-status-dot: #c08a2d;
+}
+
+.me-status--design {
+  --me-status-dot: var(--me-fg-3);
+}
+
+[data-md-color-scheme="slate"] .me-status--shipped {
+  --me-status-dot: #57c98c;
+}
+
+[data-md-color-scheme="slate"] .me-status--experimental {
+  --me-status-dot: #d9a94f;
+}
+
+/* ------------------------------------------------- mkdocstrings API page */
+
+.md-typeset .doc-heading code {
+  background: transparent;
+  padding: 0;
+}
+
+.md-typeset .doc-labels .doc-label {
+  background: transparent;
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius-sm);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 0.05rem 0.4rem;
+}
+
+.md-typeset .doc-object {
+  margin-bottom: 1.6em;
+}
+
+.md-typeset .doc-contents .doc-section-title {
+  font-weight: 600;
+}
