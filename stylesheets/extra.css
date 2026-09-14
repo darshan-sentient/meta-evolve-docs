@@ -1,149 +1,259 @@
-/* Meta-Evolve documentation theme.
-
-   Quiet and warm: system fonts, one column of readable width, a hairline
-   header, brown-black ink on white paper, and rust for the things you can
-   act on -- links, the current page, the one button. The variables at the
-   top are the palette; the rules below only set spacing and remove chrome. */
-
-:root {
-  --md-text-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    Arial, sans-serif;
-  --md-code-font: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
+/* A quiet reading surface; Material still owns navigation and interaction. */
+:root,
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #ffffff;
-  --md-primary-bg-color: #2b2622;
-  --md-primary-bg-color--light: #6b625b;
-  --md-accent-fg-color: #b45f3a;
-  --md-accent-fg-color--transparent: rgba(180, 95, 58, 0.1);
-  --md-default-bg-color: #ffffff;
-  --md-default-fg-color: #2b2622;
-  --md-default-fg-color--light: #6b625b;
-  --md-default-fg-color--lighter: #a0968d;
-  --md-default-fg-color--lightest: #ede8e2;
-  --md-code-bg-color: #f6f2ee;
-  --md-code-fg-color: #2b2622;
-  --md-typeset-a-color: #b45f3a;
-  --md-footer-bg-color: #ffffff;
-  --md-footer-bg-color--dark: #f6f2ee;
-  --md-footer-fg-color: #2b2622;
-  --md-footer-fg-color--light: #6b625b;
-  --md-footer-fg-color--lighter: #a0968d;
-  --me-rule: #e6dfd7;
+  --md-default-bg-color: #faf9f6;
+  --md-default-fg-color: #272b2a;
+  --md-default-fg-color--light: #616763;
+  --md-default-fg-color--lighter: #858b86;
+  --md-default-fg-color--lightest: #e4e5df;
+  --md-primary-fg-color: #faf9f6;
+  --md-primary-fg-color--light: #ffffff;
+  --md-primary-fg-color--dark: #efefea;
+  --md-primary-bg-color: #272b2a;
+  --md-primary-bg-color--light: #616763;
+  --md-accent-fg-color: #286b62;
+  --md-accent-fg-color--transparent: #286b6210;
+  --md-typeset-a-color: #286b62;
+  --md-code-bg-color: #f0f1ec;
+  --md-code-fg-color: #303b38;
+  --md-code-hl-color: #286b621a;
+  --md-footer-bg-color: #faf9f6;
+  --md-footer-bg-color--dark: #f0f1ec;
+  --md-footer-fg-color: #272b2a;
+  --md-footer-fg-color--light: #616763;
+  --md-footer-fg-color--lighter: #616763;
+  --me-border: #dddfd8;
+  --me-surface: #f5f5f0;
+  --me-radius: 0.3rem;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #171412;
-  --md-primary-bg-color: #ece6df;
-  --md-primary-bg-color--light: #a89e94;
-  --md-accent-fg-color: #d98a63;
-  --md-accent-fg-color--transparent: rgba(217, 138, 99, 0.12);
-  --md-default-bg-color: #171412;
-  --md-default-fg-color: #ece6df;
-  --md-default-fg-color--light: #a89e94;
-  --md-default-fg-color--lighter: #756b62;
-  --md-default-fg-color--lightest: #2c2622;
-  --md-code-bg-color: #211c19;
-  --md-code-fg-color: #ece6df;
-  --md-typeset-a-color: #e09a75;
-  --md-footer-bg-color: #171412;
-  --md-footer-bg-color--dark: #211c19;
-  --md-footer-fg-color: #ece6df;
-  --md-footer-fg-color--light: #a89e94;
-  --md-footer-fg-color--lighter: #756b62;
-  --me-rule: #2c2622;
+  --md-default-bg-color: #191d1c;
+  --md-default-fg-color: #e4e7e2;
+  --md-default-fg-color--light: #adb5ae;
+  --md-default-fg-color--lighter: #89948c;
+  --md-default-fg-color--lightest: #353e38;
+  --md-primary-fg-color: #191d1c;
+  --md-primary-fg-color--light: #222825;
+  --md-primary-fg-color--dark: #141816;
+  --md-primary-bg-color: #e4e7e2;
+  --md-primary-bg-color--light: #adb5ae;
+  --md-accent-fg-color: #89bfb2;
+  --md-accent-fg-color--transparent: #89bfb214;
+  --md-typeset-a-color: #89bfb2;
+  --md-code-bg-color: #212724;
+  --md-code-fg-color: #d3ded6;
+  --md-code-hl-color: #89bfb21a;
+  --md-footer-bg-color: #191d1c;
+  --md-footer-bg-color--dark: #161a18;
+  --md-footer-fg-color: #e4e7e2;
+  --md-footer-fg-color--light: #adb5ae;
+  --md-footer-fg-color--lighter: #adb5ae;
+  --me-border: #353e38;
+  --me-surface: #202522;
 }
 
-/* Header: a hairline, no bar, no logo. */
-.md-header,
-.md-header--shadow {
+body { font-kerning: normal; }
+.md-grid { max-width: 72rem; }
+.md-content__inner { max-width: 40rem; margin-inline: auto; padding-inline: 1.4rem; }
+
+.md-header {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-bottom: 1px solid var(--me-border);
   box-shadow: none;
-  border-bottom: 1px solid var(--me-rule);
-}
-.md-header__button.md-logo {
-  display: none;
-}
-.md-tabs {
-  border-bottom: 1px solid var(--me-rule);
-}
-.md-tabs__link--active {
-  box-shadow: inset 0 -2px 0 var(--md-accent-fg-color);
-}
-.md-search__form {
-  background-color: var(--md-code-bg-color);
-}
-.md-footer {
-  border-top: 1px solid var(--me-rule);
 }
 
-/* One column of readable width. */
-.md-grid {
-  max-width: 72rem;
+.md-header__title { font-weight: 600; letter-spacing: -0.025em; }
+.md-header .md-logo svg { width: 1.5rem; height: 1.5rem; color: var(--md-accent-fg-color); }
+.md-search__form { background: var(--me-surface); border: 1px solid var(--me-border); }
+.md-tabs { background: var(--md-default-bg-color); color: var(--md-default-fg-color); }
+.md-nav { font-size: 0.7rem; line-height: 1.5; }
+.md-nav__title { font-weight: 600; }
+.md-nav__link { color: var(--md-default-fg-color--light); }
+.md-nav__link:hover { color: var(--md-typeset-a-color); }
+.md-nav--primary .md-nav__item--active > .md-nav__link,
+.md-nav--secondary .md-nav__link--active {
+  color: var(--md-typeset-a-color);
+  font-weight: 600;
 }
-.md-content__inner {
-  max-width: 34rem;
-  margin-inline: auto;
-}
-.md-typeset {
-  line-height: 1.65;
-}
+
+.md-typeset { font-size: 0.85rem; line-height: 1.75; }
 .md-typeset h1,
 .md-typeset h2,
-.md-typeset h3 {
-  font-weight: 600;
+.md-typeset h3,
+.md-typeset h4 {
   color: var(--md-default-fg-color);
-}
-.md-typeset h1 {
-  letter-spacing: -0.01em;
-}
-.md-typeset h2 {
-  margin-top: 2.2em;
-}
-
-/* Rust is for what you can act on: links, the current page, the button. */
-.md-typeset a:not(.md-button):not(.headerlink) {
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--md-typeset-a-color) 40%, transparent);
-  text-underline-offset: 0.16em;
-}
-.md-typeset a:not(.md-button):not(.headerlink):hover {
-  text-decoration-color: currentColor;
-}
-.md-typeset .md-button {
-  border: 1px solid var(--md-accent-fg-color);
-  border-radius: 4px;
-  color: var(--md-accent-fg-color);
-  font-weight: 500;
-}
-.md-typeset .md-button--primary {
-  background-color: var(--md-accent-fg-color);
-  border-color: var(--md-accent-fg-color);
-  color: #ffffff;
-}
-
-/* Tables and code: quiet borders, no fills. */
-.md-typeset table:not([class]) {
-  border: 1px solid var(--me-rule);
-  font-size: 0.72rem;
-}
-.md-typeset table:not([class]) th {
-  background-color: color-mix(in srgb, var(--md-accent-fg-color) 8%, transparent);
   font-weight: 600;
-}
-.md-typeset .highlight + .highlight {
-  margin-top: 0.4rem;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
 }
 
-/* Keyboard focus stays visible. */
-a:focus-visible,
-button:focus-visible {
+.md-typeset h1 { font-size: 2.1rem; margin: 0 0 1em; }
+.md-typeset h2 { font-size: 1.35rem; margin: 2.2em 0 0.8em; }
+.md-typeset h3 { font-size: 1.05rem; margin: 1.8em 0 0.6em; }
+.md-typeset hr { border-color: var(--me-border); }
+.md-typeset a { text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.md-typeset p a,
+.md-typeset li a { text-decoration: underline; text-decoration-color: var(--me-border); }
+.md-typeset a:hover { text-decoration-color: currentColor; }
+.md-typeset a:focus-visible,
+.md-typeset button:focus-visible {
   outline: 2px solid var(--md-accent-fg-color);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
+
+/* Inline code stays compact; block padding reserves room for the copy button. */
+.md-typeset code { border-radius: 0.15rem; padding: 0.12em 0.3em; }
+.md-typeset pre { line-height: 1.6; }
+.md-typeset pre > code,
+.md-typeset .highlight > pre > code {
+  padding: 0.95em 2.8em 0.95em 1.2em;
+  border-radius: inherit;
+  font-weight: 400;
+}
+
+.md-typeset .highlight,
+.md-typeset pre {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  box-shadow: none;
+  margin: 1.3em 0;
+}
+
+/* Only the outer wrapper draws a frame, including for numbered snippets. */
+.md-typeset .highlight pre,
+.md-typeset .highlight .highlight,
+.md-typeset .highlight .highlighttable {
+  border: 0;
+  border-radius: inherit;
+  box-shadow: none;
+  margin: 0;
+}
+
+.md-typeset .highlight span.filename {
+  background: var(--me-surface);
+  border-bottom: 1px solid var(--me-border);
+  border-radius: var(--me-radius) var(--me-radius) 0 0;
+  color: var(--md-default-fg-color--light);
+  font-weight: 500;
+  margin: 0;
+  padding: 0.7em 1.2em;
+}
+
+.md-typeset .highlight .filename + pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.md-typeset .highlighttable .linenos { padding-block: 0.95em; }
+.md-typeset .highlight + .highlight { margin-top: 0.5rem; }
+.md-code__button { color: var(--md-default-fg-color--light); }
+
+/* Captured transcript bytes stay unchanged; long prompts wrap for reading. */
+.md-typeset .me-learning-transcript .filename + pre > code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.md-typeset .md-typeset__table { max-width: 100%; }
+.md-typeset .md-typeset__scrollwrap { overflow-x: auto; }
+.md-typeset table:not([class]) {
+  background: transparent;
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  box-shadow: none;
+  font-size: 0.75rem;
+}
+
+.md-typeset table:not([class]) th { background: var(--me-surface); font-weight: 600; }
+.md-typeset table:not([class]) td { border-color: var(--me-border); }
+.md-typeset .admonition,
+.md-typeset details {
+  background: var(--me-surface);
+  border-radius: var(--me-radius);
+  border-width: 0 0 0 2px;
+  box-shadow: none;
+  font-size: 0.8rem;
+}
+
+/* The home page is an introduction to the book, with a simple chapter index. */
+.me-hero { border-bottom: 1px solid var(--me-border); margin-bottom: 1.4rem; padding: 0.5rem 0 1.6rem; }
+.me-hero h1 { font-size: clamp(2rem, 5vw, 2.6rem); margin-bottom: 0.65rem; }
+.me-hero p { max-width: 36rem; }
+.me-hero > p:not(.me-kicker) { font-size: 0.95rem; }
+.me-hero .me-kicker {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.8rem;
+  text-transform: uppercase;
+}
+
+.md-typeset .md-button {
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  color: var(--md-default-fg-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.65em 1.1em;
+  text-decoration: none;
+}
+
+.md-typeset .md-button--primary {
+  background: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.md-typeset .md-button:hover,
+.md-typeset .md-button:focus-visible {
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.me-hero .md-button { margin: 0.4rem 0.4rem 0 0; }
+.me-chip {
+  color: var(--md-default-fg-color--light);
+  display: inline-block;
+  font-size: 0.7rem;
+  margin: 0 0.8rem 0.4rem 0;
+}
+
+.md-typeset .grid.cards > ol > li,
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--me-border);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1rem 0;
+  transition: none;
+}
+
+.md-typeset .grid.cards > ol > li:hover,
+.md-typeset .grid.cards > ol > li:focus-within,
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > ul > li:focus-within,
+.md-typeset .grid > .card:hover,
+.md-typeset .grid > .card:focus-within { border-color: var(--me-border); box-shadow: none; }
+.md-typeset .grid.cards hr { display: none; }
+.md-typeset .grid.cards .twemoji { color: var(--md-default-fg-color--light); }
+.md-footer { border-top: 1px solid var(--me-border); }
+.md-footer__title { font-size: 0.85rem; }
+.md-top { background: var(--md-default-bg-color); border: 1px solid var(--me-border); box-shadow: none; }
 
 @media (max-width: 44.99em) {
-  .md-content__inner {
-    margin-inline: 0.8rem;
-  }
+  .md-content__inner { margin-inline: 0; padding-inline: 1rem; }
+  .md-typeset h1 { font-size: 1.8rem; }
+  .md-typeset table:not([class]) { min-width: 0; }
+  .md-typeset .highlight { margin-inline: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .md-button { transition: none; }
 }
