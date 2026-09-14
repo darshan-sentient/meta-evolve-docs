@@ -493,7 +493,7 @@
   <span class="md-ellipsis">
     
   
-    Learn from feedback
+    Use experience to improve a proposal
   
 
     
@@ -1031,7 +1031,7 @@
   <span class="md-ellipsis">
     
   
-    Experience
+    Learning from experience
   
 
     
@@ -3523,111 +3523,141 @@
 
 
 <h1 id="keep-and-continue-the-work">Keep and continue the work<a class="headerlink" href="#keep-and-continue-the-work" title="Permanent link">&para;</a></h1>
-<p>A useful run includes prompts, responses, failed attempts, and the reasons for
-selection. Store that record so you can inspect it later.</p>
+<p>Improving a prompt can take many revisions and costly evaluations. Keeping only
+the winning prompt loses the work that explains it: which alternatives were
+tried, where they failed, and what evidence supported the selection. A saved
+experiment lets you return to those questions after the process has ended.</p>
+<p>In the meeting-notes example, revision 1 passes five development cases while
+revision 2 passes three. Preserving both revisions and their recorded evidence
+lets you inspect why the earlier prompt won. For a longer experiment, preserving
+execution progress also lets you continue unfinished work with its history and
+budget accounting intact.</p>
+<p>The previous lesson used recorded experience to inform a proposal. Persistence
+keeps that record available after the process exits; a context policy still
+controls which experience a proposer can see. Saving history does not
+automatically supply it to future proposals.</p>
 <h2 id="save-and-reopen">Save and reopen<a class="headerlink" href="#save-and-reopen" title="Permanent link">&para;</a></h2>
 <p>Pass <code>storage=meta.Storage.durable(path)</code> to <code>improve()</code> or <code>run()</code> to preserve
-committed history. Reopen with <code>meta.Storage.read_only(path)</code> and
-<code>meta.Run(run_id, storage)</code>. Reading the result performs no proposals or
-evaluations. Keep the storage handle open while querying its <code>Run</code>.</p>
+committed artifacts, evaluations, evidence, decisions, lineage, usage, and
+failures. Ordinary local callables can produce a saved, inspectable history
+without registration.</p>
+<p>Retain the directory and the result's <code>id</code>. Later, open the directory with
+<code>meta.Storage.read_only(path)</code> and reconstruct the result with
+<code>meta.Run(run_id, storage)</code>. You can query the winner and its recorded history
+without calling the proposer, evaluator, or an external model again. Keep the
+storage handle open while querying its <code>Run</code>.</p>
 <h2 id="continue-unfinished-work">Continue unfinished work<a class="headerlink" href="#continue-unfinished-work" title="Permanent link">&para;</a></h2>
-<p>Saving a local run does not by itself make it resumable. <code>mode="durable-local"</code>
-requires registered, reconstructible components and verified configuration.
-The example registers the same fixture proposer and evaluator, starts a
-<code>Session</code>, completes one attempt, closes it, and resumes with the registry.</p>
+<p>Reopening answers “what happened?” Resuming answers “what work remains?” Resume
+retains the same run and its original limits, verifies its recorded declarations,
+and performs missing work without repeating committed operations. Closing a
+session after one of two permitted revisions leaves one revision to perform.
+Resuming a completed run does not add trials; further improvement from its
+winner requires a new experiment.</p>
+<p>Saving a local run does not by itself make it resumable. After a process ends,
+Meta-Evolve needs to reconstruct the components and configuration that defined
+the experiment. Registration gives the proposer and evaluator explicit names,
+versions, and configuration that can be verified on resume. Start with
+<code>mode="durable-local"</code> to require those reconstructible components from the
+beginning. Registration is unnecessary if you only need to save and inspect.</p>
+<p>The example below first saves and reopens an ordinary local run. It then
+registers the same fixture proposer and evaluator, starts a <code>Session</code>, completes
+one attempt, closes it, and resumes using a freshly constructed registry. An
+uninterrupted reference run checks that the resumed fixture history matches.</p>
 <!-- captured-output: script:examples/learn/meeting_notes/keep_run.py -->
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/learn/meeting_notes/keep_run.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;Store, inspect, and actually continue an unfinished fixture run.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">meta_evolve.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Registry</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">extraction_evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">meeting_components</span><span class="w"> </span><span class="kn">import</span> <span class="n">configuration</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prompt_variants</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEED</span><span class="p">,</span> <span class="n">rewrite</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">declaration</span><span class="p">():</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">registry</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">()</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">config</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">()</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">proposer</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">register_proposer</span><span class="p">(</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="s2">&quot;meeting-notes:rewrite&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">rewrite</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retry_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">evaluator</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">register_evaluator</span><span class="p">(</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="s2">&quot;meeting-notes:grade&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retry_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="p">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluator</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">proposer</span><span class="p">,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="p">)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="k">def</span><span class="w"> </span><span class="nf">demonstrate</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="c1"># Ordinary local runs can be stored and reopened, without being resumable.</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;saved&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="n">saved</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">rewrite</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>                             <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="n">saved_id</span> <span class="o">=</span> <span class="n">saved</span><span class="o">.</span><span class="n">id</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="n">saved_prompt</span> <span class="o">=</span> <span class="n">saved</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">read_only</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;saved&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="n">version</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">run_version</span><span class="p">(</span><span class="n">saved_id</span><span class="p">)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">reopened</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">saved_id</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="k">assert</span> <span class="n">reopened</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">saved_prompt</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="k">assert</span> <span class="n">storage</span><span class="o">.</span><span class="n">run_version</span><span class="p">(</span><span class="n">saved_id</span><span class="p">)</span> <span class="o">==</span> <span class="n">version</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="n">experiment</span> <span class="o">=</span> <span class="n">declaration</span><span class="p">()</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;reference&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>        <span class="n">reference</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;durable-local&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>        <span class="n">reference_events</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">reference</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;continued&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Session</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;durable-local&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>            <span class="n">session</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># Commit one proposal; leave the second unperformed.</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>            <span class="n">run_id</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">id</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>            <span class="n">before</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>            <span class="k">assert</span> <span class="ow">not</span> <span class="n">session</span><span class="o">.</span><span class="n">stopped</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;continued&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>        <span class="n">resumed</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">registry</span><span class="o">=</span><span class="n">declaration</span><span class="p">()</span><span class="o">.</span><span class="n">registry</span><span class="p">)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>        <span class="k">assert</span> <span class="n">resumed</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span> <span class="o">&gt;</span> <span class="n">before</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        <span class="k">assert</span> <span class="n">storage</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span> <span class="o">==</span> <span class="n">reference_events</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read-only reopen preserved the winner and event version.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resume continued attempts: </span><span class="si">{</span><span class="n">before</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">resumed</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resumed history equals uninterrupted fixture history: True&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;before&quot;</span><span class="p">:</span> <span class="n">before</span><span class="p">,</span> <span class="s2">&quot;after&quot;</span><span class="p">:</span> <span class="n">resumed</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>                <span class="s2">&quot;prompt&quot;</span><span class="p">:</span> <span class="n">resumed</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">}</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>    <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>        <span class="n">demonstrate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">))</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="c1"># Output:</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="c1"># Read-only reopen preserved the winner and event version.</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="c1"># Resume continued attempts: 1 -&gt; 2</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="c1"># Resumed history equals uninterrupted fixture history: True</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Read-only reopen preserved the winner and event version.
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Resume continued attempts: 1 -&gt; 2
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Resumed history equals uninterrupted fixture history: True
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sd">&quot;&quot;&quot;Store, inspect, and actually continue an unfinished fixture run.&quot;&quot;&quot;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">meta_evolve.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Registry</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">extraction_evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">meeting_components</span><span class="w"> </span><span class="kn">import</span> <span class="n">configuration</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prompt_variants</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEED</span><span class="p">,</span> <span class="n">rewrite</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">declaration</span><span class="p">():</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">registry</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">()</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="n">config</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">()</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">proposer</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">register_proposer</span><span class="p">(</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="s2">&quot;meeting-notes:rewrite&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">rewrite</span><span class="p">,</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retry_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="p">)</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="n">evaluator</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">register_evaluator</span><span class="p">(</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="s2">&quot;meeting-notes:grade&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">,</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">retry_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="p">)</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluator</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">proposer</span><span class="p">,</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">,</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="p">)</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="k">def</span><span class="w"> </span><span class="nf">demonstrate</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="c1"># Ordinary local runs can be stored and reopened, without being resumable.</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;saved&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>        <span class="n">saved</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">rewrite</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>                             <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">)</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>        <span class="n">saved_id</span> <span class="o">=</span> <span class="n">saved</span><span class="o">.</span><span class="n">id</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>        <span class="n">saved_prompt</span> <span class="o">=</span> <span class="n">saved</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">read_only</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;saved&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="n">version</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">run_version</span><span class="p">(</span><span class="n">saved_id</span><span class="p">)</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="n">reopened</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">saved_id</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>        <span class="k">assert</span> <span class="n">reopened</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">saved_prompt</span>
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>        <span class="k">assert</span> <span class="n">storage</span><span class="o">.</span><span class="n">run_version</span><span class="p">(</span><span class="n">saved_id</span><span class="p">)</span> <span class="o">==</span> <span class="n">version</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>
-<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>    <span class="n">experiment</span> <span class="o">=</span> <span class="n">declaration</span><span class="p">()</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;reference&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>        <span class="n">reference</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;durable-local&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>        <span class="n">reference_events</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">reference</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;continued&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>        <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Session</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;durable-local&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>            <span class="n">session</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># Commit one proposal; leave the second unperformed.</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>            <span class="n">run_id</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">id</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>            <span class="n">before</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span>
-<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>            <span class="k">assert</span> <span class="ow">not</span> <span class="n">session</span><span class="o">.</span><span class="n">stopped</span>
-<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>    <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;continued&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>        <span class="n">resumed</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">registry</span><span class="o">=</span><span class="n">declaration</span><span class="p">()</span><span class="o">.</span><span class="n">registry</span><span class="p">)</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>        <span class="k">assert</span> <span class="n">resumed</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span> <span class="o">&gt;</span> <span class="n">before</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>        <span class="k">assert</span> <span class="n">storage</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span> <span class="o">==</span> <span class="n">reference_events</span>
-<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read-only reopen preserved the winner and event version.&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resume continued attempts: </span><span class="si">{</span><span class="n">before</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">resumed</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resumed history equals uninterrupted fixture history: True&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;before&quot;</span><span class="p">:</span> <span class="n">before</span><span class="p">,</span> <span class="s2">&quot;after&quot;</span><span class="p">:</span> <span class="n">resumed</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span>
-<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>                <span class="s2">&quot;prompt&quot;</span><span class="p">:</span> <span class="n">resumed</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">}</span>
-<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>
-<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>
-<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a>    <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
-<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>        <span class="n">demonstrate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">))</span>
-</code></pre></div>
-<p>The resumed run actually performs the remaining attempt. The script verifies
-that its full event history equals an uninterrupted reference. This guarantee
-applies to the deterministic fixture; future LLM calls need not reproduce
-previous responses. Reopening recorded history makes no external calls.</p>
-<p>The command uses <code>TemporaryDirectory()</code> and removes its stores when it exits.
+<p>Run <code>python examples/learn/meeting_notes/keep_run.py</code> from an installed checkout.
+The example uses sibling modules from the meeting-notes directory; keep them
+together when running or adapting it.</p>
+<p>The resumed run performs the remaining attempt. Its full event history equals
+an uninterrupted reference because these fixtures are deterministic. This
+example demonstrates a deliberate pause, not every crash-recovery scenario.
+Future LLM calls need not reproduce previous responses; reopening committed
+history makes no external calls. See <a href="../../guides/durability/">durability</a> for
+the recovery and reproducibility contract.</p>
+<p>The example uses <code>TemporaryDirectory()</code> and removes its stores when it exits.
 To keep your own history, use a chosen persistent directory instead and retain
-its run ID; close storage handles before deleting stores you no longer need.</p>
-<p>Registration and configuration belong in this later lesson because they make
-reconstruction explicit. They are unnecessary for the first local run.
-See <a href="../../guides/durability/">durability</a> for the precise contract and the
-<a href="../../guides/browser/">local browser</a> for optional read-only inspection.</p>
+its run ID; close storage handles before deleting stores you no longer need.
+The <a href="../../guides/browser/">local browser</a> provides optional read-only inspection
+of saved runs.</p>
 <h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
 <p>Copy <code>keep_run.py</code> to <code>scratch_keep_run.py</code> beside the original so its sibling
 imports resolve. Omit the initial <code>session.step()</code> line, leaving the other lines
-in its block intact. Run <code>uv run python examples/learn/meeting_notes/scratch_keep_run.py</code>.
+in its block intact. Run <code>python examples/learn/meeting_notes/scratch_keep_run.py</code>.
 Predict <code>Resume continued attempts: 0 -&gt; 2</code>: resume performs both revisions and
 full history still matches the uninterrupted run. Delete the scratch file.</p>
-<p><a href="../05-use-experience/">Previous: Feedback</a> · <a href="../07-where-next/">Next: Evolve more than prompts</a></p>
+<p><a href="../05-use-experience/">Previous: Use experience to improve a proposal</a> · <a href="../07-where-next/">Next: Evolve more than prompts</a></p>
 
 
 
@@ -3665,7 +3695,7 @@ full history still matches the uninterrupted run. Delete the scratch file.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../05-use-experience/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learn from feedback">
+          <a href="../05-use-experience/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Use experience to improve a proposal">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3675,7 +3705,7 @@ full history still matches the uninterrupted run. Delete the scratch file.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Learn from feedback
+                Use experience to improve a proposal
               </div>
             </div>
           </a>

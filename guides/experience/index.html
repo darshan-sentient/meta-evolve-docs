@@ -27,7 +27,7 @@
     
     
       
-        <title>Experience - Meta-Evolve</title>
+        <title>Learning from experience - Meta-Evolve</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#experience" class="md-skip">
+        <a href="#learning-from-experience" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Experience
+              Learning from experience
             
           </span>
         </div>
@@ -491,7 +491,7 @@
   <span class="md-ellipsis">
     
   
-    Learn from feedback
+    Use experience to improve a proposal
   
 
     
@@ -960,7 +960,7 @@
   <span class="md-ellipsis">
     
   
-    Experience
+    Learning from experience
   
 
     
@@ -978,7 +978,7 @@
   <span class="md-ellipsis">
     
   
-    Experience
+    Learning from experience
   
 
     
@@ -1002,6 +1002,61 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-experience-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why experience matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-counts-as-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What counts as experience?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-experience-reaches-a-proposer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How experience reaches a proposer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-it-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported scope
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#no-memory" class="md-nav__link">
@@ -3431,6 +3486,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-experience-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why experience matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-counts-as-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What counts as experience?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-experience-reaches-a-proposer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How experience reaches a proposer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-it-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#no-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3566,7 +3676,76 @@
   
 
 
-<h1 id="experience">Experience<a class="headerlink" href="#experience" title="Permanent link">&para;</a></h1>
+<h1 id="learning-from-experience">Learning from experience<a class="headerlink" href="#learning-from-experience" title="Permanent link">&para;</a></h1>
+<p>Every evaluated attempt produces more than a score. It leaves a candidate, an
+outcome, and recorded evidence about what happened. Later proposals can use that
+experience to investigate a failure, preserve a successful change, or compare
+approaches before trying another revision.</p>
+<h2 id="why-experience-matters">Why experience matters<a class="headerlink" href="#why-experience-matters" title="Permanent link">&para;</a></h2>
+<p>Search uses evaluation results to decide which candidates deserve more work.
+Experience gives the proposer information that can help it decide what to
+change. A score can tell search which prompt performed better; the recorded
+responses can help a proposer understand what the weaker prompt missed.</p>
+<p>The same distinction applies beyond prompts. A code proposer might inspect a
+prior implementation and its test evidence. A harness proposer might compare
+recorded execution traces to understand a successful revision. These observations
+can suggest a change, but the next candidate still needs independent evaluation.</p>
+<h2 id="what-counts-as-experience">What counts as experience?<a class="headerlink" href="#what-counts-as-experience" title="Permanent link">&para;</a></h2>
+<p>Feedback is one useful selection from a broader history:</p>
+<table>
+<thead>
+<tr>
+<th>Prior information</th>
+<th>A question it can help answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Candidates and source revisions</td>
+<td>What was tried, and what changed?</td>
+</tr>
+<tr>
+<td>Measurements and recorded evaluation evidence</td>
+<td>Where did an approach succeed or fall short?</td>
+</tr>
+<tr>
+<td>Failed attempts and their recorded outcomes</td>
+<td>What prevented an attempt from producing a valid result?</td>
+</tr>
+<tr>
+<td>Lineage and comparisons between attempts</td>
+<td>Which alternatives are worth investigating together?</td>
+</tr>
+</tbody>
+</table>
+<p>Only recorded information can be retrieved. An infrastructure failure remains a
+typed outcome, not evidence of a low-quality candidate or an invented low score.</p>
+<p>Here, <strong>learning</strong> means using observations to inform a proposal. The experience
+mechanism does not itself train model weights or guarantee that a revision will
+improve. The <a href="../../learn/05-use-experience/">meeting-notes lesson</a> demonstrates
+one narrow case: supplying failed development checks to a handwritten rewriter.</p>
+<h2 id="how-experience-reaches-a-proposer">How experience reaches a proposer<a class="headerlink" href="#how-experience-reaches-a-proposer" title="Permanent link">&para;</a></h2>
+<p>Recording history does not automatically expose it to a proposer. An experiment
+can select context before each proposal, authorize the proposer to inspect prior
+records during its work, or combine both approaches. Selected context is useful
+when the relevant evidence is predictable; inspection lets a proposer investigate
+questions as they arise. Both are bounded and recorded.</p>
+<p>Keep three distinctions clear: history may exist without being observed; observed
+history may go unused; and declared use records the proposer's attribution, not
+proof that an observation caused an improvement.</p>
+<h2 id="does-it-help">Does it help?<a class="headerlink" href="#does-it-help" title="Permanent link">&para;</a></h2>
+<p>Compare runs with and without experience while holding the task, seed, proposer,
+and search settings fixed under comparable budgets. Inspect outcomes and
+experience usage as well as the best score: retrieving more history has a cost
+and need not produce better proposals. Keep final evaluation separate from the
+development evidence that guides revisions.</p>
+<p>The meeting-notes example checks this information path deterministically. Its
+handwritten responses establish neither model learning nor generalization.</p>
+<h2 id="supported-scope">Supported scope<a class="headerlink" href="#supported-scope" title="Permanent link">&para;</a></h2>
+<p>The mechanisms below are <strong>Shipped</strong>. Access is limited to authorized prior
+records within the same task and run. Cross-run knowledge reuse and semantic
+retrieval are <strong>Design—not shipped</strong>. Experience changes what a proposer may
+observe, never its evaluator, budget, permissions, or promotion authority.</p>
 <p>Experience is explicit and off by default.</p>
 <h2 id="no-memory">No memory<a class="headerlink" href="#no-memory" title="Permanent link">&para;</a></h2>
 <p>With no <code>context=</code> or <code>experience=</code> declaration, a proposer receives no prior

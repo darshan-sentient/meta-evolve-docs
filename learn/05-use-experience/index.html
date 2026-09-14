@@ -27,7 +27,7 @@
     
     
       
-        <title>Learn from feedback - Meta-Evolve</title>
+        <title>Use experience to improve a proposal - Meta-Evolve</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learn-from-feedback" class="md-skip">
+        <a href="#use-experience-to-improve-a-proposal" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Learn from feedback
+              Use experience to improve a proposal
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   <span class="md-ellipsis">
     
   
-    Learn from feedback
+    Use experience to improve a proposal
   
 
     
@@ -520,7 +520,7 @@
   <span class="md-ellipsis">
     
   
-    Learn from feedback
+    Use experience to improve a proposal
   
 
     
@@ -1020,7 +1020,7 @@
   <span class="md-ellipsis">
     
   
-    Experience
+    Learning from experience
   
 
     
@@ -3500,12 +3500,19 @@
   
 
 
-<h1 id="learn-from-feedback">Learn from feedback<a class="headerlink" href="#learn-from-feedback" title="Permanent link">&para;</a></h1>
-<p>The selected prompt misses an unassigned task in mixed notes. Instead of asking
-for an unconstrained rewrite, send the proposer that recorded failure.</p>
+<h1 id="use-experience-to-improve-a-proposal">Use experience to improve a proposal<a class="headerlink" href="#use-experience-to-improve-a-proposal" title="Permanent link">&para;</a></h1>
+<p>A proposer can use prior candidates, outcomes, and evidence to decide what to
+change. <a href="../../guides/experience/">Learning from experience</a> explains the broader
+motivation, including learning from successes and inspecting alternative revisions.
+This lesson applies one part of that idea: feedback from failed checks.</p>
+<p>The candidate is a meeting-notes extraction prompt. An independent evaluator
+checks its responses against six development cases. One revision misses an
+unassigned task in notes that also contain assigned tasks. Supply that recorded
+failure to the proposer and compare the result with a run that supplies no history.</p>
 <p><code>improve()</code> does not accept a context policy. Use the expanded <code>Experiment</code>
 with <code>AncestorsOnly(max_records=100)</code> to push bounded ancestor records before
 proposal. The proposer receives those records through <code>context.bundle</code>.</p>
+<!-- captured-output: script:examples/learn/meeting_notes/prompt_feedback.py -->
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;Only committed, explicitly pushed evidence reaches the rewriter.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -3556,15 +3563,16 @@ proposal. The proposer receives those records through <code>context.bundle</code
 <a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="n">passed</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">final</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">FINAL</span><span class="p">))</span>
 <a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Separate final check after selection: </span><span class="si">{</span><span class="n">passed</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">FINAL</span><span class="p">)</span><span class="si">}</span><span class="s2"> reserved cases&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Handwritten fixtures demonstrate separation, not generalization.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="c1"># Output:</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="c1"># Without feedback: 5/6 development cases</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="c1"># With feedback: 6/6 development cases</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="c1"># Separate final check after selection: 3/3 reserved cases</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="c1"># Handwritten fixtures demonstrate separation, not generalization.</span>
 </code></pre></div>
-<!-- captured-output: script:examples/learn/meeting_notes/prompt_feedback.py -->
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/learn/meeting_notes/prompt_feedback.py
-</code></pre></div>
-<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Without feedback: 5/6 development cases
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>With feedback: 6/6 development cases
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Separate final check after selection: 3/3 reserved cases
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Handwritten fixtures demonstrate separation, not generalization.
-</code></pre></div></p>
+<p>The <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/prompt_feedback.py">complete example</a>
+uses sibling modules from the meeting-notes example directory; keep them together
+when running or adapting it.</p>
 <p>The same proposer runs both arms. With feedback off it sees an empty report.
 With feedback on it sees the current parent's failed development cases. The
 handwritten rewriter recognizes the missed mixed-note task and returns a prompt
@@ -3581,15 +3589,14 @@ call checks three reserved notes and does not influence another revision. It is
 outside both runs' development scores, histories, and usage.
 Its fixture responses demonstrate separation, not held-out model performance.</p>
 <h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
-<p>Copy <code>prompt_feedback.py</code> to <code>scratch_prompt_feedback.py</code> beside the original
-so its sibling imports resolve. Change <code>without = run(feedback=False)</code> to
-<code>without = run(feedback=True)</code>; the second run already enables feedback.
-Run <code>uv run python examples/learn/meeting_notes/scratch_prompt_feedback.py</code>.
-Both arms now reach 6/6 development cases, even though the first print label
-still says “Without feedback.” The subsequent 3/3 reserved check remains separate
-and cannot trigger another revision. Delete the scratch file.</p>
+<p>In a local copy beside the original example, change
+<code>without = run(feedback=False)</code> to <code>without = run(feedback=True)</code> and rename its
+printed label from “Without feedback” to “First run with feedback.” The second
+run already enables feedback. Predict the development scores before executing
+the example: both arms now reach 6/6. The subsequent 3/3 reserved check remains
+separate and cannot trigger another revision.</p>
 <h2 id="more-experience-when-you-need-it">More experience when you need it<a class="headerlink" href="#more-experience-when-you-need-it" title="Permanent link">&para;</a></h2>
-<p>The <a href="../../guides/experience/">experience guide</a> covers other pushed policies and
+<p>The <a href="../../guides/experience/">Learning from experience guide</a> covers other pushed policies and
 bounded audited pull. Continue to the exact prior-source and optional Git presentation
 there, then run <code>prior_source_inspection</code> followed by <code>git_history</code> from the
 <a href="../../examples/#agents">Agents examples</a>. Provenance details belong in the

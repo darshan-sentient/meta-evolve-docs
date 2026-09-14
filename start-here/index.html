@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#start-here-improve-a-reusable-prompt" class="md-skip">
+        <a href="#start-here-build-an-improvement-loop" class="md-skip">
           Skip to content
         </a>
       
@@ -434,6 +434,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-can-you-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What can you build?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-improve-a-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try it: improve a prompt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Try it: improve a prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#see-the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -443,8 +466,19 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#define-a-revision-and-a-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Define a revision and a measurement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#run-the-improvement" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -452,6 +486,22 @@
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-the-selected-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use the selected prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -584,7 +634,7 @@
   <span class="md-ellipsis">
     
   
-    Learn from feedback
+    Use experience to improve a proposal
   
 
     
@@ -1042,7 +1092,7 @@
   <span class="md-ellipsis">
     
   
-    Experience
+    Learning from experience
   
 
     
@@ -3420,6 +3470,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-can-you-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What can you build?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-improve-a-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try it: improve a prompt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Try it: improve a prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#see-the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3429,8 +3502,19 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#define-a-revision-and-a-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Define a revision and a measurement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#run-the-improvement" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3438,6 +3522,22 @@
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-the-selected-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use the selected prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3544,105 +3644,190 @@
   
 
 
-<h1 id="start-here-improve-a-reusable-prompt">Start here: improve a reusable prompt<a class="headerlink" href="#start-here-improve-a-reusable-prompt" title="Permanent link">&para;</a></h1>
-<p>You have a prompt that extracts action items from meeting notes, but its
-responses sometimes invent owners or miss unassigned work. Meta-Evolve tries
-revisions, evaluates their responses, and keeps the best measured prompt.</p>
-<p>This first run uses <strong>handwritten model fixtures</strong>: fixed prompts and responses,
-with no credentials or live LLM calls. It teaches the loop, not model performance.</p>
-<h2 id="see-the-problem">See the problem<a class="headerlink" href="#see-the-problem" title="Permanent link">&para;</a></h2>
+<h1 id="start-here-build-an-improvement-loop">Start here: build an improvement loop<a class="headerlink" href="#start-here-build-an-improvement-loop" title="Permanent link">&para;</a></h1>
+<p><strong>Meta-Evolve is a general-purpose Python library for iterative, evaluated
+improvement.</strong> You define what can change, how to propose revisions, and how to
+measure success. Meta-Evolve runs the search and records the versions, results,
+and decisions.</p>
+<p>Use it to improve prompts, code, skills, data-generation recipes, or
+model-training procedures. You can also compare and improve how the search
+itself works—including its use of memory and feedback. When the improvement
+procedure becomes the thing being improved, the same pattern becomes
+<strong>meta-evolution</strong>.</p>
+<h2 id="what-can-you-build">What can you build?<a class="headerlink" href="#what-can-you-build" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Work with</th>
+<th>What you can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../build-patterns/feedback-descent/">Prompts</a></td>
+<td>Refine instructions using measured responses and feedback, including <a href="../learn/research-labs/01-feedback-descent/">Feedback Descent</a>.</td>
+</tr>
+<tr>
+<td><a href="../learn/04-improve-source/">Code and algorithms</a></td>
+<td>Revise implementations against correctness and performance checks.</td>
+</tr>
+<tr>
+<td><a href="../build-patterns/evoskill/">Skills</a></td>
+<td>Build and improve reusable agent instructions.</td>
+</tr>
+<tr>
+<td><a href="../guides/experience/">Memory and context</a></td>
+<td>Compare what prior results agents receive and retrieve.</td>
+</tr>
+<tr>
+<td><a href="../guides/harness-evolution/">Agent harnesses</a></td>
+<td>Improve allowed instructions and context settings.</td>
+</tr>
+<tr>
+<td><a href="../learn/research-labs/02-autodata/">Data generation</a></td>
+<td>Refine generation recipes using solver feedback, as in AutoData.</td>
+</tr>
+<tr>
+<td><a href="../learn/autoresearch/">Model training</a></td>
+<td>Evaluate changes to architecture code and training recipes.</td>
+</tr>
+<tr>
+<td><a href="../learn/02-change-search/">Search</a></td>
+<td>Compare search strategies or <a href="../guides/policy-evolution/">evolve a search policy</a>.</td>
+</tr>
+<tr>
+<td><a href="../learn/autoresearch/">Research</a></td>
+<td>Improve the procedure that proposes and tests experiments.</td>
+</tr>
+<tr>
+<td><a href="../guides/evaluation-and-budgets/">Evaluation</a></td>
+<td>Define and compare graders; explore <a href="https://github.com/salzubi401/meta-evolve/issues/251">evaluator evolution</a>.</td>
+</tr>
+<tr>
+<td><a href="../adding-an-artifact-domain/">Custom artifacts</a></td>
+<td>Apply the loop to your own structured representations.</td>
+</tr>
+</tbody>
+</table>
+<p>AutoData and the Feedback Descent research lab are <strong>Experimental/live-only</strong>.
+Evaluator evolution is <strong>Design—not shipped</strong>. Model training is an application
+pattern; the autoresearch example uses toy tasks.</p>
+<p>You control evaluation and limits; candidates change only the artifact being
+tested.</p>
+<h2 id="try-it-improve-a-prompt">Try it: improve a prompt<a class="headerlink" href="#try-it-improve-a-prompt" title="Permanent link">&para;</a></h2>
+<p>Suppose you are building a tool that turns meeting notes into action items.
+Your first prompt extracts tasks, but sometimes invents an owner or deadline.
+You want to improve the prompt once, then reuse it on future notes.</p>
+<p>We will give Meta-Evolve that starting prompt, a function that suggests
+revisions, and an independent evaluator that checks the resulting responses.
+The run will try two revisions and retain the best measured version—even if
+the last revision is worse.</p>
+<p>This example uses <strong>handwritten model fixtures</strong>: fixed revisions and responses,
+with no credentials or live LLM calls. The scores are computed from those
+responses. This makes the loop easy to inspect; it does not demonstrate model
+performance or generalization.</p>
+<p>The snippets below run in order with Meta-Evolve installed and
+<a href="https://github.com/salzubi401/meta-evolve/tree/main/examples/learn/meeting_notes">the example's helper modules</a>
+on your Python import path, such as in a Python session opened in that directory.
+The <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/main.py">complete program</a>
+uses the same proposer, evaluator, and four-input call.</p>
+<h3 id="see-the-problem">See the problem<a class="headerlink" href="#see-the-problem" title="Permanent link">&para;</a></h3>
 <p>The starting prompt is “Extract action items from the meeting notes as JSON.”
-For the note below, its response invents an owner and deadline. The expected
-JSON keeps the task and uses <code>null</code> for both unknown fields; the revised response
-shown here matches that annotation.</p>
-<p>From a checkout with Python 3.12+ and uv, install once with <code>uv sync --locked</code>.
-This command prints the incorrect extraction followed by a response matching
-the expected JSON:</p>
-<!-- captured-output: script:examples/learn/meeting_notes/see_response.py -->
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/learn/meeting_notes/see_response.py
+This note mentions a task but names no owner or deadline. The response should
+use <code>null</code> for both unknown fields; instead, the fixture invents values:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prompt_variants</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEED</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">response_fixtures</span><span class="w"> </span><span class="kn">import</span> <span class="n">respond</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">notes</span> <span class="o">=</span> <span class="s2">&quot;We still need someone to check the pricing.&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">respond</span><span class="p">(</span><span class="n">SEED</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span><span class="o">.</span><span class="n">candidate</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Output:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># [{&quot;task&quot;: &quot;check the pricing&quot;, &quot;owner&quot;: &quot;Maya&quot;, &quot;deadline&quot;: &quot;Friday&quot;}]</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Notes: We still need someone to check the pricing.
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Seed response:
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>[
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  {
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    &quot;task&quot;: &quot;check the pricing&quot;,
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    &quot;owner&quot;: &quot;Maya&quot;,
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    &quot;deadline&quot;: &quot;Friday&quot;
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  }
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>]
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>Revised response:
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>[
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  {
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    &quot;task&quot;: &quot;check the pricing&quot;,
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    &quot;owner&quot;: null,
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    &quot;deadline&quot;: null
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  }
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>]
-</code></pre></div></p>
-<h2 id="run-the-improvement">Run the improvement<a class="headerlink" href="#run-the-improvement" title="Permanent link">&para;</a></h2>
-<div class="me-learning-transcript">
-<!-- captured-output: script:examples/learn/meeting_notes/main.py -->
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/learn/meeting_notes/main.py
+<h3 id="define-a-revision-and-a-measurement">Define a revision and a measurement<a class="headerlink" href="#define-a-revision-and-a-measurement" title="Permanent link">&para;</a></h3>
+<p>The proposer takes a parent prompt and returns a replacement. Here it uses
+handwritten revisions; in your application, this function could call a model
+or apply your own editing rules.</p>
+<p>The evaluator applies each prompt to six meeting notes and compares the
+responses with independent annotations. It measures response quality, rather
+than judging whether the prompt sounds better.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">extraction_evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prompt_variants</span><span class="w"> </span><span class="kn">import</span> <span class="n">rewrite</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">rewrite_prompt</span><span class="p">(</span><span class="n">parent</span><span class="p">):</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">return</span> <span class="n">rewrite</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_prompt</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Handwritten model fixtures; no live LLM calls.
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Prompt          | Development cases passed
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>----------------|-------------------------
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Starting prompt | 2/6
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Revision 1      | 5/6 — selected
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Revision 2      | 3/6
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Selected prompt:
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Extract agreed or explicitly needed action items as a JSON array. Use task phrases from the notes with fields task, owner, deadline. Use null for unstated owners or deadlines. Exclude unaccepted suggestions.
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Usage: 2 revision attempts, 3 evaluations
-</code></pre></div></p>
-</div>
-<p>Four-input excerpt from <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/main.py">the complete executable source</a>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<h3 id="run-the-improvement">Run the improvement<a class="headerlink" href="#run-the-improvement" title="Permanent link">&para;</a></h3>
+<p>These four inputs describe the loop: <code>seed</code> is the starting version,
+<code>proposer</code> suggests changes, <code>evaluator</code> measures them, and <code>trials</code> limits
+revision attempts. Meta-Evolve evaluates the seed before trying the revisions.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">rewrite_prompt</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_prompt</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">trials</span><span class="p">():</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Output:</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># 33%</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># 83%</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># 50%</span>
+</code></pre></div>
+<p>In order, those are the seed (2/6 cases), revision 1 (5/6), and revision 2
+(3/6). The second revision regresses, so the first revision wins. Two attempts
+allow exploration; they do not guarantee that every change helps.</p>
+<h3 id="use-the-selected-prompt">Use the selected prompt<a class="headerlink" href="#use-the-selected-prompt" title="Permanent link">&para;</a></h3>
+<p>The returned <code>result</code> is a <code>Run</code>, containing the outcome and its history.
+<code>result.best()</code> returns an artifact view; <code>.value</code> gives you the selected prompt.
+Here is its response to the same note:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">best_prompt</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">respond</span><span class="p">(</span><span class="n">best_prompt</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span><span class="o">.</span><span class="n">candidate</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Output:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># [{&quot;task&quot;: &quot;check the pricing&quot;, &quot;owner&quot;: null, &quot;deadline&quot;: null}]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Output:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># 2 3</span>
+</code></pre></div>
+<p>The selected prompt now asks for explicit or needed tasks, uses <code>null</code> for
+missing owners and deadlines, and excludes unaccepted suggestions. It still
+misses “verify the dashboard” in a mixed note; the
+<a href="../learn/03-inspect-results/">inspection lesson</a> shows that remaining error.</p>
+<h2 id="what-produced-those-results">What produced those results?<a class="headerlink" href="#what-produced-those-results" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/extraction_evaluation.py">grader</a>
+compares fixture responses with annotations for assigned work, unassigned work,
+missing deadlines, unaccepted suggestions, mixed notes, and a meeting with no
+actions. Three evaluations mean 18 case checks, not three model requests.
+Arbitrary prompt edits are unsupported by this fixture table and fail explicitly;
+a real model belongs at the response boundary.</p>
+<p>The first proposer sees only its parent prompt. Evaluation failures are
+not automatically sent to it; the <a href="../learn/05-use-experience/">feedback lesson</a>
+adds that path. Three reserved final-check cases stay separate until after
+selection and never guide another revision.</p>
+<h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
+<p>Reduce the limit to one revision. Predict the same winner, with one revision
+attempt and two evaluations, then check:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">short_run</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">rewrite_prompt</span><span class="p">,</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_prompt</span><span class="p">,</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">short_run</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">best_prompt</span><span class="p">)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">short_run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="n">short_run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Output:</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># True</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># 1 2</span>
 </code></pre></div>
-<p>Read the four inputs in order:</p>
-<ul>
-<li><code>seed=SEED</code> is the initial extraction prompt, an ordinary Python string.</li>
-<li><code>proposer=rewrite_prompt</code> returns a replacement prompt from its parent.</li>
-<li><code>evaluator=evaluate_prompt</code> grades responses on six development cases.</li>
-<li><code>trials=2</code> permits two revision attempts, after evaluating the seed.</li>
-</ul>
-<h2 id="what-produced-those-results">What produced those results?<a class="headerlink" href="#what-produced-those-results" title="Permanent link">&para;</a></h2>
-<p>The proposer wrapper calls the <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/prompt_variants.py">handwritten revisions</a>.
-The evaluator wrapper calls the <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/extraction_evaluation.py">grader</a>,
-which obtains <a href="https://github.com/salzubi401/meta-evolve/blob/main/examples/learn/meeting_notes/response_fixtures.py">fixture responses</a>
-and compares their JSON with independent annotations. Scores are computed from
-responses, never assigned to prompt wording. Arbitrary prompt edits are unsupported
-by this fixture table and fail explicitly; a real model belongs at that boundary.</p>
-<p>Each evaluation checks six notes: assigned work, unassigned work, missing
-deadlines, unaccepted suggestions, mixed notes, and a meeting with no actions.
-Three evaluations mean 18 case checks, not three model requests. The fixture
-reports zero model tokens because no model was called.</p>
-<p>The starting prompt passes 2/6 cases, revision 1 passes 5/6, and revision 2
-regresses to 3/6. Revision 1 still omits “verify the dashboard” in mixed notes;
-<a href="../learn/03-inspect-results/">inspection</a> shows the actual and expected JSON.
-Two revisions do not guarantee success, and the best prompt can precede the last.</p>
-<p>The returned <code>result</code> is a <code>Run</code>, containing both the outcome and its history.
-<code>result.best()</code> returns an artifact view; <code>.value</code> is the full selected prompt
-printed above. The first proposer sees only its parent prompt. Evaluation
-failures are not automatically sent to it; the feedback lesson adds that path.</p>
-<p>Development results guide selection. Three reserved final-check cases stay
-separate until <a href="../learn/05-use-experience/">after selection</a>; they never guide
-another revision. Handwritten fixtures establish no generalization to new notes.</p>
-<h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
-<p>Copy <code>examples/learn/meeting_notes/main.py</code> to <code>scratch_main.py</code> <strong>beside it</strong>,
-so the sibling imports still resolve. Change <code>trials=2</code> to <code>trials=1</code>.
-Run <code>uv run python examples/learn/meeting_notes/scratch_main.py</code> from the
-repository root. Predict the same 5/6 winner, one revision attempt, and two
-evaluations; revision 2 disappears from the table. Delete the scratch file.
-For a copy outside that directory, copy the whole directory, including its
-sibling modules, and run its <code>main.py</code> from the repository's uv environment.</p>
 <p><a href="../learn/01-define-better/">Next: Define better</a></p>
 
 
