@@ -65,12 +65,20 @@ body { font-kerning: normal; }
 }
 
 .md-header__title { font-weight: 600; letter-spacing: -0.025em; }
+/* A light wash connects the header to the reading surface without an overlay. */
+.md-main {
+  background: linear-gradient(to bottom, var(--md-accent-fg-color--transparent), transparent 5rem);
+}
 .md-header .md-logo svg { width: 1.5rem; height: 1.5rem; color: var(--md-accent-fg-color); }
 .md-search__form { background: var(--me-surface); border: 1px solid var(--me-border); }
 .md-tabs { background: var(--md-default-bg-color); color: var(--md-default-fg-color); }
-.md-nav { font-size: 0.7rem; line-height: 1.5; }
+.md-nav { font-size: 0.75rem; line-height: 1.5; }
 .md-nav__title { font-weight: 600; }
 .md-nav__link { color: var(--md-default-fg-color--light); }
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+}
 .md-nav__link:hover { color: var(--md-typeset-a-color); }
 .md-nav--primary .md-nav__item--active > .md-nav__link,
 .md-nav--secondary .md-nav__link--active {
