@@ -2,398 +2,330 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/adding-an-artifact-domain/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/architecture/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/comparison/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/contributor-code-tour/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/contributors/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/examples/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/implementation-plan/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/live-agent-track/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/m8-design-capstone/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/milestones/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/operations-and-extensions/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/programming-model/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/recipes/</loc>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/references/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/sealqa-research-labs/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/start-here/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/build-patterns/evoskill/</loc>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/build-patterns/feedback-descent/</loc>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/authority/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/budgets/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/conformance/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/domains/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/evidence/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/failures/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/concepts/identity/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/contributor/example-coverage-ledger/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/design/a4-proposal-manifest/</loc>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/design/a4-source-views/</loc>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/destination-map/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/m10-local-author/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/m8-harness-evolution/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/meta-evolution/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/network-direction/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/scientific-direction/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/search/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/design/user-owned-sdk-boundary/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/get-started/first-evolution/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/get-started/install/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/get-started/run-returns/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/going-further/custom-search/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/going-further/project-status/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/browser/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/cli/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/durability/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/evaluation-and-budgets/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/experience/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/extensions/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/harness-evolution/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/migration-user-owned-sdk/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/policy-evolution/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/guides/production-agent-loops/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/providers/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/guides/runs-and-results/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/bound-cost/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/choose-search/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/cli-browser/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/give-feedback/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/persist-resume/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/use-sdk/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/write-evaluator/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/how-to/write-proposer/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/jobs/code-repair/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/jobs/grading/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/jobs/inspect-compare/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/jobs/swap-one-part/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/01-define-better/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/02-change-search/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/03-inspect-results/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/04-improve-source/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/05-use-experience/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/06-persist-run/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/07-where-next/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/autoresearch/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/learn/nested-evaluation/</loc>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/01-policy-tour/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/02-policy-comparison/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/03-experience-tour/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/04-push-pull/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/05-derivation-comparison/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/06-crash-recovery/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/notebooks/07-source-patching/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/research-labs/01-feedback-descent/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/learn/research-labs/02-autodata/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/learn/research-labs/03-meta-harness-precursor/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/learn/research-labs/04-evoskill/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/02_policy_comparison/milestone_2_tour/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/02_policy_comparison/policy_comparison/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/03_experience_reuse/derivation_comparison_lab/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/03_experience_reuse/milestone_3_tour/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/03_experience_reuse/push_pull_lab/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/04_crash_recovery/crash_recovery/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/05_python_function/milestone_5_tour/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/18_sealqa_research_labs/01_feedback_descent/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/18_sealqa_research_labs/02_autodata/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/18_sealqa_research_labs/03_meta_harness_precursor/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/18_sealqa_research_labs/04_evoskill/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/19_autoresearch/autoresearch/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/context_evolution/ace/</loc>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/notebooks/context_evolution/evoskill/</loc>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/project/documentation-audit/</loc>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/project/status/</loc>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/reference/api/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://salzubi401.github.io/meta-evolve-docs/reference/components/</loc>
+         <lastmod>2026-09-14</lastmod>
     </url>
     <url>
          <loc>https://salzubi401.github.io/meta-evolve-docs/reference/experience-provenance/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/reference/glossary/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/understand/checks-rubrics/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/understand/evaluated-evolution/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://salzubi401.github.io/meta-evolve-docs/understand/fair-comparisons/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-14</lastmod>
     </url>
 </urlset>
