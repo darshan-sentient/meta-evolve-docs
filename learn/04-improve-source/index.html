@@ -726,6 +726,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#propose-a-patch-and-measure-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propose a patch and measure it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#change-and-predict" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3387,6 +3398,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#propose-a-patch-and-measure-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propose a patch and measure it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#change-and-predict" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3479,167 +3501,80 @@
 
 
 <h1 id="improve-source-against-an-independent-grader">Improve source against an independent grader<a class="headerlink" href="#improve-source-against-an-independent-grader" title="Permanent link">&para;</a></h1>
-<p>The same loop can improve a directory. <a class="autorefs autorefs-internal" title="load_source_tree(path)" href="../../reference/api/#meta_evolve.load_source_tree"><code>load_source_tree</code></a>
-reads UTF-8 files into an immutable <a class="autorefs autorefs-internal" title="SourceTree
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.SourceTree"><code>SourceTree</code></a>. The
-seed contains a deliberately poor <code>clamp()</code> implementation.</p>
-<p>The command below needs only the locked Python environment. It produces a
-winning source tree and its evaluation history. The fixture proposer returns a
-prewritten repair; replace <code>repair</code> with your own function or SDK wrapper, and
-replace <code>grader.py</code> with your independent tests.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;M5: improve immutable source under external command evaluation.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
+<p>A source file can be the candidate too. This complete example repairs a small
+<code>clamp()</code> function against three independent checks. Copy it into a Python file
+with <code>meta_evolve</code> installed; the candidate and grader are both inline.</p>
+<h2 id="propose-a-patch-and-measure-it">Propose a patch and measure it<a class="headerlink" href="#propose-a-patch-and-measure-it" title="Permanent link">&para;</a></h2>
+<p><code>SourceTree</code> stores immutable source. <code>PatchProposer</code> applies a <code>TextPatch</code> in a
+private mutable workspace and captures an immutable successor. The patch names
+one file, its exact expected bytes, and the replacement. <code>CommandEvaluator</code>
+independently materializes each candidate and runs the evaluator-owned grader.</p>
+<p>The fixed repair is handwritten. The example demonstrates the API and evaluation
+boundary, not a model discovering a repair.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">BAD</span> <span class="o">=</span> <span class="s2">&quot;def clamp(value, low, high):</span><span class="se">\n</span><span class="s2">    return value</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">FIXED</span> <span class="o">=</span> <span class="s2">&quot;def clamp(value, low, high):</span><span class="se">\n</span><span class="s2">    return max(low, min(value, high))</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">seed</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">SourceTree</span><span class="p">({</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">:</span> <span class="n">BAD</span><span class="p">})</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">HERE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">FIXED</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s2">def clamp(value, low, high):</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s2">    return max(low, min(value, high))</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s2">&quot;&quot;&quot;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">repair</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">TextPatch</span><span class="p">(</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">expected</span><span class="o">=</span><span class="n">tree</span><span class="p">[</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">],</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="n">replacement</span><span class="o">=</span><span class="n">FIXED</span><span class="p">,</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="p">)</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="c1"># 1. Load immutable source.</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">source</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">load_source_tree</span><span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="s2">&quot;candidate&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="c1"># 2. ``repair`` (above) declares the one exact-file replacement.</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="c1"># 3. The evaluator runs the external grader; both stay outside the</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="c1">#    candidate mutation boundary.</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">evaluator</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">CommandEvaluator</span><span class="p">(</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="n">command</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">ProcessSpec</span><span class="p">(</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>            <span class="n">argv</span><span class="o">=</span><span class="p">(</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>                <span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>                <span class="nb">str</span><span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="s2">&quot;run_grader.py&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>                <span class="nb">str</span><span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="s2">&quot;grader.py&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>            <span class="p">),</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>            <span class="n">environment</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;PYTHONDONTWRITEBYTECODE&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">},</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="p">),</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">environment</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">EvaluationEnvironment</span><span class="p">(</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-clamp-tests&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="p">),</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="p">)</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="c1"># 4. One budget governs both the task contract and this run.</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="n">budget</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">evaluations</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">task</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluator</span><span class="p">,</span> <span class="n">artifact</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">SourceTree</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">)</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">temporary</span><span class="p">:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>        <span class="n">history</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">temporary</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>        <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>            <span class="c1"># 5. Run one local greedy successor attempt.</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>            <span class="n">experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>                <span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>                <span class="n">seed</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>                <span class="n">proposer</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">PatchProposer</span><span class="p">(</span><span class="n">repair</span><span class="p">),</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>                <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>            <span class="p">)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>            <span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>            <span class="n">best</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>            <span class="n">lineage</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">lineage</span><span class="p">()</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>        <span class="c1"># 6. Inspect the durable boundary: reopened history answers queries,</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>        <span class="c1">#    while live local components stay non-resumable.</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>        <span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="k">as</span> <span class="n">reopened</span><span class="p">:</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>            <span class="n">durable</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">reopened</span><span class="p">)</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>            <span class="n">reopened_best</span> <span class="o">=</span> <span class="n">durable</span><span class="o">.</span><span class="n">best</span><span class="p">()</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>            <span class="n">reopened_lineage</span> <span class="o">=</span> <span class="n">durable</span><span class="o">.</span><span class="n">lineage</span><span class="p">()</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>            <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>                <span class="n">meta</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">reopened</span><span class="p">,</span> <span class="n">registry</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Registry</span><span class="p">())</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;local workspace run unexpectedly resumed&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>            <span class="k">except</span> <span class="n">meta</span><span class="o">.</span><span class="n">CapabilityError</span><span class="p">:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>                <span class="n">cold_resume</span> <span class="o">=</span> <span class="s2">&quot;CapabilityError (local run is not resumable)&quot;</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;scores: </span><span class="si">{</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">lineage</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;repaired best: </span><span class="si">{</span><span class="n">best</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;clamp.py&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">FIXED</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;parent unchanged: </span><span class="si">{</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;clamp.py&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">FIXED</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reopened best: </span><span class="si">{</span><span class="n">reopened_best</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">best</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reopened lineage: </span><span class="si">{</span><span class="n">reopened_lineage</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">lineage</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cold resume: </span><span class="si">{</span><span class="n">cold_resume</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>    <span class="n">main</span><span class="p">()</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">repair</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">TextPatch</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="n">tree</span><span class="p">[</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">],</span> <span class="n">replacement</span><span class="o">=</span><span class="n">FIXED</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># The grader belongs to the evaluator, outside the candidate&#39;s source tree.</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">GRADER</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s2">import runpy</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s2">try:</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s2">    clamp = runpy.run_path(&quot;clamp.py&quot;)[&quot;clamp&quot;]</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s2">    passed = all(clamp(value, 0, 10) == expected</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s2">                 for value, expected in ((-5, 0), (5, 5), (15, 10)))</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">except Exception:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s2">    passed = False</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s2">raise SystemExit(0 if passed else 1)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">evaluator</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">CommandEvaluator</span><span class="p">(</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">command</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">ProcessSpec</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">GRADER</span><span class="p">)),</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">environment</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">EvaluationEnvironment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;clamp-checks&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">),</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">artifact</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">SourceTree</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluator</span><span class="p">),</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">PatchProposer</span><span class="p">(</span><span class="n">repair</span><span class="p">),</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">))</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">trials</span><span class="p">()])</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent unchanged:&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">[</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">BAD</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected source:&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;clamp.py&quot;</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Usage:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="c1"># Output:</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="c1"># Scores: [0.0, 1.0]</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="c1"># Parent unchanged: True</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="c1"># Selected source:</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="c1"># def clamp(value, low, high):</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="c1">#     return max(low, min(value, high))</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="c1"># Usage: 1 2</span>
 </code></pre></div>
-<p>The proposal path is deliberately narrow:</p>
-<ol>
-<li>Immutable source enters the run.</li>
-<li><a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.PatchProposer"><code>PatchProposer</code></a> creates a private mutable workspace.</li>
-<li><a class="autorefs autorefs-internal" title="TextPatch
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.TextPatch"><code>TextPatch</code></a> names one path, the exact expected bytes,
-   and their replacement.</li>
-<li>The workspace is captured as an immutable successor and disposed.</li>
-<li><a class="autorefs autorefs-internal" title="CommandEvaluator
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.CommandEvaluator"><code>CommandEvaluator</code></a> independently materializes
-   that successor and runs its own hidden grader.</li>
-<li>Search selects only from measured results; deployment remains external.</li>
-</ol>
-<!-- captured-output: script:examples/domains/python_function/learning_story.py -->
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/domains/python_function/learning_story.py
-</code></pre></div>
-<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>poor candidate: (0.0, &#39;evaluated&#39;)
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>selected result: (1.0, True)
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>evidence: (&#39;evaluation-environment&#39;, &#39;process-result&#39;)
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>usage: evaluations=2 trials=1 tokens=0 wall_recorded=True
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>lineage: (&#39;659bfe4a&#39;, &#39;08abe248&#39;)
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>parent unchanged: True
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>winning source:
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>def clamp(value, low, high):
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    return max(low, min(value, high))
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>invalid proposal: InvalidOutput
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>evaluator failure: EvaluatorFailure
-</code></pre></div></p>
-<p>The poor seed is valid and scores <code>0.0</code>. The exact patch produces a separately
-identified successor that scores <code>1.0</code>; its evidence records the evaluation
-environment and process result. The ingress tree remains unchanged. The
-<code>lineage:</code> line prints a content-digest prefix for each step;
-<a href="../../concepts/identity/">Tell equal bytes apart</a> separates those digests from
-occurrence ids.</p>
-<p>These three negative cases mean different things:</p>
-<ul>
-<li>a poor candidate is valid, evaluated, and rankable;</li>
-<li>an exact patch whose expected bytes do not match is <code>InvalidOutput</code> with no
-  successor artifact;</li>
-<li>a broken grader is <code>EvaluatorFailure</code> with no score.</li>
-</ul>
-<p>The tests are private to the evaluator, but their scores guide selection. There
-is no separate untouched test split here. Passing this small clamp suite says
-nothing about other functions. The local development subprocess is not a
-security boundary for arbitrary hostile code.</p>
-<p>The candidate cannot read or edit the grader through the proposal interface,
-enlarge the budget, grant process permissions, or control promotion. Those
-controls stay with the experiment.</p>
+<p>The grader checks all three inputs. Exit 0 passes the suite; exit 1 is a valid
+failing measurement. The poor candidate remains a measured result with score
+0.0. Candidate load or execution errors also fail this particular grader's suite.</p>
+<p>The evaluator records process evidence alongside each measurement. <code>trials()</code>
+retains both candidates, and <code>lineage()</code> follows the selected source's parents.
+A patch whose expected bytes do not match produces <code>InvalidOutput</code>; an evaluator
+infrastructure failure produces <code>EvaluatorFailure</code>. Neither becomes a low score.</p>
+<p>The proposer edits source, not the grader, budget, or promotion rules. The local
+subprocess is a development execution boundary, not a sandbox for hostile code.
+These three selection checks are not an untouched final test split, and passing
+them establishes nothing about other functions.</p>
 <h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
-<p>Copy <code>examples/domains/python_function/</code> to a scratch directory, keeping its
-<code>candidate</code> and grader files together. Change <code>FIXED</code> in the copy’s <code>main.py</code>
-to use <code>return value</code>. Predict a valid successor with score
-<code>0.0</code>: the patch can apply cleanly while still failing independent evaluation.</p>
+<p>Set <code>FIXED = BAD</code> and rerun the complete example. Predict <code>Scores: [0.0, 0.0]</code>:
+a valid patch can produce source that still fails evaluation. Selection does not
+deploy the result; use independent checks before promotion.</p>
 <p><a href="../../recipes/">Back to recipes</a> · <a href="../05-use-experience/">Use experience</a></p>
-<p>After this deterministic path, the optional <a href="../../live-agent-track/">live-agent track</a>
-shows provider-backed patch proposals under the same authority boundary.</p>
+<p>The optional <a href="../../live-agent-track/">live-agent track</a> explains how provider-backed
+patch proposals use the same boundary.</p>
 
 
 
