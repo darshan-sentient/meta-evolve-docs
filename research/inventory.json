@@ -1,0 +1,748 @@
+[
+  {
+    "origin": "192 A1",
+    "disposition": "entry",
+    "methods": [
+      "EvoSkill",
+      "ACE"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A2",
+    "disposition": "entry",
+    "methods": [
+      "AIDE²",
+      "MCE",
+      "STOP",
+      "Autoresearch procedure"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A3",
+    "disposition": "entry",
+    "methods": [
+      "AutoData",
+      "AI Scientist",
+      "ScientistOne",
+      "AI co-scientist",
+      "ADAS",
+      "AFlow",
+      "EvoFlow"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A4",
+    "disposition": "entry",
+    "methods": [
+      "Meta-Harness",
+      "Self-Harness",
+      "AHE"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A5",
+    "disposition": "entry",
+    "methods": [
+      "Search evolution",
+      "Policy evolution"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A6",
+    "disposition": "entry",
+    "methods": [
+      "Promptbreeder",
+      "Feedback Descent",
+      "GEPA",
+      "AlphaEvolve",
+      "DemoEvolve",
+      "ShinkaEvolve"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A7",
+    "disposition": "entry",
+    "methods": [
+      "DGM",
+      "Hyperagents",
+      "Huxley-Gödel Machine"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A8",
+    "disposition": "entry",
+    "methods": [
+      "ThetaEvolve",
+      "SIA",
+      "Continual Harness",
+      "SkySynth"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A10",
+    "disposition": "entry",
+    "methods": [
+      "EnvHarness"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A11",
+    "disposition": "entry",
+    "methods": [
+      "Task-CoEvolve"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A13",
+    "disposition": "entry",
+    "methods": [
+      "AutoSaddler"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B1",
+    "disposition": "entry",
+    "methods": [
+      "Profiler-driven autoresearch"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B2 / 195",
+    "disposition": "entry",
+    "methods": [
+      "ADRS"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B3",
+    "disposition": "entry",
+    "methods": [
+      "Model Discovery Agent"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B4",
+    "disposition": "entry",
+    "methods": [
+      "DiG-bench"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B5",
+    "disposition": "entry",
+    "methods": [
+      "PACE-Bench"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B6 / 219",
+    "disposition": "entry",
+    "methods": [
+      "RSI-Exam"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "193 B7 / 251",
+    "disposition": "entry",
+    "methods": [
+      "SkySynth"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "213 A12",
+    "disposition": "entry",
+    "methods": [
+      "Config-fragile benchmarks"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "216 A14",
+    "disposition": "entry",
+    "methods": [
+      "Specification gaming"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "118",
+    "disposition": "entry",
+    "methods": [
+      "Asari inference-stack optimization"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "194 / 207 / 208 / 209 / 197",
+    "disposition": "entry",
+    "methods": [
+      "EvoSkill",
+      "ACE"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "222 / 223 / 224 / 225 / 226 / 227",
+    "disposition": "entry",
+    "methods": [
+      "Meta-Harness",
+      "Self-Harness",
+      "AHE"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 comment 5392151899",
+    "disposition": "entry",
+    "methods": [
+      "Task-CoEvolve"
+    ],
+    "reason": "Canonical method pages; research issue retains implementation ownership."
+  },
+  {
+    "origin": "192 A9",
+    "disposition": "exclude",
+    "methods": [],
+    "reason": "Verification-only suite closure; not a method or a migration ticket."
+  },
+  {
+    "origin": "192 survey 2607.13104",
+    "disposition": "exclude",
+    "methods": [],
+    "reason": "Organizing taxonomy; not a proposed optimizer. Its prompt/memory/workflow/scaffold distinctions organize the epic."
+  },
+  {
+    "origin": "192 A8 Red Queen Gödel Machine",
+    "disposition": "exclude",
+    "methods": [
+      "SkySynth"
+    ],
+    "reason": "Precedent for epoch-frozen evaluators and independent anchors; not a proposed standalone child. See survey 2609.11873."
+  },
+  {
+    "origin": "192 A8 DecoEvo",
+    "disposition": "exclude",
+    "methods": [
+      "SkySynth"
+    ],
+    "reason": "Evaluator co-evolution precedent under oversight; not a standalone child. B7 owns the bounded additive-audit translation; see survey 2609.11873."
+  },
+  {
+    "origin": "253",
+    "disposition": "exclude",
+    "methods": [
+      "Autoresearch procedure",
+      "Policy evolution",
+      "Meta-Harness"
+    ],
+    "reason": "Reporting refinement of existing studies, not a new method."
+  },
+  {
+    "origin": "236",
+    "disposition": "exclude",
+    "methods": [],
+    "reason": "Live-driver dry-run infrastructure, not a research method."
+  },
+  {
+    "origin": "270 / 271",
+    "disposition": "exclude",
+    "methods": [],
+    "reason": "Protocol/spending approval and paid evidence ownership; no catalog implementation scope."
+  },
+  {
+    "origin": "12 / 268",
+    "disposition": "exclude",
+    "methods": [],
+    "reason": "Roadmap and release coordination; acceptance gates remain external to the catalog."
+  },
+  {
+    "origin": "references.md#experience-graphs--trellis / Experience Graphs / Trellis",
+    "disposition": "duplicate",
+    "methods": [
+      "Experience Graphs / Trellis"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#dspy / DSPy",
+    "disposition": "duplicate",
+    "methods": [
+      "DSPy"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#gepa / GEPA",
+    "disposition": "duplicate",
+    "methods": [
+      "GEPA"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#feedback-descent / Feedback Descent",
+    "disposition": "duplicate",
+    "methods": [
+      "Feedback Descent"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#autodata / AutoData",
+    "disposition": "duplicate",
+    "methods": [
+      "AutoData"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#evoskill / EvoSkill",
+    "disposition": "duplicate",
+    "methods": [
+      "EvoSkill"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#ace / ACE",
+    "disposition": "duplicate",
+    "methods": [
+      "ACE"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#meta-harness / Meta-Harness",
+    "disposition": "duplicate",
+    "methods": [
+      "Meta-Harness"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#self-harness / Self-Harness",
+    "disposition": "duplicate",
+    "methods": [
+      "Self-Harness"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#ahe / AHE",
+    "disposition": "duplicate",
+    "methods": [
+      "AHE"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#shepherd / Shepherd",
+    "disposition": "duplicate",
+    "methods": [
+      "Shepherd"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#asari-inference-stack-optimization / Asari inference-stack optimization",
+    "disposition": "duplicate",
+    "methods": [
+      "Asari inference-stack optimization"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#recursive-self-improvement-survey / Recursive self-improvement survey",
+    "disposition": "duplicate",
+    "methods": [
+      "Recursive self-improvement survey"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#aide2 / AIDE²",
+    "disposition": "duplicate",
+    "methods": [
+      "AIDE²"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#alphaevolve / AlphaEvolve",
+    "disposition": "duplicate",
+    "methods": [
+      "AlphaEvolve"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#funsearch / FunSearch",
+    "disposition": "duplicate",
+    "methods": [
+      "FunSearch"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#openevolve / OpenEvolve",
+    "disposition": "duplicate",
+    "methods": [
+      "OpenEvolve"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#evox / EvoX",
+    "disposition": "duplicate",
+    "methods": [
+      "EvoX"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#group-evolving-agents / Group-Evolving Agents",
+    "disposition": "duplicate",
+    "methods": [
+      "Group-Evolving Agents"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#aero / AERO",
+    "disposition": "duplicate",
+    "methods": [
+      "AERO"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#coral / CORAL",
+    "disposition": "duplicate",
+    "methods": [
+      "CORAL"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#quality-diversity-and-island-models / Quality diversity and island models",
+    "disposition": "duplicate",
+    "methods": [
+      "Quality diversity and island models"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#memgpt / MemGPT",
+    "disposition": "duplicate",
+    "methods": [
+      "MemGPT"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#graphiti-and-structured-memory / Graphiti and structured memory",
+    "disposition": "duplicate",
+    "methods": [
+      "Graphiti and structured memory"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#event-sourcing-and-content-addressing / Event sourcing and content addressing",
+    "disposition": "duplicate",
+    "methods": [
+      "Event sourcing and content addressing"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A2 / MCE",
+    "disposition": "duplicate",
+    "methods": [
+      "MCE"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A2 / STOP",
+    "disposition": "duplicate",
+    "methods": [
+      "STOP"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A3 / AI Scientist",
+    "disposition": "duplicate",
+    "methods": [
+      "AI Scientist"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A3 / ScientistOne",
+    "disposition": "duplicate",
+    "methods": [
+      "ScientistOne"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A3 / AI co-scientist",
+    "disposition": "duplicate",
+    "methods": [
+      "AI co-scientist"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A3 / ADAS",
+    "disposition": "duplicate",
+    "methods": [
+      "ADAS"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A3 / AFlow",
+    "disposition": "duplicate",
+    "methods": [
+      "AFlow"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A3 / EvoFlow",
+    "disposition": "duplicate",
+    "methods": [
+      "EvoFlow"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A5 / Search evolution",
+    "disposition": "duplicate",
+    "methods": [
+      "Search evolution"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A6 / Promptbreeder",
+    "disposition": "duplicate",
+    "methods": [
+      "Promptbreeder"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A6 / DemoEvolve",
+    "disposition": "duplicate",
+    "methods": [
+      "DemoEvolve"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A6 / ShinkaEvolve",
+    "disposition": "duplicate",
+    "methods": [
+      "ShinkaEvolve"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A7 / DGM",
+    "disposition": "duplicate",
+    "methods": [
+      "DGM"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A7 / Hyperagents",
+    "disposition": "duplicate",
+    "methods": [
+      "Hyperagents"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A7 / Huxley-Gödel Machine",
+    "disposition": "duplicate",
+    "methods": [
+      "Huxley-Gödel Machine"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A8 / ThetaEvolve",
+    "disposition": "duplicate",
+    "methods": [
+      "ThetaEvolve"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A8 / SIA",
+    "disposition": "duplicate",
+    "methods": [
+      "SIA"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A8 / Continual Harness",
+    "disposition": "duplicate",
+    "methods": [
+      "Continual Harness"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A10 / EnvHarness",
+    "disposition": "duplicate",
+    "methods": [
+      "EnvHarness"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A11 / Task-CoEvolve",
+    "disposition": "duplicate",
+    "methods": [
+      "Task-CoEvolve"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#192 A13 / AutoSaddler",
+    "disposition": "duplicate",
+    "methods": [
+      "AutoSaddler"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#193 B1 / Profiler-driven autoresearch",
+    "disposition": "duplicate",
+    "methods": [
+      "Profiler-driven autoresearch"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#195 B2 / ADRS",
+    "disposition": "duplicate",
+    "methods": [
+      "ADRS"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#193 B3 / Model Discovery Agent",
+    "disposition": "duplicate",
+    "methods": [
+      "Model Discovery Agent"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#193 B4 / DiG-bench",
+    "disposition": "duplicate",
+    "methods": [
+      "DiG-bench"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#193 B5 / PACE-Bench",
+    "disposition": "duplicate",
+    "methods": [
+      "PACE-Bench"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#219 B6 / RSI-Exam",
+    "disposition": "duplicate",
+    "methods": [
+      "RSI-Exam"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#251 B7 / SkySynth",
+    "disposition": "duplicate",
+    "methods": [
+      "SkySynth"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#213 A12 / Config-fragile benchmarks",
+    "disposition": "duplicate",
+    "methods": [
+      "Config-fragile benchmarks"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "#216 A14 / Specification gaming",
+    "disposition": "duplicate",
+    "methods": [
+      "Specification gaming"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "maintained script / Autoresearch procedure",
+    "disposition": "duplicate",
+    "methods": [
+      "Autoresearch procedure"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "maintained script / Policy evolution",
+    "disposition": "duplicate",
+    "methods": [
+      "Policy evolution"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#agent0-and-dr-zero / Agent0",
+    "disposition": "duplicate",
+    "methods": [
+      "Agent0"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  },
+  {
+    "origin": "references.md#agent0-and-dr-zero / Dr. Zero",
+    "disposition": "duplicate",
+    "methods": [
+      "Dr. Zero"
+    ],
+    "reason": "Reference or maintained-example discovery resolves to the same canonical explanation."
+  }
+]
