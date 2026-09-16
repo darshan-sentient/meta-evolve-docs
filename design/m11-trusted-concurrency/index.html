@@ -1,0 +1,4640 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Programmable evaluated improvement loops over versioned artifacts">
+      
+      
+      
+        <link rel="canonical" href="https://sentient-xyz.github.io/meta-evolve-docs/design/m11-trusted-concurrency/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>M11 trusted-concurrency design - Meta-Evolve</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Figtree:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Figtree";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="color-scheme" content="light dark">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#m11-trusted-concurrency-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Meta-Evolve" class="md-header__button md-logo" aria-label="Meta-Evolve" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meta-Evolve
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              M11 trusted-concurrency design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sentient-xyz/meta-evolve" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sentient-xyz/meta-evolve
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Meta-Evolve" class="md-nav__button md-logo" aria-label="Meta-Evolve" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    Meta-Evolve
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sentient-xyz/meta-evolve" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sentient-xyz/meta-evolve
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../start-here/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When to use Meta-Evolve
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build an experiment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build an experiment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Define what better means
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/02-change-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choose what to try next
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/05-use-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Give the proposer feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/providers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use your model SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control and understand a run
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Control and understand a run
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set limits and stopping conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/03-inspect-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect results and failures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/06-persist-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Save and reopen a run
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced composition
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced composition
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/harness-evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve an agent's harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/policy-evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a search policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adding-an-artifact-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add an artifact domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choose an example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/07-where-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apply the pattern elsewhere
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Applications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/meeting-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extract meeting actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/sql-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build a SQL migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/slug-inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Find a slug defect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/llm-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a routing prompt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application ideas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models and agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models and agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/live-parser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live parser example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/live-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live routing example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/skill-composition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compose a skill experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/04-improve-source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a real file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a prompt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-patterns/evoskill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a skill library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/nested-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nested evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../research/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/autoresearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a research procedure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optimize a scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/decomposition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read a paper as an experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/ace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACE playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta-Harness mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compare and try GEPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/artifacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifacts and versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluation and evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runs and history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Budgets and failures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Budgets and failures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/budgets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Budgets and stopping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failures and measurements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta-evolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deeper explanations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deeper explanations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity and lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/domains/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifact domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Component composition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipped API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/experience-provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience provenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Execution details
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Execution details
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/runs-and-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runs and search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/evaluation-and-budgets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluation and budgets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage and recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/sdk-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK accounting and tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools and extensions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools and extensions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifact history browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../project/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributor-code-tour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../milestones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design records
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence and verification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-distributed-start-refuses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What distributed start refuses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vocabulary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vocabulary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution terms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantics-settled-in-m112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantics settled in M11.2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistency-by-state-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consistency by state type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-work-and-lease-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The work and lease state machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outstanding-work-and-the-decision-barrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outstanding work and the decision barrier
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generational-cohorts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generational cohorts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#budget-one-disposition-and-a-pure-fold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Budget: one disposition, and a pure fold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked traces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worked traces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lease-expiry-and-the-replacement-that-supersedes-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lease expiry, and the replacement that supersedes it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-versus-stale-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate versus stale submission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cohort-admission-refusal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cohort admission refusal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-seven-distributed-start-refusals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The seven distributed-start refusals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Determinism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-fingerprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment fingerprint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#byte-compatibility-and-frozen-fixtures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Byte compatibility and frozen fixtures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deferred-and-rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deferred and rejected
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/sentient-xyz/meta-evolve/edit/main/docs/design/m11-trusted-concurrency.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/sentient-xyz/meta-evolve/raw/main/docs/design/m11-trusted-concurrency.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+    </a>
+  
+
+
+<h1 id="m11-trusted-concurrency-design">M11 trusted-concurrency design<a class="headerlink" href="#m11-trusted-concurrency-design" title="Permanent link">&para;</a></h1>
+<p><strong>Status: Design—not shipped.</strong></p>
+<p>This page is the subordinate design record for
+<a href="https://github.com/sentient-xyz/meta-evolve/issues/10">#10</a>. The
+<a href="../../milestones/#milestone-11-trusted-concurrency-and-distribution">milestone roadmap</a>
+owns status, order, gates, and exclusions. The
+<a href="../../implementation-plan/#milestone-11-trusted-distribution">implementation plan</a>
+owns technical staging and package boundaries. The
+<a href="../network-direction/">distributed direction</a> owns the longer arc through M12.
+This record owns vocabulary, the consistency model, the durable rules
+concurrency changes, and the compatibility promises.</p>
+<p>Nothing here makes a name importable or an invariant implemented.</p>
+<p>Longer than the other design records, deliberately: the rules below are one
+interlocking set — the outstanding-work definition, the decision barrier, the
+evaluation disposition and the reservation fold are four readings of the same
+predicate, and splitting them across pages would hide that they must agree.</p>
+<h2 id="what-distributed-start-refuses">What distributed start refuses<a class="headerlink" href="#what-distributed-start-refuses" title="Permanent link">&para;</a></h2>
+<p>The <a href="../../milestones/#milestone-11-trusted-concurrency-and-distribution">milestone roadmap</a>
+owns the scope statement. This record owns the refusals that enforce it: seven
+configurations, each a <code>CapabilityError</code> naming its reason: six checked at start
+before any claim or lease, and the environment fingerprint, which will be checked
+when a worker claims. <strong>Single-process resume ships in M11.2</strong>:
+<code>prepare_resume</code> admits a distributed run (<code>session_preparation.py</code>, <code>mode not
+in ("durable-local", "distributed")</code>) and re-runs admission against the
+recorded values, with <code>Session.drive()</code> rolling the epoch over as the explicit
+recovery step. There is no <code>Dispatcher.resume</code>. What stays M11.3's is the
+CROSS-PROCESS re-read: the "Re-read on resume from" column below describes a
+worker rejoining a run another process is driving.
+Admission turns on a <strong>declared capability, never a named preset</strong> — checking for
+a specific policy by type would be the policy-specific coordinator branch the
+constitution forbids.</p>
+<table>
+<thead>
+<tr>
+<th>Refused</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A declared context policy</td>
+<td>Pushed context binds a fact to an exact stream position, and its cutoff is strict where pull's is inclusive.</td>
+</tr>
+<tr>
+<td>A declared experience access</td>
+<td>Pull experience appends audit facts synchronously from inside the proposer, behind stream-global guards.</td>
+</tr>
+<tr>
+<td>A policy without the cohort capability</td>
+<td>The capability is a declared width <em>and</em> a producer, and only <code>BestOfN</code> declares the width. <code>Greedy</code> chains strictly, so each parent is the previous result and a generation has nothing to draw from. <code>BestOfK</code> is the natural second — <code>_cohort_parent</code> already freezes an incumbent for a whole cohort of <code>k</code> — but it neither declares a width nor produces a generation, which is <a href="https://github.com/sentient-xyz/meta-evolve/issues/201">#201</a>.</td>
+</tr>
+<tr>
+<td>A finite token, wall-time or spend ceiling</td>
+<td>The shipped presets hand each trial the run's whole measured allowance — <code>bind</code> copies the declared token and wall-time ceilings, and <code>narrow</code> adds the remaining spend at decision time — so a second cohort member, computed from the same base where nothing is yet settled, has nothing left to allocate. Zero is refused with the rest; the budget section owns why.</td>
+</tr>
+<tr>
+<td>A custom codec</td>
+<td>Codecs carry no manifest; durable-local already refuses them. A worker with the <em>wrong</em> codec is worse than one with none.</td>
+</tr>
+<tr>
+<td>A component not declaring <code>retry_safe</code></td>
+<td>Automatic retry of unsafe work is dishonest. Determinism is <strong>not</strong> required: that is durable-local's rule, for M4's interrupted-equals-uninterrupted guarantee, which a distributed run does not claim.</td>
+</tr>
+<tr>
+<td>An environment fingerprint mismatch</td>
+<td>See <a href="#environment-fingerprint">environment fingerprint</a>. <strong>The comparison is unimplemented as of M11.2</strong>: the value is recorded and declared, never compared.</td>
+</tr>
+</tbody>
+</table>
+<p>Every restriction is a refusal, never a silent degradation. Paid concurrency
+needs conservative per-trial allocation of measured dimensions, which
+M11.0 opened as
+<a href="https://github.com/sentient-xyz/meta-evolve/issues/206">#206</a> and which the
+measured-ceiling refusal above stands in for until it lands.</p>
+<h2 id="vocabulary">Vocabulary<a class="headerlink" href="#vocabulary" title="Permanent link">&para;</a></h2>
+<p>Four identities, none collapsed. The
+<a href="../../concepts/identity/">identity concept</a> already establishes that equal bytes
+in different causal positions stay different occurrences; a work attempt is a
+third axis and folds into neither.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Identity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Trial</code></td>
+<td>The logical experiment. Unchanged.</td>
+<td>Derived from its decision.</td>
+</tr>
+<tr>
+<td><code>WorkItem</code></td>
+<td>One deliverable unit. At most two per trial: proposal and evaluation.</td>
+<td>Stable from the trial and the kind.</td>
+</tr>
+<tr>
+<td><code>WorkAttempt</code></td>
+<td>One worker's bounded attempt at a work item.</td>
+<td>The work item and an ordinal, unique in the work table.</td>
+</tr>
+<tr>
+<td><code>Worker</code></td>
+<td>A trusted execution identity with declared capabilities and capacity.</td>
+<td>An operator-supplied id plus a monotonic generation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="execution-terms">Execution terms<a class="headerlink" href="#execution-terms" title="Permanent link">&para;</a></h3>
+<p>What runs work, and how its failures divide. None of these is an identity.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worker process</td>
+<td>The operating-system process that hosts one <code>Worker</code> and connects to the dispatcher.</td>
+</tr>
+<tr>
+<td>Executor</td>
+<td>What runs a component on a work item's resolved inputs and returns its result, holding no coordinator, storage, clock or broker.</td>
+</tr>
+<tr>
+<td>Attempt failure</td>
+<td>Input resolution or the executor raised, outside the escaping set. The attempt is released and the retry bound decides.</td>
+</tr>
+<tr>
+<td>Completion failure</td>
+<td>A fault after the component returned: building its facts, validating them, or committing them. Its cause is recorded and it propagates; the dispatcher does not run the component again, though once the lease ends a later drain may.</td>
+</tr>
+<tr>
+<td>Input resolution</td>
+<td>The store reads that resolve a work item's inputs before its component is called.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="semantics-settled-in-m112">Semantics settled in M11.2<a class="headerlink" href="#semantics-settled-in-m112" title="Permanent link">&para;</a></h3>
+<p>Four questions the vocabulary above left open. Each was answered because two
+adapters had answered it differently, and the shared contract suite could not
+see the disagreement.</p>
+<p><strong>A submission is the same when the fields ENQUEUE AUTHORS are the same</strong> — the
+trial, the kind and the retry bound. <code>state</code> and <code>attempts</code> belong to the broker,
+not the submitter, so a repeat submission of a work item that has since been
+leased is the same item further along, not a conflicting claim. Comparing them
+would make a retried commit of an already-partly-progressed cohort fail, which is
+the opposite of what an idempotent enqueue is for.</p>
+<p><strong>Enqueue is atomic across a generation.</strong> A cohort is enqueued as a generation,
+and a half-enqueued generation is the torn state the same-transaction rule
+exists to prevent. Every row is validated before any row is written.</p>
+<p><strong>An acknowledgment is opaque.</strong> It is bytes the broker records and returns
+without reading. A structured payload invites two writers to disagree about how
+to encode it, and two did.</p>
+<p><strong>A state and its justification are ONE fact.</strong> <code>LEASED</code> does not exist without
+the lease that justifies it; <code>COMPLETED</code> does not exist without the accepted
+attempt, its token and the acknowledgment. A lease also names its run, so a
+submission addressed to another run is refused rather than answered stale. States
+whose evidence is optional are how an orphaned row becomes permanently
+unclaimable in one implementation and silently released in another.</p>
+<p>Attempt identity must be <strong>distinct, not secret</strong>. Authority comes from an
+opaque lease token, whose digest alone is stored, and from a monotonic fence. A
+derived attempt id therefore adds no risk and needs no entropy source. The
+result key is stable from the work item and is an idempotency key, never a
+credential.</p>
+<p>The bootstrap trial has only an evaluation work item.</p>
+<p><strong>A dead attempt is released, not waited out.</strong> The broker gains <code>release</code>,
+fenced exactly as <code>renew</code> is and appending no fact: the
+scheduler already knows the attempt is dead, and letting the deadline expire
+instead idles the item for a whole lease duration to learn what it was told. The
+transition an unfinished lease leaves behind is <code>released()</code> / <code>RELEASE_SQL</code>, the
+same statement expiry and rollover make, so exhaustion goes terminal by the same
+rule in all three. The terminal LOGICAL fact an exhausted row then owes is the
+reclaim step's; a ledger edit does not discharge it.</p>
+<p><strong>Three outcomes.</strong> A raise that the adapters' own normalization boundary lets
+escape — the five infrastructure types plus <code>CapabilityError</code>, published as
+<code>escapes_normalization</code> — while resolving inputs or inside the executor aborts
+the run and is never retried; it records no cause. Any other <code>Exception</code> raised
+while resolving inputs or inside the executor is an attempt failure: released
+with its cause, and the retry bound decides. Reusing that boundary rather than
+writing a second taxonomy beside it is the point: retrying an escaping raise
+would spend the retry bound re-running an impossible preflight. And a fault
+after the component returned is a completion failure — building the facts, the
+provisional fold, the keepalive or the commit: the cause is recorded against the
+lease and the error propagates, because re-running a component that already
+answered spends a provider call to reproduce a coordinator fault. The row stays
+leased until expiry or rollover returns it to ready, after which a later drain
+may run the component again; closing that is M11.3's. <code>Exception</code>, not
+<code>BaseException</code>, so an operator's interrupt is neither released nor diagnosed.</p>
+<p><strong><code>record_failure</code> writes a cause and moves no state.</strong> It follows the same
+diagnosis rule <code>release</code> does. The first writer wins per attempt, on every path.
+While a lease is held, only its holder may write. Once expiry has collected the
+lease, only the row's latest attempt may still diagnose, and only by proving the
+token it was issued against <code>last_lease_token_digest</code>, a verifier kept on the
+row through expiry and cleared when the lease is released or rolled over; a row
+with none refuses. Terminal rows are never rewritten.</p>
+<p><strong>A committed artifact missing from storage is corruption, not an attempt
+failure.</strong> Proposal parents and the evaluated artifact are ids the fold has
+already validated as committed, so a store answering "not found" for one raises
+<code>DurableCorruption</code> and aborts rather than spending the retry bound.</p>
+<p><strong>An inline call can outlive its lease.</strong> M11.2 runs one worker inline, and
+renewal happens only after the component returns. <code>acquire</code> stamps the deadline
+before the call runs, so a component slower than the lease -- 60 seconds by
+default, with no setting on <code>Session.drive()</code> -- expires its own lease and the
+run raises <code>CapabilityError</code> when it tries to commit its result (one that raises
+instead is released, with its diagnosis recorded). Renewal during a call, and
+configuring the duration, are M11.3's.</p>
+<h2 id="consistency-by-state-type">Consistency by state type<a class="headerlink" href="#consistency-by-state-type" title="Permanent link">&para;</a></h2>
+<p>Logical facts live in the run event stream; work, lease and worker state live in
+separate durable transactional tables. Leases cannot be ephemeral — a restart
+must retain the fence, deadline and accepted result — and must not live in the
+stream, because renewals are clock-driven: putting them there would make
+policy-observed versions depend on heartbeat frequency and make replay appear
+able to decide whether a historical lease is alive. The
+<a href="../../architecture/">architecture</a> separates committed facts from worker
+liveness; this record extends that into a second durable store rather than
+treating it as licence already granted.</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Home</th>
+<th>Writers</th>
+<th>Guarantee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logical run facts</td>
+<td>Event stream and artifact storage</td>
+<td>Dispatcher only</td>
+<td>Linearizable per run. No stale read may make or accept a decision.</td>
+</tr>
+<tr>
+<td>Outstanding work and reserved budget</td>
+<td>Derived by folding committed events</td>
+<td>—</td>
+<td>Exact at any stream version. Never read from the work ledger.</td>
+</tr>
+<tr>
+<td>Work item, lease, attempt, retry</td>
+<td>Durable work tables</td>
+<td>Dispatcher and scoped lease endpoints</td>
+<td>Serializable fenced transitions. Monitoring may lag.</td>
+</tr>
+<tr>
+<td>Trusted worker registry</td>
+<td>Installation-level table</td>
+<td>Operator authority only</td>
+<td>Strong on registration, revocation and claim.</td>
+</tr>
+<tr>
+<td>Worker liveness and free capacity</td>
+<td>Ephemeral, with a TTL</td>
+<td>Workers report, dispatcher observes</td>
+<td>Stale permitted. Can never authorize a claim.</td>
+</tr>
+<tr>
+<td>Queue and frontier statistics</td>
+<td>Disposable cache keyed by exact versions</td>
+<td>Dispatcher</td>
+<td>Staleness only for prioritizing already-eligible work.</td>
+</tr>
+<tr>
+<td>Archive membership</td>
+<td>Event stream</td>
+<td>Dispatcher only</td>
+<td>Strong and replayed. Sequential only — never inside a cohort.</td>
+</tr>
+<tr>
+<td>Promotion</td>
+<td>External governance record</td>
+<td>Governance</td>
+<td>Strong. Consumes only a drained, validated run.</td>
+</tr>
+</tbody>
+</table>
+<p>"Strong" means one database transaction, not distributed consensus. Because
+attribution lives in the attempt table, the event envelope gains no actor field
+and no timestamp.</p>
+<h2 id="the-work-and-lease-state-machine">The work and lease state machine<a class="headerlink" href="#the-work-and-lease-state-machine" title="Permanent link">&para;</a></h2>
+<p>States are <code>PREPARING</code>, <code>READY</code>, <code>LEASED</code>, <code>COMPLETED</code> and <code>CANCELLED</code>.</p>
+<p><strong>The capacity inequality</strong>, which <code>acquire</code> names: a worker may hold at most
+its declared <code>max_concurrent_leases</code> leases at once, counted over rows in
+<code>LEASED</code> for that worker in the current epoch and generation, and the count is
+read inside the acquiring transaction so two simultaneous claims cannot both see
+room. That is the whole of it in M11 --
+ONE dimension, a count of leases, not a resource vector. Per-item resource
+requirements and worker resource dimensions are deliberately not defined here:
+nothing in this milestone schedules on them, and the roadmap's acceptance case
+-- two concurrent claims exceeding one worker's declared capacity -- is a
+statement about this count and is testable against it. A richer inequality the
+implementation would not honour would leave that criterion with no normative
+behaviour behind it.</p>
+<p>Every <code>acquire</code>, <code>renew</code> and <code>complete</code> precondition includes the current
+dispatcher epoch and the worker's current generation, read inside the same
+transaction — with one exemption, which is load-bearing. <strong>Terminal duplicate
+lookup on a <code>COMPLETED</code> item checks the accepted attempt and its token but not
+epoch or generation liveness.</strong> Without the exemption, "commit succeeded,
+acknowledgment lost, dispatcher restarted" would carry the prior epoch and be
+answered stale, contradicting the duplicate rule below. A terminal item is a
+stored fact, not a live lease.</p>
+<p><strong><code>complete</code> is an INTENT, not a broker operation.</strong> M11.2 removed the
+broker's <code>complete</code>, whose own transaction could not be atomic with the logical
+batch, in favour of <code>AcceptCompletion</code> applied inside the writing transaction.
+The <code>complete</code> row above is unchanged in every respect that matters — the
+transition, and all four preconditions — because the intent carries the fence
+and the clock and checks them there. What moved is who applies the rule, not
+the rule. Moving it the first time DID drop three of the four preconditions to
+prose, which a review caught; they are enforced again.</p>
+<p><strong>An aborted item is not marked, and nothing distinguishes it.</strong> When the
+abort boundary fires before the component returns, <code>_execute</code> re-raises
+without releasing or recording a cause — but expiry
+routes the row through <code>released()</code> to <code>READY</code> one lease-duration later, so it
+does return to the queue, just slowly. In the interval it is neither claimable
+nor reclaimable (<code>reclaim</code> scans <code>READY</code> only) and carries no terminal fact,
+and afterwards no reader can tell an aborted item from a flaky one. Marking it
+needs the distributed-resume story — a run that aborted must not silently
+re-drive the impossible item on resume — which is M11.3's.</p>
+<p><strong>The terminal duplicate exemption ships in M11.2.</strong> <code>AcceptCompletion</code> answers
+a repeated completion by replaying the stored acknowledgment rather than
+refusing it, checking the accepted attempt and its token and deliberately not
+epoch, generation or deadline. The duplicate makes the whole commit a no-op:
+the intent unwinds the transaction, so the row keeps its bytes and the stream
+does not grow.</p>
+<p>Duplicates remain <strong>unreachable through the dispatcher</strong> in single-process
+M11.2 — the batch and the intent share one transaction, a committed completion
+leaves the row terminal, and <code>rollover</code> skips terminal rows — so the exemption
+is exercised at the commit boundary rather than by a worker. Reattachment makes
+it reachable, because a <code>Future</code> dies with its process; M11.3 adds the
+submission seam that hands the replayed acknowledgment back, and the <code>Duplicate</code>
+answer with it. The <strong>stale</strong> half stays there too: a stale intent aborts its
+batch by design, because an intent rides the batch it authorises.</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Operation</th>
+<th>Preconditions</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>absent</td>
+<td>enqueue</td>
+<td>The authorizing logical batch commits</td>
+<td><code>PREPARING</code> or <code>READY</code></td>
+</tr>
+<tr>
+<td><code>PREPARING</code></td>
+<td>prepare</td>
+<td>This trial's prerequisites are committed</td>
+<td><code>READY</code></td>
+</tr>
+<tr>
+<td><code>PREPARING</code></td>
+<td>preparation failed</td>
+<td>Central preparation raised</td>
+<td><code>CANCELLED</code></td>
+</tr>
+<tr>
+<td><code>READY</code></td>
+<td>acquire</td>
+<td>Worker matches, including the capacity inequality above; attempts remain</td>
+<td><code>LEASED</code></td>
+</tr>
+<tr>
+<td><code>LEASED</code></td>
+<td>renew</td>
+<td>Same worker, attempt, fence and token; before the deadline</td>
+<td><code>LEASED</code></td>
+</tr>
+<tr>
+<td><code>LEASED</code></td>
+<td>expire</td>
+<td>At or past the deadline</td>
+<td><code>READY</code></td>
+</tr>
+<tr>
+<td><code>LEASED</code></td>
+<td>release</td>
+<td>Same worker, attempt, fence and token; before the deadline</td>
+<td><code>READY</code></td>
+</tr>
+<tr>
+<td><code>READY</code></td>
+<td>reclaim</td>
+<td>Attempts exhausted; rides the terminal logical fact</td>
+<td><code>CANCELLED</code></td>
+</tr>
+<tr>
+<td><code>READY</code> or <code>LEASED</code></td>
+<td>cancel</td>
+<td>Dispatcher or operator authority</td>
+<td><code>CANCELLED</code></td>
+</tr>
+<tr>
+<td><code>LEASED</code></td>
+<td>complete</td>
+<td>Exact worker, attempt, fence and token; before the deadline</td>
+<td><code>COMPLETED</code></td>
+</tr>
+<tr>
+<td><code>COMPLETED</code></td>
+<td>complete again</td>
+<td>Same attempt <strong>and</strong> matching token; epoch and generation deliberately unchecked</td>
+<td><code>COMPLETED</code></td>
+</tr>
+<tr>
+<td>any</td>
+<td>complete with a superseded or expired attempt, or a token mismatch</td>
+<td>—</td>
+<td>unchanged</td>
+</tr>
+<tr>
+<td>terminal</td>
+<td>any lease operation</td>
+<td>—</td>
+<td>unchanged</td>
+</tr>
+</tbody>
+</table>
+<p>Enqueue inserts work rows in the <em>same transaction</em> as the decision cohort or
+genesis. Completion validates, appends the logical batch, enqueues dependent
+evaluation work, and stores an acknowledgment — all atomically.</p>
+<p><strong>The exhaustion edge was split in M11.2</strong> (M11.2, implemented). This table
+originally read <code>LEASED --expire at retry limit--&gt; CANCELLED</code>. Three broker-side
+transitions produce an unfinished lease — expiry, rollover and <code>release</code> — and
+none of them is committing a batch, so none can carry the terminal logical fact
+this record's sixth rule requires. A row terminated there would be terminal with
+nothing in the stream saying why, and nothing that would ever revisit it. All
+three now release to <code>READY</code>; the acquire guard (<code>attempts &lt; max_attempts</code>)
+makes an exhausted row unclaimable, and the dispatcher's reclaim step terminates
+it with <code>TerminateWork</code> alongside the fact in one logical commit. The observable
+end state is unchanged; what moved is who owns the edge, so that it can carry
+its fact — and a crash between exhaustion and the fact now leaves a reclaimable
+row rather than a permanent silent hole.</p>
+<p>The rules the table encodes:</p>
+<ul>
+<li><strong>The deadline is half-open.</strong> Completion and renewal succeed only strictly
+  before it, read from the broker clock inside the transaction.</li>
+<li><strong>An expired but unreclaimed attempt may not submit a completion.</strong> Expiry
+  follows from the clock read, not from whether a replacement exists. Its one
+  remaining write is its own diagnosis, under <code>record_failure</code>'s rule.</li>
+<li><strong>Duplicate is not stale.</strong> The same attempt with a matching token returns the
+  original acknowledgment. Anything else is stale. Neither is an error, and
+  neither writes.</li>
+<li><strong>Renewal racing expiry</strong> resolves in one transaction; the loser is stale.</li>
+<li><strong>Revocation</strong> bumps the worker's generation, invalidating its leases at the
+  next transactional check.</li>
+<li><strong>Retry exhaustion, preparation failure and cancellation</strong> each append the
+  terminal logical fact for their work kind — never a ledger-only edit.</li>
+</ul>
+<p><strong>Clock domain.</strong> Deadlines are absolute broker timestamps from a single
+authority; workers never decide expiry from their own clocks. The broker
+persists its last observed time and clamps its clock non-decreasing, so a
+rollback within an epoch cannot un-expire a lease. Across a restart the
+dispatcher epoch is bumped, and <strong>rollover is an explicit recovery step</strong>: every
+prior-epoch leased row moves back to ready, or is cancelled with its terminal
+fact when attempts are exhausted. Rows are never left unclaimable.</p>
+<h2 id="outstanding-work-and-the-decision-barrier">Outstanding work and the decision barrier<a class="headerlink" href="#outstanding-work-and-the-decision-barrier" title="Permanent link">&para;</a></h2>
+<p>Everything else keys off one definition. A trial is outstanding when it has a
+committed trial decision, or is the bootstrap trial, and either it has no
+completion, or its completion succeeded, its evaluation disposition is
+<em>evaluate</em>, and no evaluation has completed.</p>
+<p><strong>The bootstrap satisfies that second clause by exception, not by pin.</strong> It is
+never pinned a disposition — its evaluation is owed by genesis rather than
+authorized by one — so read literally the clause would exclude the very trial
+the first clause names, and a distributed genesis would leave no committed fact
+saying the evaluation is owed. The bootstrap is therefore outstanding while it
+has no completion, or a successful completion with no evaluation, and its
+disposition is not consulted.</p>
+<p>The second clause is what distinguishes a trial that still owes an evaluation
+from one whose evaluation was terminally skipped as unauthorized. Treating every
+successful completion as terminal would accept a stop while an authorized
+evaluation is pending; treating none as terminal would reject a legitimate stop
+after a skip.</p>
+<p><strong>The disposition has three values, not two.</strong> <em>Evaluate</em> and <em>terminally
+skipped</em> are the two answers; the third is <strong>no answer</strong> — recorded for a failed
+trial, for the bootstrap, and for a trial whose own recorded usage exceeds its
+own allocation. The last of those is what makes the other two usable: with only
+two values, an overrun would have to be recorded as <em>skipped</em>, and the fold
+refuses an evaluation on a skipped trial, so every historical over-budget stream
+would stop replaying. Leaving the question unanswered where it is ill-posed is
+what lets <em>skipped</em> mean only "terminally skipped" and be enforced. A trial with
+no answer is not outstanding, so it neither holds a stop nor is owed anything —
+<strong>except the bootstrap</strong>, which is no-answer and outstanding at once. That is the
+one place the two come apart, and it is why the outstanding-work definition
+above names the bootstrap separately instead of relying on the pin.</p>
+<p>A policy decision may be committed only when nothing is outstanding, <strong>or</strong> when
+the decision is a trial decision, every outstanding trial shares its cohort base,
+that base equals the stream head immediately before the cohort's first decision,
+and the decisions carrying that base form one contiguous run ending at this one.</p>
+<p>A stop cohort has length one, so it can only be admitted through the empty
+branch. At width one nothing is ever outstanding at decision time, so the rule is
+today's sequential guard verbatim.</p>
+<p>Consequently two shipped rules need <strong>no change at all</strong>: a committed stop
+remains an absolute terminator, and a run with a committed stop is complete.
+Observation cutoffs are likewise untouched, because context and experience are
+refused under distribution.</p>
+<h2 id="generational-cohorts">Generational cohorts<a class="headerlink" href="#generational-cohorts" title="Permanent link">&para;</a></h2>
+<p>An opted-in policy declares a cohort width and returns a cohort: a non-empty
+tuple of trial decisions produced from one complete committed history and
+committed as one atomic batch. Absence of the capability means width one and
+today's sequential decision.</p>
+<p><strong>Composition.</strong> Either a tuple of trial decisions bounded by the declared width,
+or a singleton stop. Mixed forms are invalid, and archive updates are never part
+of a cohort.</p>
+<p><strong>No truncation.</strong> The coordinator commits the whole cohort or refuses it
+entirely, as trial validation refuses rather than trims today. Sizing a cohort to
+what fits is the policy's responsibility, and it has the state to do it.</p>
+<p><strong>Width is declared, and reaches run identity by kernel derivation.</strong> A policy
+supplies its identity key independently of its configuration, so a conforming
+policy could record a wide cohort and still return the narrow key. The kernel
+therefore contributes the width itself, omitted at width one so every recorded
+run identity is unchanged. Any cohort-capable policy also exposes its width in
+durable configuration, likewise omitted at one, so the fold can bound cohort
+length with no live registry. <strong>The sequential path refuses a width above one</strong>,
+since without that refusal one declaration would stop early sequentially and run
+wide distributed under a single run identity.</p>
+<p><strong>Replay.</strong> Each decision still records the stream head immediately before it, so
+no field is ever false; what the policy observed is recorded separately as the
+cohort base. Consumers reconstructing a policy's input from the recorded head
+must switch to the base for members after the first, beginning with the
+search-program replay law. Replaying a cohort from its base must reproduce the
+committed tuple exactly.</p>
+<p><strong>Conformance.</strong> A published cohort suite carries the laws: composition and
+length, full-or-refuse, exact replay from the base, per-member randomness
+attribution, no member referencing another member's artifact, width present in
+configuration exactly when it exceeds one, and a width-one coherence law
+requiring a singleton cohort to equal the sequential decision. Passing a suite is
+a developer obligation, not a durable fact: the executable admission predicate is
+the structural declaration, and the suite is what makes it honest.</p>
+<h2 id="budget-one-disposition-and-a-pure-fold">Budget: one disposition, and a pure fold<a class="headerlink" href="#budget-one-disposition-and-a-pure-fold" title="Permanent link">&para;</a></h2>
+<p>Reserved budget is derived from committed events, never stored: any capacity
+freed outside the stream would make a later decision unreproducible.</p>
+<p><strong>One evaluation disposition, consumed by every caller.</strong> At a successful trial
+completion, over the prefix including that event, available capacity is the
+ceiling less settled usage less the reservations of <em>every trial except this
+one</em>. Excluding the completing trial's own allocation breaks the circularity —
+an incomplete sibling reserves its full allocation, and a completed one was
+resolved at its own earlier terminal event.</p>
+<p>Two terms survive from the shipped calculation and are <strong>not</strong> replaced by the
+reservation fold. The trial's own remaining allocation still narrows the result,
+so a trial that exhausted its own budget is skipped even where the run's capacity
+is ample. And spend is adjudicated against the trial's own charge, so a free
+proposal under a zero ceiling still evaluates. The disposition is therefore the
+run's available capacity narrowed by the completing trial's remaining allocation,
+authorized when the narrowed budget leaves no zero among its evaluation, token and
+wall-time allowances and spend is not exhausted against that trial's own charge.
+The fold <strong>adds a term</strong> to the shipped rule; it does not replace it. Anything
+looser would flip committed skip decisions into evaluations and move durable
+bytes.</p>
+<p>That rule is only consulted where the question is well-posed. A failed trial, the
+bootstrap, and a trial whose recorded usage exceeds its own allocation are pinned
+<em>no answer</em> instead — see <a href="#outstanding-work-and-the-decision-barrier">outstanding
+work</a> for why the third value is
+what makes the refusal on a skipped trial enforceable.</p>
+<p>That value is pinned at one event, so it is stable for all later prefixes, which
+is what makes live execution and recovery agree by construction -- and agreement
+means every reader consults the pin rather than re-deriving it. A reader that
+recomputed the overrun instead would call a stream corrupt that this fold has
+just declared replayable, which is exactly the contradiction
+<a href="https://github.com/sentient-xyz/meta-evolve/issues/217">#217</a> resolves in the
+fold's favour. Five callers
+consume it: the live completion path, the resume tail, the recovery frontier
+classifier, the outstanding-work definition, and the dispatcher's atomic
+accept-and-enqueue path. The general remaining budget keeps its meaning for
+admitting new trials but is no longer a valid input to evaluation authorization.</p>
+<p>A trial reserves its full allocation until it completes, its evaluation residual
+while an authorized evaluation is owed, and nothing once it has failed, been
+terminally skipped, or had its evaluation complete.</p>
+<p><strong>Erratum (M11.2).</strong> This paragraph originally continued "The bootstrap trial
+follows the same rule", and that is the same mistake the errata above correct in
+two other places: the bootstrap's evaluation is owed by genesis and is never
+<em>authorized</em> by a disposition, so under the unamended wording a completed
+bootstrap reserves nothing — which the table's own last two rows deny. The
+bootstrap reserves on the same schedule as any other trial but on a different
+authority, and the fold needs two explicit branches for it rather than none.
+What does carry over unchanged is the reason it needs no special allocation: no
+policy decision may be committed before the run is ready, so its reservation is
+never concurrent with a cohort.</p>
+<table>
+<thead>
+<tr>
+<th>Trial state</th>
+<th>Reserved</th>
+<th>Released by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decided, no completion committed</td>
+<td>Its full declared allocation</td>
+<td>Its own terminal fact</td>
+</tr>
+<tr>
+<td>Completed, evaluation authorized and owed, other than the bootstrap trial</td>
+<td>Its evaluation residual: the allocation less the usage already settled against it</td>
+<td>The evaluation completion, successful or failed</td>
+</tr>
+<tr>
+<td>Completed, evaluation terminally skipped</td>
+<td>Nothing</td>
+<td>Already released by the completion itself</td>
+</tr>
+<tr>
+<td>Completed, disposition unanswerable, and not the bootstrap</td>
+<td>Nothing</td>
+<td>Already released by the completion itself -- nothing can be owed against a question the fold refused to answer</td>
+</tr>
+<tr>
+<td>Failed proposal work</td>
+<td>Nothing</td>
+<td>Its trial completion carrying the failure</td>
+</tr>
+<tr>
+<td>Failed evaluation work</td>
+<td>Nothing</td>
+<td>Its failed evaluation completion, never a second trial completion</td>
+</tr>
+<tr>
+<td>Failed before any proposal — preparation failure, cancellation, retry exhaustion</td>
+<td>Nothing</td>
+<td>The full shipped failure batch</td>
+</tr>
+<tr>
+<td>Bootstrap, decided, no completion committed</td>
+<td>Its full allocation</td>
+<td>Its evaluation completion</td>
+</tr>
+<tr>
+<td>Bootstrap, completed, evaluation owed</td>
+<td>Its evaluation residual</td>
+<td>Its evaluation completion</td>
+</tr>
+</tbody>
+</table>
+<p>These rows are a partition: every trial state matches exactly one row, and a
+failure releases through the one mechanism its work kind names.</p>
+<p>The dimensions are not interchangeable, and the reservation fold governs only two
+of them:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Finite under distribution</th>
+<th>How admission uses it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trials</code>, <code>evaluations</code></td>
+<td>Admitted — the only finite dimensions M11 serves</td>
+<td>The exact reservation fold above</td>
+</tr>
+<tr>
+<td><code>tokens</code>, <code>wall_seconds</code></td>
+<td>Refused finite at start</td>
+<td>Nothing until <a href="https://github.com/sentient-xyz/meta-evolve/issues/206">#206</a> defines a per-trial share</td>
+</tr>
+<tr>
+<td><code>spend_micros</code></td>
+<td>Refused finite at start, zero included</td>
+<td>Never a reservation. <code>Budget.spend_micros</code> is a ceiling that halts, not a hard cap, so it has no prospective form to reserve against</td>
+</tr>
+</tbody>
+</table>
+<p>Every capacity release is a committed logical fact whose kind differs by work
+kind: proposal work terminates with a trial completion, <strong>evaluation work with a
+failed evaluation completion</strong>, never a second trial completion. Work that never
+produced a proposal — preparation failure, cancellation, retry exhaustion —
+commits the full shipped failure-batch shape rather than a bare completion.</p>
+<p><strong>Exactness, in three parts.</strong> Admission is exact over committed facts. A
+component may still overrun its allocation, which commits as a typed resource
+exhaustion with its actual figures and halts the run — shipped single-trial
+behaviour, not a concurrency regression. And <strong>consumption is exact only over
+accepted completions</strong>: a stale or orphaned attempt writes nothing by design, so
+what it consumed never reaches the run's usage. That gap is new to distribution
+and is documented rather than papered over.</p>
+<p>A monetary hard cap additionally requires provider-side idempotency and bounded
+spend authority. Declaring a component retry-safe is necessary but not
+sufficient: it says reinvocation is logically safe, not that billing is
+idempotent.</p>
+<p>A finite spend ceiling is refused at distributed start, <strong>zero included</strong> — and
+zero is the one monetary declaration with nothing to allocate, since
+<code>spend_exhausted</code> reads it as free-work-only and arms only once something bills.
+Refusing it therefore refuses a configuration cohorts could otherwise serve. The
+refusal stays blunt deliberately: at width N a zero ceiling admits up to N
+charges before the halt arms where the sequential path admits one, and weakening
+a declared prohibition by the cohort width is a worse thing to ship than a
+missing capability.
+<a href="https://github.com/sentient-xyz/meta-evolve/issues/206">#206</a> is where
+per-dimension allocation earns the right to separate them.</p>
+<h2 id="worked-traces">Worked traces<a class="headerlink" href="#worked-traces" title="Permanent link">&para;</a></h2>
+<p>Each trace is a step sequence over the two ledgers, written so an implementation
+can be checked against it without re-deriving the rules above. <code>W</code> is a work
+item, <code>t</code> the broker clock.</p>
+<h3 id="lease-expiry-and-the-replacement-that-supersedes-it">Lease expiry, and the replacement that supersedes it<a class="headerlink" href="#lease-expiry-and-the-replacement-that-supersedes-it" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>t</th>
+<th>Event stream</th>
+<th>Work table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>The trial decision commits</td>
+<td><code>W</code> inserted <code>READY</code>, attempts 0, in the same transaction</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>Worker <code>A</code> acquires: <code>LEASED</code>, attempt 1, fence 1, deadline 30</td>
+</tr>
+<tr>
+<td>3</td>
+<td>25</td>
+<td>—</td>
+<td><code>A</code> renews: deadline 60, same fence</td>
+</tr>
+<tr>
+<td>4</td>
+<td>61</td>
+<td>—</td>
+<td><code>A</code> is silent. The next transactional read finds the deadline passed: <code>LEASED</code> → <code>READY</code>, attempt 1 abandoned</td>
+</tr>
+<tr>
+<td>5</td>
+<td>62</td>
+<td>—</td>
+<td>Worker <code>B</code> acquires: <code>LEASED</code>, attempt 2, fence 2, deadline 91</td>
+</tr>
+<tr>
+<td>6</td>
+<td>70</td>
+<td>—</td>
+<td><code>A</code> returns and submits under attempt 1, fence 1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>70</td>
+<td>—</td>
+<td>Stale: the fence does not match. Nothing written, nothing raised</td>
+</tr>
+<tr>
+<td>8</td>
+<td>80</td>
+<td>The trial completion for <code>B</code>'s result, and the dependent evaluation item, commit together</td>
+<td><code>W</code> → <code>COMPLETED</code>, accepted attempt 2</td>
+</tr>
+</tbody>
+</table>
+<p>One logical trial throughout; the retry created an attempt, not a trial. Whatever
+<code>A</code> consumed — tokens, and any charge it incurred — never reaches the run's
+usage. That is the documented consumption gap, not an accounting defect.</p>
+<p>At step 4 expiry follows from the clock read alone. Had <code>B</code> never arrived, <code>A</code>'s
+submission at step 6 would still be refused: an expired but unreclaimed attempt
+may not submit.</p>
+<h3 id="duplicate-versus-stale-submission">Duplicate versus stale submission<a class="headerlink" href="#duplicate-versus-stale-submission" title="Permanent link">&para;</a></h3>
+<p>Both arrive at a <code>COMPLETED</code> item. The columns are the two OUTCOMES, not a
+partition of the inputs, and the difference matters: the accepted attempt
+carrying a mismatched or absent token matches neither column as written. The
+state machine classifies it stale (<code>complete with a superseded or expired
+attempt, or a token mismatch</code>), and it must, because the token is what proves
+the submitter is the worker that earned the attempt. A duplicate is therefore
+the accepted attempt AND a matching token; everything else at a terminal item
+is stale.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duplicate</th>
+<th>Stale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attempt</td>
+<td>The accepted attempt</td>
+<td>Any other attempt</td>
+</tr>
+<tr>
+<td>Token digest</td>
+<td>Matches</td>
+<td>Mismatched or absent</td>
+</tr>
+<tr>
+<td>Epoch and generation</td>
+<td>Not checked — the terminal exemption</td>
+<td>Not checked</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>The original acknowledgment, replayed</td>
+<td>A stale answer</td>
+</tr>
+<tr>
+<td>Writes</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Raises</td>
+<td>Nothing</td>
+<td>Nothing</td>
+</tr>
+</tbody>
+</table>
+<p>The exemption is load-bearing exactly once — when the acknowledgment is lost
+across a dispatcher restart:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Event stream</th>
+<th>Work table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The completion batch commits</td>
+<td><code>W</code> → <code>COMPLETED</code>, accepted attempt 3, acknowledgment stored</td>
+</tr>
+<tr>
+<td>2</td>
+<td>—</td>
+<td>The reply to the worker is lost in transit</td>
+</tr>
+<tr>
+<td>3</td>
+<td>—</td>
+<td>The dispatcher restarts; the epoch is bumped; prior-epoch <code>LEASED</code> rows roll over, and <code>W</code> is untouched because it is terminal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>—</td>
+<td>The worker retries attempt 3 with its token</td>
+</tr>
+<tr>
+<td>5</td>
+<td>—</td>
+<td>Terminal duplicate lookup matches attempt and token, ignores the stale epoch, and replays the stored acknowledgment</td>
+</tr>
+</tbody>
+</table>
+<p>Without the exemption step 5 would answer stale, and a worker would believe
+committed work was lost.</p>
+<h3 id="bootstrap-evaluation">Bootstrap evaluation<a class="headerlink" href="#bootstrap-evaluation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Event stream</th>
+<th>Work table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Genesis commits the run start, the seed artifact and the bootstrap trial</td>
+<td>The bootstrap evaluation item is enqueued in the same transaction</td>
+</tr>
+<tr>
+<td>2</td>
+<td>—</td>
+<td>The bootstrap trial has no proposal item; it is the one trial whose only work is evaluation</td>
+</tr>
+<tr>
+<td>3</td>
+<td>—</td>
+<td>A worker claims and completes it under the ordinary state machine</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The bootstrap evaluation commits, and the run becomes ready</td>
+<td><code>W</code> → <code>COMPLETED</code></td>
+</tr>
+</tbody>
+</table>
+<p>Between steps 1 and 4 the run exists and is not ready. Inspection is available
+and returns the shipped overview fields without raising; no policy decision is
+admissible. That is why the bootstrap reservation is never concurrent with a
+cohort, and why it needs no special allocation rule.</p>
+<h3 id="cohort-admission-refusal">Cohort admission refusal<a class="headerlink" href="#cohort-admission-refusal" title="Permanent link">&para;</a></h3>
+<p>Refusal has two independent shapes, and neither trims.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Declared width</th>
+<th>Policy returns</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>Five trial decisions</td>
+<td>Refused whole. Length above the declared width is invalid, and the coordinator does not keep the first four</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>Three trial decisions and a stop</td>
+<td>Refused whole. Mixed forms are invalid; a stop cohort is a singleton</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>Four trial decisions, one referencing another member's artifact</td>
+<td>Refused whole. No member may reference a sibling, which has not been committed</td>
+</tr>
+</tbody>
+</table>
+<p>The barrier refuses on a different axis — the decision's provenance rather than
+the cohort's shape:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Stream state</th>
+<th>Decision offered</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Nothing outstanding</td>
+<td>A trial cohort based at the head</td>
+<td>Admitted; this is the empty branch, and it is today's sequential guard verbatim</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Two trials from that cohort outstanding</td>
+<td>A further trial decision on the same base</td>
+<td>Admitted only while the decisions carrying that base form one contiguous run ending at this one</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Two trials outstanding</td>
+<td>A stop</td>
+<td>Refused. A stop cohort has length one and can only be admitted through the empty branch, so a stop with work outstanding is rejected</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Two trials outstanding</td>
+<td>A trial decision based at a <em>later</em> head</td>
+<td>Refused. The base no longer equals the head immediately before the cohort's first decision</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-seven-distributed-start-refusals">The seven distributed-start refusals<a class="headerlink" href="#the-seven-distributed-start-refusals" title="Permanent link">&para;</a></h3>
+<p>Every row raises <code>CapabilityError</code>, naming its reason, before any claim or
+lease is issued. <strong>Single-process distributed resume ships in M11.2</strong>:
+<code>prepare_resume</code> admits a distributed run, re-runs admission against the
+recorded values, and <code>Session.drive()</code> rolls the epoch over as the explicit
+recovery step. There is no <code>Dispatcher.resume</code> — resume is <code>Session.resume(...)</code>
+followed by <code>drive()</code>. Cross-process re-read stays M11.3's.</p>
+<p>Of the seven, one is genuinely re-checked on resume against a value that can
+drift: the cohort capability, because the program is re-resolved from the
+supplied registry. Context, experience, budget and codec are read from the
+committed start and cannot change, so their resume-side refusals are
+store-tampering backstops rather than admission re-checks; the codec row is
+enforced by <code>check_declared_codec</code> on every reader's path.</p>
+<p><strong>Six of the seven are enforced, and the seventh is a different KIND of rule.</strong>
+The fingerprint row is recorded and not compared — see
+<a href="#environment-fingerprint">environment fingerprint</a> — and it could not be
+compared at start or at resume even once that lands, because a worker's
+fingerprint is not part of the run declaration and no worker exists yet. It is
+the one refusal that will fire when a worker CLAIMS, and it will refuse the
+worker rather than the run.</p>
+<p><strong><code>resumable</code> means the run recorded enough identity to resume, not that it
+replays identically.</strong> For <code>durable-local</code> the two coincide, because its
+components are deterministic by admission. A distributed run may carry a
+non-deterministic component — a model-backed proposer is the ordinary case —
+and resuming one continues the search rather than reproducing the trajectory it
+would have taken uninterrupted. That is the schedule-sensitivity this record
+already states, made explicit at the flag that would otherwise imply more.</p>
+<table>
+<thead>
+<tr>
+<th>Refused</th>
+<th>Read at start from</th>
+<th>Re-read on resume from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A declared context policy</td>
+<td>The run declaration's context policy</td>
+<td>The committed run start</td>
+</tr>
+<tr>
+<td>A declared experience access</td>
+<td>The run declaration's experience access</td>
+<td>The committed run start</td>
+</tr>
+<tr>
+<td>A policy without the cohort capability</td>
+<td>The supplied program's structural declaration</td>
+<td>The re-supplied program's declaration, cross-checked against the recorded configuration</td>
+</tr>
+<tr>
+<td>A finite token, wall-time or spend ceiling</td>
+<td>The effective budget: task and run declarations narrowed</td>
+<td>The committed task and run capabilities</td>
+</tr>
+<tr>
+<td>A custom codec</td>
+<td>The declared artifact codec</td>
+<td>The committed run capabilities</td>
+</tr>
+<tr>
+<td>A component not declaring <code>retry_safe</code></td>
+<td>Every resolved component manifest</td>
+<td>The manifests re-resolved for the recorded refs</td>
+</tr>
+<tr>
+<td>An environment fingerprint mismatch</td>
+<td>Not at start: a worker's fingerprint is not in the run declaration and no worker exists yet</td>
+<td>Not at resume either. This one will be checked when a WORKER CLAIMS, against the recorded run fingerprint, and refuses the worker rather than the run</td>
+</tr>
+</tbody>
+</table>
+<p>Resume is the strictly harder direction: a run admitted under a conforming
+program can be resumed with a program that no longer declares the capability, or
+in an environment that has drifted since, and neither is visible from committed
+history alone.</p>
+<h2 id="determinism">Determinism<a class="headerlink" href="#determinism" title="Permanent link">&para;</a></h2>
+<p>Ranking keeps score primary: evaluations are pre-ordered by their producing
+trial's logical step, then stably sorted by score, with the evaluation id as a
+final tiebreak — so a later better score still wins and only exact ties are
+decided by logical order. On sequential streams logical order equals completion
+order, so existing runs are unchanged.</p>
+<p>A cohort barrier makes the <em>set</em> of results visible at the next boundary
+independent of arrival order, but not the policy's <em>view</em> of them, because
+policy-facing collections remain in commit order. Either those collections are
+canonicalized by logical step, or the cohort suite carries a
+completion-permutation-invariance law. <strong>This record chooses canonicalization</strong>,
+for the same reason width is kernel-derived: a structural guarantee beats a
+trust-based one, and a policy should not become schedule-sensitive by accident.</p>
+<p>Canonicalization lands where each collection is built, not where it is read. The
+completed trials and evaluations are ordered at insertion by their producing
+trial's logical step, with the evaluation id as the final tiebreak.</p>
+<p><strong>The artifact list is ordered later than the others, and for a structural
+reason</strong>: an artifact is committed <em>before</em> the completion that attributes it,
+so at insertion there is no producing trial to order by. The completion carries
+both the artifact ids and the logical step and lands in the same batch
+immediately after, so that is where the list becomes canonical -- and the seed
+attributes to the bootstrap at step zero. Reading order out of the projection
+instead would put a sort on the fold's hot path, which the reserved-budget fold
+already showed is where cost accumulates.</p>
+<p>Retry exhaustion remains a genuine divergence no ordering rule removes, since
+scheduling decides whether a completion lands inside or outside its deadline:</p>
+<blockquote>
+<p>A distributed run reproduces every decision and named random choice from its
+committed history. Repeating the same declaration and seed reproduces the same
+trajectory only when every outcome is itself deterministic and no attempt is
+abandoned — a non-deterministic provider or a lease that expires under load
+will diverge. A cohort barrier guarantees that the set of results visible at
+the next boundary does not depend on arrival order.</p>
+</blockquote>
+<h2 id="environment-fingerprint">Environment fingerprint<a class="headerlink" href="#environment-fingerprint" title="Permanent link">&para;</a></h2>
+<p>A versioned digest over the interpreter implementation and version, the platform,
+the resolved distribution set, and the installed Meta-Evolve source digest,
+recorded on the run's capabilities and declared by every worker; mismatch refuses
+the worker.</p>
+<p><strong>The comparison is unimplemented as of M11.2.</strong> Distributed start refuses a run
+with no fingerprint, and <code>Dispatcher</code> copies the run's onto every
+<code>WorkerRegistration</code> it builds — but neither broker's <code>acquire</code> reads
+<code>worker.environment_fingerprint</code>, so nothing compares the two. The value is
+carried and never used as a guard. The refusal message says so rather than
+claiming a check that does not happen, because <code>AGENTS.md</code> names misleading
+reproducibility claims an anti-pattern, and a user reading a refusal is
+entitled to believe it.</p>
+<p>It becomes real with M11.4's durable worker table, which is the authority that
+admits a worker in the first place: comparing fingerprints is part of admitting
+one, not part of handing out a lease.</p>
+<p><strong>A RESUME-TIME comparison is a different question, and it is deferred for a
+different reason.</strong> On resume both values are already in hand — the recorded
+fingerprint on <code>RunCapabilities</code>, and the current one from
+<code>environment_fingerprint()</code> — so nothing about worker-table authority blocks
+comparing them. What blocks it is what the digest covers: the installed
+meta-evolve SOURCE and every installed distribution. Measured: changing the
+source digest, adding one unrelated package, or a patch-level Python bump each
+move the fingerprint. A strict resume-time comparison would therefore refuse
+every legitimate resume across a code change or a <code>uv sync</code> — which in this
+repository is the ordinary case, not the exception, since evolving the source is
+the point.</p>
+<p>So the open question is not authority but POLICY: which dimensions must match
+for a resume to be safe. Platform and interpreter plausibly must; the source
+digest plausibly must not, or the flag means "resume only the exact build that
+started this run". Whoever implements #203 should decide that before writing a
+comparison, rather than discovering it from a refused resume.</p>
+<p>It is a <strong>version-set fingerprint, not environment identity</strong>. Name and version
+pairs do not identify installed bytes, so two editable or locally patched
+installs can match, and the platform string omits OS release and libc ABI. It
+reliably detects drift; it does not prove sameness. Content-hashed distributions
+are the exit.</p>
+<h2 id="byte-compatibility-and-frozen-fixtures">Byte compatibility and frozen fixtures<a class="headerlink" href="#byte-compatibility-and-frozen-fixtures" title="Permanent link">&para;</a></h2>
+<p>M11.1 changes durable folds while leaving every recorded byte where it is, so the
+anchors that would catch a regression are named here, before the first code slice
+begins.</p>
+<table>
+<thead>
+<tr>
+<th>Anchor</th>
+<th>What it pins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/fixtures/v3_durable_run/</code></td>
+<td>A real SQLite store frozen before <code>Usage.spend_micros</code> existed. Every stored envelope must re-serialize to its exact stored bytes, and reopening must replay identical accounting</td>
+</tr>
+<tr>
+<td><code>_FROZEN_V3_TRIAL_COMPLETED</code> in <code>tests/test_durable_format.py</code></td>
+<td>One <code>TrialCompleted</code> envelope captured verbatim, not synthesized by stripping fields from today's object</td>
+</tr>
+<tr>
+<td><code>GOLDEN_EVENTS</code> in <code>tests/test_event_serialization.py</code></td>
+<td>The bare event bodies for the recorded event types</td>
+</tr>
+<tr>
+<td><code>serialization.identity_content</code> at schema version 1</td>
+<td>Task and run identity, frozen to the v1 envelope while the durable schema version moves independently</td>
+</tr>
+<tr>
+<td><code>SearchSpec.configuration</code></td>
+<td>The policy's durable configuration map, which cohort width joins</td>
+</tr>
+</tbody>
+</table>
+<p>The technique is the one <a href="https://github.com/sentient-xyz/meta-evolve/issues/143">#143</a>
+established for money, and it is why the record schema stayed at v3
+(<code>CURRENT_SCHEMA_VERSION</code>): <strong>a new field omitted at its default moves no
+existing byte.</strong> The store-schema ladder in <code>durability.py</code> is an independent
+one and it <em>does</em> move in M11.2, for the work and epoch tables -- additively,
+adding tables and touching no existing row or column, unlike v1 to v2 which had
+to backfill a digest. Stated as "the ladder moves" rather than as a rung
+number, because naming one is how this sentence rotted twice: it read "stayed
+at v3" before the work tables landed, and then a specific rung one migration
+after they did. <code>durability.py</code> is where the current rung lives. Two ladders, two answers; conflating them
+points a future migration at the wrong file. Cohort width follows
+it exactly — absent from the configuration map and from the kernel's identity
+contribution at width one — so every existing run identity, <code>SearchSpec</code>
+encoding and event stream is unchanged by construction rather than by
+inspection.</p>
+<p>One obligation these fixtures cannot see. Width must survive policy rebinding: a
+preset that reconstructs itself when bound drops any field the reconstruction
+omits, and a silently narrowed width would run wide under a narrow identity. That
+is a code obligation for M11.1, and only a test that binds and then reads the
+width back will catch it.</p>
+<h2 id="decisions">Decisions<a class="headerlink" href="#decisions" title="Permanent link">&para;</a></h2>
+<p>Central decision authority with generational execution — one dispatcher is the
+sole caller of the policy and the sole writer of the stream. Two ledgers, with
+lease state durable but outside the event stream. Attempts distinct, not secret,
+with the lease token and fence carrying authority. Reserved budget as a fold,
+every release a committed fact. One evaluation disposition, pinned at completion,
+consumed by all five callers. Cohort width declared on the policy and contributed
+to run identity by the kernel. Policy-facing collections canonicalized by logical
+step. The sequential path refuses a width above one.</p>
+<h2 id="deferred-and-rejected">Deferred and rejected<a class="headerlink" href="#deferred-and-rejected" title="Permanent link">&para;</a></h2>
+<p><strong>Deferred.</strong> Steady-state refill, which admits new work while earlier work is
+outstanding: it does strictly more than cohorts, is not asked for by #10, and
+costs a general pending-work capability, a post-stop drain rule, a changed
+completeness definition, and per-policy conformance. Distributed context and
+experience, which need a cohort-aware prerequisite grammar, a reconciled cutoff,
+and an endpoint carrying an operation ordinal with attempt and resolution
+appended atomically. Concurrency for further presets, each behind proved
+pending-work semantics. Paid concurrency, behind conservative per-trial
+allocation.</p>
+<p><strong>Rejected.</strong> Decentralized policy decisions; leases in the event stream; workers
+appending envelopes; reservation rows outside the stream; releasing capacity
+without a terminal fact; redefining what a decision's recorded head means; cohort
+width as an execution overlay; truncating a returned cohort; mixed-kind cohorts;
+archive updates inside a cohort; policy-specific coordinator branches; a trial id
+serving as both work identity and lease credential; secret or random attempt
+identities; completion-order tiebreaks; running every policy concurrently by
+default; adding a distributed mode to the synchronous callable path; actors or
+timestamps on the event envelope; external queue dependencies; multi-dispatcher
+consensus or failover.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Meta-Evolve &middot; evaluated improvement over versioned artifacts &middot; <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/LICENSE">Apache-2.0</a>
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/sentient-xyz/meta-evolve" target="_blank" rel="noopener" title="meta-evolve on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

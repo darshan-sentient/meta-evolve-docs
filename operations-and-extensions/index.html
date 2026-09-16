@@ -10,9 +10,10 @@
 
 <p id="lab-questions"><a href="../guides/cli/#change-and-predict">lab questions</a></p><script>
 const redirect = {"target": "../guides/cli/", "fragments": {"operations-and-extensions": "../guides/cli/#run-and-compare", "resume-is-a-declared-capability": "../guides/cli/#resume-is-a-declared-capability", "add-a-local-artifact-domain": "../adding-an-artifact-domain/#persistence-and-reconstruction", "conformance-every-extension-component-family": "../guides/extensions/#published-conformance", "lab-questions": "../guides/cli/#change-and-predict"}};
-const fragment = decodeURIComponent(window.location.hash.slice(1));
+let fragment = window.location.hash.slice(1);
+try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
 const destination = Object.hasOwn(redirect.fragments, fragment)
   ? redirect.fragments[fragment]
-  : redirect.target + window.location.hash;
+  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
 window.location.replace(destination);
 </script></body></html>

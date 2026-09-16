@@ -2,9 +2,10 @@
 <p><a href="../../design/user-owned-sdk-boundary/">Continue to the maintained page</a></p>
 <p id="migrate-to-a-user-owned-sdk-wrapper"><a href="../../design/user-owned-sdk-boundary/#removal-and-evidence-policy">migrate to a user owned sdk wrapper</a></p><script>
 const redirect = {"target": "../../design/user-owned-sdk-boundary/", "fragments": {"migrate-to-a-user-owned-sdk-wrapper": "../../design/user-owned-sdk-boundary/#removal-and-evidence-policy"}};
-const fragment = decodeURIComponent(window.location.hash.slice(1));
+let fragment = window.location.hash.slice(1);
+try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
 const destination = Object.hasOwn(redirect.fragments, fragment)
   ? redirect.fragments[fragment]
-  : redirect.target + window.location.hash;
+  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
 window.location.replace(destination);
 </script></body></html>

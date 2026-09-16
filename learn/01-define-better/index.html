@@ -14,9 +14,10 @@
 
 <p id="add-a-satisfaction-threshold"><a href="../../guides/limits/#4-stop-when-the-score-is-good-enough">add a satisfaction threshold</a></p><script>
 const redirect = {"target": "../../guides/limits/", "fragments": {"define-good-enough": "../../guides/limits/#4-stop-when-the-score-is-good-enough", "set-up-this-page": "../../guides/limits/#1-install", "change-the-objective-declaration": "../../guides/limits/#4-stop-when-the-score-is-good-enough", "run-with-a-different-target": "../../guides/limits/#change-and-predict", "change-and-predict": "../../guides/limits/#change-and-predict", "complete-shared-source": "../../guides/limits/#2-define-the-experiments-inputs", "add-a-satisfaction-threshold": "../../guides/limits/#4-stop-when-the-score-is-good-enough"}};
-const fragment = decodeURIComponent(window.location.hash.slice(1));
+let fragment = window.location.hash.slice(1);
+try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
 const destination = Object.hasOwn(redirect.fragments, fragment)
   ? redirect.fragments[fragment]
-  : redirect.target + window.location.hash;
+  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
 window.location.replace(destination);
 </script></body></html>

@@ -1,7 +1,9 @@
 # Meta-Evolve docs
 
-Published static documentation for [meta-evolve](https://github.com/salzubi401/meta-evolve).
+Published static documentation for [Meta-Evolve](https://github.com/sentient-xyz/meta-evolve).
 
-Site: https://salzubi401.github.io/meta-evolve-docs/
+Site: https://sentient-xyz.github.io/meta-evolve-docs/
 
-This repository contains only the built MkDocs site (HTML/CSS/JS and notebooks). Source lives in the main project. The published theme follows the system color scheme and includes a light/dark toggle.
+This repository contains the built MkDocs site. Documentation source lives in
+the main project. Build and validate it there, then publish the generated site
+here. `.source-commit` records the source revision used for this publication.

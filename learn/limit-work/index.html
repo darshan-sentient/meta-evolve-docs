@@ -16,9 +16,10 @@
 
 <p id="allow-two-evaluations"><a href="../../guides/limits/#5-put-a-ceiling-on-evaluation-work">allow two evaluations</a></p><script>
 const redirect = {"target": "../../guides/limits/", "fragments": {"limit-work": "../../guides/limits/#set-limits-and-stopping-conditions", "set-up-this-page": "../../guides/limits/#1-install", "narrow-the-allowance": "../../guides/limits/#5-put-a-ceiling-on-evaluation-work", "run-and-inspect-the-actual-work": "../../guides/limits/#5-put-a-ceiling-on-evaluation-work", "other-resource-declarations": "../../guides/limits/#other-resources", "change-and-predict": "../../guides/limits/#change-and-predict", "complete-shared-source": "../../guides/limits/#2-define-the-experiments-inputs", "allow-two-evaluations": "../../guides/limits/#5-put-a-ceiling-on-evaluation-work"}};
-const fragment = decodeURIComponent(window.location.hash.slice(1));
+let fragment = window.location.hash.slice(1);
+try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
 const destination = Object.hasOwn(redirect.fragments, fragment)
   ? redirect.fragments[fragment]
-  : redirect.target + window.location.hash;
+  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
 window.location.replace(destination);
 </script></body></html>

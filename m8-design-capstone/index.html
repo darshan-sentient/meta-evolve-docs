@@ -2,9 +2,10 @@
 <p><a href="../design/m8-harness-evolution/">Continue to the maintained page</a></p>
 <p id="m8-design-capstone"><a href="../design/m8-harness-evolution/">m8 design capstone</a></p><script>
 const redirect = {"target": "../design/m8-harness-evolution/", "fragments": {"m8-design-capstone": "../design/m8-harness-evolution/"}};
-const fragment = decodeURIComponent(window.location.hash.slice(1));
+let fragment = window.location.hash.slice(1);
+try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
 const destination = Object.hasOwn(redirect.fragments, fragment)
   ? redirect.fragments[fragment]
-  : redirect.target + window.location.hash;
+  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
 window.location.replace(destination);
 </script></body></html>
