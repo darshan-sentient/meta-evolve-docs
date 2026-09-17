@@ -191,8 +191,8 @@
     "question": "What evidence would establish autonomy of improvement?",
     "artifact": "No single artifact; autonomy framework",
     "evidence": "Proposed translation or adjacent reference; no local result",
-    "source_checked": "2026-09-15",
-    "source_scope": "Primary reference and maintained source, or explicit local proposal"
+    "source_checked": "2026-09-17",
+    "source_scope": "Survey v1 autonomy headings and §3.6.5/Table 8; historical approaches and Red Queen are separately sourced context on the page"
   },
   {
     "name": "AIDE²",
@@ -565,8 +565,8 @@
     "origin": "#192 A7",
     "question": "Can branching self-modifications discover better coding agents?",
     "artifact": "A7 proposes bounded `HarnessArtifact` successors; upstream edits an agent codebase",
-    "source_checked": "2026-09-15",
-    "source_scope": "Primary abstract/report for method summary; owning proposal for local translation",
+    "source_checked": "2026-09-17",
+    "source_scope": "DGM v3 introduction and §3: agent-code revision, archive admission, and fixed exploration; owning proposal for local translation",
     "evidence": "Proposed translation or adjacent reference; no local result"
   },
   {
@@ -595,8 +595,8 @@
     "origin": "#192 A7",
     "question": "Which branch produces useful descendants, even when its immediate score is modest?",
     "artifact": "A7 proposes immutable harness occurrences arranged in a branching lineage",
-    "source_checked": "2026-09-15",
-    "source_scope": "Primary abstract/report for method summary; owning proposal for local translation",
+    "source_checked": "2026-09-17",
+    "source_scope": "HGM v1 §3: CMP estimator, expansion, evaluation allocation, and oracle assumptions; owning proposal for local translation",
     "evidence": "Proposed translation or adjacent reference; no local result"
   },
   {

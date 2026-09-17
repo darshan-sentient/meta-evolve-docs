@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2193,6 +2193,8 @@
       
         
       
+        
+      
     
     
     
@@ -2277,14 +2279,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../concepts/search/" class="md-nav__link">
+      <a href="../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2333,6 +2335,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../concepts/experience/" class="md-nav__link">
         
   
@@ -2341,6 +2371,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2403,10 +2461,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2424,8 +2482,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2505,38 +2563,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2552,10 +2580,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2573,8 +2601,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2599,34 +2627,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3648,15 +3648,10 @@
 
 
 <h1 id="start-here-improve-a-duration-parser">Start here: improve a duration parser<a class="headerlink" href="#start-here-improve-a-duration-parser" title="Permanent link">&para;</a></h1>
-<p>This small example teaches the programming model behind the
-<a href="../research/">method library</a>: apply a method, compose compatible parts,
-or evaluate an improvement procedure itself. The same roles carry into
-optimization, research, and discovery applications with their own artifacts
-and evaluators.</p>
-<p>Meta-Evolve runs improvement experiments over Python values such as source code
-and prompts. You supply a starting value, a function that revises it, and a
-function that measures it. Meta-Evolve tries revisions, selects the best measured
-version, and keeps the history.</p>
+<p>This lesson applies an improvement procedure to a duration parser. You supply
+the starting source, a function that proposes revisions, and independent checks
+of the result. Meta-Evolve tries revisions, selects the best measured version,
+and keeps the history.</p>
 <p>This lesson uses a simulated agent with handwritten
 responses. Python actually executes and grades each revision. No SDK, API key,
 or model requests are needed; the scores below describe this simulation.</p>
@@ -3895,6 +3890,10 @@ evaluation cases separate from search when assessing generalization.</p>
 <a id="run-with-a-model"></a>
 <a id="the-same-loop-a-different-artifact"></a>
 <a id="verification-and-remaining-work"></a></p>
+<p>Here, the parser was the candidate; its proposer, search rule, and checks stayed
+fixed. To compose a method, choose how revisions are proposed and searched.
+To evolve a method, make a declared part of that procedure the candidate and
+evaluate the outcomes it produces.</p>
 <p>The same pattern works for <a href="../learn/llm-prompt/">routing prompts</a>, skills,
 harnesses, and search procedures. Choose one next step; each guide includes its
 own setup and definitions.</p>

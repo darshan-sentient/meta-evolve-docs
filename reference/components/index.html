@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2060,6 +2060,8 @@
       
         
       
+        
+      
     
     
     
@@ -2144,14 +2146,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/search/" class="md-nav__link">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2200,6 +2202,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/experience/" class="md-nav__link">
         
   
@@ -2208,6 +2238,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2270,10 +2328,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2291,8 +2349,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2372,38 +2430,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2419,10 +2447,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2440,8 +2468,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2466,34 +2494,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3552,6 +3552,11 @@ evaluation stages. The <a href="../../research/">method library</a> shows concre
 implementations; the <a href="../../research/decomposition/">composition guide</a> explains
 how to reuse their parts. A search preset supplies selection behavior within
 a method. It does not supply every stage of an algorithm such as AutoData.</p>
+<p>The <a href="../../research/decomposition/#the-worksheet">four method questions</a> map to
+existing public objects: the seed artifact says what changes, the proposer
+generates revisions, and a <code>Task</code> declares evaluation and objectives. An
+<code>Experiment</code> combines these with search, authorized experience, and a <code>Budget</code>.
+Its resulting <code>Run</code> exposes the retained versions and observations.</p>
 <table>
 <thead>
 <tr>
@@ -3595,7 +3600,7 @@ a method. It does not supply every stage of an algorithm such as AutoData.</p>
 </tbody>
 </table>
 <h2 id="replace-a-proposer-or-evaluator">Replace a proposer or evaluator<a class="headerlink" href="#replace-a-proposer-or-evaluator" title="Permanent link">&para;</a></h2>
-<p>The <a href="../../start-here/">prompt example</a> uses two plain functions.
+<p>The <a href="../../start-here/">duration-parser example</a> uses two plain functions.
 An SDK wrapper uses the same boundary: it owns its client and session, then
 returns candidate content. Return <a class="autorefs autorefs-internal" title="ProposalResult
 
@@ -3647,6 +3652,10 @@ pace the same execution. A <a class="autorefs autorefs-internal" href="../api/#m
 measurements failed. Persistent history is useful without resume capability;
 <a href="../../guides/durability/">durable-local reconstruction</a> adds the explicit
 component declarations needed to continue unfinished work.</p>
+<p>A method can return more than one run or a different result object. ACE returns
+a study containing outer search and other phase results; the Feedback Descent
+lab returns an in-memory <code>LabResult</code>. Read each method's retention description
+before assuming that one saved <code>Run</code> captures or resumes the whole procedure.</p>
 <p>Search selection never approves deployment. Keep evaluator authority, budgets,
 and final acceptance outside candidate content.</p>
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2056,6 +2056,8 @@
       
         
       
+        
+      
     
     
     
@@ -2140,14 +2142,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/search/" class="md-nav__link">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2196,6 +2198,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/experience/" class="md-nav__link">
         
   
@@ -2204,6 +2234,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2266,10 +2324,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2287,8 +2345,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2368,38 +2426,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2415,10 +2443,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2436,8 +2464,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2462,34 +2490,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3427,6 +3427,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-kind-of-claim-does-the-evidence-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What kind of claim does the evidence support?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources-and-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources and verification
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3529,6 +3551,13 @@ is proposed. Source code: not applicable. Notebook: TBD.</p>
 bounded additive auditing, not an implementation of the survey. Red Queen Gödel
 Machine and DecoEvo appear as A8 precedents for evaluator governance; their
 catalog exclusions point to that boundary rather than inventing new projects.</p>
+<p><a href="https://arxiv.org/pdf/2606.26294v2">Red Queen v2, §§3.4–3.5</a> allows learned evaluators to change
+between epochs while scoring rules stay fixed within each epoch. Replacements
+are judged against an evaluator-independent anchor. Because that anchor guides
+selection, it is not an untouched final test. Appendix F.4's oracle-level result
+depends on fixed-epoch assumptions and exact clade metaproductivity; the
+practical estimator is not an exact oracle. The local #251 proposal for audited,
+additive checks is narrower than this upstream system.</p>
 <h2 id="where-this-sits-on-the-self-improvement-ladder">Where this sits on the self-improvement ladder<a class="headerlink" href="#where-this-sits-on-the-self-improvement-ladder" title="Permanent link">&para;</a></h2>
 <p><a href="https://arxiv.org/abs/2609.11873"><em>The Last AI Built by Humans</em></a> grades
 self-improving systems on five levels of autonomy and names three problems any
@@ -3599,8 +3628,93 @@ improves itself. Critic evolution, the survey's open question about improving
 the verifier, stays in
 <a href="https://github.com/sentient-xyz/meta-evolve/issues/251">the research proposal</a>,
 outside the shipped contract.</p>
-<p>Source inspected on <strong>2026-09-16</strong>: <a href="https://arxiv.org/html/2609.11873v1">survey v1</a>.
-The mapping is our interpretation, not a capability certification.</p>
+<h2 id="what-kind-of-claim-does-the-evidence-support">What kind of claim does the evidence support?<a class="headerlink" href="#what-kind-of-claim-does-the-evidence-support" title="Permanent link">&para;</a></h2>
+<p>Autonomy describes who controls improvement. The strength of an improvement
+claim also depends on how it is justified. These historical approaches answer
+different questions; they are not three capabilities implemented by Meta-Evolve.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Relevant justification</th>
+<th>Scope of the conclusion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Did measured behavior improve?</td>
+<td><a href="https://people.idsia.ch/~juergen/ssabook/node2.html">SSA</a> retains policy changes according to observed reward rates; Meta-Evolve examples compare declared task measurements.</td>
+<td>Different procedures and objectives; evidence applies to their evaluated conditions.</td>
+</tr>
+<tr>
+<td>Is a self-rewrite justified?</td>
+<td>A <a href="https://arxiv.org/html/cs/0309048v5">Gödel Machine</a> seeks proof of greater expected utility than continuing its current search.</td>
+<td>Conditional on encoded axioms, utility, and finding a proof within available resources.</td>
+</tr>
+<tr>
+<td>How efficient is search?</td>
+<td><a href="https://people.idsia.ch/~juergen/oopsweb/node5.html">OOPS</a> bounds search relative to candidate probabilities and testing costs.</td>
+<td>Relative to its bias and cost model; no empirical acceleration claim.</td>
+</tr>
+</tbody>
+</table>
+<p>SSA is the Success-Story Algorithm. Meta-Evolve's examples support empirical
+comparisons; the library has no utility-proof or bias-optimality contract.
+The <a href="https://arxiv.org/html/cs/0309048v5">Gödel Machine's</a> rewritable code can include its proof searcher;
+a rewrite still needs justification under the encoded utility criterion.</p>
+<p>To study recursive improvement, retain which revised procedure actually
+<a href="../../concepts/meta-evolution/#what-would-make-improvement-recursive">produces later procedure changes</a>
+and compare subsequent improvement under matched starting conditions and
+resource controls, including evaluation cost. <a href="https://arxiv.org/html/2609.11873v1">The survey's §3.6.5 and Table 8</a>
+discuss reuse and controlled evidence. The <a href="../../guides/policy-evolution/">policy</a>
+and <a href="../../learn/autoresearch/">AutoResearch</a> walkthroughs show bounded inner/outer
+measurements and their retention limits. Nesting and held-out gains alone do
+not demonstrate acceleration. Likewise, <a href="../../concepts/experience/">recorded feedback access</a>
+shows what evidence was available, not that a proposer learned from it.</p>
+<h2 id="sources-and-verification">Sources and verification<a class="headerlink" href="#sources-and-verification" title="Permanent link">&para;</a></h2>
+<p>The autonomy map remains our interpretation of the survey, not a capability
+certification. Later inspections add context without changing that attribution.</p>
+<table>
+<thead>
+<tr>
+<th>Primary source</th>
+<th>Checked</th>
+<th>Material inspected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/html/2609.11873v1">The Last AI Built by Humans v1</a></td>
+<td>2026-09-16</td>
+<td>Existing autonomy and credibility-problem mapping</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/html/2609.11873v1">The Last AI Built by Humans v1</a></td>
+<td>2026-09-17</td>
+<td>Autonomy-level headings; §3.6.5 and Table 8 on recursive reuse and controlled evidence</td>
+</tr>
+<tr>
+<td><a href="https://people.idsia.ch/~juergen/ssabook/node2.html">SSA chapter: Basic Concepts</a></td>
+<td>2026-09-17</td>
+<td>Policy modifications, checkpoints, reward-rate criterion, and limitations; this later chapter is not the original 1994 report</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/html/cs/0309048v5">Gödel Machine v5, §§2.2–2.4</a></td>
+<td>2026-09-17</td>
+<td>Utility proof, encoded assumptions, and limits of provability</td>
+</tr>
+<tr>
+<td><a href="https://people.idsia.ch/~juergen/oopsweb/node5.html">OOPS: Bias-Optimality, Definition 2.1</a></td>
+<td>2026-09-17</td>
+<td>Bound relative to bias and testing costs, and its qualification</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/2606.26294v2">Red Queen v2, §§3.4–3.5 and Appendix F.4</a></td>
+<td>2026-09-17</td>
+<td>Frozen evaluation epochs, independent replacement anchor, and Proposition 3's oracle-level qualification</td>
+</tr>
+</tbody>
+</table>
 
 
 

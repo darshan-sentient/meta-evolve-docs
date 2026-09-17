@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2074,6 +2074,8 @@
       
         
       
+        
+      
     
     
     
@@ -2158,14 +2160,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/search/" class="md-nav__link">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2214,6 +2216,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/experience/" class="md-nav__link">
         
   
@@ -2222,6 +2252,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2284,10 +2342,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2305,8 +2363,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2386,38 +2444,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2433,10 +2461,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2454,8 +2482,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2480,34 +2508,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3484,19 +3484,43 @@ the resulting measurements. Each level declares its own task, seed, proposer,
 and search policy.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>outer candidate (prompt / skills / harness / policy)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  → evaluator runs bounded inner tasks
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  → records inner results, failures and usage
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  → evaluator captures the evidence and usage it will return
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  → returns an outer measurement or a typed failure
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  → outer search chooses the next candidate
 </code></pre></div>
 <p>The candidate changes only its declared content. The evaluator owns inner
-tasks, data, and limits. Inner attempt and evaluation counts stay inner;
-reported tokens, monetary spend, and elapsed usage roll up. Missing evidence
-cannot be replaced by a successful average over the cases that happened to run.</p>
+tasks, data, and limits. Inner attempt and evaluation counts stay inner.
+To account for physical work, the evaluator must forward reported tokens,
+monetary spend, and elapsed usage through its outer <code>EvaluationResult</code>.
+Capturing evidence, saving inner histories, and forwarding usage are explicit
+choices; nesting alone does not do them. A suite requiring every case cannot
+replace missing evidence with an average over only successful cases.</p>
 <p>Run the <a href="../../build-patterns/feedback-descent/#additional-recipe-support-ticket-routing">support-ticket recipe</a> to see four ticket
 sessions measure one prompt. Run the <a href="../../build-patterns/evoskill/">skill recipe</a>
 to see two repository tasks measure a library. The
-<a href="../../guides/policy-evolution/">policy recipe</a> retains reopenable inner runs;
-the examples have different persistence boundaries, stated beside their evidence.</p>
+<a href="../../guides/policy-evolution/">policy recipe</a> retains reopenable inner runs.
+Compare these two procedure examples:</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>What the outer result retains</th>
+<th>Final comparison and work accounting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../guides/policy-evolution/#5-measure-a-policy-through-its-inner-runs">Policy evolution</a></td>
+<td>Captured episode identities, storage locations, outcomes, and usage</td>
+<td>Separate baseline/selected comparison; supported physical usage is forwarded, inner counts stay separate</td>
+</tr>
+<tr>
+<td><a href="../autoresearch/#one-candidate-evaluation">AutoResearch</a></td>
+<td>Public score summaries and the private aggregate; no reopenable inner histories</td>
+<td><code>report(result)</code> runs fresh held-out checks and returns text; inner usage is not forwarded to the outer run</td>
+</tr>
+</tbody>
+</table>
 <p>Keep development feedback and final evaluation separate. A private score that
 selects the winner participates in search even when the proposer never sees
 its answer. Repeatedly using final checks to revise a candidate would turn those

@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
         <link rel="canonical" href="https://sentient-xyz.github.io/meta-evolve-docs/concepts/experience/">
       
       
-        <link rel="prev" href="../evidence/">
+        <link rel="prev" href="../authority/">
       
       
-        <link rel="next" href="../history/">
+        <link rel="next" href="../search/">
       
       
         
@@ -2062,6 +2062,8 @@
       
         
       
+        
+      
     
     
     
@@ -2146,14 +2148,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../search/" class="md-nav__link">
+      <a href="../meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2182,6 +2184,34 @@
     
   
     Evaluation and evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
   
 
     
@@ -2321,6 +2351,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../history/" class="md-nav__link">
         
   
@@ -2363,10 +2421,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2384,8 +2442,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2465,38 +2523,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2512,10 +2540,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2533,8 +2561,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2559,34 +2587,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3568,6 +3568,10 @@
 <strong>Feedback</strong> is an observation supplied to help that proposal, such as a failed
 check from its parent's evaluation. Recording an observation and making it
 available to a proposer are separate choices.</p>
+<p>Experience is explicit and off by default. Search can use recorded measurements
+to choose a parent while the proposer receives no prior run observations.
+An experiment can enable bounded feedback or inspection to inform revisions.
+The proposed change still needs independent evaluation.</p>
 <h2 id="turn-a-measurement-into-useful-feedback">Turn a measurement into useful feedback<a class="headerlink" href="#turn-a-measurement-into-useful-feedback" title="Permanent link">&para;</a></h2>
 <p>In the <a href="../../learn/05-use-experience/">feedback guide</a>, the starting parser
 returns <code>2</code> for <code>"2m"</code> instead of <code>120</code>. The evaluator records the input,
@@ -3618,9 +3622,12 @@ be varied independently.</p>
 <h2 id="keep-the-scope-and-cost-explicit">Keep the scope and cost explicit<a class="headerlink" href="#keep-the-scope-and-cost-explicit" title="Permanent link">&para;</a></h2>
 <p>Context selection and pull access have their own record and operation bounds.
 <a href="../budgets/#experience-has-its-own-meter">Experience accounting</a> is separate
-from proposal and evaluation counts. Declared citations can refer only to
-authorized prior observations; recording a citation does not prove that the
-observation caused an improvement.</p>
+from proposal and evaluation counts. A recorded observation may never be
+disclosed; a disclosed observation may go unused. Declared citations can refer
+only to authorized prior observations and record the proposer's attribution.
+They do not prove that the observation caused an improvement. The
+<a href="../../guides/experience/#does-it-help">experience guide</a> shows how to compare
+runs with and without that information.</p>
 <p>Final evaluation cases must stay outside development feedback when they are
 intended to check generalization. Even a private score used to choose the
 winner participates in search. Calling it a final check does not make it
@@ -3670,7 +3677,7 @@ need their own independent evaluation, as explained in
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../evidence/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Evaluation and evidence">
+          <a href="../authority/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Authority and promotion">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3680,20 +3687,20 @@ need their own independent evaluation, as explained in
                 Previous
               </span>
               <div class="md-ellipsis">
-                Evaluation and evidence
+                Authority and promotion
               </div>
             </div>
           </a>
         
         
           
-          <a href="../history/" class="md-footer__link md-footer__link--next" aria-label="Next: Runs and history">
+          <a href="../search/" class="md-footer__link md-footer__link--next" aria-label="Next: Proposals and search">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Runs and history
+                Proposals and search
               </div>
             </div>
             <div class="md-footer__button md-icon">

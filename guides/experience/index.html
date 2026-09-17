@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2060,6 +2060,8 @@
       
         
       
+        
+      
     
     
     
@@ -2144,14 +2146,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/search/" class="md-nav__link">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2200,6 +2202,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/experience/" class="md-nav__link">
         
   
@@ -2208,6 +2238,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2270,10 +2328,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2291,8 +2349,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2372,38 +2430,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2419,10 +2447,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2440,8 +2468,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2466,34 +2494,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3741,10 +3741,11 @@
 
 
 <h1 id="learning-from-experience">Learning from experience<a class="headerlink" href="#learning-from-experience" title="Permanent link">&para;</a></h1>
-<p>Every evaluated attempt produces more than a score. It leaves a candidate, an
-outcome, and recorded evidence about what happened. Later proposals can use that
-experience to investigate a failure, preserve a successful change, or compare
-approaches before trying another revision.</p>
+<p>Recorded candidates, outcomes, and evaluation evidence can help later proposals
+investigate a failure, preserve a successful change, or compare approaches
+before trying another revision.</p>
+<p>Experience is explicit and off by default. Recording outcomes for search and
+inspection does not automatically provide feedback to the proposer.</p>
 <h2 id="why-experience-matters">Why experience matters<a class="headerlink" href="#why-experience-matters" title="Permanent link">&para;</a></h2>
 <p>Search uses evaluation results to decide which candidates deserve more work.
 Experience gives the proposer information that can help it decide what to
@@ -3794,9 +3795,9 @@ can select context before each proposal, authorize the proposer to inspect prior
 records during its work, or combine both approaches. Selected context is useful
 when the relevant evidence is predictable; inspection lets a proposer investigate
 questions as they arise. Both are bounded and recorded.</p>
-<p>Keep three distinctions clear: history may exist without being observed; observed
-history may go unused; and declared use records the proposer's attribution, not
-proof that an observation caused an improvement.</p>
+<p>The <a href="../../concepts/experience/#keep-the-scope-and-cost-explicit">experience concept</a>
+distinguishes recorded history, disclosed observations, and the proposer's
+declared use. Access or a citation alone does not establish an improvement.</p>
 <h2 id="does-it-help">Does it help?<a class="headerlink" href="#does-it-help" title="Permanent link">&para;</a></h2>
 <p>Compare runs with and without experience while holding the task, seed, proposer,
 and search settings fixed under comparable budgets. Inspect outcomes and
@@ -3813,7 +3814,6 @@ observations, not model performance or accuracy on unseen inputs.</p>
 records within the same task and run. Cross-run knowledge reuse and semantic
 retrieval are <strong>Design—not shipped</strong>. Experience changes what a proposer may
 observe, never its evaluator, budget, permissions, or promotion authority.</p>
-<p>Experience is explicit and off by default.</p>
 <h2 id="no-memory">No memory<a class="headerlink" href="#no-memory" title="Permanent link">&para;</a></h2>
 <p>With no <code>context=</code> or <code>experience=</code> declaration, a proposer receives no prior
 records. <a class="autorefs autorefs-internal" title="NoMemory
@@ -3920,8 +3920,8 @@ logical-time validation, and replay are isolated in the
 <code>RunExperienceUsage.by_operation</code> provides canonically ordered non-zero
 operation totals through <code>meta_evolve.views.ExperienceOperationUsage</code>; they sum
 exactly to the aggregate <code>pull</code> usage.</p>
-<p>Experience changes what a proposer may observe, never the evaluator, budget,
-permission, or promotion authority.</p>
+<p>See <a href="../../concepts/authority/">authority and promotion</a> for the roles that remain
+outside candidate control and their relationship to execution isolation.</p>
 
 
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2164,6 +2164,8 @@
       
         
       
+        
+      
     
     
     
@@ -2248,14 +2250,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/search/" class="md-nav__link">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2304,6 +2306,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/experience/" class="md-nav__link">
         
   
@@ -2312,6 +2342,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2374,10 +2432,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2395,8 +2453,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2476,38 +2534,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2523,10 +2551,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2544,8 +2572,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2570,34 +2598,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3596,10 +3596,10 @@ and artifact contracts.</p>
 procedure for scientific discovery. Its representation and evaluator belong
 to that domain; the <a href="../#scientific-discovery">scientific mappings</a> identify
 proposed methods and the mechanisms they still require.</p>
-<p><strong>Question: how do I turn an algorithm into a Meta-Evolve experiment?</strong></p>
-<p>Start with what changes and what measures it. Then identify the rules that
-choose revisions and the observations those revisions may use. A familiar
-<code>Experiment</code> declaration is useful only if those choices preserve the method.</p>
+<p>Start with four questions: <strong>what changes, what generates the change, what
+judges it, and what is retained?</strong> The worksheet below expands those answers
+into a concrete experiment. A familiar <code>Experiment</code> declaration is useful only
+if its choices preserve the method.</p>
 <h2 id="the-worksheet">The worksheet<a class="headerlink" href="#the-worksheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3635,7 +3635,7 @@ choose revisions and the observations those revisions may use. A familiar
 </tr>
 <tr>
 <td>What survives the experiment?</td>
-<td>Selected artifact, observations, failures, usage, causal lineage</td>
+<td>Results actually returned or persisted: candidates, observations, failures, usage, and any captured lineage</td>
 </tr>
 </tbody>
 </table>
@@ -3675,11 +3675,47 @@ inner experiments. Their orchestration stays visible in ordinary Python.</p>
 one ordinary run. Comparison followed by editing, multi-stage curation, and
 an outer search evaluating inner searches belong in explicit user-owned code.
 Do not hide those stages by presenting a different algorithm as <code>Greedy</code>.</p>
-<p>For nested work, fill in the worksheet twice. The outer evaluator executes an
-inner experiment and reads its results. The outer candidate must not gain
-control of either evaluator, split membership, or budget. Inner attempts and
-evaluations remain inner counts; reported tokens, spend, and elapsed usage can
-roll up. A selected candidate is not permission to deploy it.</p>
+<p>For nested work, fill in the worksheet twice. The outer evaluator executes
+inner experiments and reads their results. In the <a href="../../guides/policy-evolution/#7-inspect-the-policies-and-the-work-behind-their-scores">policy trace</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Inner loop</th>
+<th>Outer loop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What changes?</td>
+<td>A number</td>
+<td>Parent selection and a voluntary attempt limit</td>
+</tr>
+<tr>
+<td>What generates the change?</td>
+<td>Increment the chosen parent</td>
+<td>Revise one policy field</td>
+</tr>
+<tr>
+<td>What judges it?</td>
+<td>The number's value</td>
+<td>Mean of complete, rankable inner results on fixed seeds</td>
+</tr>
+<tr>
+<td>What is retained?</td>
+<td>Each inner run's history and usage</td>
+<td>Policy trials plus evidence identifying saved inner runs</td>
+</tr>
+</tbody>
+</table>
+<p>These settings are the procedure artifact <code>θ</code> in the
+<a href="../../concepts/meta-evolution/#a-compact-notation-optional">meta-evolution notation</a>.
+<a href="../../learn/autoresearch/">AutoResearch</a> uses a recipe instead, and retains
+public summaries and a private aggregate without reopenable inner histories.
+The evaluator must explicitly capture inner evidence and forward supported
+physical usage; nesting alone supplies neither. Inner attempts and evaluations
+remain inner counts. The candidate cannot change either evaluator, split
+membership, or external budget, and selection grants no deployment authority.</p>
 <h2 id="try-the-procedure">Try the procedure<a class="headerlink" href="#try-the-procedure" title="Permanent link">&para;</a></h2>
 <p>Read the <a href="../transfer/">comparison</a>, then try the <a href="../gepa/#your-turn-gepa">GEPA exercise</a>.
 First write your own answers;

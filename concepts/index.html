@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
@@ -2062,6 +2062,8 @@
       
         
       
+        
+      
     
     
     
@@ -2146,14 +2148,14 @@
   
   
     <li class="md-nav__item">
-      <a href="search/" class="md-nav__link">
+      <a href="meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2202,6 +2204,34 @@
   
   
     <li class="md-nav__item">
+      <a href="authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="experience/" class="md-nav__link">
         
   
@@ -2210,6 +2240,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2272,10 +2330,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
             
   
   
@@ -2293,8 +2351,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2374,38 +2432,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2421,10 +2449,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
             
   
   
@@ -2442,8 +2470,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2468,34 +2496,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -3412,6 +3412,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-compact-notation-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A compact notation (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#read-the-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3483,28 +3494,33 @@ starting parser reads seconds correctly but ignores minutes and hours. Two
 handwritten revisions add the missing behavior. Python evaluates each version
 against the same six checks; these are simulated proposals, not model results.
 The measured progression is <strong>2/6 → 4/6 → 6/6</strong> checks passed.</p>
+<p>An <strong>improvement procedure</strong>, or <strong>method</strong>, combines proposal and search
+decisions to try changes under the declared evaluation and work allowance.
+Here it uses handwritten revisions and Greedy search. Other methods can use
+different proposal rules, feedback, or several stages of search.</p>
 <h2 id="follow-one-run">Follow one run<a class="headerlink" href="#follow-one-run" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Evaluate the seed
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>     ↓
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Record its outcome
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>     ↓
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Search: parent or stop ←──┐
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>     ↓                    │
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Propose a revision        │
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>     ↓                    │
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Validate; evaluate        │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>if valid                  │
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>     ↓                    │
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Record the outcome ───────┘
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Optional, explicit feedback:
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>authorized prior observations
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>             ↓
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>          proposer
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Evaluate seed; record outcome
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>             ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Search: parent or stop ←────────┐
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>             ↓                  │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Propose and validate            │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ├─ valid → Evaluate ─┐       │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   └─ invalid / failed ─┤       │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                        ↓       │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                Record outcome ─┘
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Optional, explicit feedback:
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>authorized prior observations
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>             ↓
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>          proposer
 </code></pre></div>
 <p>Evaluation and limits belong to the experiment. A proposed revision cannot
 rewrite its checks, award itself a score, or grant itself more work. A failed
-attempt is recorded even when it produces no measurement or valid version.</p>
+attempt has a typed outcome even when it produces no measurement or valid
+version; it is not assigned a low score.</p>
+<p>Search can branch from different parents or retain weaker stepping stones.
+It can stop with the seed still selected, or with no successful evaluation.
+The parser's improving chain is one measured trajectory through this loop.</p>
 <h2 id="recognize-the-pieces">Recognize the pieces<a class="headerlink" href="#recognize-the-pieces" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3517,6 +3533,10 @@ attempt is recorded even when it produces no measurement or valid version.</p>
 <tr>
 <td>Artifact / seed</td>
 <td>Python source in a string; <code>SEED</code> is the starting version</td>
+</tr>
+<tr>
+<td>Improvement procedure</td>
+<td>Handwritten source revisions combined with bounded Greedy search</td>
 </tr>
 <tr>
 <td>Proposer</td>
@@ -3539,20 +3559,12 @@ attempt is recorded even when it produces no measurement or valid version.</p>
 <td>Optional observations supplied explicitly to the proposer</td>
 </tr>
 <tr>
-<td>Limits</td>
-<td>Two proposal attempts after the seed evaluation</td>
+<td>Work allowance</td>
+<td>Two proposal attempts after the seed evaluation; explicit budgets can impose additional ceilings</td>
 </tr>
 <tr>
-<td>Experiment</td>
-<td>Combines the task, starting source, proposer, and search settings</td>
-</tr>
-<tr>
-<td>Session</td>
-<td>An active execution handle; <code>step()</code> advances one search decision</td>
-</tr>
-<tr>
-<td>Run</td>
-<td>Access to recorded versions, measurements, and work through methods such as <code>best()</code> and <code>trials()</code></td>
+<td>Retained results</td>
+<td>A <code>Run</code> containing versions, measurements, outcomes, and usage</td>
 </tr>
 </tbody>
 </table>
@@ -3562,6 +3574,51 @@ To configure them yourself, follow the parser from
 That example shows what each object needs and which operation you use next.
 Constructing a task or experiment declares the setup; <code>run()</code> or <code>Session.start()</code>
 begins execution, and the returned run lets you inspect what happened.</p>
+<h2 id="a-compact-notation-optional">A compact notation (optional)<a class="headerlink" href="#a-compact-notation-optional" title="Permanent link">&para;</a></h2>
+<p>For discussing an improvement procedure, these symbols name the roles above:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A₀</code></td>
+<td>The seed artifact</td>
+</tr>
+<tr>
+<td><code>I</code></td>
+<td>The improvement procedure</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>Independent evaluation and the objectives used to interpret its measurements</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>The externally supplied work allowance</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Retained execution results</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>R = Execute(I, A₀; E, B)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>A_selected = Selected(R)
+</code></pre></div>
+<p>Selection applies only when an eligible result exists. These are conceptual
+labels. In Python, use <code>improve()</code> or <code>run(experiment)</code>
+to execute a single experiment and receive a <code>Run</code>. <code>I</code> names the procedure;
+an <code>Experiment</code> declares the task, seed, proposer, and search configuration
+used to execute it. A composed method may retain several runs or its own
+documented result type, so <code>R</code> does not imply a new common result class.</p>
+<p>If experience needs a symbol, use <code>H</code> for the prior observations authorized
+for the proposer. It is distinct from both evaluation <code>E</code> and the full history
+in <code>R</code>. The notation also does not promise identical future model responses.
+See <a href="history/">runs and history</a> for result inspection and replay.</p>
 <h2 id="read-the-concepts">Read the concepts<a class="headerlink" href="#read-the-concepts" title="Permanent link">&para;</a></h2>
 <p><a id="what-is-being-versioned"></a></p>
 <p><strong><a href="artifacts/">Artifacts and versions</a></strong> explains what changes. In the parser,
@@ -3589,9 +3646,10 @@ procedure: its instructions, permitted harness settings, or search settings
 become the candidate, evaluated through their effects on other tasks.</p>
 <p><a id="what-remains-true-across-domains"></a></p>
 <h2 id="what-stays-under-your-control">What stays under your control<a class="headerlink" href="#what-stays-under-your-control" title="Permanent link">&para;</a></h2>
-<p>The experiment keeps evaluation, budgets, and permissions outside candidate
-authority. Selecting a version does not deploy it. Saving a run preserves
-recorded facts; it does not promise identical future model responses.</p>
+<p>The experiment owns evaluation and budgets; governance owns permissions and
+promotion. These controls stay outside candidate authority. Selecting a
+version does not deploy it. The <a href="authority/">authority boundary</a> explains
+how these roles relate to the configured execution environment.</p>
 <p>For deeper explanations, read <a href="identity/">identity and lineage</a>,
 <a href="authority/">authority and promotion</a>, <a href="domains/">artifact domains</a>, and
 <a href="conformance/">extension conformance</a>. The <a href="../architecture/">architecture</a>
