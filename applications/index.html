@@ -16,7 +16,7 @@
         <link rel="prev" href="../learn/07-where-next/">
       
       
-        <link rel="next" href="meeting-notes/">
+        <link rel="next" href="llm-sql/">
       
       
         
@@ -1649,6 +1649,25 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="llm-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maximise prompt-cache hits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+
     <li class="md-nav__item">
       <a href="meeting-notes/" class="md-nav__link">
         
@@ -3403,6 +3422,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#systems-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Systems optimization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systems optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximise-llm-prompt-cache-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maximise LLM prompt-cache hits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#document-and-workflow-automation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3671,6 +3718,17 @@ needed for these offline commands. Live prerequisites are named on each entry;
 existing standalone downloads remain available in the linked lessons. For a
 first experiment entirely in a notebook, choose a lesson from
 <a href="../examples/">Examples by outcome</a>.</p>
+<h2 id="systems-optimization">Systems optimization<a class="headerlink" href="#systems-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="maximise-llm-prompt-cache-hits">Maximise LLM prompt-cache hits<a class="headerlink" href="#maximise-llm-prompt-cache-hits" title="Permanent link">&para;</a></h3>
+<p><a href="llm-sql/">Complete LLM-SQL walkthrough</a> · <strong>Experimental/live-only</strong> ·
+Python 3.12+. Copy the walkthrough cells into a fresh notebook. Scoring the
+GRG seed needs no API key and should print about <code>0.6961</code>; the improve loop
+needs <code>OPENROUTER_API_KEY</code>. One recorded run reached <code>0.7268</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-sys-1" name="__codelineno-sys-1" href="#__codelineno-sys-1"></a>jupyter<span class="w"> </span>notebook<span class="w"> </span>applications/llm-sql/ADRS_LLM_SQL_MetaEvolve.ipynb
+</code></pre></div>
+<p>The <a href="llm-sql/ADRS_LLM_SQL_MetaEvolve.ipynb">reference notebook</a> is those same
+cells already assembled. Use it when you want the path in one file, not as a
+second implementation.</p>
 <h2 id="document-and-workflow-automation">Document and workflow automation<a class="headerlink" href="#document-and-workflow-automation" title="Permanent link">&para;</a></h2>
 <h3 id="extract-action-items-from-meeting-notes">Extract action items from meeting notes<a class="headerlink" href="#extract-action-items-from-meeting-notes" title="Permanent link">&para;</a></h3>
 <p><a href="meeting-notes/">Complete extraction walkthrough</a> · <strong>Shipped</strong> · Python 3.12+.
@@ -3815,13 +3873,13 @@ learning exercises and operations commands.</p>
         
         
           
-          <a href="meeting-notes/" class="md-footer__link md-footer__link--next" aria-label="Next: Extract meeting actions">
+          <a href="llm-sql/" class="md-footer__link md-footer__link--next" aria-label="Next: Maximise prompt-cache hits">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Extract meeting actions
+                Maximise prompt-cache hits
               </div>
             </div>
             <div class="md-footer__button md-icon">
