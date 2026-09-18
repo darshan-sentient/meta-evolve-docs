@@ -159,6 +159,12 @@ body { font-kerning: normal; }
 .md-typeset .highlight + .highlight { margin-top: 0.5rem; }
 .md-code__button { color: var(--md-default-fg-color--light); }
 
+/* Generated API signatures remain readable without sideways scrolling. */
+.md-typeset .doc-signature pre > code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 /* Captured transcript bytes stay unchanged; long prompts wrap for reading. */
 .md-typeset .me-learning-transcript .filename + pre > code {
   white-space: pre-wrap;
@@ -259,6 +265,17 @@ body { font-kerning: normal; }
   .md-content__inner { margin-inline: 0; padding-inline: 1rem; }
   .md-typeset h1 { font-size: 1.8rem; }
   .md-typeset table:not([class]) { min-width: 0; }
+  /* Keep the three migration columns readable inside the scroll wrapper. */
+  #review-the-five-changes + .md-typeset__scrollwrap table {
+    display: table;
+    min-width: 35rem;
+    max-width: none;
+  }
+  .md-typeset .doc-object table:not([class]) {
+    display: table;
+    min-width: 28rem;
+    max-width: none;
+  }
   .md-typeset .highlight { margin-inline: 0; }
 }
 
