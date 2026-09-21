@@ -48,7 +48,7 @@
     "name": "Feedback Descent",
     "group": "prompts",
     "page": "build-patterns/feedback-descent.md",
-    "status": "Experimental/live-only",
+    "status": "Shipped",
     "source": "https://arxiv.org/abs/2511.07919",
     "owner": "192 A6",
     "notebook": "downloads/feedback-descent-svg.ipynb",

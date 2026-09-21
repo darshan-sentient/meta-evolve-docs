@@ -425,11 +425,11 @@
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>https://sentient-xyz.github.io/meta-evolve-docs/learn/research-labs/01-feedback-descent/</loc>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/learn/research-labs/02-autodata/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>https://sentient-xyz.github.io/meta-evolve-docs/learn/research-labs/02-autodata/</loc>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/learn/research-labs/sealqa-feedback-descent/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
@@ -898,6 +898,10 @@
     </url>
     <url>
          <loc>https://sentient-xyz.github.io/meta-evolve-docs/references/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/learn/research-labs/01-feedback-descent/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
 </urlset>
