@@ -84,8 +84,8 @@
     "notebook": "notebooks/context_evolution/evoskill.ipynb",
     "origin": "references.md#evoskill",
     "question": "Can reusable skill documents improve task behavior?",
-    "artifact": "`SourceTree` of native Claude skill folders",
-    "evidence": "Claude SDK and public OfficeQA example; offline SDK-stream tests, no benchmark gains claimed",
+    "artifact": "File snapshots of native Claude skill folders",
+    "evidence": "Captured Claude SDK/OfficeQA run and offline SDK-stream tests; no benchmark gains claimed",
     "source_checked": "2026-09-21",
     "source_scope": "Official EvoSkill folder/proposer/generator implementation, public OfficeQA sample and scorer, Claude SDK documentation"
   },

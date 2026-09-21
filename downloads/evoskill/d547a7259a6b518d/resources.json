@@ -1,0 +1,72 @@
+{
+  "evoskill_commit": "36f6f04952293d7054145550c2b9f0b0411bff1c",
+  "officeqa_commit": "7b9a3c154ef9fb40215bb67934afc43e6799de16",
+  "files": [
+    {
+      "name": "officeqa_sample.csv",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/officeqa_sample.csv",
+      "sha256": "c5c4bec7a26808d22a69fa3f41b004ceeec33704236888f6be6620bb08114136",
+      "bytes": 3591
+    },
+    {
+      "name": "reward.py",
+      "url": "https://raw.githubusercontent.com/databricks/officeqa/7b9a3c154ef9fb40215bb67934afc43e6799de16/reward.py",
+      "sha256": "0d91698c87df6d889339aac36f63ae0966607f169890b0bf8b472b26bfe8138f",
+      "bytes": 28094
+    },
+    {
+      "name": "treasury_bulletin_1939_08.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1939_08.txt",
+      "sha256": "50f0ee24998564aa324bf80dd9861eb813b460d5744085bc0f4e0ce3ab0e0754",
+      "bytes": 225099
+    },
+    {
+      "name": "treasury_bulletin_1941_01.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1941_01.txt",
+      "sha256": "a4728faee07344dc001f1f7881f2e1de236ccf9e4e37a8af1677b3d3972f0a15",
+      "bytes": 272566
+    },
+    {
+      "name": "treasury_bulletin_1944_01.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1944_01.txt",
+      "sha256": "96868aa5f713405acdaa09ecc1b460f7cb57492c5178f8df105949720ef18b98",
+      "bytes": 385891
+    },
+    {
+      "name": "treasury_bulletin_1954_02.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1954_02.txt",
+      "sha256": "3e4a04da13cf2a562f82f5b01e57142ef602c5faad25dfd69b22b89dc2373c79",
+      "bytes": 399974
+    },
+    {
+      "name": "treasury_bulletin_1958_10.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1958_10.txt",
+      "sha256": "9057235c095b358a94ca63d6408726b2fcf4f3f383abf161aa2a03c23585c436",
+      "bytes": 373632
+    },
+    {
+      "name": "treasury_bulletin_1981_11.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1981_11.txt",
+      "sha256": "aa9f29dd21e468c3bf57b4b13d9452593934add4142c2fa0edbcd1942a5e8d72",
+      "bytes": 734527
+    },
+    {
+      "name": "treasury_bulletin_1982_03.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1982_03.txt",
+      "sha256": "c06e6367fa28d930f903a3b8da56a94d4eeb78778ab7d844b2cb1eab7c84bb45",
+      "bytes": 1254132
+    },
+    {
+      "name": "treasury_bulletin_1998_12.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_1998_12.txt",
+      "sha256": "5f6a866a4cfb6e0ff0b66b8c442f4cbf1e1fd95409287d924b049089ca2311f8",
+      "bytes": 459802
+    },
+    {
+      "name": "treasury_bulletin_2003_06.txt",
+      "url": "https://raw.githubusercontent.com/sentient-agi/EvoSkill/36f6f04952293d7054145550c2b9f0b0411bff1c/examples/officeqa/data/treasury_bulletins/treasury_bulletin_2003_06.txt",
+      "sha256": "dddc9528039b719fa402d3bbb229b8edb5899543d7a4cecafd960597bb467a4e",
+      "bytes": 454419
+    }
+  ]
+}
