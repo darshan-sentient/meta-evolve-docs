@@ -499,8 +499,6 @@
       
         
       
-        
-      
     
     
     
@@ -548,42 +546,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+      <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    SVG Feedback Descent
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/research-labs/sealqa-feedback-descent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SealQA prompt adaptation
+    Feedback Descent
   
 
     
@@ -2060,7 +2030,7 @@
   <span class="md-ellipsis">
     
   
-    SVG Feedback Descent
+    Improve a prompt
   
 
     
@@ -3558,6 +3528,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#integration-and-delivery-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration and delivery approval
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3600,9 +3581,10 @@
 <h1 id="harness-notebook-verification">Harness notebook verification<a class="headerlink" href="#harness-notebook-verification" title="Permanent link">&para;</a></h1>
 <p>Engineering evidence for <a href="https://github.com/sentient-xyz/meta-evolve/issues/351">#351</a>,
 September 21, 2026. The <a href="../../design/harness-lesson-plan/">plan</a> records scope.
-This record covers the working tree at
+The original rehearsal below covers the working tree at
 <code>9077011776a9b3cf6d2df57e798288e58a9c486c</code>, including concurrent documentation
-changes. It is not a merged revision, publication receipt, or Salah's final audit.</p>
+changes. The integration check and delivery approval are recorded separately
+at the end; the original rehearsal is not a publication receipt.</p>
 <h2 id="delivered-reading-paths">Delivered reading paths<a class="headerlink" href="#delivered-reading-paths" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../guides/harness-evolution/">Help assistant</a>: five complete cells,
@@ -3610,7 +3592,7 @@ changes. It is not a merged revision, publication receipt, or Salah's final audi
   <strong>1, 30, 10, 3, 31</strong>. One instruction changes the actual polite-password
   answer; fixed checks measure <strong>2/3 → 3/3</strong>. One proposal and two evaluations
   produce reusable settings. The seed and evaluator remain unchanged.</li>
-<li><a href="../../research/meta-harness/">Repository repair</a>: seven complete cells,
+<li><a href="../../research/meta-harness-reference/">Repository repair reference</a>: seven complete cells,
   with cell lengths <strong>7, 1, 18, 38, 3, 22, 2</strong>. Visible download/setup and an
   actual confinement canary precede the unchanged governed study. Retained
   source changes from <code>return value - 1</code> to <code>return value + 1</code>, with the
@@ -3623,7 +3605,7 @@ does not claim typed harness mutation or export guarantees.</p>
 <p>The maintained Python example and page snippets generate the
 <a href="../../downloads/harness-improvement.ipynb">introductory notebook</a> and
 <a href="../../downloads/harness_help.py">Python download</a>. The research page generates the
-<a href="../../downloads/meta-harness-repair.ipynb">repair notebook</a>, which downloads the
+<a href="../../downloads/harness-reference.ipynb">reference notebook</a>, which downloads the
 existing complete study. Generated downloads have no saved execution state;
 the audit copies retain observed outputs.</p>
 <h2 id="fresh-jupyter-execution">Fresh Jupyter execution<a class="headerlink" href="#fresh-jupyter-execution" title="Permanent link">&para;</a></h2>
@@ -3742,8 +3724,43 @@ package/example archives, installation receipts, source patch and file hashes,
 and check logs. The build directory is <code>/tmp/meta-evolve-351-audit/site</code>.
 Notebook cell sources were compared against the maintained pages after execution.</p>
 <p>The code and rendered routes were checked automatically; an independent visual
-or newcomer review is not claimed. Salah's review and documentation publication
-remain outstanding. This implementation does not close #351 or initiate outreach.</p>
+or newcomer review is not claimed. No participant outreach was initiated.</p>
+<h2 id="integration-and-delivery-approval">Integration and delivery approval<a class="headerlink" href="#integration-and-delivery-approval" title="Permanent link">&para;</a></h2>
+<p>On September 21, 2026, Salah approved merging, pushing, and closing the resolved
+issues after receiving the executed Jupyter notebooks. The earlier request to
+use Jupyter remains the delivery choice; no hosted Colab execution is claimed.
+Documentation publication retains its separate owner under #276.</p>
+<p>The merge was prepared in an isolated worktree based on
+<code>ad99b2ad2d9dd7742a1d519603e109e0a80de97c</code>, carrying only #351 changes.
+Current main had moved the report function to <code>flagship_report</code>, so the repair
+notebook now imports it from that owner. The run cell remains three lines.
+The full study source remains unchanged by this issue.</p>
+<ul>
+<li>Notebook, catalog, references, manual, navigation, and route checks:
+  <strong>72 passed</strong> in 51.57 seconds.</li>
+<li>Retained lesson/application/concept output checks: <strong>42 passed</strong> in 40.23 seconds.</li>
+<li>Both downloaded notebooks against the exact built source ZIP installed
+  outside the checkout: <strong>2 passed, 8 deselected</strong> in 9.34 seconds, including
+  the actual repair run and confinement check.</li>
+<li>Strict MkDocs build, source/changed-file Ruff checks, and <code>git diff --check</code>
+  passed. Pull-request CI is the final combined-revision check.</li>
+</ul>
+<p>The first Linux Docs run passed the notebook and real-repair checks but found
+the source-link audit's download allowlist lacked the new notebook. That audit
+now reads notebook names from the generator and includes the canonical Python
+download; its focused rerun and all five download checks passed.</p>
+<p>The initial isolated-branch package SHA-256 is
+<code>ed5480ccc3f87c6cb84fe35ab4d72b3e2e9d05de0ab10e4262d9f48d9f84d15e</code>;
+the complete study archive SHA-256 is
+<code>77a47de3da7c83e106f6cdd353f83f1d8c6f4c11eb1d6b413747c7afc67e51e0</code>.
+These identify that installed-package check without rewriting the historical
+Jupyter execution receipts above.</p>
+<p>Before merging, main advanced to
+<code>070f3a883dae7d87e3966f06df8f079fe58ee4ce</code>. Both the scheduler and harness download registrations,
+workflow checks, and design links were retained. The combined branch passed
+<strong>41 notebook, download, confinement, source-link, route, and catalog checks</strong>
+in 21.34 seconds. The corrected pre-integration Docs workflow also passed in
+GitHub Actions; final pull-request checks cover the combined revision.</p>
 
 
 
