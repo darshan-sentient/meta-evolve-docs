@@ -1,4 +1,4 @@
-9077011776a9b3cf6d2df57e798288e58a9c486c+working-tree-20260922
-Full local MkDocs build including the method teaching integration.
-generated-site-manifest-sha256: 5c188621ce964fc76b19dc132e0bf786420f12b21967446661c86c57aa47cdce
-package-archive-sha256: 666990b78dead9f88af10703eeebb1d5b79d839f7fb97339ea97cfa45f544229
+9077011776a9b3cf6d2df57e798288e58a9c486c+scoped-teaching-working-tree-20260922
+Merged with published Meta-Harness source cdae0fde1c32438402f1fec72728fc0b5ca4e046.
+Published package and corrected harness executable cells retained from docs ea4672c79ce1cbbb78a937930bc1a694319734d8.
+Exact generated file hashes and source scope: .publication-scope.json

@@ -4157,8 +4157,8 @@ an enclosing sandbox can deny <code>sandbox-exec</code> even when it exists. Kee
 enabled. The existing <code>run_flagship</code> owns registration, search, private
 selection, held-out comparison, and export; inspect its
 <a href="#complete-supporting-source">complete source</a> for those declarations.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">report</span><span class="p">,</span> <span class="n">run_flagship</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_flagship</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flagship_report</span><span class="w"> </span><span class="kn">import</span> <span class="n">report</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">result</span> <span class="o">=</span> <span class="n">run_flagship</span><span class="p">(</span><span class="n">run_root</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="inspect-the-repair">Inspect the repair<a class="headerlink" href="#inspect-the-repair" title="Permanent link">&para;</a></h3>

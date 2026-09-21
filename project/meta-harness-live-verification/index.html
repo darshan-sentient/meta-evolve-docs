@@ -3567,6 +3567,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#merge-candidate-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Merge-candidate checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#remaining-live-capture" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3652,7 +3663,7 @@ ran through the real implementation. This is an offline rehearsal, not an
 unmodified public-download run or a live model result.</p>
 <p>The independently copied rendered documentation cells also passed in a fresh
 process. Both routes check that support imports originate outside the checkout,
-and the installed-package check verifies the same for Meta-Evolve. All <strong>215</strong>
+and the installed-package check verifies the same for Meta-Evolve. All <strong>254</strong>
 installed package files matched the built source archive.</p>
 <table>
 <thead>
@@ -3664,16 +3675,16 @@ installed package files matched the built source archive.</p>
 <tbody>
 <tr>
 <td>Complete example</td>
-<td><code>0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947</code></td>
+<td><code>436f964e8dc81c77f52db0728f6aa10807c9f691c3eeac72fcb15d69af31ea55</code></td>
 </tr>
 <tr>
 <td>Installable library</td>
-<td><code>68e0975b11f13ddf48714f62efdd5408aed3281e0fcda2209663419391409896</code></td>
+<td><code>d897fad30e434e0cdb63a37de6bf7a5cf76c10547def72c0e74659e36e013078</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="engineering-and-visual-checks">Engineering and visual checks<a class="headerlink" href="#engineering-and-visual-checks" title="Permanent link">&para;</a></h2>
-<p>The final focused suite reported <strong>43 passed</strong>. It covers both delivered reading
+<p>The final local checks reported <strong>85 passed</strong> across three invocations. It covers both delivered reading
 paths, the live example with SDK stubs, retained deterministic downloads, and
 research-catalog integration. Controls cover malformed repairs, missing callable
 output, timeouts, SDK failures with known usage, missing usage, restricted tools,
@@ -3687,16 +3698,20 @@ code, compact score tables, accurate percentages, highlighted harness/repair
 diffs, expanded independent checks, and expandable worker traces. The preview
 is explicitly labeled <strong>Deterministic SDK rehearsal</strong>. Mobile, hosted-kernel,
 and independent newcomer validation are not claimed.</p>
+<h2 id="merge-candidate-checks">Merge-candidate checks<a class="headerlink" href="#merge-candidate-checks" title="Permanent link">&para;</a></h2>
+<p>The lesson was integrated separately onto source revision
+<code>e823f518</code> (the merged M11.3 implementation), preserving its updated deterministic
+reference imports and runtime fixes. Its declaration uses the canonical
+<code>Experiment</code> path. Notebook, catalog, reference, and navigation checks reported
+<strong>65 passed</strong>; the separate SDK-stub and confined-grader suite reported
+<strong>8 passed</strong>; notebook-registry and provider-boundary checks reported <strong>12 passed</strong>.
+All seven cells also ran in a fresh kernel against this installed source archive.</p>
 <h2 id="remaining-live-capture">Remaining live capture<a class="headerlink" href="#remaining-live-capture" title="Permanent link">&para;</a></h2>
-<p>No live model call was made. Automatic approval review rejected the proposed
-run because the prior approval did not explicitly name the payload and external
-destination. One run would send the authored repair issues, tiny Python sources,
-optional contracts, harness instructions, and development traces to Anthropic
-through the Claude SDK. It allows at most 13 sessions, each with eight turns and
-a $0.35 SDK-estimated cost limit; billed spend is unknown.</p>
-<p>The canonical notebook has no saved live outputs. The new download routes have
-been built locally and have not been published. Live execution and a truthful
-capture remain subject to explicit approval for the payload and destination.</p>
+<p>No live model call was made. The release contains executable Claude SDK callables,
+but live repair quality remains unvalidated. One run allows at most 13 sessions,
+each with eight turns and a $0.35 SDK-estimated cost limit; billed spend is unknown.
+The canonical notebook has no saved live outputs. Its download routes are generated
+by the documentation build; publication does not establish a live result.</p>
 <p>Local rehearsal notebooks, rendered HTML, source manifests, build/test logs,
 and the live-run preparation script are under <code>notebooks/meta_harness_review/</code>,
 which is intentionally gitignored. The preview site is in

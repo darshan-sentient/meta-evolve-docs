@@ -3890,10 +3890,12 @@ executes it in a fresh in-memory database and counts required table/column names
 <p>A deterministic proposer fills five target columns, scoring 0.2 → 1.0. This does
 not validate production data migration, constraints, or rollback safety.</p>
 <h3 id="improve-a-repair-harness">Improve a repair harness<a class="headerlink" href="#improve-a-repair-harness" title="Permanent link">&para;</a></h3>
-<p><a href="../research/meta-harness/">Canonical Meta-Harness walkthrough</a> · <strong>Shipped</strong> ·
+<p><a href="../research/meta-harness-reference/">Deterministic harness reference</a> · <strong>Shipped</strong> ·
 Python 3.12+; macOS <code>sandbox-exec</code> or supported Linux Landlock confinement.
 Change planner/context settings; bounded repository-repair episodes provide
 independent development, private, and final checks.</p>
+<p>For real Claude SDK agents, use the separate
+<a href="../research/meta-harness/">seven-cell Meta-Harness lesson</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/research/harness_evolution/main.py<span class="w"> </span>--output<span class="w"> </span>/tmp/meta-evolve-harness
 </code></pre></div>
 <p>Use a fresh output directory for a new study. Existing compatible stores resume.

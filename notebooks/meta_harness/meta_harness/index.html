@@ -4191,9 +4191,9 @@ If an enclosing sandbox prevents launch, use a supported local terminal/kernel.<
 <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
 
-<span class="n">source_url</span> <span class="o">=</span> <span class="s2">"https://sentient-xyz.github.io/meta-evolve-docs/downloads/meta-harness/0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947/example.zip"</span>
+<span class="n">source_url</span> <span class="o">=</span> <span class="s2">"https://sentient-xyz.github.io/meta-evolve-docs/downloads/meta-harness/436f964e8dc81c77f52db0728f6aa10807c9f691c3eeac72fcb15d69af31ea55/example.zip"</span>
 <span class="n">archive</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">source_url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">sha256</span><span class="p">(</span><span class="n">archive</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">sha256</span><span class="p">(</span><span class="n">archive</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"436f964e8dc81c77f52db0728f6aa10807c9f691c3eeac72fcb15d69af31ea55"</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Example download does not match this notebook."</span><span class="p">)</span>
 <span class="n">support</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"meta-harness-source-"</span><span class="p">))</span>
 <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">archive</span><span class="p">))</span> <span class="k">as</span> <span class="n">bundle</span><span class="p">:</span>
@@ -4225,9 +4225,9 @@ import sys, tempfile
 from urllib.request import urlopen
 from zipfile import ZipFile
 
-source_url = "https://sentient-xyz.github.io/meta-evolve-docs/downloads/meta-harness/0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947/example.zip"
+source_url = "https://sentient-xyz.github.io/meta-evolve-docs/downloads/meta-harness/436f964e8dc81c77f52db0728f6aa10807c9f691c3eeac72fcb15d69af31ea55/example.zip"
 archive = urlopen(source_url, timeout=30).read()
-if sha256(archive).hexdigest() != "0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947":
+if sha256(archive).hexdigest() != "436f964e8dc81c77f52db0728f6aa10807c9f691c3eeac72fcb15d69af31ea55":
     raise RuntimeError("Example download does not match this notebook.")
 support = Path(tempfile.mkdtemp(prefix="meta-harness-source-"))
 with ZipFile(BytesIO(archive)) as bundle:
@@ -4521,23 +4521,23 @@ minutes; progress and check tables appear as calls finish. Billed spend is unkno
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
     <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">artifact</span><span class="o">=</span><span class="n">HarnessArtifact</span><span class="p">,</span>
         <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">"quality"</span><span class="p">),),</span>
         <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">evaluations</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tokens</span><span class="o">=</span><span class="mi">400_000</span><span class="p">,</span> <span class="n">wall_seconds</span><span class="o">=</span><span class="mi">1800</span><span class="p">)),</span>
     <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">revise</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
     <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">24000</span><span class="p">),</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">storage</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">"development"</span><span class="p">),</span>
 <span class="p">)</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">"development"</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">run = meta.run(
+<div class="clipboard-copy-txt" id="cell-5">experiment = meta.Experiment(
     task=meta.Task(evaluator=evaluate, artifact=HarnessArtifact,
         objectives=(meta.Maximize("quality"),),
         budget=meta.Budget(trials=2, evaluations=3, tokens=400_000, wall_seconds=1800)),
     seed=seed, proposer=revise, search=meta.Greedy(max_trials=2),
     context=meta.RecentAncestors(max_records=12, max_chars=24000), random_seed=0,
-    storage=meta.Storage.durable(root / "development"),
-)</div>
+)
+run = meta.run(experiment, storage=meta.Storage.durable(root / "development"))</div>
 </div>
 </div>
 </div>
