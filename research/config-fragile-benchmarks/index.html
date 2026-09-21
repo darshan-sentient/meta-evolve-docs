@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="config-fragile-benchmarks">Config-fragile benchmarks<a class="headerlink" href="#config-fragile-benchmarks" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> This benchmark study asks how much model rankings depend on
+evaluation choices such as option order, prompt wording, and answer extraction.</p>
+<p><strong>How it works.</strong> The same models answer the same items across a declared grid
+of harness configurations. Per-item correctness records reveal which questions
+change outcome and which model comparisons change rank. The study measures
+sensitivity to configuration; it does not search for one favorable score to
+report. <a href="https://arxiv.org/abs/2608.21382">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Do model rankings depend on option order, prompt wording, or answer extraction?</p>
 <p><a href="https://arxiv.org/abs/2608.21382">The primary source</a> motivates this question. The worksheet below is

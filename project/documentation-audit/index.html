@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3642,6 +3672,9 @@
 
 
 <h1 id="documentation-audit-and-editorial-conventions">Documentation audit and editorial conventions<a class="headerlink" href="#documentation-audit-and-editorial-conventions" title="Permanent link">&para;</a></h1>
+<!-- Kept together so navigation, method introductions, source ownership, and
+evidence conventions have one editorial owner despite exceeding 300 lines. -->
+
 <p>Lead with improving solutions and the methods that produce them. The use,
 compose, and evolve journeys connect that idea to implementations and research
 directions. The complete duration parser teaches the common API; task guides
@@ -3744,6 +3777,18 @@ application and execution-mode discovery. Both link to one canonical page per
 method. Show usable implementations before proposed mappings and adjacent
 references. Keep availability aligned with <code>research/catalog.json</code>; use only
 Shipped, Experimental/live-only, and Design—not shipped as status labels.</p>
+<p>Open every algorithm or method page with a short <strong>What it does.</strong> and
+<strong>How it works.</strong> summary before setup, component tables, or implementation
+details. Explain the problem, the changing object, and the distinctive mechanism
+in plain language, so the paper is optional reading. Cite the primary source
+for research claims and distinguish its method from this repository's adaptation
+or proposal. For surveys, benchmarks, and infrastructure references, describe
+their contribution without pretending that each is an optimization algorithm.</p>
+<p>Keep that orientation consistent while preserving the method's teaching order:
+SVG shows drawing and critique; EvoSkill makes direct agent calls before search;
+Meta-Harness measures a harness through fresh repairs. Preserve captured outcomes
+and code provenance. Prose-only changes must not invalidate or silently replace
+live evidence; code changes require the existing capture-validity checks.</p>
 <p>After the problem, answer the <a href="../../research/decomposition/#the-worksheet">four method questions</a>:
 what changes, what generates the change, what judges it, and what is retained?
 Name fixed controls and actual stages, including search and feedback. Keep exact
@@ -3761,7 +3806,12 @@ A search preset does not establish a complete research method. Scientific
 discovery belongs in the framework's application scope, while unimplemented
 scientific methods retain their Design—not shipped status. New method releases
 update the canonical walkthrough, catalog, source/download links, and evidence
-together; composition claims point to code showing actual compatible reuse.</p>
+together; composition claims point to code showing actual compatible reuse.
+State authentication and platform needs separately from status. Distinguish
+live-capable code, offline SDK rehearsal, and a retained live capture, and identify
+the tested source/package through the existing evidence records. Publish package,
+support downloads, and documentation as one verified build; a working local
+download path is not evidence of public availability.</p>
 <h2 id="concept-conventions">Concept conventions<a class="headerlink" href="#concept-conventions" title="Permanent link">&para;</a></h2>
 <p>Concepts start with the duration parser. Offer the path: improvement loop →
 artifacts → meta-evolution → evaluation and authority → experience → deeper

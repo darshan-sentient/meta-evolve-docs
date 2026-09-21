@@ -523,7 +523,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -539,7 +539,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -652,6 +652,8 @@
       
         
       
+        
+      
     
     
     
@@ -734,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -763,6 +765,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3759,8 +3789,11 @@ tries one handwritten correction: <strong>2/6 → 6/6 checks passed</strong>.</p
 ↓ Independently test the code it produces<br>
 Keep the best measured settings</p>
 <p>The <a href="https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness/">Meta-Harness example</a>
-tests settings through bounded repair attempts, then checks the selection
-on a fresh task. Its worker is deterministic; no model requests are needed.</p>
+uses Claude SDK agents to propose settings and produce repairs. Independent
+checks measure those repairs before private selection and a held-out comparison.
+Its live capture is pending; the separate
+<a href="https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness-reference/">deterministic reference</a>
+runs without model requests.</p>
 </li>
 </ul>
 </div>

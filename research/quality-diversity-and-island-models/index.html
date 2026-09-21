@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,15 @@
 
 <h1 id="quality-diversity-and-island-models">Quality diversity and island models<a class="headerlink" href="#quality-diversity-and-island-models" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> This family of search designs keeps several useful kinds
+of candidate available, so one high aggregate score need not erase every
+alternative.</p>
+<p><strong>How it works.</strong> <a href="https://arxiv.org/abs/1504.04909">MAP-Elites</a> retains strong
+candidates in behavior bins. Pareto search retains candidates with different
+objective tradeoffs. Island models maintain separate populations and exchange
+members through migration. These are distinct mechanisms, not interchangeable
+names for a population. Meta-Evolve's shipped <code>Population</code> and <code>Specialists</code>
+policies implement narrower forms of retention.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Different useful behaviors can deserve retention even when they do not maximize one score. This is a family of search designs, not one paper or a shipped island runtime.</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>

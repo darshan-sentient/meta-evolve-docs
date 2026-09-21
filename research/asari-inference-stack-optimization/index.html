@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,14 @@
 
 <h1 id="asari-inference-stack-optimization">Asari inference-stack optimization<a class="headerlink" href="#asari-inference-stack-optimization" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://asari.ai/blog/inference-optimization">Asari's inference optimization</a>
+uses coding agents to improve the speed of a model-serving stack while checking
+that its model behavior remains acceptable.</p>
+<p><strong>How it works.</strong> Agents investigate and change kernels, scheduling, load
+balancing, or configuration. Repeated benchmarks measure performance and
+token-distribution checks verify correctness; those observations guide further
+edits. The proposed local starting point is one bounded code overlay on one
+trusted GPU, with evaluator-owned measurements and production promotion.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
 <p>Asari's <a href="https://asari.ai/blog/inference-optimization">inference-optimization report</a>
 describes many agents improving a pinned vLLM serving stack through a

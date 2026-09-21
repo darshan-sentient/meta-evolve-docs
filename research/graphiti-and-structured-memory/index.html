@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,16 @@
 
 <h1 id="graphiti-and-structured-memory">Graphiti and structured memory<a class="headerlink" href="#graphiti-and-structured-memory" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2501.13956">Graphiti, described in the Zep paper</a>,
+organizes changing information so an agent can retrieve relevant historical
+facts as memory.</p>
+<p><strong>How it works.</strong> Build a temporal knowledge graph and retrieve facts with
+their time and provenance, rather than treating all remembered text as equally
+current. This supports memory retrieval; Meta-Evolve additionally needs the
+causal links between candidate programs, evaluations, and search decisions.
+A future retrieval-policy experiment could use the graph as external data,
+but no Graphiti integration is shipped.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2501.13956">Graphiti</a> is relevant to temporal knowledge graphs and dynamic synthesis of agent memory. Meta-Evolve additionally needs executable artifacts, objective rewards, search-policy state, training views, and causal sibling/path queries.</p>
 <p><strong>Question:</strong> Can temporal knowledge retrieval give an agent the right historical facts?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

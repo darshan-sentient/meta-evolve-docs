@@ -715,7 +715,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -731,7 +731,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -844,6 +844,8 @@
       
         
       
+        
+      
     
     
     
@@ -926,7 +928,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -955,6 +957,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3882,11 +3912,12 @@
 
 
 <h1 id="build-an-autoresearch-loop-with-meta-evolve">Build an autoresearch loop with Meta-Evolve<a class="headerlink" href="#build-an-autoresearch-loop-with-meta-evolve" title="Permanent link">&para;</a></h1>
-<p>After the <a href="../../start-here/">duration-parser lesson</a>, improve a procedure
-that searches for solutions. An outer evaluator measures its inner results. Public
-feedback and private selection guide development; a separate final comparison
-supplies held-out evidence. The procedure cannot change those controls.</p>
-<p>The example runs offline; its notebook is optional.</p>
+<p><strong>What it does.</strong> This autoresearch example improves a recipe for conducting
+small searches, judging a recipe by the solutions those searches find.</p>
+<p><strong>How it works.</strong> An outer loop revises the allowed moves for inner number
+searches. Public results guide revisions, private aggregate scores select a
+recipe, and held-out tasks check the selection. Tasks and limits stay fixed.</p>
+<p><strong>Status: Shipped.</strong> Offline; optional next step after <a href="../../start-here/">your first run</a>.</p>
 <h2 id="component-worksheet">Component worksheet<a class="headerlink" href="#component-worksheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3914,11 +3945,8 @@ supplies held-out evidence. The procedure cannot change those controls.</p>
 </tr>
 </tbody>
 </table>
-<p>Tasks, split membership, inner/outer budget ceilings, and promotion stay outside
-the recipe. Inspired by Weco's
-<a href="https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement">AIDE² report</a>,
-this example illustrates bounded inner research and private selection. It
-does <strong>not</strong> reproduce AIDE² or provide evidence of recursive self-improvement.</p>
+<p>Inspired by <a href="https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement">AIDE²</a>,
+this is no reproduction or evidence of recursive self-improvement; promotion is external.</p>
 <h2 id="the-result-first">The result first<a class="headerlink" href="#the-result-first" title="Permanent link">&para;</a></h2>
 <p>After <a href="../../applications/#checkout-setup">checkout setup</a>, run this from
 the repository root:</p>

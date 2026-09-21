@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,14 @@
 
 <h1 id="envharness">EnvHarness<a class="headerlink" href="#envharness" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> EnvHarness reshapes an agent's learning environment to address
+its weaknesses while retaining the environment's original verifier.</p>
+<p><strong>How it works.</strong> A diagnostic agent examines execution trajectories, writes
+plug-in components around the existing environment, and validates their effects
+through fresh interactions. The wrapper changes what the agent encounters while
+preserving the underlying verification logic. Measured learning and transfer
+determine whether the reshaping helps.
+<a href="https://arxiv.org/abs/2608.19880">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can environment wrappers target an agent weakness while retaining the original verifier?</p>
 <p><a href="https://arxiv.org/abs/2608.19880">The primary source</a> motivates this question. The worksheet below is

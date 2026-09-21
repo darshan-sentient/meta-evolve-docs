@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="profiler-driven-autoresearch">Profiler-driven autoresearch<a class="headerlink" href="#profiler-driven-autoresearch" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> Profiler-driven autoresearch improves an algorithm by using
+measurements of where its execution time goes to guide code changes.</p>
+<p><strong>How it works.</strong> A coding agent proposes a revision, runs correctness checks,
+and inspects timing and profiling feedback before trying again. Keeping several
+promising idea families allows a structural change to develop even if its first
+version loses to the incumbent. The motivating report describes GPU kernels.
+<a href="https://sankalp.bearblog.dev/autoresearch/">Primary report</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can profiling guide algorithm revisions without hiding near-misses and failed ideas?</p>
 <p><a href="https://sankalp.bearblog.dev/autoresearch/">The primary source</a> motivates this question. The worksheet below is

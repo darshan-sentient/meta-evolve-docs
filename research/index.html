@@ -525,7 +525,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -541,7 +541,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -654,6 +654,8 @@
       
         
       
+        
+      
     
     
     
@@ -736,7 +738,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -765,6 +767,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3722,6 +3752,12 @@ it, and how will you evaluate the result? The same programming model supports
 artifact improvement and experiments that evaluate an improvement procedure.</p>
 <p><a href="#use-a-method">Use a method</a> · <a href="decomposition/">Compose a method</a> ·
 <a href="../learn/autoresearch/">Evolve a method</a></p>
+<p>For a concrete introduction, <a href="../build-patterns/feedback-descent/">SVG Feedback Descent</a>
+makes revision and selection visible, <a href="../build-patterns/evoskill/">EvoSkill</a>
+builds native skills from failed agent traces, and <a href="meta-harness/">Meta-Harness</a>
+measures instructions through independently tested repairs. Each opens with a
+short explanation of what the method does and how it works; reading the paper
+is optional. Their distinct workflows share the <a href="decomposition/#the-worksheet">same component roles</a>.</p>
 <h2 id="use-a-method">Use a method<a class="headerlink" href="#use-a-method" title="Permanent link">&para;</a></h2>
 <p>Choose a walkthrough below for a supported implementation. Each explains its
 setup, execution, editable artifact, and exact mechanism. Read the opening
@@ -3776,7 +3812,7 @@ paper reproduction or a live performance result.</p>
 <tr>
 <td><a href="meta-harness/">Meta-Harness</a> — Can bounded harness edits improve independently graded repairs?</td>
 <td><code>HarnessArtifact</code> planner/context</td>
-<td><strong>Shipped</strong>. Maintained deterministic mechanism; no paper reproduction</td>
+<td><strong>Experimental/live-only</strong>. Offline SDK rehearsal; live capture pending; <a href="meta-harness-reference/">deterministic reference</a> retained</td>
 </tr>
 <tr>
 <td><a href="self-harness/">Self-Harness</a> — Can verifier-grounded diagnosis expose recurring harness weaknesses?</td>

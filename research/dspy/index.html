@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,15 @@
 
 <h1 id="dspy">DSPy<a class="headerlink" href="#dspy" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2310.03714">DSPy</a> lets authors describe
+a language-model program as reusable modules, then optimize its prompts and
+demonstrations against a task metric.</p>
+<p><strong>How it works.</strong> An author supplies the program, examples, metric, and an
+optimizer. The optimizer tests candidate instructions or demonstrations and
+returns a compiled program. The program describes the task; the chosen
+optimizer supplies the improvement procedure. Meta-Evolve integration remains
+a proposal rather than a shipped compiler or adapter.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2310.03714">DSPy</a> provides a declarative programming model for modular LM programs and optimizers that compile prompts and demonstrations against metrics.</p>
 <p>Meta-Evolve should integrate DSPy in both directions:</p>
 <ul>
 <li>wrap a DSPy program as a versioned harness component;</li>

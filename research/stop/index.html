@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,14 @@
 
 <h1 id="stop">STOP<a class="headerlink" href="#stop" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2310.02304">STOP</a> asks a program
+that improves other programs to produce a better version of itself.</p>
+<p><strong>How it works.</strong> The current improver uses language-model calls to propose
+revised improver code. Each version is judged by its utility on downstream
+program-improvement tasks, so outer selection depends on inner search results.
+Model weights stay fixed. Meta-Evolve's proposed recipe precursor is narrower
+than executable self-rewriting and does not implement the paper's discovered
+search procedures.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can an LM-calling improver generate a better version of its own improvement program?</p>
 <p><a href="https://arxiv.org/abs/2310.02304">The primary source</a> motivates this question. The worksheet below is

@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,18 @@
 
 <h1 id="openevolve">OpenEvolve<a class="headerlink" href="#openevolve" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://github.com/algorithmicsuperintelligence/openevolve">OpenEvolve</a>
+is an open framework for evolving programs with language-model proposals and
+automated evaluation.</p>
+<p><strong>How it works.</strong> Start with a program, supply an evaluator, and configure
+model-driven edits and search. Evaluated programs enter a database that helps
+select candidates for further revision. Integrating it with Meta-Evolve would
+require preserving those search choices and capturing returned code as an
+immutable artifact; similar vocabulary does not provide an adapter or shared
+execution automatically.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/algorithmicsuperintelligence/openevolve">OpenEvolve</a> is an open evolutionary coding-agent framework and useful implementation reference for program databases, evaluation, and search loops. Meta-Evolve should seek adapter compatibility where practical rather than duplicate APIs without benefit.</p>
+<p>Meta-Evolve should seek adapter compatibility where practical rather than
+duplicate APIs without benefit.</p>
 <p><strong>Question:</strong> How could an external evolutionary program optimizer compose with an evaluated artifact loop?</p>
 <p>For current upstream authoring responsibilities, library entry points, and
 history visualization, see the <a href="../../comparison/#openevolve-evolve-programs">comparison</a>,

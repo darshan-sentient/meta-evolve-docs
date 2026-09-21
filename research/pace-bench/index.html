@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="pace-bench">PACE-Bench<a class="headerlink" href="#pace-bench" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> PACE-Bench tests whether an agent can adapt a working
+code-driven design when the physics of its environment changes.</p>
+<p><strong>How it works.</strong> Each task pairs a source environment with a changed target
+that keeps the same goal and interface. The starting design works in the source
+but fails in the target. The agent revises it within an attempt budget, using
+simulator feedback to recover a valid solution.
+<a href="https://arxiv.org/abs/2608.14441">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can a working program adapt when the physical environment changes?</p>
 <p><a href="https://arxiv.org/abs/2608.14441">The primary source</a> motivates this question. The worksheet below is

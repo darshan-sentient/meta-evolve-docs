@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="rsi-exam">RSI-Exam<a class="headerlink" href="#rsi-exam" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> RSI-Exam measures whether an agent can improve a working
+executable method and retain that improvement on unseen cases.</p>
+<p><strong>How it works.</strong> The agent starts from a valid baseline, edits and measures
+versions on visible tasks within fixed limits, then submits one executable.
+A sealed verifier runs that code unchanged on hidden tasks. The final score
+therefore tests transfer beyond the cases used to guide development.
+<a href="https://rsi-exam.ai/blog.html">Primary report</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Does an improved executable retain its gains when the verifier reruns it on hidden data?</p>
 <p><a href="https://rsi-exam.ai/blog.html">The primary source</a> motivates this question. The worksheet below is

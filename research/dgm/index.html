@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3588,6 +3618,13 @@
 
 <h1 id="dgm">DGM<a class="headerlink" href="#dgm" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> The Darwin Gödel Machine searches for better coding agents by
+letting an agent revise its own source code while keeping model weights fixed.</p>
+<p><strong>How it works.</strong> It generates and evaluates modified agents, retaining viable
+variants in a branching archive. An agent can become a useful starting point
+for later changes even without immediately beating the best score. Archive
+management and parent selection remain fixed in this version.
+<a href="https://arxiv.org/html/2505.22954v3">Primary paper, v3</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can branching self-modifications discover better coding agents?</p>
 <p><a href="https://arxiv.org/abs/2505.22954">The primary source</a> motivates this question. The worksheet below is

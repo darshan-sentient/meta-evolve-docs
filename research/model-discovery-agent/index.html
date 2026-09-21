@@ -525,7 +525,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -541,7 +541,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -654,6 +654,8 @@
       
         
       
+        
+      
     
     
     
@@ -736,7 +738,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -765,6 +767,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3708,6 +3738,14 @@
 
 <h1 id="model-discovery-agent">Model Discovery Agent<a class="headerlink" href="#model-discovery-agent" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> Model Discovery Agent seeks an explanation of how a hidden
+world works and chooses experiments that help distinguish possible mechanisms.</p>
+<p><strong>How it works.</strong> Bayesian inference updates beliefs about candidate models
+from observations. An experiment designer chooses interventions for their
+expected information value, and a language model proposes new mechanisms when
+the current hypotheses cannot explain the evidence. Both the explanations and
+the next experiment depend on what has been learned.
+<a href="https://arxiv.org/abs/2608.09696">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Which intervention best distinguishes candidate mechanisms of a hidden world?</p>
 <p><a href="https://arxiv.org/abs/2608.09696">The primary source</a> motivates this question. The worksheet below is

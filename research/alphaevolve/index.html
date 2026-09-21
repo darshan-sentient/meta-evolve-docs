@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,15 @@
 
 <h1 id="alphaevolve">AlphaEvolve<a class="headerlink" href="#alphaevolve" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2506.13131">AlphaEvolve</a> searches for
+better algorithms and scientific constructions by evolving executable programs.</p>
+<p><strong>How it works.</strong> Model-driven coding agents propose changes to earlier
+programs. Automated evaluators measure correctness and task quality, and a
+population of evaluated candidates supplies starting points for further edits.
+The program representation and verifier determine what search can discover.
+Meta-Evolve has source-artifact and evaluation primitives, but no AlphaEvolve
+implementation or reproduction of its discoveries.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2506.13131">AlphaEvolve</a> demonstrates coding-agent-driven evolutionary search for algorithmic and scientific problems. It is a reference for program artifacts, evaluator-guided evolution, and populations of executable candidates.</p>
 <p><strong>Question:</strong> Can evaluated code changes improve algorithms and scientific constructions?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

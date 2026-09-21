@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,15 @@
 
 <h1 id="evox">EvoX<a class="headerlink" href="#evox" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2602.23413">EvoX</a> evolves both
+candidate solutions and the strategy used to produce and select them.</p>
+<p><strong>How it works.</strong> Solution changes are evaluated on the task; strategy changes
+are judged by the progress they cause during solution search. Keeping both
+histories connects an outcome to the procedure that produced it. Meta-Evolve's
+policy example demonstrates a narrower nested evaluation mechanism. The
+paper's dynamic joint evolution and arbitrary strategy programs are not
+implemented here.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2602.23413">EvoX</a> motivates treating both solutions and the search strategy as evolving artifacts. This corresponds to nested task evaluation of <code>PolicyArtifact</code> and <code>SearchProgram</code> candidates.</p>
 <p><strong>Question:</strong> Can the strategy for selecting and varying solutions improve during solution search?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

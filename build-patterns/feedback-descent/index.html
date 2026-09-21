@@ -523,7 +523,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -539,7 +539,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -804,6 +804,8 @@
       
         
       
+        
+      
     
     
     
@@ -886,7 +888,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -915,6 +917,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -4004,13 +4034,47 @@
 
 <p><a id="improve-a-prompt-from-evaluation-feedback"></a></p>
 <h1 id="feedback-descent-a-lighthouse-in-the-storm">Feedback Descent: a lighthouse in the storm<a class="headerlink" href="#feedback-descent-a-lighthouse-in-the-storm" title="Permanent link">&para;</a></h1>
-<p>Draw <strong>a lighthouse on a large rock plateau in stormy weather at high tide</strong>.
-A generator writes an SVG; a separate grader looks at its image and suggests
-changes. Meta-Evolve gives the generator <strong>six revisions</strong> and keeps the best score.</p>
+<p><strong>What it does.</strong> Feedback Descent improves artifacts using written critiques.</p>
+<p><strong>How it works.</strong> An evaluator compares pairs of candidates and explains its preference.
+The generator uses that history to revise again, without changing model weights.
+See the <a href="https://arxiv.org/abs/2511.07919">paper</a>.</p>
+<p><strong>In this example.</strong> Draw <strong>a lighthouse on a large rock plateau in a storm at high tide</strong>.
+A generator revises SVG from a separate grader's image critique. This adaptation
+uses rubric scores and Greedy selection, with <strong>six revisions</strong> after the seed.</p>
 <p>Feedback Descent can improve <strong>any artifact you can represent, revise, and
 evaluate</strong>: images, code, configurations, documents, or prompts. The feedback
 may be text even when the artifact is not. Here, the artifact is an SVG image.</p>
 <p><strong>Status: Shipped.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact</td>
+<td>SVG source rendered as an image</td>
+</tr>
+<tr>
+<td>Proposer</td>
+<td><code>revise</code> uses the selected parent's critique to rewrite its SVG</td>
+</tr>
+<tr>
+<td>Evaluator</td>
+<td><code>grade</code> returns a rubric score and written feedback</td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>improve()</code> supplies Greedy: higher scores replace the parent</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Selected SVG, all seven images, critiques, scores, and usage</td>
+</tr>
+</tbody>
+</table>
 <p><a href="../../downloads/feedback-descent-svg.ipynb"><strong>Open the self-contained Jupyter notebook</strong></a></p>
 <p>Run the notebook in order, or copy the cells below into a new one. The SDK and
 display helpers are folded away; expand them when copying. No checkout or
@@ -4255,9 +4319,7 @@ each run so every version faces the same request and criteria.</p>
 <p>For another <a href="../../concepts/artifacts/">artifact type</a>, replace the generator,
 renderer, and grader. The feedback → revision → evaluation loop stays the same.
 See the <a href="../../programming-model/">programming model</a> for the callable contract.</p>
-<p>Inspired by the <a href="https://ai.stanford.edu/blog/feedback-descent/">Feedback Descent SVG example</a>.
-This example uses rubric scores and Greedy selection; the <a href="https://arxiv.org/abs/2511.07919">paper</a>
-uses pairwise preferences and rationale history.</p>
+<p>Inspired by the <a href="https://ai.stanford.edu/blog/feedback-descent/">Feedback Descent SVG example</a>.</p>
 <h2 id="additional-recipe-support-ticket-routing">Additional recipe: support-ticket routing<a class="headerlink" href="#additional-recipe-support-ticket-routing" title="Permanent link">&para;</a></h2>
 <p>The deterministic <a href="../../downloads/routing-example.zip">support-ticket example</a> and
 <a href="../../learn/research-labs/sealqa-feedback-descent/">SealQA prompt lab</a> remain available.</p>

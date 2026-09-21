@@ -527,7 +527,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -543,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -868,6 +868,8 @@
       
         
       
+        
+      
     
     
     
@@ -950,7 +952,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -979,6 +981,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3935,7 +3965,7 @@
         <a href="../../../build-patterns/feedback-descent/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Prompts and data
+    Images, prompts, and data
   </span>
 
         </a>
@@ -3972,6 +4002,14 @@
 
 <h1 id="autodata-improve-a-generation-recipe-with-solver-behavior">AutoData: improve a generation recipe with solver behavior<a class="headerlink" href="#autodata-improve-a-generation-recipe-with-solver-behavior" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Experimental/live-only.</strong></p>
+<p><strong>What it does.</strong> <a href="https://facebookresearch.github.io/RAM/blogs/autodata/">AutoData</a>
+uses solver behavior to judge generated training questions. This lab improves
+the recipe that generates questions supported by evidence but hard without it.</p>
+<p><strong>How it works.</strong> Generate a question and answer, test a restricted solver and
+an informed solver, then apply fixed grounding and acceptance checks. Rewrite
+the recipe from the resulting report and evaluate it again. This lab uses the
+same model with different context; the upstream method uses weak and strong
+solvers. No live result is captured here.</p>
 <p>Optional executable companion:
 <a href="../../../notebooks/18_sealqa_research_labs/02_autodata/">open the canonical notebook</a>.
 Everything needed to understand the lab is explained below.</p>

@@ -627,7 +627,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -643,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -756,6 +756,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -867,6 +869,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3716,15 +3746,17 @@ and artifact contracts.</p>
 procedure for scientific discovery. Its representation and evaluator belong
 to that domain; the <a href="../#scientific-discovery">scientific mappings</a> identify
 proposed methods and the mechanisms they still require.</p>
-<p>Start with four questions: <strong>what changes, what generates the change, what
-judges it, and what is retained?</strong> The worksheet below expands those answers
-into a concrete experiment. A familiar <code>Experiment</code> declaration is useful only
-if its choices preserve the method.</p>
+<p>Each method page starts with <strong>what it does</strong> and <strong>how it works</strong>, followed by
+the local implementation's scope. Read that summary first; the paper supplies
+optional detail. Then ask <strong>what changes, what generates the change, what
+judges it, and what is retained?</strong> The worksheet expands those answers into an
+experiment. A familiar <code>Experiment</code> declaration is useful only if its choices
+preserve the method.</p>
 <h2 id="the-worksheet">The worksheet<a class="headerlink" href="#the-worksheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Ask the paper</th>
+<th>Ask the method</th>
 <th>Put the answer here</th>
 </tr>
 </thead>
@@ -3767,14 +3799,21 @@ are independently replaceable choices.</p>
 <ol>
 <li><a href="../../build-patterns/feedback-descent/">Feedback Descent</a>: generate SVG source,
    grade its rendered image, and revise the best drawing using visual feedback.</li>
-<li><a href="../ace/">ACE</a>: revise individual playbook entries from published development
-   lessons, select privately, and check the selected context on held-out tasks.</li>
+<li><a href="../../build-patterns/evoskill/">EvoSkill</a>: inspect failed answers, propose and
+   build a native skill, retry, then automate revisions with Population search.</li>
 <li><a href="../meta-harness/">Meta-Harness</a>: edit bounded harness surfaces using authorized
    prior observations, then separate development, private selection, and final evaluation.</li>
 </ol>
-<p>Each page supplies its own problem, worksheet, diagram, source, setup, execution
-path, and limits. Their implementations demonstrate selected mechanisms; none
-is a reproduction of the corresponding paper's entire system.</p>
+<p>Each page supplies its own problem, component map, source, setup, execution
+path, and limits. SVG and EvoSkill retain live captures; the live Meta-Harness
+lesson has offline SDK rehearsals with capture pending. These are adaptations,
+not reproductions of the corresponding papers' entire systems.</p>
+<p>The proposer is an engine role, not a required base class. SVG's <code>revise</code>
+directly asks for an updated drawing. EvoSkill's <code>revise</code> combines a skill-plan
+agent and a file-generating agent into one candidate-producing callback.
+Search then chooses which candidate to revise next. Preserve this distinction
+when composing your own agents. <a href="../ace/">ACE</a> adds a different stage schedule:
+itemized playbook updates followed by consolidation and a held-out check.</p>
 <h2 id="reuse-components-and-keep-the-method-explicit">Reuse components and keep the method explicit<a class="headerlink" href="#reuse-components-and-keep-the-method-explicit" title="Permanent link">&para;</a></h2>
 <p>An artifact defines what a candidate means. A proposer defines how it changes.
 Search chooses which candidates receive work, while a method's wider schedule

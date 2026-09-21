@@ -521,7 +521,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -537,7 +537,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -650,6 +650,8 @@
       
         
       
+        
+      
     
     
     
@@ -732,7 +734,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -761,6 +763,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3770,12 +3800,51 @@ claims.</p>
 <td><a href="../../research/ace/">ACE</a></td>
 <td><a href="../../notebooks/context_evolution/ace/">Context playbook</a></td>
 </tr>
+<tr>
+<td>Improve a repair harness</td>
+<td><a href="../../research/meta-harness/">Meta-Harness</a></td>
+<td><a href="../../notebooks/meta_harness/meta_harness/">Standalone lesson, live outputs pending</a></td>
+</tr>
 </tbody>
 </table>
 <p>The <a href="../../milestones/#milestone-9-policy-artifacts-and-meta-evolution">policy-evolution roadmap</a>
 owns its flagship scope; <a href="https://github.com/sentient-xyz/meta-evolve/issues/192">A5</a>
 owns the research migration.</p>
 <h2 id="live-research-and-provider-records">Live research and provider records<a class="headerlink" href="#live-research-and-provider-records" title="Permanent link">&para;</a></h2>
+<p>The three featured lessons have different evidence and execution requirements.
+Availability is the catalog status; it does not identify whether a model account
+is needed. Read a capture without making calls, or follow the lesson's setup to
+run a new experiment whose outcome may differ.</p>
+<table>
+<thead>
+<tr>
+<th>Lesson</th>
+<th>Retained evidence</th>
+<th>Execution and source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../build-patterns/feedback-descent/">SVG Feedback Descent</a></td>
+<td>September 21 live capture: all seven images, critiques, scores, parent choices, selected SVG, and reported usage; <a href="../../assets/feedback-descent-svg/results.json">records</a></td>
+<td>Codex authentication; the <a href="../../downloads/feedback-descent-svg.ipynb">self-contained notebook</a> owns the executable example</td>
+</tr>
+<tr>
+<td><a href="../../build-patterns/evoskill/">EvoSkill</a></td>
+<td>September 21 Claude/OfficeQA capture: native skill creation/use, population attempts, held-out tie, and SDK receipts; code fingerprint protects saved outputs</td>
+<td>Claude authentication; <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/examples/research/evoskill/main.py">canonical Python</a> generates the page and notebook with versioned support files</td>
+</tr>
+<tr>
+<td><a href="../../research/meta-harness/">Meta-Harness</a></td>
+<td><a href="../meta-harness-live-verification/">Offline installed-package and copied-page SDK rehearsals</a>; live capture pending</td>
+<td>Claude authentication and supported local confinement; <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/examples/research/meta_harness/main.py">canonical Python</a> generates both routes; the <a href="../../research/meta-harness-reference/">deterministic reference</a> retains its separate evidence</td>
+</tr>
+</tbody>
+</table>
+<p>These records describe particular source/configuration snapshots, not benchmark
+gains or guaranteed rerun outcomes. Their local presence does not establish that
+new download routes have been published. Use package and support archives from
+the same verified documentation build; publication remains an independent gate.</p>
 <p>The <a href="../../live-agent-track/">bounded live-agent track</a> records provider setup
 and evidence limitations. The <a href="../../sealqa-research-labs/">SealQA labs</a> are
 <strong>Experimental/live-only</strong>; their notebooks remain explicitly unexecuted until
@@ -3804,6 +3873,8 @@ Offline checks establish request wiring and accounting, not live model quality.<
 <p>The <a href="../../research/">research catalog</a> connects these experiments to their source methods.</p>
 <h2 id="documentation-and-usability-verification">Documentation and usability verification<a class="headerlink" href="#documentation-and-usability-verification" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="../flagship-teaching-verification/">Method teaching integration</a>: summaries
+  across the research catalog, preserved flagship captures, and offline checks.</li>
 <li><a href="../practical-journey-verification/">Practical journey integration</a>: #336 routing
   feedback, snapshots, reopening, installed rehearsals, and QA handoff.</li>
 <li><a href="../documentation-verification/">Documentation verification record</a>: tested

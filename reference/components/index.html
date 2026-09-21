@@ -523,7 +523,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -539,7 +539,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -652,6 +652,8 @@
       
         
       
+        
+      
     
     
     
@@ -734,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -763,6 +765,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3672,6 +3702,13 @@ evaluation stages. The <a href="../../research/">method library</a> shows concre
 implementations; the <a href="../../research/decomposition/">composition guide</a> explains
 how to reuse their parts. A search preset supplies selection behavior within
 a method. It does not supply every stage of an algorithm such as AutoData.</p>
+<p>Proposer and evaluator are roles that ordinary Python functions can fill.
+<code>revise</code> is a common name for a function passed as <code>proposer=revise</code>; no base
+class is required. A method may contain several agents inside that function:
+<a href="../../build-patterns/evoskill/">EvoSkill</a> combines a skill-plan proposer and a
+file generator. <a href="../../build-patterns/feedback-descent/">SVG Feedback Descent</a>
+uses one revision call. Search chooses which parent to give the callback and
+when to stop; the callback generates the changed value.</p>
 <p>The <a href="../../research/decomposition/#the-worksheet">four method questions</a> map to
 existing public objects: the seed artifact says what changes, the proposer
 generates revisions, and a <code>Task</code> declares evaluation and objectives. An

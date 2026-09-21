@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3599,8 +3629,15 @@
 
 <h1 id="gepa">GEPA<a class="headerlink" href="#gepa" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2507.19457">GEPA</a> improves a
+language-model program's instructions using execution feedback while keeping
+candidates that succeed on different cases.</p>
+<p><strong>How it works.</strong> A reflective model reads task traces and proposes revised
+instructions. A revision must improve on a matched minibatch before broader
+evaluation. Search retains complementary candidates by their per-case
+performance, rather than selecting only one aggregate-score winner. That
+combination of reflection and selection is not yet implemented here.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2507.19457">GEPA</a> uses reflective textual mutation and Pareto selection to optimize LM components from task feedback. It is a reference for <code>Text</code> mutation, evidence-aware reflection, and Pareto retention.</p>
 <p><strong>Question:</strong> Can reflective task traces improve prompts while retaining complementary candidates?</p>
 <p>This page maps the paper's algorithm. For current OptimizeAnything inputs,
 engine choices, custom proposers, and the work the caller supplies, see the

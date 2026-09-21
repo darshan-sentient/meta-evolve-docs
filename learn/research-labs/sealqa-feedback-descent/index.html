@@ -527,7 +527,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -543,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -885,6 +885,8 @@
       
         
       
+        
+      
     
     
     
@@ -967,7 +969,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -996,6 +998,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3969,7 +3999,7 @@
         <a href="../../../build-patterns/feedback-descent/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Prompts and data
+    Images, prompts, and data
   </span>
 
         </a>
@@ -4005,7 +4035,17 @@
 
 
 <h1 id="feedback-descent-improve-a-prompt-from-textual-feedback">Feedback Descent: improve a prompt from textual feedback<a class="headerlink" href="#feedback-descent-improve-a-prompt-from-textual-feedback" title="Permanent link">&para;</a></h1>
+<!-- Kept together to preserve the complete five-session lab, its scope, and
+historical section anchors despite exceeding 300 lines. -->
+
 <p><strong>Status: Experimental/live-only.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2511.07919">Feedback Descent</a> improves
+candidate text using an evaluator's explanation of why one version is preferred.</p>
+<p><strong>How it works.</strong> The method compares candidates, records a preference and its
+rationale, and uses that feedback to guide another edit. This SealQA lab isolates
+one comparison and one edit: two prompts answer the same question, a comparator
+selects one, and an editor revises it before an independent exact-answer check.
+It does not implement the paper's full iterative search or rationale history.</p>
 <p>This <strong>SealQA prompt adaptation</strong> compares two prompts and edits one using
 pairwise feedback. For the complete Codex generator-and-grader integration,
 start with <a href="../../../build-patterns/feedback-descent/">SVG Feedback Descent</a>.

@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,14 @@
 
 <h1 id="mce">MCE<a class="headerlink" href="#mce" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2601.21557">MCE</a> improves both an
+agent's context and the skills used to construct that context.</p>
+<p><strong>How it works.</strong> An inner agent applies context-engineering skills and
+revises context for a task. An outer process revises or combines those skills
+using their histories and measured task outcomes. Evaluating a skill therefore
+requires observing the context-building process it produces. The proposed
+Meta-Evolve translation must implement both levels; editing an ACE playbook
+alone does not provide this method.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can the method that builds context improve alongside the context it produces?</p>
 <p><a href="https://arxiv.org/abs/2601.21557">The primary source</a> motivates this question. The worksheet below is

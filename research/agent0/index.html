@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,10 +3607,15 @@
 
 <h1 id="agent0">Agent0<a class="headerlink" href="#agent0" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> Agent0 trains agents using tasks they generate themselves,
+without requiring a human-curated task dataset.</p>
+<p><strong>How it works.</strong> A curriculum agent proposes challenging tasks and a
+tool-using executor learns to solve them. As the executor improves, the
+curriculum agent is pushed to generate harder tasks that require its growing
+capabilities. Both agents evolve through this feedback loop; the method includes
+model training. <a href="https://arxiv.org/abs/2511.16043">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
-<p>Can generated tasks improve a solver without a human-curated training set?
-<a href="https://arxiv.org/abs/2511.16043">The paper</a> describes the following mechanism:
-A curriculum agent and tool-using executor co-evolve; stronger execution pushes the curriculum toward harder tasks.</p>
+<p>Can generated tasks improve a solver without a human-curated training set?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>This is a scaffold-only translation; training is not a shipped capability.</p>
 <table>

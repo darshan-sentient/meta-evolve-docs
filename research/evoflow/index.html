@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="evoflow">EvoFlow<a class="headerlink" href="#evoflow" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> EvoFlow evolves a collection of agent workflows with different
+models, complexity, and cost, so different tasks can use different solutions.</p>
+<p><strong>How it works.</strong> It retrieves parent workflows using task-related tags, combines
+and mutates them, then evaluates the resulting workflows. Selection preserves
+useful diversity within the population as well as performance, allowing simple
+and elaborate workflows to coexist.
+<a href="https://arxiv.org/abs/2502.07373">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can a diverse population of workflows adapt to tasks while balancing performance and cost?</p>
 <p><a href="https://arxiv.org/abs/2502.07373">The primary source</a> motivates this question. The worksheet below is

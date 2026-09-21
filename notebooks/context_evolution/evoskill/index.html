@@ -499,6 +499,8 @@
       
         
       
+        
+      
     
     
     
@@ -517,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -533,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -546,14 +548,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
+      <a href="../../../build-patterns/feedback-descent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/research-labs/sealqa-feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SealQA prompt adaptation
   
 
     
@@ -611,6 +641,8 @@
   
     
     
+      
+        
       
         
       
@@ -700,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -729,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -2030,7 +2090,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -4034,9 +4094,47 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <p><a id="improve-an-agents-skill-library"></a>
 <a id="skill-documents-evolved"></a>
 <a id="replace-the-fixture"></a></p>
-<h1 id="evoskill-teach-an-agent-a-reusable-skill">EvoSkill: teach an agent a reusable skill<a class="anchor-link" href="#evoskill-teach-an-agent-a-reusable-skill">¶</a></h1><p><strong>Experimental/live-only.</strong> Start with three OfficeQA questions. See Haiku's
-answers, ask Sonnet for a skill, build it, and retry a missed question.
-Then continue with a population of up to three skill folders.</p>
+<h1 id="evoskill-teach-an-agent-a-reusable-skill">EvoSkill: teach an agent a reusable skill<a class="anchor-link" href="#evoskill-teach-an-agent-a-reusable-skill">¶</a></h1><p><strong>What it does.</strong> EvoSkill discovers reusable skills from an agent's failures,
+keeping the underlying model fixed.</p>
+<p><strong>How it works.</strong> An executor attempts tasks; a proposer diagnoses failures and
+suggests skills; a generator writes the skill folders. New folders are evaluated
+before selection. The <a href="https://arxiv.org/abs/2603.02766">paper</a> retains a Pareto
+frontier using validation performance.</p>
+<p><strong>In this example.</strong> Watch three Claude agents answer OfficeQA questions,
+propose and build a native <code>SKILL.md</code>, then retry a missed question. This small
+adaptation uses <code>Population(size=3)</code> and a final held-out comparison; it does not
+reproduce the paper's search or benchmark results.</p>
+<p><strong>Experimental/live-only.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact</td>
+<td>A folder of reusable skill files</td>
+</tr>
+<tr>
+<td>Proposer</td>
+<td><code>revise</code>: diagnose failures, propose a skill, then build its files</td>
+</tr>
+<tr>
+<td>Evaluator</td>
+<td><code>evaluate</code>: run the executor and apply the independent OfficeQA scorer</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>Population chooses which folder to revise next</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Selected skills, candidate history, SDK receipts, and held-out comparison</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Run one cell at a time.</strong> The first six code cells show the agent workflow;
 the last two run the longer search and held-out check. Setup fetches two readable
 Python helpers and pinned data automatically. Use a Python 3.12+ kernel with pip on macOS
@@ -6690,6 +6788,10 @@ executor: complete
 <h2 id="5-continue-with-a-population-of-three">5. Continue with a population of three<a class="anchor-link" href="#5-continue-with-a-population-of-three">¶</a></h2><p><strong>Longer step.</strong> <code>seed</code> is the folder just generated, captured as a path-to-text
 dictionary. No <code>SkillSet</code> is needed; snapshots are validated with <code>SourceTree</code>.
 Two small callbacks repeat the calls above for whichever parent the search selects.</p>
+<p>Here <code>proposer</code> names the inner agent that proposes a <strong>skill plan</strong>. The outer
+<code>revise</code> function combines that call with <code>generator</code>, which builds the <strong>files</strong>.
+Meta-Evolve receives the complete workflow as <code>proposer=revise</code>; search chooses
+the parent folder, and <code>revise</code> decides how to change it.</p>
 <p>The search grades that seed on all three development questions and tries up to
 two further revisions. <code>Population(size=3)</code> retains up to three folders, selecting
 parents through tournaments of two. A perfect score stops early. The final table
@@ -7197,6 +7299,7 @@ Report: /private/var/folders/fn/fg595s6s7wd8d9z3jhr5vsbw0000gn/T/evoskill-i672b9
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Reading this capture.</strong> The manual retry corrects a missed answer. Population search keeps its starting skill folder after the further revisions; the original empty folder and selected folder both solve 3/3 held-out questions. This demonstrates the workflow and a corrected retry, with no measured held-out accuracy gain.</p>
 <p><a id="change-and-predict"></a></p>
 <p>The run folder contains the selected skills, full observable SDK receipts,
 held-out answers and <code>report.json</code>. <code>run.usage()</code> covers the population stage;

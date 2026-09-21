@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -4106,12 +4136,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="improve-a-scheduler">Improve a scheduler<a class="anchor-link" href="#improve-a-scheduler">¶</a></h1><p>Jobs of different sizes arrive at a group of workers. Where should each job go?
-Our starting program takes turns: worker 0, worker 1, and so on. That is cheap,
-but when large jobs arrive at regular intervals, the same workers get overloaded.</p>
+<h1 id="improve-a-scheduler">Improve a scheduler<a class="anchor-link" href="#improve-a-scheduler">¶</a></h1><p><strong>What it does.</strong> This ADRS-inspired example improves how a scheduler assigns
+jobs to workers, balancing load against the cost of inspecting each worker.</p>
+<p><strong>How it works.</strong> Greedy search evaluates handwritten code revisions in a fixed
+simulator, then separate selection and final workloads check the candidates.
+This <strong>Shipped</strong> fixture demonstrates the generation, evaluation, and refinement
+loop described by <a href="https://arxiv.org/abs/2512.14806">ADRS</a>; it uses no live model
+and makes no hardware-performance claim.</p>
+<p>Jobs of different sizes arrive at a group of workers. Our starting round-robin
+program takes turns between workers; regularly spaced large jobs overload some.</p>
 <p>Try a small change: <strong>look at two workers and choose the less busy one.</strong>
-Here is the proposed function. <code>load()</code> asks for a worker's current load;
-each request counts as one <strong>probe</strong>:</p>
+In this function, each <code>load()</code> call inspects a worker and counts as one <strong>probe</strong>:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">choose</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
     <span class="n">first</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">pick</span><span class="p">()</span>
     <span class="n">second</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">pick</span><span class="p">()</span>
@@ -4119,8 +4154,7 @@ each request counts as one <strong>probe</strong>:</p>
         <span class="n">second</span> <span class="o">=</span> <span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">cluster</span><span class="o">.</span><span class="n">size</span>
     <span class="k">return</span> <span class="n">first</span> <span class="k">if</span> <span class="n">cluster</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="k">else</span> <span class="n">second</span>
 </pre></div>
-<p>The fixed simulator actually runs this Python code. Its development workloads
-produce this comparison:</p>
+<p>Running the programs on fixed development workloads produces this comparison:</p>
 <table>
 <thead>
 <tr>
@@ -4157,8 +4191,6 @@ The two-worker program offers the better tradeoff under the fixed score:
 <code>quality = max(0, 1 - imbalance - 0.02 * probes_per_job)</code>.
 Imbalance is zero for an even distribution and one when a single worker gets
 everything. These measurements describe this simulator, not hardware speed.</p>
-<p>The proposer tries handwritten revisions, including mistakes. The measured
-scores come from running those programs, not a lookup table or a live model.</p>
 <h2 id="run-it-in-jupyter">Run it in Jupyter<a class="anchor-link" href="#run-it-in-jupyter">¶</a></h2><p>This is an optional next step after <a href="https://sentient-xyz.github.io/meta-evolve-docs/start-here/">your first improvement</a>.
 Use a <strong>fresh Jupyter kernel with Python 3.12 or newer</strong>, on macOS with usable
 <code>sandbox-exec</code>, or Linux with usable <strong>Landlock ABI 3+</strong>. The runtime must allow
@@ -4978,11 +5010,9 @@ command from <code>scheduler-example/</code> with a new output directory:</p>
 explains identities, accounting, and the file-access boundary. Confinement does
 not claim general network or hostile-process isolation.</p>
 <p><a id="research-question"></a></p>
-<h3 id="research-question-adrs">Research question: ADRS<a class="anchor-link" href="#research-question-adrs">¶</a></h3><p>Can verifier-guided revisions improve a systems algorithm? This shipped,
-fixture-only study is inspired by <a href="https://arxiv.org/abs/2512.14806">ADRS</a>.
-It is not a reproduction of ADRS, its ten case studies, or live-model gains.
-Use the <a href="https://sentient-xyz.github.io/meta-evolve-docs/research/decomposition/#the-worksheet">paper-reading worksheet</a> to map the
-research mechanism onto the components below.</p>
+<h3 id="research-question-adrs">Research question: ADRS<a class="anchor-link" href="#research-question-adrs">¶</a></h3><p>Can verifier-guided revisions improve a systems algorithm? Map this fixture using
+the <a href="https://sentient-xyz.github.io/meta-evolve-docs/research/decomposition/#the-worksheet">paper-reading worksheet</a>. It does not
+reproduce ADRS's ten case studies or live-model gains.</p>
 <h2 id="component-mapping">Component mapping<a class="anchor-link" href="#component-mapping">¶</a></h2><table>
 <thead>
 <tr>

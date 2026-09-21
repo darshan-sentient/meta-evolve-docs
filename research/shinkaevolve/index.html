@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="shinkaevolve">ShinkaEvolve<a class="headerlink" href="#shinkaevolve" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> ShinkaEvolve searches for better programs while aiming to make
+each model-generated candidate more useful.</p>
+<p><strong>How it works.</strong> It balances revising promising parents with exploring other
+branches, rejects proposed code that lacks novelty, and adapts which model in an
+ensemble generates mutations. Independent task evaluation measures the programs.
+Parent choice, novelty checking, and model allocation are separate parts of the
+search. <a href="https://arxiv.org/abs/2509.19349">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can parent diversity, novelty rejection, and model allocation make program evolution more sample-efficient?</p>
 <p><a href="https://arxiv.org/abs/2509.19349">The primary source</a> motivates this question. The worksheet below is

@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,16 @@
 
 <h1 id="group-evolving-agents">Group-Evolving Agents<a class="headerlink" href="#group-evolving-agents" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2602.04837">Group-Evolving Agents</a>
+studies how agents can improve together by sharing useful experience across
+an evolving group.</p>
+<p><strong>How it works.</strong> Evaluate agent behavior, share experiences within the group,
+and use them to generate new agent variants. Evolution operates on groups
+and their shared information, so isolated agent branches do not capture the
+whole method. A Meta-Evolve translation would need explicit group
+representation, mutation, selection, and authorized experience sharing; none
+is supplied by ordinary proposer pooling.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2602.04837">Group-Evolving Agents</a> studies evolution at the level of composite agent groups and shared experience. It is relevant to a proposed group-topology artifact, performance-novelty selection, and group-level mutation.</p>
 <p><strong>Question:</strong> Can explicit experience sharing make groups of evolving agents more effective?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

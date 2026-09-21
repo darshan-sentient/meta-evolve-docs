@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="autosaddler">AutoSaddler<a class="headerlink" href="#autosaddler" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> AutoSaddler turns patterns in failed agent executions into
+reusable changes to the agent's harness.</p>
+<p><strong>How it works.</strong> An offline loop collects traces from task batches, diagnoses
+failures, and generates targeted patches to harness code. Validation determines
+which updates to keep. The aim is to fix a recurring weakness in prompts,
+tools, or control logic so later executions benefit from the change.
+<a href="https://arxiv.org/abs/2608.23041">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can trace diagnosis yield durable harness improvements rather than fixes for one trajectory?</p>
 <p><a href="https://arxiv.org/abs/2608.23041">The primary source</a> motivates this question. The worksheet below is

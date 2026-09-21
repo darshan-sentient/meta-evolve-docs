@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3599,6 +3629,14 @@
 
 <h1 id="self-harness">Self-Harness<a class="headerlink" href="#self-harness" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2606.09498">Self-Harness</a> improves the
+instructions and infrastructure around an agent by learning from its own
+execution failures.</p>
+<p><strong>How it works.</strong> Mine recurring weaknesses in task traces, propose diverse
+but small harness edits, and accept changes after regression testing. The
+shared Meta-Evolve fixture demonstrates the diagnosis mechanism: a fixed
+verifier publishes failure clusters and passing invariants for later proposals.
+It does not reproduce the full model-driven system or its benchmark gains.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
 <p><a href="https://arxiv.org/abs/2606.09498">Self-Harness</a> closes the loop Meta-Harness
 opens: an agent improves its own harness through three iterative stages —
@@ -3664,7 +3702,7 @@ from one fixed verifier, and claims no cross-model or cross-task transfer.</p>
 </tr>
 </tbody>
 </table>
-<p><a href="../meta-harness/">The complete harness walkthrough</a> includes setup, source, verified
+<p><a href="../meta-harness-reference/">The deterministic harness reference</a> includes setup, source, verified
 output, and the shared execution path. These are separately explained paper
 mechanisms in one maintained program, not independent reproductions.</p>
 <h2 id="capability-evidence-and-ownership">Capability, evidence, and ownership<a class="headerlink" href="#capability-evidence-and-ownership" title="Permanent link">&para;</a></h2>

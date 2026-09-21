@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,15 @@
 
 <h1 id="aero">AERO<a class="headerlink" href="#aero" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/abs/2602.03084">AERO</a> builds a training
+curriculum from a model's own questions, answers, and criticism.</p>
+<p><strong>How it works.</strong> Question generation supplies challenges; answering and
+criticism produce learning signals; iterative training updates the participating
+roles. Difficulty targeting and correction are part of that larger loop.
+Changing a question recipe with fixed model weights can illustrate one
+component, but it does not reproduce the paper's coupled training loops.
+Meta-Evolve ships no AERO training integration.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2602.03084">AERO</a> couples self-questioning, answering, criticism, and iterative model updates. It is relevant to synthetic-experience artifacts and external training loops consuming experience-graph views.</p>
 <p><strong>Question:</strong> Can self-questioning, answering, and criticism form a useful training curriculum?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

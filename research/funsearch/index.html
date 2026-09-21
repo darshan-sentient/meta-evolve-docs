@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,16 @@
 
 <h1 id="funsearch">FunSearch<a class="headerlink" href="#funsearch" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://doi.org/10.1038/s41586-023-06924-6">FunSearch</a>
+searches for useful mathematical constructions by improving the functions
+that generate them.</p>
+<p><strong>How it works.</strong> A language model generates candidate functions from previous
+programs. A fixed automated evaluator executes and scores them, while a program
+database with separate populations supplies promising examples for later
+generation. The evaluator and function representation bound the discovery
+process. A source-editing loop alone does not implement its population and
+island selection mechanism, which remains unshipped here.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://doi.org/10.1038/s41586-023-06924-6">FunSearch</a> combines LLM-generated programs with automated evaluation and evolutionary selection for mathematical discovery. It illustrates why executable artifacts and objective evaluators are powerful while also showing that the evaluator and representation bound the discovery process.</p>
 <p><strong>Question:</strong> Can executable function search discover useful mathematical constructions?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

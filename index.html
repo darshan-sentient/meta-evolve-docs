@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3504,6 +3534,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#see-the-loop-in-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See the loop in action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#one-improvement-experiment" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3681,6 +3722,38 @@ attempts, selects the best measured version, and keeps the results for inspectio
 <a class="md-button" href="downloads/parser-quickstart.ipynb">Download the notebook</a></p>
 <p>Five short cells, including installation. No model or API key needed.</p>
 </div>
+<h2 id="see-the-loop-in-action">See the loop in action<a class="headerlink" href="#see-the-loop-in-action" title="Permanent link">&para;</a></h2>
+<p>Read each method's short explanation, inspect its results, then open the
+standalone notebook. Each lesson has its own setup; they can be read in any order.</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Improve an image · SVG Feedback Descent</strong></p>
+<p>A generator draws; a separate grader critiques the image. Feedback guides
+revisions, and Greedy keeps the best score. Inspect all seven captured images.</p>
+<p><strong>Shipped.</strong> Captured live run; Codex authentication to rerun.</p>
+<p><a href="build-patterns/feedback-descent/">Follow the visual loop</a></p>
+</li>
+<li>
+<p><strong>Teach a reusable skill · EvoSkill</strong></p>
+<p>Inspect an executor's failed answer, then watch separate agents propose and
+build a native skill. Continue with population search and a held-out check.</p>
+<p><strong>Experimental/live-only.</strong> Captured Claude/OfficeQA run; Claude authentication.</p>
+<p><a href="build-patterns/evoskill/">Follow the skill workflow</a></p>
+</li>
+<li>
+<p><strong>Improve an agent's harness · Meta-Harness</strong></p>
+<p>Revise a worker's instructions or context, run fresh repairs, and independently
+check the resulting code. Keep development, private selection, and final checks separate.</p>
+<p><strong>Experimental/live-only.</strong> Offline SDK rehearsal; live capture pending.
+Claude authentication and a supported local confinement environment required.</p>
+<p><a href="research/meta-harness/">Follow harness evaluation</a></p>
+</li>
+</ul>
+</div>
+<p>For a first run without credentials, start with the five parser cells below.
+<a href="research/#use-a-method">Choose another method</a> or
+<a href="research/decomposition/">compose your own</a> once the shared roles are familiar.</p>
 <h2 id="one-improvement-experiment">One improvement experiment<a class="headerlink" href="#one-improvement-experiment" title="Permanent link">&para;</a></h2>
 <p>Our time tracker thinks <strong>four minutes means four seconds</strong>. Let's propose a
 correction and check both versions against the same six expected answers.
@@ -3810,6 +3883,14 @@ This history is in memory. To keep it after Python closes,
 </thead>
 <tbody>
 <tr>
+<td>Improve an image</td>
+<td><a href="build-patterns/feedback-descent/">Draw and revise an SVG using visual feedback</a></td>
+</tr>
+<tr>
+<td>Teach reusable skills</td>
+<td><a href="build-patterns/evoskill/">Build native Claude skills from OfficeQA failures</a></td>
+</tr>
+<tr>
 <td>Improve instructions</td>
 <td><a href="learn/llm-prompt/">Revise a support-ticket routing prompt</a></td>
 </tr>
@@ -3849,8 +3930,11 @@ tries one handwritten correction: <strong>2/6 → 6/6 checks passed</strong>.</p
 ↓ Independently test the code it produces<br>
 Keep the best measured settings</p>
 <p>The <a href="https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness/">Meta-Harness example</a>
-tests settings through bounded repair attempts, then checks the selection
-on a fresh task. Its worker is deterministic; no model requests are needed.</p>
+uses Claude SDK agents to propose settings and produce repairs. Independent
+checks measure those repairs before private selection and a held-out comparison.
+Its live capture is pending; the separate
+<a href="https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness-reference/">deterministic reference</a>
+runs without model requests.</p>
 </li>
 </ul>
 </div>

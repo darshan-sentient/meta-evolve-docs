@@ -523,7 +523,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -539,7 +539,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -652,6 +652,8 @@
       
         
       
+        
+      
     
     
     
@@ -734,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -763,6 +765,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3869,7 +3899,10 @@ walkthroughs by application and execution requirements.</p>
   or <a href="../guides/">task guides</a>.
   These pages include installation and all definitions; no checkout is needed.
   For a live generator and visual grader, use the standalone
-  <a href="../downloads/feedback-descent-svg.ipynb">SVG Feedback Descent notebook</a>.</li>
+  <a href="../downloads/feedback-descent-svg.ipynb">SVG Feedback Descent notebook</a>.
+  <a href="../build-patterns/evoskill/">EvoSkill</a> and <a href="../research/meta-harness/">Meta-Harness</a>
+  supply standalone Claude SDK notebooks with automatically downloaded support;
+  their pages state authentication and local-runtime requirements.</li>
 <li><strong>From a checkout:</strong> the inventory commands below run from the repository root
   after <code>uv sync --locked</code>. <a href="../applications/#checkout-setup">Applications</a>
   supplies the checkout steps; some walkthroughs also provide standalone downloads.</li>
@@ -3880,7 +3913,10 @@ walkthroughs by application and execution requirements.</p>
 <p>The catalog below lists every maintained example group with its command and
 setup. <strong>Shipped</strong> and <strong>Experimental/live-only</strong> describe availability; each
 walkthrough separately identifies handwritten fixtures, offline checks, or live
-captures as its evidence. Live-only entries require the capabilities stated in their lesson.</p>
+captures as its evidence. Live-only entries require the capabilities stated in their lesson.
+Shipped examples may also require a model account, as SVG Feedback Descent does.
+Use the package and support downloads from the same documentation build; the
+<a href="../project/evidence/">evidence index</a> identifies captured runs and rehearsals.</p>
 <h2 id="keep-the-evaluation-boundary-visible">Keep the evaluation boundary visible<a class="headerlink" href="#keep-the-evaluation-boundary-visible" title="Permanent link">&para;</a></h2>
 <p>A proposer changes the artifact. The evaluator, permissions, outer budget, and
 promotion rule stay outside candidate authority. Search and feedback use
@@ -4158,6 +4194,14 @@ keep other components fixed while assessing that change.</p>
 <td><a href="../build-patterns/evoskill/">EvoSkill walkthrough</a></td>
 </tr>
 <tr>
+<td><code>meta_harness</code></td>
+<td>Improve repair instructions and context through independently checked code</td>
+<td>Python 3.12+; Claude authentication; supported local confinement</td>
+<td>Experimental/live-only; offline SDK rehearsal, live capture pending</td>
+<td><a href="../downloads/meta-harness-repair.ipynb">Open notebook</a></td>
+<td><a href="../research/meta-harness/">Live repair walkthrough</a>, <a href="../research/meta-harness-reference/">deterministic reference</a></td>
+</tr>
+<tr>
 <td><code>context_evolution</code></td>
 <td>Evolve a skill set and a context playbook</td>
 <td>Nested evaluation</td>
@@ -4207,9 +4251,9 @@ keep other components fixed while assessing that change.</p>
 </tr>
 </tbody>
 </table>
-<p>Credentialed adaptations belong in user-owned wrappers and must stay explicit;
-the commands above are deterministic repository evidence unless marked
-Experimental/live-only.</p>
+<p>Credentialed adaptations belong in user-owned wrappers and stay explicit.
+Availability alone does not identify the execution requirements or evidence:
+consult each row's prerequisites and walkthrough before running it.</p>
 
 
 

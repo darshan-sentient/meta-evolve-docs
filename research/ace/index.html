@@ -525,7 +525,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -541,7 +541,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -649,6 +649,8 @@
   
     
     
+      
+        
       
         
       
@@ -895,7 +897,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -924,6 +926,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3863,6 +3893,15 @@
 <h1 id="ace-improve-an-itemized-playbook">ACE: improve an itemized playbook<a class="headerlink" href="#ace-improve-an-itemized-playbook" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Shipped.</strong> Evidence: deterministic mechanism demonstration; no live
 model gains or cross-task transfer claim.</p>
+<p><strong>What it does.</strong> <a href="https://arxiv.org/html/2510.04618v3#S3">ACE</a> improves an
+agent's reusable context as an itemized playbook, preserving useful rules while
+correcting or adding specific entries.</p>
+<p><strong>How it works.</strong> A Generator attempts tasks, a Reflector extracts lessons,
+and a Curator applies incremental playbook edits. Later attempts use the
+updated playbook. Here, deterministic lesson extraction and curation change
+company-specific tagging rules; independent checks select a playbook, test
+consolidation, and measure held-out behavior. This demonstrates itemized
+updates rather than the complete learned ACE system.</p>
 <h2 id="the-concrete-problem">The concrete problem<a class="headerlink" href="#the-concrete-problem" title="Permanent link">&para;</a></h2>
 <p>An agent tags a company's financial disclosures. The note says “cash paid for
 interest,” but the company requires <code>nwi:InterestPaidNetOfCapitalized</code> rather
@@ -4130,13 +4169,13 @@ to inspect individual files.</p>
         
         
           
-          <a href="../../build-patterns/evoskill/" class="md-footer__link md-footer__link--next" aria-label="Next: Skill evolution">
+          <a href="../../build-patterns/evoskill/" class="md-footer__link md-footer__link--next" aria-label="Next: EvoSkill">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Skill evolution
+                EvoSkill
               </div>
             </div>
             <div class="md-footer__button md-icon">

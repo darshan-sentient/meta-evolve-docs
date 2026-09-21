@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,15 @@
 
 <h1 id="event-sourcing-and-content-addressing">Event sourcing and content addressing<a class="headerlink" href="#event-sourcing-and-content-addressing" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Shipped.</strong></p>
+<p><strong>What it does.</strong> These <a href="../../architecture/#durability-and-replay">storage foundations</a>
+retain what happened in an improvement run and identify artifact content
+without losing the history of distinct attempts.</p>
+<p><strong>How it works.</strong> Append events as facts, store immutable artifact bytes by
+their content digest, and rebuild views from the retained record. Two attempts
+may have identical bytes yet remain different causal occurrences. Replay
+reconstructs the recorded run without executing agents or evaluators again.
+Storage preserves evidence; it does not propose changes or prove they improve
+the task.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>How can durable history preserve both equal content and distinct causal occurrences? These are shipped foundations, not a separate optimizer or a speculative research adapter.</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>

@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,8 +3607,18 @@
 
 <h1 id="coral">CORAL<a class="headerlink" href="#coral" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://github.com/Human-Agent-Society/CORAL">CORAL</a> explores
+repository improvement with multiple coding agents that share knowledge while
+producing evaluated code revisions.</p>
+<p><strong>How it works.</strong> Agents propose changes, repository evaluations measure the
+results, and shared knowledge informs subsequent attempts. Separate populations
+and migration support exploration across the agents. A Meta-Evolve translation
+would capture immutable source snapshots and explicitly control which history
+each proposer receives. Its external multi-agent search and migration are not
+implemented by the local source-editing interface.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/Human-Agent-Society/CORAL">CORAL</a> is relevant to parallel coding agents, evaluated repository successors, shared knowledge, islands, and migration. In Meta-Evolve this becomes one a source-tree artifact task configuration rather than the universal runtime model.</p>
+<p>In Meta-Evolve this would be a source-tree artifact task configuration rather
+than the universal runtime model.</p>
 <p><strong>Question:</strong> Can coding agents share knowledge while producing independently graded repository revisions?</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <p>The roles below describe the local proposal; upstream behavior and missing work

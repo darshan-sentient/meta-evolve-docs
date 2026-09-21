@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3526,6 +3556,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#read-and-adapt-a-flagship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read and adapt a flagship
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3732,6 +3773,36 @@ search revise a weaker version?”, “Why isn't feedback reaching my proposer?�
 “Why wasn't the last attempt selected?”, or “Do I need the original functions
 to reopen?” Record their route, answer, and any assistance. Returning readers
 should also find the relevant operation with shared setup closed.</p>
+<h3 id="read-and-adapt-a-flagship">Read and adapt a flagship<a class="headerlink" href="#read-and-adapt-a-flagship" title="Permanent link">&para;</a></h3>
+<p>After the common entrance, offer one of these reading tasks. Reading retained
+outputs requires no model calls; prepare any proposed edit without executing a
+paid cell. These tasks supplement the existing independent walkthrough gate.</p>
+<table>
+<thead>
+<tr>
+<th>Participant prompt</th>
+<th>Observer checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Find an example that improves a drawing. Explain the method without opening its paper, then show why the last drawing was not selected."</td>
+<td>Reader finds SVG Feedback Descent's summary; separates critique from score; locates revision 5 and the later regression; identifies <code>SCENE</code> and <code>RUBRIC</code> as an adaptation kept fixed within a run</td>
+</tr>
+<tr>
+<td>"Find an example that teaches a skill. Show what each agent produces and where the framework starts repeating their work."</td>
+<td>Reader identifies the plan, native skill file, and executor answer; explains <code>revise</code> as the outer proposer; distinguishes the corrected retry from the population outcome and held-out tie</td>
+</tr>
+<tr>
+<td>"Find an example that changes an agent's setup. What is the candidate, what is tested, and which results were actually recorded?"</td>
+<td>Reader distinguishes harness from repaired code, fixed independent checks from proposal, and offline rehearsal from pending live capture; finds the deterministic reference and supported runtime requirements</td>
+</tr>
+</tbody>
+</table>
+<p>Record the first route, time to find the summary, explanation in the reader's
+own words, proposed adaptation, and assistance. Do not supply the observer
+answers before the attempt. A successful reading task is not live validation
+or a substitute for the three independent participants required by #275.</p>
 <p>After the parser walkthrough, ask: “Find how to configure the same example
 explicitly. Explain what Task, Experiment, Session, and Run each need and do.
 Show where you would change scoring, generate different revisions, choose a

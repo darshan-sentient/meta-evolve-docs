@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,12 +3607,14 @@
 
 <h1 id="shepherd">Shepherd<a class="headerlink" href="#shepherd" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> <a href="https://shepherd-agents.ai/">Shepherd</a> lets developers
+inspect, restore, and branch an agent execution while it is running.</p>
+<p><strong>How it works.</strong> Record model actions, tool calls, and environment changes
+as a reversible, forkable trace. A developer or agent can revisit an execution
+point and explore another continuation. This is runtime control; Meta-Evolve
+evaluates immutable artifacts between attempts. A future adapter could capture
+Shepherd's workspace output as a candidate and retain its trace as evidence.</p>
 <h2 id="research-question-and-source">Research question and source<a class="headerlink" href="#research-question-and-source" title="Permanent link">&para;</a></h2>
-<p><a href="https://shepherd-agents.ai/">Shepherd</a> is a runtime substrate that records an
-agent's model actions, tool calls, and environment changes as a reversible,
-forkable execution trace. Its unit of control is an execution in progress;
-Meta-Evolve's unit of evolution is an immutable artifact evaluated between
-trials. The two models are therefore adjacent rather than interchangeable.</p>
 <p>A useful composition would keep Meta-Evolve in charge of tasks, search,
 budgets, independent evaluation, lineage, and promotion while a user-owned
 Shepherd-backed proposer supplies isolated execution, retained workspace

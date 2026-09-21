@@ -693,7 +693,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -709,7 +709,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -822,6 +822,8 @@
       
         
       
+        
+      
     
     
     
@@ -904,7 +906,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -933,6 +935,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3839,10 +3869,11 @@
 
 <h1 id="improve-a-search-policy">Improve a search policy<a class="headerlink" href="#improve-a-search-policy" title="Permanent link">&para;</a></h1>
 <p><a id="policy-evolution"></a></p>
-<p>A <a href="../../concepts/search/">search policy</a> chooses a parent and when to stop. Make
-those settings the candidate, measure their number searches, and check fresh seeds.</p>
-<p>Proposals are handwritten and scores come from Python execution. No model,
-API key, checkout, or earlier notebook is needed.</p>
+<p><strong>What it does.</strong> Policy evolution improves a <a href="../../concepts/search/">search policy</a>:
+the rules for choosing which candidate to revise and when to stop.</p>
+<p><strong>How it works.</strong> Revise the settings, measure inner number searches under fixed
+tasks and limits, select by mean best score, then check fresh starting numbers.
+This runs in Python without a model, API key, checkout, or earlier notebook.</p>
 <h2 id="component-worksheet">Component worksheet<a class="headerlink" href="#component-worksheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3870,9 +3901,8 @@ API key, checkout, or earlier notebook is needed.</p>
 </tr>
 </tbody>
 </table>
-<p>Tasks, evaluation, budget ceilings, and promotion remain external. In
-<a href="../../concepts/meta-evolution/#a-compact-notation-optional">meta-evolution notation</a>,
-the policy <code>θ</code> configures the inner procedure <code>Iθ</code> through a trusted interpreter.</p>
+<p>In <a href="../../concepts/meta-evolution/#a-compact-notation-optional">meta-evolution notation</a>,
+the policy <code>θ</code> configures the inner procedure <code>Iθ</code>; promotion remains external.</p>
 <h2 id="1-install">1. Install<a class="headerlink" href="#1-install" title="Permanent link">&para;</a></h2>
 <p>Open a notebook with <strong>Python 3.12 or newer</strong>. Download the
 <a href="../../downloads/meta-evolve.zip">package ZIP</a> into its working folder. Copy the

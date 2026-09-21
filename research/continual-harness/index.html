@@ -519,7 +519,7 @@
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Images, prompts, and data
   
 
     
@@ -535,7 +535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Images, prompts, and data
   
 
           </label>
@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -730,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    Skill evolution
+    EvoSkill
   
 
     
@@ -759,6 +761,34 @@
     
   
     Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -3577,6 +3607,13 @@
 
 <h1 id="continual-harness">Continual Harness<a class="headerlink" href="#continual-harness" title="Permanent link">&para;</a></h1>
 <p><strong>Status: Design—not shipped.</strong></p>
+<p><strong>What it does.</strong> Continual Harness adapts an embodied agent's scaffold during
+one ongoing episode, without resetting the environment for each revision.</p>
+<p><strong>How it works.</strong> The agent alternates between acting and revising its prompts,
+sub-agents, skills, and memory using past trajectories. The changed scaffold
+guides later actions in the same world. The paper also studies a separate
+co-learning extension that uses those trajectories to update model weights.
+<a href="https://arxiv.org/abs/2605.09998">Primary paper</a>.</p>
 <h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
 <p>Can an embodied agent adapt its scaffold during a long, ongoing episode?</p>
 <p><a href="https://arxiv.org/abs/2605.09998">The primary source</a> motivates this question. The worksheet below is
