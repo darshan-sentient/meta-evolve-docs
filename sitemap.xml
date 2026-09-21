@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sentient-xyz.github.io/meta-evolve-docs/</loc>
@@ -186,10 +186,6 @@
     </url>
     <url>
          <loc>https://sentient-xyz.github.io/meta-evolve-docs/design/feedback-context-plan/</loc>
-         <lastmod>2026-09-21</lastmod>
-    </url>
-    <url>
-         <loc>https://sentient-xyz.github.io/meta-evolve-docs/design/harness-lesson-plan/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
@@ -553,10 +549,6 @@
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>https://sentient-xyz.github.io/meta-evolve-docs/project/harness-lesson-verification/</loc>
-         <lastmod>2026-09-21</lastmod>
-    </url>
-    <url>
          <loc>https://sentient-xyz.github.io/meta-evolve-docs/project/improve-options-verification/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
@@ -781,10 +773,6 @@
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
-         <loc>https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness/</loc>
-         <lastmod>2026-09-21</lastmod>
-    </url>
-    <url>
          <loc>https://sentient-xyz.github.io/meta-evolve-docs/research/model-discovery-agent/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
@@ -904,4 +892,28 @@
          <loc>https://sentient-xyz.github.io/meta-evolve-docs/learn/research-labs/01-feedback-descent/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
-</urlset>
+<url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/design/harness-lesson-plan/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/notebooks/meta_harness/meta_harness/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/project/harness-lesson-verification/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/project/meta-harness-live-verification/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness-reference/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    </urlset>

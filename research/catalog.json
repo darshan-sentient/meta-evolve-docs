@@ -108,16 +108,16 @@
     "name": "Meta-Harness",
     "group": "harness",
     "page": "research/meta-harness.md",
-    "status": "Shipped",
+    "status": "Experimental/live-only",
     "source": "https://arxiv.org/abs/2603.28052",
     "owner": "222",
     "notebook": "downloads/meta-harness-repair.ipynb",
     "origin": "references.md#meta-harness",
     "question": "Can bounded harness edits improve independently graded repairs?",
     "artifact": "`HarnessArtifact` planner/context",
-    "evidence": "Maintained deterministic mechanism; no paper reproduction",
-    "source_checked": "2026-09-15",
-    "source_scope": "Primary reference and maintained source, or explicit local proposal"
+    "evidence": "Live Claude SDK proposer and worker over independent repair checks; deterministic reference retained; no paper reproduction",
+    "source_checked": "2026-09-21",
+    "source_scope": "Bounded typed-surface adaptation using the official Claude Agent SDK and the shipped callable API"
   },
   {
     "name": "Self-Harness",

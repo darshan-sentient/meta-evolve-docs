@@ -499,8 +499,6 @@
       
         
       
-        
-      
     
     
     
@@ -548,42 +546,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+      <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    SVG Feedback Descent
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/research-labs/sealqa-feedback-descent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SealQA prompt adaptation
+    Feedback Descent
   
 
     
@@ -2060,7 +2030,7 @@
   <span class="md-ellipsis">
     
   
-    SVG Feedback Descent
+    Improve a prompt
   
 
     
@@ -3504,6 +3474,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#september-21-revision-a-standalone-live-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        September 21 revision: a standalone live lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earlier-fixture-lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Earlier fixture lesson plan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reader-outcome-and-decisions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3620,6 +3612,31 @@
 
 
 <h1 id="harness-lesson-plan-for-351">Harness lesson: plan for #351<a class="headerlink" href="#harness-lesson-plan-for-351" title="Permanent link">&para;</a></h1>
+<h2 id="september-21-revision-a-standalone-live-lesson">September 21 revision: a standalone live lesson<a class="headerlink" href="#september-21-revision-a-standalone-live-lesson" title="Permanent link">&para;</a></h2>
+<p>The user approved a seven-cell live adaptation, following Feedback Descent and
+EvoSkill, and required the notebook and copied documentation to be independently
+usable. This extends the earlier fixture-only lesson scope below. M11 remains the
+runtime boundary; the live example uses shipped callable and harness interfaces.</p>
+<p><code>examples/research/meta_harness/main.py</code> owns the visible declarations. Its SDK,
+grading, phase, and display modules remain example-local. A generated notebook
+and page share all seven cells; setup fetches a content-addressed, verified
+archive containing every support file. No checkout or companion upload is needed.
+The original study and its verification move together to the deterministic
+reference page and retain the <code>harness-example.zip</code> download.</p>
+<p>Both proposer and worker use actual Claude SDK sessions. Mutations affect only
+planner text or whether the repository contract enters worker context. Generated
+repairs run in confined Python children; expected answers stay in the parent.
+All rankable development occurrences get private checks, selection freezes, and
+matched held-out runs determine export eligibility. Full receipts reconcile usage.
+The initial live path is explicitly <strong>Experimental/live-only</strong>, without claiming
+full paper reproduction, live resumability, or guaranteed improvement.</p>
+<p>Acceptance covers deterministic SDK stubs over real execution, failure and
+authority boundaries, independently downloaded notebook and copied-page execution,
+strict rendering and visual inspection, then an authorized live capture. The
+notebook's first cell must supply all setup, and every code cell stays below 40 lines.
+The <a href="../../project/meta-harness-live-verification/">live lesson verification</a>
+records the delivered reading paths and the remaining live capture.</p>
+<h2 id="earlier-fixture-lesson-plan">Earlier fixture lesson plan<a class="headerlink" href="#earlier-fixture-lesson-plan" title="Permanent link">&para;</a></h2>
 <p><strong>Status: Design—not shipped.</strong></p>
 <p>Prepared September 20, 2026 for
 <a href="https://github.com/sentient-xyz/meta-evolve/issues/351">#351</a>, D7 under
