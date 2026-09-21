@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1964,6 +1994,8 @@
       
         
       
+        
+      
     
     
     
@@ -2074,7 +2106,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2130,7 +2190,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3854,6 +3914,12 @@ Registered proposer manifests now include callback invocation and adapter
 wiring. Preset/default and reference docstring edits can also change source
 digests. Expect incompatible old implementations to refuse before more work,
 even when reading their history succeeds.</p>
+<p><code>CandidatePolicy</code> now reports <code>accounting_unavailable</code> when unknown billed spend
+under a monetary ceiling causes its budget stop, matching the other built-in
+policies. Known exhaustion remains <code>budget_exhausted</code>; objective and voluntary
+trial-limit stops keep their precedence. Historical stops retain their recorded
+reason. This correction changes the candidate-policy implementation digest, so
+runs recorded against the earlier interpreter require that source to resume.</p>
 <p>Finish such a run with its matching old package, registered components, and
 environment, or start a new experiment on the revised API. Do not rewrite
 stored manifests or regenerate old facts to bypass verification. The

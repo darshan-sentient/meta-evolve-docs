@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3074,6 +3134,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#upgrading-bounded-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading bounded feedback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#audited-pull" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3686,6 +3757,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#upgrading-bounded-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading bounded feedback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#audited-pull" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3889,13 +3971,19 @@ named declaration is useful.</p>
 context object; the experiment still decides which observations it may contain.
 See <a href="../callback-context-migration/">callback migration</a> for older signatures.</p>
 <p>A <a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.ContextPolicy"><code>ContextPolicy</code></a> selects a bounded bundle before
-each proposal. <a class="autorefs autorefs-internal" title="AncestorsOnly
+each proposal. <a class="autorefs autorefs-internal" title="RecentAncestors
 
 
   
       dataclass
-  " href="../../reference/api/#meta_evolve.AncestorsOnly"><code>AncestorsOnly</code></a> follows the current
-parent lineage; <a class="autorefs autorefs-internal" title="BestSibling
+  " href="../../reference/api/#meta_evolve.RecentAncestors"><code>RecentAncestors</code></a> favors the newest
+records in the current parent's lineage; <a class="autorefs autorefs-internal" title="AncestorsOnly
+
+
+  
+      dataclass
+  " href="../../reference/api/#meta_evolve.AncestorsOnly"><code>AncestorsOnly</code></a>
+retains the oldest records. <a class="autorefs autorefs-internal" title="BestSibling
 
 
   
@@ -3910,10 +3998,42 @@ time, and usage are committed before the proposer runs.</p>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">proposer</span><span class="p">,</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">AncestorsOnly</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">4000</span><span class="p">),</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">4000</span><span class="p">),</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">)</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">)</span>
 </code></pre></div>
+<p>Read <code>context.evidence.latest("your-evidence-kind")</code> inside the proposer. It
+returns an immutable item with <code>.data</code> and exact <code>.ref</code> provenance, or <code>None</code>
+when the declared policy selected no match. Latest means last in selected order,
+including ties within a step. It may refer to an older ancestor or sibling.
+The accessor recognizes evidence labels from both proposers and evaluators;
+reserve your feedback label for its intended producer.</p>
+<p>Calling it with context disabled raises <code>meta_evolve.errors.ContextDisabled</code>,
+a <code>CapabilityError</code>, at the call site. Use <code>context.evidence.enabled</code> to make
+feedback optional in deliberate off comparisons. A declared empty policy is
+enabled even when no evidence matches; pull access alone does not enable it.
+<code>context.evidence.truncated</code> reflects omitted records or clipped rendering,
+without identifying the cause. Structured evidence remains readable with
+<code>max_chars=0</code>, while a small <code>max_records</code> can omit evidence entirely. Neither
+lookup nor status inspection performs a query or changes usage.</p>
+<h2 id="upgrading-bounded-feedback">Upgrading bounded feedback<a class="headerlink" href="#upgrading-bounded-feedback" title="Permanent link">&para;</a></h2>
+<p>Existing <code>context.bundle</code> consumers keep working. Replace evidence filtering
+and <code>max(logical_step)</code> with <code>context.evidence.latest(kind)</code> when selected order
+is the intended rule; multiple same-step matches now resolve to the last item.
+Use <code>.data</code> instead of <code>.value.data</code>. Explicitly choose <code>RecentAncestors</code> for
+recency; <code>AncestorsOnly@1</code> does not silently change retention. Manual context
+construction for tests or custom runners supplies <code>context_policy</code> to enable
+lookup. Workspace context replacement retains this declaration.</p>
+<p>This source change adds automatic proposer manifest dependencies for evidence
+lookup, disabled-context errors, and actual context construction. The shared
+context-policy source module also changes the hashes for <code>AncestorsOnly</code> and
+<code>BestSibling</code>, although their selection semantics remain the same. Historical
+stores remain readable; incompatible resumes refuse before new work. Continue
+old runs in their matching environment, or explicitly version changed author
+components and start a new run. Do not rewrite manifests or stored selections.
+The <a href="../../project/feedback-context-verification/">verification record</a> records
+the old-store capture and exact digest changes. This follow-up does not change
+the selected #313/#319 release scope.</p>
 <h2 id="audited-pull">Audited pull<a class="headerlink" href="#audited-pull" title="Permanent link">&para;</a></h2>
 <p><a class="autorefs autorefs-internal" title="PullAccess
 

@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -4444,44 +4504,44 @@ Unverifiable monetary ceilings stop further work while retaining completed resul
 Experience access has separate bounds. Named random streams and recorded decisions make local trajectories replayable.
 External providers are reproducible to their transcript and declarations, without guaranteed byte-identical regeneration.</p>
 <h2 id="experience">Experience<a class="headerlink" href="#experience" title="Permanent link">&para;</a></h2>
-<p>Experience is explicit and off by default. Pushed context is policy-selected,
-bounded, and committed before a proposal. Pulled experience is capability-
-bounded and audited. Declared derivation may cite only authorized, strictly prior observations in recorded order.
+<p>Experience is explicit and off by default. Pushed context is policy-selected, bounded, and committed before a proposal; pulled experience is capability-bounded and audited.
+Declared derivation may cite only authorized, strictly prior observations in recorded order.
+<code>ProposerContext.evidence</code> reads only the committed selection, with enabled state from the policy declaration. <code>RecentAncestors@1</code> retains the newest accessible ancestor records; <code>AncestorsOnly@1</code> retains the oldest. Both preserve canonical order and distinct record/rendering bounds.
+Lookup neither infers producer authority nor widens access; see the <a href="../programming-model/#selected-evidence">selected-evidence contract</a>.
 M8.7.3 listing and reads authorize exact prior same-task/run artifact occurrences before a read-only storage edge revalidates and decodes <code>source-tree</code> / <code>utf8-tree-v1</code>; M8.7.4 applies that edge independently to both operands of a canonical library-owned diff. M8.7.5 composes those audited outcomes into one committed Git-neutral manifest, then projects it into disposable external Git metadata for a scoped workspace session. Invalid targets share one opaque denial; missing paths deny atomically. Whole-entry results use cumulative bounds and audit both exhaustion causes. Folding validates committed shape and the mount-owned operation prefix; durable loading checks stored bytes and reconstructs source results and the manifest; replay does no live read. Only successful source observations grant derivation authority. Whole-tree reader operations, semantic retrieval, persistent Git identity, and cross-run access remain unshipped under the <a href="../milestones/#m872-contract-boundary">M8.7 contract</a>.</p>
 <h2 id="workspaces-and-external-execution">Workspaces and external execution<a class="headerlink" href="#workspaces-and-external-execution" title="Permanent link">&para;</a></h2>
-<p>Repository proposers receive a private mutable workspace from an immutable artifact.
-Successful capture creates a new immutable occurrence;
-cleanup always happens before commitment. Evaluators materialize candidates in
-fresh workspaces and own their commands, environments, hidden graders, and
-failure translation.</p>
+<p>Repository proposers receive a private mutable workspace from an immutable artifact;
+successful capture creates a new immutable occurrence, and cleanup precedes commitment.
+Evaluators own fresh workspaces, commands, environments, hidden graders, and failure translation.</p>
 <h2 id="durability-and-replay">Durability and replay<a class="headerlink" href="#durability-and-replay" title="Permanent link">&para;</a></h2>
 <p>Artifacts and append-only transitions are durable truth. SQLite and filesystem stores preserve committed facts; caches and worker liveness do not.
 Reopen is a read-only projection, and a read-only storage handle observes live WAL commits with no write, migration, or execution authority.
+<code>open_run()</code> owns that handle for a context block, validates one explicit or sole run, and yields a live <code>Run</code>; lexical identities never imply recency.
+It adds no durable records or execution authority. SQLite may maintain WAL sidecars without changing committed history.
 Resume first verifies component manifests and the recovery frontier, then performs only missing logical work. Replay never reruns a proposer, evaluator, context selector, or provider.
 <code>Run.inspect()</code> derives one immutable aggregate from one replay.
-Registered proposer manifests cover framework invocation and adapter wiring as well as user source. Incompatible invocation refuses resume before runner construction, preflight, or work; supported histories stay readable. See the <a href="../programming-model/#proposer-callback-arguments">callback contract</a>.
+Registered proposer manifests cover user source, invocation, evidence views/errors, context construction, and adapter wiring; context-policy manifests cover the factory and selection/rendering module.
+Incompatible source refuses resume before runner construction, preflight, or work; supported histories stay readable. See the <a href="../programming-model/#proposer-callback-arguments">callback contract</a>.
 Session fixes authority and budget; each step advances the classified frontier to ready or stopped without asking search twice. Lifecycle means <code>Stop</code>,
 rankability means successful evaluation, and bootstrap remains a trial.
 Summary and inspection derive lifecycle, rankability, and committed usage from one validated frontier each, including a pending distributed seed evaluation.
 Recorded usage is independent of policy readiness; failures retain their costs and pending work contributes no estimated charge.
-Summaries are nondurable views with an optional score, while winner queries and comparisons remain strict.
+Summaries are nondurable views with an optional score; baseline and distinct typed failure counts share the captured frontier, while winner queries and comparisons remain strict. Capture-handle persistence and recorded capabilities do not authorize resume or change durable identity.
 <code>ArchiveUpdate.member_ids</code> is the authoritative ordered membership; an admission may remove any number of members, and <code>evicted_artifact_id</code> names exactly one or is <code>None</code>. <code>Specialists</code> is a GEPA-style per-key frontier, not a Pareto archive: it derives one winner per configured metric from committed evaluations and samples a metric uniformly to expand that metric's winner, so ownership over more metrics means more selection weight. <code>TreeSearch</code> is an ordinary <code>tree-search@1</code> <code>SearchProgram</code>, not an archive: a private immutable fold derives one node per materialized artifact occurrence, its visits, and its best-descendant subtree Q entirely from durable trial and evaluation facts, then widens while <code>child_count &lt; ceil(sqrt(node_visits))</code> or otherwise descends by normalized UCT.</p>
-<p>Safe exact-kind presentation reads frozen payloads into bounded inert records; decoded values are never inspected and canonical attachments remain exact.
+<p>Safe exact-kind presentation reads frozen payloads into bounded inert records; decoded values are never inspected and canonical attachments remain exact. Captured run reports render bounded scalars as text or escaped HTML without storage, codec, component, or decoded-artifact calls.
 The loopback browser keeps storage on one thread and artifact routes within one snapshot; cached payloads add bounded-LRU memory without a byte copy.</p>
 <h2 id="replaceability">Replaceability<a class="headerlink" href="#replaceability" title="Permanent link">&para;</a></h2>
-<p>An independently testable port is introduced only when a current acceptance
-test needs a second implementation. Every extension seam — codecs, repository
-proposers, evaluators, search programs, context policies, workspaces,
-sandboxes, and typed mutation surfaces — has a published conformance suite;
-store adapters keep an internal contract under <code>tests/</code>. Each suite remains
-explicit about the laws it does not check.</p>
+<p>Introduce a port only when a current acceptance test needs a second implementation.
+Published conformance suites cover codecs, repository proposers, evaluators, search programs,
+context policies, workspaces, sandboxes, and typed mutation surfaces; store contracts remain under <code>tests/</code>.
+Each suite states which laws it does not check.</p>
 <h2 id="compatibility-anchors">Compatibility anchors<a class="headerlink" href="#compatibility-anchors" title="Permanent link">&para;</a></h2>
 <h3 id="improve">Improve<a class="headerlink" href="#improve" title="Permanent link">&para;</a></h3>
-<p><a class="autorefs autorefs-internal" title="improve" href="../reference/api/#meta_evolve.improve"><code>improve()</code></a> is declaration sugar with no independent
-durable identity or execution semantics. It constructs <code>Task</code>, bounded
-<code>Greedy</code>, and <code>Experiment</code> values and enters the ordinary local <code>run()</code> path.
-Its <code>storage</code> argument may persist local history, but does not imply
-durable-local reconstruction or resumability.</p>
+<p><a class="autorefs autorefs-internal" title="improve" href="../reference/api/#meta_evolve.improve"><code>improve()</code></a> is declaration sugar with no independent durable identity
+or execution semantics. It constructs <code>Task</code>, bounded <code>Greedy</code>, and <code>Experiment</code>, then enters ordinary local <code>run()</code>.
+Its objective becomes <code>Task.objectives=(objective,)</code> or inherits the default; context uses
+the existing <code>Experiment.context</code> boundary without pull access. Equivalent declarations retain identical identity and committed facts at the same revision; handle-specific summary metadata can differ across stores.
+Its storage may persist local history without implying durable-local reconstruction or resumability.</p>
 <h3 id="experiment">Experiment<a class="headerlink" href="#experiment" title="Permanent link">&para;</a></h3>
 <p><a class="autorefs autorefs-internal" title="Experiment
 

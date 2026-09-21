@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1449,6 +1479,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#choose-a-run-in-a-shared-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose a run in a shared store
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1944,6 +1985,8 @@
       
         
       
+        
+      
     
     
     
@@ -2054,7 +2097,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2110,7 +2181,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3608,6 +3679,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#choose-a-run-in-a-shared-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose a run in a shared store
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3697,6 +3779,9 @@ versions, measurements, and work counts. Save that history to disk so you can
 close your notebook, reopen the result, and decide what to reuse.
 Reopening reads recorded facts; resuming performs compatible unfinished work.
 <a href="../../concepts/history/">Runs and history</a> explains that distinction.</p>
+<p>The shorter <a href="../02-change-search/#save-the-search">search comparison</a> uses the
+same save/reopen calls for named versions. Here, we'll also export a selected
+parser and use it after the history is closed.</p>
 <table>
 <thead>
 <tr>
@@ -3711,7 +3796,7 @@ Reopening reads recorded facts; resuming performs compatible unfinished work.
 </tr>
 <tr>
 <td><a href="#reopen-after-a-kernel-restart">Read it after restarting</a></td>
-<td><code>read_only()</code> and <code>Run</code></td>
+<td><code>open_run()</code></td>
 </tr>
 <tr>
 <td><a href="#use-the-reviewed-source">Reuse the selected source</a></td>
@@ -3731,13 +3816,16 @@ here; no other page needs to be executed.</p>
 <a id="2-define-a-small-improvement-experiment"></a></p>
 <details class="note">
 <summary>Required setup for a fresh notebook</summary>
-<p><strong>Install.</strong> Use <strong>Python 3.12 or newer</strong>. Download the
-<a href="../../downloads/meta-evolve.zip">package ZIP</a> into your notebook's working
-folder. For hosted notebooks, upload it through the file browser; <code>%pwd</code>
-shows the working folder. The ZIP is also included in offline docs builds.
-Run this installation once; restart the kernel if asked before continuing.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
+<p>Use a fresh notebook environment running <strong>Python 3.12 or newer</strong>.
+Install directly from the published documentation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sentient</span><span class="o">-</span><span class="n">xyz</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
 </code></pre></div>
+<p>If you already imported Meta-Evolve, restart the kernel after installing.
+Then run the remaining cells in order.</p>
+<p><strong>Archived or offline docs:</strong> use the ZIP included with that build. Put
+<code>meta-evolve.zip</code> in the notebook's working folder (<code>%pwd</code> shows it; hosted
+notebooks let you upload files), then run <code>%pip install ./meta-evolve.zip</code>
+instead. Installing from source may still download build tools.</p>
 <p><strong>Starting source and instructions.</strong> <code>SEED</code> reads a duration's number but
 ignores its unit. <code>CONTRACT</code> tells the proposer what the parser should do.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
@@ -3813,7 +3901,7 @@ same revisions without a hidden response counter.</p>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONTRACT</span><span class="si">}</span><span class="se">\n</span><span class="s2">Current source:</span><span class="se">\n</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">&quot;</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">return</span> <span class="n">agent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
-<p>The <a href="../../start-here/">Start here walkthrough</a> explains this parser in full.
+<p>The <a href="../../start-here/">Start here walkthrough</a> introduces the starting parser.
 You can close this section once its cells have run.</p>
 </details>
 <p><a id="save-the-run"></a>
@@ -3848,16 +3936,25 @@ keeps earlier runs separate; it does not affect the proposer's choices.</p>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="p">)</span>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">saved_usage</span> <span class="o">=</span> <span class="n">saved</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;last-duration-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">run_directory</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved proposal attempts:&quot;</span><span class="p">,</span> <span class="n">saved_usage</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved evaluations:&quot;</span><span class="p">,</span> <span class="n">saved_usage</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1"># Output:</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="c1"># Saved proposal attempts: 2</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Saved evaluations: 3</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">saved_snapshot</span> <span class="o">=</span> <span class="n">saved</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;last-duration-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">run_directory</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved proposal attempts:&quot;</span><span class="p">,</span> <span class="n">saved_usage</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved evaluations:&quot;</span><span class="p">,</span> <span class="n">saved_usage</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="n">saved_snapshot</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Output:</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="c1"># Saved proposal attempts: 2</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="c1"># Saved evaluations: 3</span>
 </code></pre></div>
-<p><code>usage()</code> reports work charged to this run: the seed evaluation plus two
-revisions. The earlier manual <code>evaluate(SEED)</code> preview is outside that count.</p>
+<p>The final expression displays the captured report in a notebook, after the
+storage block has closed. Use <code>print(saved_snapshot)</code> for plain text. Its
+location describes where history was saved at capture; it does not check that
+those files still exist. This local callable run is saved but does not declare
+resume support. A fresh <code>saved.summary()</code> is a storage query and requires an
+open handle; the next section shows how to reopen history.</p>
+<p><code>usage().trials</code> counts two proposal attempts after the seed;
+<code>usage().evaluations</code> counts three evaluations, including the seed.
+The earlier manual <code>evaluate(SEED)</code> preview is outside these counts.</p>
 <p><code>last-duration-run.txt</code> is a small note containing the latest run folder's path.
 It lets the next cell find that folder after Python variables disappear.
 Rerunning the saving cell updates the note and keeps earlier run folders.
@@ -3871,35 +3968,31 @@ discards local files when its runtime is deleted.</p>
 <p><strong>Restart your notebook kernel now</strong>, then run the next cell by itself in the
 same working directory. Meta-Evolve must still be installed. This cell includes
 all its imports and needs no <code>SEED</code>, proposer, or evaluator definitions.</p>
-<p><a class="autorefs autorefs-internal" title="read_only(path)
-
-  
-      classmethod
-  " href="../../reference/api/#meta_evolve.Storage.read_only"><code>meta.Storage.read_only()</code></a> opens existing
-history for inspection. <code>storage.runs()</code> lists its run IDs; this guide saves
-one run per folder, so we take the first. <a class="autorefs autorefs-internal" title="Run" href="../../reference/api/#meta_evolve.Run"><code>meta.Run</code></a> opens
-that recorded run without making proposals or evaluating source.</p>
-<p><code>trials()</code> lists the seed and its revisions. <code>best_trial()</code> returns the selected
+<p><a class="autorefs autorefs-internal" title="open_run(path, *, run_id=None, registry=None)" href="../../reference/api/#meta_evolve.open_run"><code>meta.open_run()</code></a> opens the only run in this folder for
+inspection, without proposing or evaluating source. It validates the history
+before entering the block and closes storage on exit, including on error.
+An empty store raises <code>RunNotFound</code>; multiple runs raise <code>RunSelectionRequired</code>
+with available IDs. Pass <code>run_id=...</code> to choose explicitly: content-derived ID
+order does not tell you which run is newest.</p>
+<p><code>trials()</code> lists the seed and attempted revisions. <code>best_trial()</code> returns the selected
 attempt and its measurements; <code>best().value</code> gives the selected source string.
 Read these while the storage handle is open:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">run_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;last-duration-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">read_only</span><span class="p">(</span><span class="n">run_directory</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">run_id</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">runs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># This folder contains one run.</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">reopened</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reopened</span><span class="o">.</span><span class="n">trials</span><span class="p">()):</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">selected_source</span> <span class="o">=</span> <span class="n">reopened</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retained score: </span><span class="si">{</span><span class="n">reopened</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Retained evaluations:&quot;</span><span class="p">,</span> <span class="n">reopened</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># Output:</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># Version 0: 33%</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># Version 1: 67%</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1"># Version 2: 100%</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># Retained score: 100%</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="c1"># Retained evaluations: 3</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">open_run</span><span class="p">(</span><span class="n">run_directory</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reopened</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reopened</span><span class="o">.</span><span class="n">trials</span><span class="p">()):</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">selected_source</span> <span class="o">=</span> <span class="n">reopened</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retained score: </span><span class="si">{</span><span class="n">reopened</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Retained evaluations:&quot;</span><span class="p">,</span> <span class="n">reopened</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Output:</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># Version 0: 33%</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># Version 1: 67%</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># Version 2: 100%</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># Retained score: 100%</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1"># Retained evaluations: 3</span>
 </code></pre></div>
 <p>The same three measurements are still available after the original process exits.
 Reopening reads recorded results; it does not spend more evaluations or rerun a
@@ -3986,7 +4079,40 @@ requests. Continuing unfinished work is a separate operation: local notebook
 functions are not automatically reconstructible for resume.</p>
 <p>For your own experiment, pass durable storage to <code>improve()</code> or <code>run()</code> and keep
 both its location and run ID. After reopening, use the selected value in the
-way its type requires; this example exports Python because its artifact is source.</p>
+way its type requires; this example exports Python because its artifact is source.
+Custom artifact values additionally need their codec registry via <code>registry=</code>.</p>
+<h2 id="choose-a-run-in-a-shared-store">Choose a run in a shared store<a class="headerlink" href="#choose-a-run-in-a-shared-store" title="Permanent link">&para;</a></h2>
+<p>This optional example saves two small experiments in a separate shared store.
+Keep the first run's ID as well as its directory so that reopening selects the
+intended experiment. The parser history and its export remain in their folders.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">run_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;last-duration-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">durable</span><span class="p">(</span><span class="n">run_directory</span> <span class="o">/</span> <span class="s2">&quot;shared-history&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">chosen</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="p">)</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">(</span><span class="n">run_directory</span> <span class="o">/</span> <span class="s2">&quot;chosen-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">chosen</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Restart the kernel again, then run this cell. It reads the ID from the file;
+neither list position nor score decides which experiment to open.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">run_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;last-duration-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">chosen_id</span> <span class="o">=</span> <span class="p">(</span><span class="n">run_directory</span> <span class="o">/</span> <span class="s2">&quot;chosen-run.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">open_run</span><span class="p">(</span><span class="n">run_directory</span> <span class="o">/</span> <span class="s2">&quot;shared-history&quot;</span><span class="p">,</span> <span class="n">run_id</span><span class="o">=</span><span class="n">chosen_id</span><span class="p">)</span> <span class="k">as</span> <span class="n">reopened</span><span class="p">:</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">chosen_value</span> <span class="o">=</span> <span class="n">reopened</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explicitly selected:&quot;</span><span class="p">,</span> <span class="n">chosen_value</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Output:</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Explicitly selected: 1</span>
+</code></pre></div>
 <p>Next, <a href="../../guides/providers/">use your model SDK</a>, or
 <a href="../03-inspect-results/">inspect results and failures</a>. The
 <a href="../../guides/durability/">durability reference</a> covers recovery and resume.</p>

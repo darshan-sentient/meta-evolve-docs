@@ -499,6 +499,8 @@
       
         
       
+        
+      
     
     
     
@@ -546,6 +548,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -553,7 +583,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1834,6 +1864,8 @@
       
         
       
+        
+      
     
     
     
@@ -1944,7 +1976,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2000,7 +2060,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3466,6 +3526,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#captured-report-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Captured report display
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pending-history-missing-runs-and-command-output" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3566,6 +3637,24 @@ new state.</p>
 also requires rankable sides; <code>winner=None</code> means equal successful scores, and
 any winner must be the actual left or right summary instance. These checks do
 not authenticate manually constructed history or independently re-evaluate it.</p>
+<h2 id="captured-report-display">Captured report display<a class="headerlink" href="#captured-report-display" title="Permanent link">&para;</a></h2>
+<p>The #333 follow-up adds readable text and notebook HTML to the same summary.
+Capture <code>snapshot = result.summary()</code> while storage is open, then display
+<code>snapshot</code> or use <code>print(snapshot)</code> after closure. <code>repr(result)</code> stays a small
+identifier-only hint; it never captures a report implicitly. Explicit queries
+still surface missing, closed, corrupt, or undecodable storage errors.</p>
+<p><code>primary_objective</code>, <code>baseline_score</code>, <code>failure_count</code>, <code>storage_is_durable</code>,
+<code>storage_location</code>, and <code>capabilities</code> are optional keyword-only fields, with
+unknown defaults for existing manual constructors. They participate in equality;
+tests constructing an expected populated record must supply the captured facts.
+A supplied baseline must be finite and non-boolean and requires rankability;
+failure counts must be nonnegative integers. Record fields preserve decoded
+artifacts, but repr and notebook output deliberately omit them and bound long
+text. Inspect those fields explicitly when needed.</p>
+<p>This reporting follow-up is separate from #313/#319's coordinated release
+scope. The <a href="../../programming-model/#summaries-and-comparisons">canonical contract</a>
+owns persistence, measurement, and capability meanings. CLI output is unchanged
+by #333; its earlier #317 behavior is described below.</p>
 <h2 id="pending-history-missing-runs-and-command-output">Pending history, missing runs, and command output<a class="headerlink" href="#pending-history-missing-runs-and-command-output" title="Permanent link">&para;</a></h2>
 <p>Summary, usage, and inspection now support valid distributed history while the
 seed evaluation is still pending. They report only committed facts and costs;

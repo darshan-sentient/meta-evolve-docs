@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3767,14 +3827,33 @@ decisions, lineage, usage, and failures. <code>mode="durable-local"</code> addit
 requires registered reconstructible components and their verified manifests.
 Validation happens before the first event is written.</p>
 <h2 id="reopen">Reopen<a class="headerlink" href="#reopen" title="Permanent link">&para;</a></h2>
-<p><a class="autorefs autorefs-internal" title="Run" href="../../reference/api/#meta_evolve.Run"><code>Run</code></a> reconstructs a read-only view from committed facts:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">reopened</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">reopened</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<p><a class="autorefs autorefs-internal" title="open_run(path, *, run_id=None, registry=None)" href="../../reference/api/#meta_evolve.open_run"><code>open_run</code></a> opens existing history for a <code>with</code> block:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">open_run</span><span class="p">(</span><span class="s2">&quot;.meta-evolve/example&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reopened</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">snapshot</span> <span class="o">=</span> <span class="n">reopened</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">snapshot</span><span class="p">)</span>
 </code></pre></div>
-<p>Reopen performs no proposal or evaluation. Local callable and SDK histories can
-be durable and inspectable even when their live components cannot be rebuilt.</p>
-<p>For an inspection-only process, open the same directory without commit or
-execution authority:</p>
+<p>Pass the directory used for <code>Storage.durable()</code>. Without <code>run_id=</code>, it opens
+the only recorded run. An empty store raises <a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.RunNotFound"><code>RunNotFound</code></a>;
+several runs raise <a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.RunSelectionRequired"><code>RunSelectionRequired</code></a>
+with a <code>run_ids</code> tuple of available IDs. Choose explicitly with
+<code>meta.open_run(path, run_id=saved_id)</code>, using a <code>RunId</code> or its saved string.
+IDs are listed lexically; their order does not establish which run is newest.
+An explicit missing ID never substitutes another run.</p>
+<p>Calling <code>open_run()</code> creates a context manager. Entry validates the arguments,
+opens storage, and validates the selected history before yielding <code>Run</code>,
+including incomplete and unsuccessful runs. Storage closes on success or error.
+Capture summaries, inspections, usage, and selected values inside the block;
+those results remain usable afterward. A subsequent query on the live <code>Run</code>
+still requires open storage and surfaces a store error after close.</p>
+<p>Reopen performs no proposal or evaluation and never resumes work. Local callable
+and SDK histories can be durable and inspectable even when their live components
+cannot be rebuilt. For custom artifacts, supply <code>registry=</code> with reconstructed
+codecs to decode values. Without the required codec, entry and <code>usage()</code> still
+work, while a decoded query such as <code>best()</code> raises <code>CapabilityError</code> naming the
+missing codec. Supplied codecs are trusted Python extensions invoked by decoded
+queries, not by opening the run.</p>
+<p>For explicit storage ownership, keep using <a class="autorefs autorefs-internal" title="Run" href="../../reference/api/#meta_evolve.Run"><code>Run</code></a> directly:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">with</span> <span class="n">meta</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">read_only</span><span class="p">(</span><span class="s2">&quot;.meta-evolve/example&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">storage</span><span class="p">:</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">version</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">run_version</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">inspection</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span>
@@ -3790,6 +3869,8 @@ codec, registry component, proposer, evaluator, provider, or subprocess runs.</p
 for a well-formed id with no events and uses a new deferred transaction on each
 call, so a long-lived reader observes successive atomic commits from a WAL
 writer. It is deliberately a cheap polling query, not a full integrity check.
+An <code>open_run()</code> block also permits fresh reads: it selects the identity once,
+but does not freeze subsequent queries to the entry-time history.
 <code>Run(run_id, storage).inspect()</code> performs authoritative loading and still raises
 <a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.RunNotFound"><code>RunNotFound</code></a> when that run is required but absent.</p>
 <p>The optional <a href="../browser/">local run browser</a> owns one long-lived read-only
@@ -3806,6 +3887,11 @@ close readers and reopen it once with writable <code>Storage.durable(...)</code>
 schemas raise <a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.DurableCorruption"><code>DurableCorruption</code></a>, and missing
 or inaccessible database/filesystem/WAL state raises
 <a class="autorefs autorefs-internal" href="../../reference/api/#meta_evolve.DurableStoreError"><code>DurableStoreError</code></a> with the underlying cause.</p>
+<p>Read-only means no changes to committed history and no framework writes or
+migration. SQLite can create or maintain <code>-wal</code> and <code>-shm</code> sidecars even through
+a read-only connection; see its <a href="https://sqlite.org/wal.html#read_only_databases">WAL documentation</a>.
+The reader preserves live WAL visibility and does not use SQLite's immutable
+mode. It never creates a missing store directory or repairs an incomplete one.</p>
 <h2 id="resume">Resume<a class="headerlink" href="#resume" title="Permanent link">&para;</a></h2>
 <p><a class="autorefs autorefs-internal" title="resume(run_id, *, storage, registry)" href="../../reference/api/#meta_evolve.resume"><code>resume</code></a> verifies manifests, declarations, store integrity,
 and the recovery frontier before doing missing work. It retains the same run ID

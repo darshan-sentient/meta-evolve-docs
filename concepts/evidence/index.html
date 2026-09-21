@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3725,8 +3785,8 @@ the declaration and how an experiment uses it.</p>
 <h2 id="define-what-better-means">Define what better means<a class="headerlink" href="#define-what-better-means" title="Permanent link">&para;</a></h2>
 <p>In the <a href="../../start-here/">parser walkthrough</a>, the evaluator runs each source
 version on six fixed inputs and checks the returned numbers. Its metric is
-the fraction correct: the seed passes <strong>2/6</strong>, the minutes revision passes
-<strong>4/6</strong>, and the complete revision passes <strong>6/6</strong>.</p>
+the fraction correct: the seed passes <strong>2/6</strong>, and the proposed revision
+passes <strong>6/6</strong>.</p>
 <p>The default objective maximizes the scalar evaluator's <code>score</code>. You can instead
 return named measurements and declare their objectives, such as maximizing
 correctness or minimizing a measured error. The
@@ -3748,8 +3808,9 @@ substituted with a zero.</p>
 <h2 id="record-observations-beside-scores">Record observations beside scores<a class="headerlink" href="#record-observations-beside-scores" title="Permanent link">&para;</a></h2>
 <p>A 67% score does not identify which two checks still fail. The first parser
 walkthrough records only scores. The <a href="../../learn/05-use-experience/">feedback guide</a>
-explicitly adds evidence containing each failed check's input, expected answer,
-and actual answer. After the minutes revision, its remaining failed checks are:</p>
+uses staged revisions and adds evidence containing each failed check's input,
+expected answer, and actual answer. After its minutes-only revision, the remaining
+failed checks are:</p>
 <table>
 <thead>
 <tr>

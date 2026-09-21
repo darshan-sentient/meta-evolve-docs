@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1840,6 +1870,8 @@
       
         
       
+        
+      
     
     
     
@@ -1950,7 +1982,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2006,7 +2066,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3538,10 +3598,10 @@ the task you need. Each guide supplies its own setup, definitions, code, and
 expected observations. Use a fresh <strong>Python 3.12+ notebook</strong>; no checkout or
 earlier lesson is required. The SDK guide makes billable model requests and
 needs an API key; the other guides use handwritten examples with Python grading.</p>
-<p>The core task guides keep shared preparation under <strong>Required setup for a fresh
-notebook</strong>. Expand and run it before the task cells; it is required even though
-it starts closed. Each page explains the change, shows its output, and offers
-an exercise and adaptation advice. The saving guide marks where to restart.</p>
+<p>Run each guide's setup before its task cells. Some guides place definitions under
+<strong>Required setup for a fresh notebook</strong>; expand and run those cells even though
+they start closed. Each page explains the change, shows its output, and offers
+an exercise and adaptation advice. Saving examples mark where to restart.</p>
 <p>Unsure where to go next? Start with <strong>Define what better means</strong> to adapt the
 scoring to your own task. Choose <strong>Use your model SDK</strong> to replace handwritten
 revisions with model requests, or <strong>Save and reopen a run</strong> to keep your results.
@@ -3577,7 +3637,7 @@ for the five API changes and supported-history guidance.</p>
 <td><a href="evaluation/">Define what better means</a></td>
 </tr>
 <tr>
-<td>Build on the best revision or retry from the starting version</td>
+<td>Compare revising the best version with exploring another branch</td>
 <td><a href="../learn/02-change-search/">Choose what to try next</a></td>
 </tr>
 <tr>
@@ -3615,9 +3675,10 @@ for the five API changes and supported-history guidance.</p>
 </table>
 <h2 id="advanced-composition">Advanced composition<a class="headerlink" href="#advanced-composition" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="harness-evolution/">Improve an agent's harness</a>: evaluate changes to planner
-  instructions and context settings, then check fresh questions and export the
-  selection.</li>
+<li><a href="harness-evolution/">Improve an agent's harness</a>: change one instruction and
+  measure the answers it produces in a complete notebook. Continue to the
+  <a href="../research/meta-harness/">governed repair study</a> for independent final
+  checks and typed configuration export.</li>
 <li><a href="policy-evolution/">Improve a search policy</a>: measure policy settings through
   bounded inner experiments and inspect their saved histories.</li>
 <li><a href="../adding-an-artifact-domain/">Add an artifact domain</a>: define how your own

@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3425,6 +3485,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#check-source-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check source changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercises-on-the-invariants" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3811,6 +3882,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#check-source-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check source changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercises-on-the-invariants" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4133,6 +4215,14 @@ removed when the mount is disposed. The
 <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/tests/test_git_history.py">Git history checks</a>
 exercise log/show/diff, cleanup, access declarations, and tamper rejection.
 The <a href="../guides/experience/#audited-pull">experience guide</a> owns the read grants.</p>
+<h2 id="check-source-changes">Check source changes<a class="headerlink" href="#check-source-changes" title="Permanent link">&para;</a></h2>
+<p>From the repository root after checkout setup, run the same source check as CI:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>uv<span class="w"> </span>run<span class="w"> </span>--locked<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>src
+</code></pre></div>
+<p>Ruff checks shipped Python sources for unused imports (<code>F401</code>) and undefined
+names (<code>F821</code>). Declare intentional re-exports explicitly with <code>__all__</code> or
+<code>from module import name as name</code>. Run the relevant behavior tests from the
+component map above for the code you change.</p>
 <h2 id="exercises-on-the-invariants">Exercises on the invariants<a class="headerlink" href="#exercises-on-the-invariants" title="Permanent link">&para;</a></h2>
 <h3 id="authority">Authority<a class="headerlink" href="#authority" title="Permanent link">&para;</a></h3>
 <p>In <code>proposal_building.py</code>, list the fields copied from proposer output and the

@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1842,6 +1872,8 @@
       
         
       
+        
+      
     
     
     
@@ -1952,7 +1984,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2008,7 +2068,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3754,14 +3814,15 @@ accuracy and makes no SDK requests. The lesson supplies the live command and
 separate final-check boundary; a retained live transcript is pending. Start with
 the <a href="../learn/llm-prompt/">simulated notebook lesson</a> for a free first run.</p>
 <h3 id="supply-reusable-skill-documents">Supply reusable skill documents<a class="headerlink" href="#supply-reusable-skill-documents" title="Permanent link">&para;</a></h3>
-<p><a href="../build-patterns/evoskill/">Canonical skill-library walkthrough</a> · <strong>Shipped</strong> ·
-Python 3.12+ on macOS/Linux. Add company-specific tagging conventions to a
-<code>SkillSet</code>; independent episode checks grade the fixture agent's answers.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/research/context_evolution/main.py<span class="w"> </span>--sibling<span class="w"> </span>evoskill
+<p><a href="../build-patterns/evoskill/">Canonical EvoSkill walkthrough</a> · <strong>Experimental/live-only</strong> ·
+Python 3.12+ on macOS/Linux with Claude authentication. Haiku answers OfficeQA
+questions; Sonnet proposes and generates native skills from its failed traces.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>uv<span class="w"> </span>run<span class="w"> </span>--no-sync<span class="w"> </span>python<span class="w"> </span>examples/research/evoskill/main.py
 </code></pre></div>
-<p>The proposer chooses from an authored library; it does not discover new skills.
-Both episodes guide selection, so the 1.0 result is not held-out evidence.
-Research links to this same walkthrough and its existing notebook.</p>
+<p>Install the example's pinned requirements first, or use its self-contained
+notebook. Three development questions guide selection; three held-out questions
+compare the empty and selected skill libraries afterward. No improvement is
+promised, and the small sample is not a benchmark-performance claim.</p>
 <h3 id="correct-a-company-tagging-playbook">Correct a company-tagging playbook<a class="headerlink" href="#correct-a-company-tagging-playbook" title="Permanent link">&para;</a></h3>
 <p><a href="../research/ace/">Canonical ACE walkthrough</a> · <strong>Shipped</strong> · Python 3.12+ on
 macOS/Linux. Revise itemized context entries; independent tagging checks measure

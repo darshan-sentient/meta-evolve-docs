@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3682,29 +3742,31 @@ the additional methods still to implement.</p>
 <div class="grid cards">
 <ul>
 <li>
-<p><strong>Evolve an artifact</strong></p>
+<p><strong>Improve a parser</strong></p>
 <hr />
-<p>Artifact<br>
-↓ Propose a permitted revision<br>
-↓ Evaluate independently<br>
-↓ Record the outcome<br>
-Search chooses the next parent or stops</p>
+<p>Change the parser's source<br>
+↓ Run that parser in Python<br>
+↓ Count how many fixed checks pass<br>
+Keep the best measured version</p>
+<p>The <a href="https://sentient-xyz.github.io/meta-evolve-docs/start-here/">parser walkthrough</a>
+tries one handwritten correction: <strong>2/6 → 6/6 checks passed</strong>.</p>
 </li>
 <li>
-<p><strong>Evolve a method</strong></p>
+<p><strong>Improve how an agent repairs code</strong></p>
 <hr />
-<p>Procedure artifact<br>
-↓ Propose a permitted procedure change<br>
-↓ Outer evaluation runs bounded inner work<br>
-↓ Record the outcome<br>
-Outer search chooses the next parent or stops</p>
+<p>Change the agent's repair instructions or context settings<br>
+↓ Run the same worker on fixed repository repair tasks<br>
+↓ Independently test the code it produces<br>
+Keep the best measured settings</p>
+<p>The <a href="https://sentient-xyz.github.io/meta-evolve-docs/research/meta-harness/">Meta-Harness example</a>
+tests settings through bounded repair attempts, then checks the selection
+on a fresh task. Its worker is deterministic; no model requests are needed.</p>
 </li>
 </ul>
 </div>
-<p>At each level, evaluation rules and limits remain fixed outside the candidate.
-Search can select an artifact or procedure when eligible measurements exist;
-the seed may remain selected. An outer candidate changes only its declared
-part of the procedure.</p>
+<p>The second level measures the instructions through the repairs they produce.
+At both levels, the starting version can still win. Evaluation rules and limits
+stay fixed; proposed changes affect only the declared source or settings.</p>
 <h2 id="move-the-candidate-boundary-outward">Move the candidate boundary outward<a class="headerlink" href="#move-the-candidate-boundary-outward" title="Permanent link">&para;</a></h2>
 <p>In the parser walkthrough, source changes while the proposer, evaluator, and
 search policy stay fixed. <a href="../search/">Proposals and search</a> shows that choosing

@@ -499,6 +499,8 @@
       
         
       
+        
+      
     
     
     
@@ -546,6 +548,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -553,7 +583,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1834,6 +1864,8 @@
       
         
       
+        
+      
     
     
     
@@ -1944,7 +1976,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2000,7 +2060,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3506,6 +3566,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#practical-journey-handoff-for-336" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical-journey handoff for #336
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#regression-handoff-for-295" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3612,7 +3683,8 @@ as well as execute its cells.</p>
 <li>Start with a reader who can use Python functions and notebooks but has not
    used Meta-Evolve. Record their relevant experience and any prior exposure to
    these docs. Use an empty notebook and working folder, without a checkout.</li>
-<li>Record the documentation build and package version, then open the
+<li>Record the documentation source/build revision, package version, installation
+   URL or archive hash, and imported package location, then open the
    <a href="../../">homepage</a>. Let the reader choose links; do not supply a direct
    guide link unless help is needed.</li>
 <li>Ask them to think aloud. Record the first point where they hesitate, their
@@ -3622,10 +3694,15 @@ as well as execute its cells.</p>
    that task as assisted even if it succeeds afterward. Stop at a blocker when
    continuing would only repeat the same problem.</li>
 <li>Use a new notebook for the chosen task guide. Observe whether the reader
-   finds and executes required folded setup without prompting. Record time to
-   find the guide, first successful task result, and independent adaptation;
-   separate installation delays from reading and coding time. Complete further
-   guides in later sessions; preserve code and outputs for every attempted task.</li>
+   finds and executes required setup, including any folded cells, without
+   prompting. Record time to find the guide, first successful task result, and
+   independent adaptation; separate installation delays from reading and coding
+   time. Complete further guides in later sessions; preserve code and outputs
+   for every attempted task.</li>
+<li>For their own evaluator, measure time to a completed bounded experiment and
+   an inspected result. The seed may remain selected; a positive score delta
+   is not required. Observe feedback problems before asking the diagnostic
+   questions below, and distinguish an unprompted discovery from a prompted task.</li>
 </ol>
 <h3 id="participant-prompts">Participant prompts<a class="headerlink" href="#participant-prompts" title="Permanent link">&para;</a></h3>
 <p>Give only the current prompt to the participant. The first four form the common
@@ -3650,8 +3727,8 @@ its title: for example, “Use failed test cases to guide the next revision.”
 Then use that page's change-and-predict exercise. Record the prediction before
 execution, the explanation afterward, and any help required.</p>
 <p>After the exercise, ask a question relevant to that guide without naming the
-answer's location: “Why didn't my new metric change the winner?”, “Why does
-this search repeat a revision?”, “Why isn't feedback reaching my proposer?”,
+answer's location: “Why didn't my new metric change the winner?”, “Why did
+search revise a weaker version?”, “Why isn't feedback reaching my proposer?”,
 “Why wasn't the last attempt selected?”, or “Do I need the original functions
 to reopen?” Record their route, answer, and any assistance. Returning readers
 should also find the relevant operation with shared setup closed.</p>
@@ -3688,7 +3765,12 @@ that the reader understands why it occurred.</p>
 </thead>
 <tbody>
 <tr>
-<td>Install in a fresh notebook and copy cells in order</td>
+<td>Install and run the homepage cells</td>
+<td><a href="../../#one-improvement-experiment">Homepage</a></td>
+<td>Seed 33%, selected 100%; one proposal, two evaluations; <code>4m</code> gives 240 seconds</td>
+</tr>
+<tr>
+<td>Continue to the full parser walkthrough</td>
 <td><a href="../../start-here/">Start here</a></td>
 <td>Scores are 33%, 67%, 100%; no SDK request or lesson-file import</td>
 </tr>
@@ -3715,7 +3797,12 @@ that the reader understands why it occurred.</p>
 <tr>
 <td>Change one search declaration</td>
 <td><a href="../../learn/02-change-search/">Search</a></td>
-<td>Reader explains why the stateless simulation repeats a revision with BestOfN</td>
+<td>Reader traces Greedy to 5 and TreeSearch to 10 using six proposals and seven evaluations each; five proposals select 5 for both with six evaluations; the constructed score table is not a benchmark</td>
+</tr>
+<tr>
+<td>Inspect and retain a search history</td>
+<td><a href="../../learn/02-change-search/">Search</a></td>
+<td>Reader identifies the seed retained on a tie and the failed evaluation with no score, then reopens the saved tree history without callbacks or new evaluations</td>
 </tr>
 <tr>
 <td>Supply and use feedback in a fresh notebook</td>
@@ -3740,7 +3827,7 @@ that the reader understands why it occurred.</p>
 <tr>
 <td>Improve and reuse an agent configuration in a fresh notebook</td>
 <td><a href="../../guides/harness-evolution/">Harness</a></td>
-<td>Reader explains 33%, 67%, 100% from returned answers, separates development from fresh held-out checks, and reloads the export; one proposal gives 67% development and 50% held-out</td>
+<td>Reader explains 2/3 → 3/3 through the polite password answer, reuses the selected instruction, and predicts that zero proposals retain 2/3; distinguishes this simulation from the linked governed repair study</td>
 </tr>
 <tr>
 <td>Improve and reuse a search policy in a fresh notebook</td>
@@ -3782,25 +3869,110 @@ after a documentation fix.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Participant label / date:
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Python and notebook experience / prior Meta-Evolve exposure:
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Docs URL and build commit / package version:
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Uncommitted changes or source archive used:
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>OS / Python version / notebook application:
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Installation steps / working folder / starting URL:
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Task / page / heading / cell:
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Route taken / first hesitation / required setup found and executed unaided:
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Time to find guide / first task result / adaptation (installation time separate):
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Prediction and explanation in the reader&#39;s own words:
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Exact cells executed or changed:
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Expected result / actual output or error:
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Help requested / help supplied:
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Outcome: independent / assisted / blocked / not attempted
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>Notebook, output, and saved-history locations:
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Defect link / reproduction / fix / fresh-reader retest:
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>What would the reader replace for their own task?
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Independent example code / selected result / question and answer-finding route:
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>Open questions / QA review / acceptance decision:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Documentation source revision / install URL or archive hash / imported package path:
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Uncommitted changes or source archive used:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>OS / Python version / notebook application:
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Installation steps / working folder / starting URL:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Task / page / heading / cell:
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Route taken / first hesitation / required setup found and executed unaided:
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Time to find guide / first task result / adaptation (installation time separate):
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Time to completed own-evaluator experiment / inspected result:
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Feedback problem encountered before prompting / route tried / assistance:
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>First unaided feedback consumption / disabled, missing, truncated diagnosis:
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Typed failure versus low score / proposal and evaluation count explanation:
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>Restart and reopen outcome / snapshot lifetime and resume interpretation:
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Baseline/after task, docs, package, assistance conditions / prior test exposure:
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>Prediction and explanation in the reader&#39;s own words:
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Exact cells executed or changed:
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Expected result / actual output or error:
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>Help requested / help supplied:
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>Outcome: independent / assisted / blocked / abandoned / not attempted
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>Blocker or abandonment reason / agreed session stopping rule:
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>Notebook, output, and saved-history locations:
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>Defect link / reproduction / fix / fresh-reader retest:
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>What would the reader replace for their own task?
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Independent example code / selected result / question and answer-finding route:
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>Open questions / QA review / acceptance decision:
 </code></pre></div>
+<h3 id="practical-journey-handoff-for-336">Practical-journey handoff for #336<a class="headerlink" href="#practical-journey-handoff-for-336" title="Permanent link">&para;</a></h3>
+<p>The <a href="../practical-journey-verification/">integration verification</a> supplies the
+exact engineering setup, regression commands, outcomes, and remaining SDK glue.
+Use the <a href="../../guides/providers/">short SDK notebook</a> for three-request wiring and
+the <a href="../../guides/live-prompt/">complete routing journey</a> for development feedback,
+known failed-work usage, detached snapshots, final separation, and saved history.
+These live guides remain <strong>Experimental/live-only</strong>; the engineering rehearsals
+substitute providers or HTTP responses and authorize no paid calls.</p>
+<p>For #275, first give the existing unaided transfer prompt. Start its timer when
+the task is presented, and stop when the participant has completed a bounded run
+with their own evaluator and inspected its outcome. Record setup time separately.
+A seed that remains best counts; a positive score delta is not the success gate.
+Observe whether feedback is discovered, enabled, and consumed without prompting
+before asking the following diagnostic prompts, one at a time:</p>
+<ul>
+<li>“This run has no useful feedback for its revision function. Find why, and
+  explain whether the feedback was disabled or no matching report was selected.”</li>
+<li>“This run says context was truncated. Determine whether its selected checks
+  are still usable, and explain what the bounds control.”</li>
+<li>“Compare this failed attempt with a completed wrong answer. Explain the
+  measurements, work counts, and retained usage.”</li>
+<li>“Keep the result, restart Python, and inspect it without the original
+  functions. Explain which values remain usable after the store closes.”</li>
+</ul>
+<p>Facilitator setup uses the credential-free feedback and persistence guides first.
+<code>context=None</code> exercises deliberate feedback off; <code>RecentAncestors(max_records=0)</code>
+exercises enabled but empty selection; a large record allowance with
+<code>max_chars=0</code> clips only text and leaves structured evidence intact. The optional
+parser proposer returns its parent without checks. Contrast this with the routing
+proposer's required-feedback diagnostic using the offline tests below. Do not
+send a diagnostic SDK request during an unauthorised paid session.</p>
+<p>Bhasker and Salah agree session stopping rules and any timing/comparison thresholds
+before the first scored session. Retain each participant's outcome and assistance,
+including abandonment. Keep baseline and after conditions explicit; a familiarized
+retest is not a fresh participant. Three observations do not estimate prevalence.
+The existing three-user unaided completion and Salah acceptance gates still apply.</p>
+<p>For #277, extend the maintained checklist with these scenarios. Each row needs
+commands/cells, expected and actual results, environment and tested source/package
+identity, assistance, retained output/history, and linked defects or limitations.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Expected result and regression owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Improvement, tie, regression, failed seed</td>
+<td>Correct selected parent, complete or explicitly partial report; <code>test_llm_prompt_lesson.py</code> / <code>test_llm_prompt_feedback.py</code></td>
+</tr>
+<tr>
+<td>Disabled, missing, stale, truncated feedback</td>
+<td>No silent fallback or lookup outside selection; intact report survives text clipping; <code>test_llm_prompt_feedback.py</code> / <code>test_sdk_notebook_feedback.py</code></td>
+</tr>
+<tr>
+<td>Missing metric, malformed output, failed rewrite</td>
+<td>No fabricated score; failed rewrite skips evaluation; known usage remains; routing feedback and SDK failure tests</td>
+</tr>
+<tr>
+<td>Unknown accounting and final failure</td>
+<td>Receipts survive; final failure triggers no new search; <code>test_llm_prompt_persistence.py</code></td>
+</tr>
+<tr>
+<td>Restart, wrong ID, multiple runs, snapshot lifetime</td>
+<td>Explicit selection, typed diagnostics, detached display, no SDK calls; routing persistence/reopening tests and #335's contract checks</td>
+</tr>
+<tr>
+<td>Installed ZIP and copied notebook</td>
+<td>No checkout imports; real driver or SDK transport, imperfect seed and failure exercised; <code>test_lesson_downloads.py</code> / SDK notebook tests</td>
+</tr>
+</tbody>
+</table>
+<p>This is maintained handoff material for #275/#277, not completed independent
+sessions or a release recommendation. #269 retains independent SDK/accounting
+review, #274 docs coordination, and #270/#271 live evidence. Participant
+coordination remains with Salah; no outreach follows from this packet.</p>
 <h3 id="regression-handoff-for-295">Regression handoff for #295<a class="headerlink" href="#regression-handoff-for-295" title="Permanent link">&para;</a></h3>
 <p>Use <a href="https://github.com/sentient-xyz/meta-evolve/issues/277">#277</a>'s existing checklist
 and owner to track these scenarios against the final implementation commit:</p>

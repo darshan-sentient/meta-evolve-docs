@@ -499,6 +499,8 @@
       
         
       
+        
+      
     
     
     
@@ -546,6 +548,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -553,7 +583,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1834,6 +1864,8 @@
       
         
       
+        
+      
     
     
     
@@ -1944,7 +1976,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2000,7 +2060,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -4756,8 +4816,8 @@ journeys, vocabulary, measurements, and alternatives. Technical staging is:</p>
   <a href="../milestones/#author-api-revision">pre-1.0 policy</a> revises the original
   through-1.x commitment.</li>
 <li><strong>Shipped — M10.2:</strong> <code>application/improvement.py</code> implements <code>improve()</code> in
-  the application callable boundary. It lowers
-  exactly through <code>Task(evaluator=...)</code>, <code>Experiment</code>,
+  the application callable boundary. Its default declaration lowers
+  through <code>Task(evaluator=...)</code>, <code>Experiment</code>,
   <code>Greedy(max_trials=trials)</code>, and local <code>run(..., storage=...)</code>; it adds no
   second coordinator path and no durable-local claim.</li>
 <li><strong>Shipped — M10.3:</strong> <code>policies/functional.py</code> implements the curated
@@ -4811,11 +4871,44 @@ supplies tested routing and lifecycle, Jinja supplies escaped templates, and
 Uvicorn supplies server operation without bespoke web infrastructure. They do
 not enter core dependencies. Presentation itself remains dependency-free.</p>
 <h2 id="post-m10-presentation-follow-up">Post-M10 presentation follow-up<a class="headerlink" href="#post-m10-presentation-follow-up" title="Permanent link">&para;</a></h2>
-<p><strong>Status: Design—not shipped.</strong> This future slice owns notebook HTML
-representations over M10.8's shipped inert records and browser screenshot or
-visual-regression automation. The safe presentation boundary is a dependency,
-not permission to claim notebook rendering today. This work is outside the M10
-closure gate and requires a separate implementation and acceptance gate.</p>
+<p><strong>Status: Design—not shipped.</strong> General artifact notebook representations and
+browser screenshot or visual-regression automation remain follow-up work over
+M10.8's inert records. The bounded #333 run-report slice below has its own gate
+outside the M10 closure gate.</p>
+<h3 id="issue-333-captured-run-display">Issue #333: captured run display<a class="headerlink" href="#issue-333-captured-run-display" title="Permanent link">&para;</a></h3>
+<p>The <a href="../milestones/#issue-333-readable-captured-run-reports">acceptance gate</a>
+selects a nondurable extension to <code>RunSummary</code>. Its record and validation live
+in <code>application/run_summary.py</code>, re-exported through the existing paths.
+<code>application/comparisons.py</code> still captures one validated projection for each
+run; it adds the bootstrap measurement, distinct typed failed-attempt count,
+primary objective, recorded capabilities, and handle persistence metadata.</p>
+<p><code>_run_display.py</code> builds bounded <code>PresentationField</code> values from captured
+scalars, then renders text or escaped HTML. It stays outside <code>presentation/</code>
+to preserve that package's stricter frozen-artifact boundary. No decoded
+artifact hooks, optional notebook/browser dependencies, or I/O enter display.
+<code>Run</code> repr remains an identifier-only hint; explicit queries retain their errors.
+Storage's private optional display path is capture metadata, never a backend
+protocol or persisted field. Existing ranking, CLI output, schemas, budgets,
+identity, and resume verification remain unchanged by this slice.</p>
+<p>The <a href="../design/run-snapshot-display-plan/">plan</a> records the constructor and
+display choices; the <a href="../project/run-display-verification/">verification record</a>
+records completed automated checks and manual visual acceptance. This follow-up
+does not expand #313/#319's release scope.</p>
+<h2 id="saved-run-reopening-335">Saved-run reopening (#335)<a class="headerlink" href="#saved-run-reopening-335" title="Permanent link">&para;</a></h2>
+<p>The <a href="../milestones/#author-ux-follow-up">author-UX gate</a> adds one application
+composition in <code>application/reopening.py</code>: a standard-library context manager
+owns <code>Storage.read_only()</code>, selects an explicit identity or the only recorded
+run, calls <code>load_validated_run(..., require_existing=True)</code>, and yields <code>Run</code>.
+Entry failures and context exit close the handle. <code>RunSelectionRequired</code> exposes
+available IDs when selection is ambiguous; empty or missing runs retain
+<code>RunNotFound</code>. String IDs use the existing opaque-identity validation.</p>
+<p>No replay cache, schema, event, coordinator, or adapter change is needed.
+Subsequent queries retain live WAL visibility and their existing custom-codec
+requirements. The read-only contract preserves committed facts while permitting
+SQLite sidecar bookkeeping. The <a href="../programming-model/#reopen-saved-history">API contract</a>
+owns behavior; the <a href="../design/run-reopening-plan/">plan</a> and
+<a href="../project/run-reopening-verification/">verification record</a> record the choices
+and evidence. This follow-up does not expand #313/#319's release scope.</p>
 <h2 id="issue-163-finite-trial-budget-inheritance-for-search-presets">Issue #163: finite trial-budget inheritance for search presets<a class="headerlink" href="#issue-163-finite-trial-budget-inheritance-for-search-presets" title="Permanent link">&para;</a></h2>
 <p><strong>Status: Shipped.</strong> Tracked by #163 under release parent #268. This section
 records the original opt-in implementation; <a href="#issues-320321-budget-led-presets-and-component-resources">#320</a>
@@ -4865,6 +4958,48 @@ value still falls through to <code>Greedy</code> unchanged, so the façade's "fa
 as <code>Greedy</code> fails" contract continues to hold for the values it covers. The one
 observable delta is the message text for <code>None</code>, which now names the façade and
 the remedy instead of repeating a claim about <code>Greedy</code> that is no longer true.</p>
+<h2 id="issue-334-one-objective-and-explicit-context-on-the-small-path">Issue #334: one objective and explicit context on the small path<a class="headerlink" href="#issue-334-one-objective-and-explicit-context-on-the-small-path" title="Permanent link">&para;</a></h2>
+<p><strong>Status: Shipped.</strong> The
+<a href="../milestones/#author-ux-follow-up">author UX gate</a> and
+<a href="../design/improve-options-plan/">implementation plan</a> select two optional
+keywords on <code>application/improvement.py</code>: <code>objective</code> lowers to the existing
+<code>Task.objectives</code> tuple, and <code>context</code> passes into <code>Experiment.context</code>.
+Omitted values retain the default task and disabled pushed feedback. Validation,
+Greedy search, execution, identity, and accounting retain their existing owners.
+The implementation uses #332's evidence contract without changing its source
+dependencies. No new record, policy, coordinator branch, or schema is needed.
+This additive API belongs to a subsequent release, outside #313/#319's retained
+0.2 scope; it does not select a version or publish a package. The
+<a href="../project/improve-options-verification/">verification record</a> separates source
+equivalence and historical checks from publication.</p>
+<h2 id="issue-336-practical-journey-integration">Issue #336: practical journey integration<a class="headerlink" href="#issue-336-practical-journey-integration" title="Permanent link">&para;</a></h2>
+<p><strong>Status: Shipped.</strong> The existing routing driver consumes bounded evaluator reports through #332,
+captures #333 summaries before closing storage, and uses #335 for fresh-process
+inspection. The short SDK notebook retains its three-request bound and recorded
+environment; the credential-free feedback lesson uses #334's small declaration.
+No coordinator, schema, provider abstraction, or public keyword is added.</p>
+<p>Source snippets and generated three-file downloads share their implementation.
+Installed rehearsals cover an imperfect seed, failed rewrite with known usage,
+improvement, final separation, and reopening. The
+<a href="../project/practical-journey-verification/">verification record</a> owns actual
+checks, SDK-glue inventory, and the #275/#277 handoff. Live examples remain
+<strong>Experimental/live-only</strong>; independent sessions, review, and publication retain
+their existing owners under the <a href="../milestones/#author-ux-follow-up">author UX gate</a>.</p>
+<h2 id="issue-332-bounded-evidence-lookup-and-recent-ancestor-context">Issue #332: bounded evidence lookup and recent ancestor context<a class="headerlink" href="#issue-332-bounded-evidence-lookup-and-recent-ancestor-context" title="Permanent link">&para;</a></h2>
+<p><strong>Status: Shipped.</strong> The selected
+<a href="../milestones/#author-ux-follow-up">author UX gate</a> authorizes this slice,
+specified in the <a href="../design/feedback-context-plan/">feedback plan</a>.
+<code>ProposerContext.evidence</code> exposes a storage-free view of its committed
+bundle and explicit policy declaration. <code>latest(kind)</code> preserves occurrence
+provenance and selected order; disabled pushed context raises a typed capability
+error, while a declared policy with no match returns <code>None</code>.
+<code>RecentAncestors</code> uses the existing bounded policy/registry seam with its
+own identity. Existing ancestor and sibling selection semantics remain intact.
+Automatic proposer source dependencies cover the view and construction
+wiring; no new durable schema, ambient query, or coordinator branch is needed.
+This follow-up does not expand #313/#319's release scope.
+The <a href="../project/feedback-context-verification/">verification record</a> retains the
+pre-change durable capture, explicit digest changes, and acceptance checks.</p>
 <h2 id="author-api-revision">Author API revision<a class="headerlink" href="#author-api-revision" title="Permanent link">&para;</a></h2>
 <p><strong>Status: Design—not shipped.</strong> The
 <a href="../milestones/#author-api-revision">named roadmap gate</a> and
@@ -4978,6 +5113,60 @@ decision-record validation stay local to the example. No coordinator branch or
 new core protocol is required. Tests cover terminal failures, accounting against
 kernel usage, retained evidence consistency, and replay without re-execution;
 the docs notebook runs the same fixture command.</p>
+<h2 id="sol-pi-harness-efficiency-experiment">SoL-Pi: harness efficiency experiment<a class="headerlink" href="#sol-pi-harness-efficiency-experiment" title="Permanent link">&para;</a></h2>
+<p><strong>Status: Design—not shipped.</strong> The
+<a href="../milestones/#sol-pi-harness-efficiency-experiment">roadmap gate</a> owns scope,
+sequence, and acceptance. Keep the first implementation under
+<code>examples/research/sol_pi/</code>, using existing callable, artifact, evidence, and
+storage seams; create that directory only when implementation begins.</p>
+<ul>
+<li>Start with validated <code>Text</code> JSON containing only declared mechanism settings.
+  Keep runtime/model identity, pricing inputs, task splits, evaluator code,
+  permissions, and budgets in experiment-owned declarations. Later code
+  evolution can use an allowlisted <code>SourceTree</code> with independent validation.</li>
+<li>Use one narrow runner boundary with deterministic and opt-in Pi implementations.
+  Pin the upstream extension and run each evaluated configuration in a fresh
+  isolated workspace/session. Runtime tool and conversation handling belongs
+  there; Meta-Evolve's <code>ContextPolicy</code> selects inter-proposal evidence.</li>
+<li>Keep capability filtering, nondominated retention, and deterministic final
+  choice in an example-owned selection component. Use ordinary <code>SearchProgram</code>
+  extension points if retention must guide parent choice; add no coordinator
+  branch, built-in Pareto preset, or change to <code>compare_harnesses</code> semantics.</li>
+<li>Publish measured outcomes through <code>EvaluationResult</code>, detailed call and cache
+  observations through evidence, and counted costs through <code>Resources</code>. Include
+  reducer and compaction calls; preserve incomplete accounting explicitly.</li>
+<li>Record selection inputs, dispositions, and the frozen winner beside the
+  committed run evidence. Reuse durable history for replay and the existing
+  harness example's separation of development from later evaluation. Keep
+  upstream runtime dependencies optional and outside the core package.</li>
+</ul>
+<h2 id="sift-judge-guided-agent-evolution">SIFT: judge-guided agent evolution<a class="headerlink" href="#sift-judge-guided-agent-evolution" title="Permanent link">&para;</a></h2>
+<p><strong>Status: Design—not shipped.</strong> The
+<a href="../milestones/#sift-judge-guided-agent-evolution">roadmap gate</a> owns sequence,
+scope, and acceptance. Keep the sequential implementation under
+<code>examples/research/sift/</code>; create it only when implementation begins.</p>
+<ul>
+<li>Represent editable agent code as an independently validated <code>SourceTree</code>.
+  The shipped <code>HarnessArtifact</code> text/configuration surfaces do not express
+  arbitrary agent-code changes. Reuse proposer workspaces and independent
+  evaluator execution, with benchmark and model dependencies outside the core.</li>
+<li>Keep comparison orchestration and immutable decision snapshots example-owned.
+  Use a custom <code>SearchProgram</code> for rank-based sampling only after proving that
+  its inputs reconstruct from committed observations. If the existing search
+  view cannot expose those inputs, compose local runs through an explicit
+  experiment-owned driver retaining run and artifact-occurrence references;
+  do not hide mutable archive state in callbacks or call a live judge in <code>next</code>.</li>
+<li>Derive the win matrix and Bradley–Terry strengths from retained pairwise
+  records. Recompute rankings without rewriting earlier evaluations. Publish
+  actual measurements through <code>EvaluationResult</code>, observations through evidence,
+  and incurred resources through <code>Resources</code>; retain decision snapshots beside
+  run history when existing records cannot represent them directly.</li>
+<li>Keep the sequential driver synchronous. Neither <code>Session.step()</code> nor current
+  distributed cohorts provide evaluation-only scheduling or speculative
+  expansion. A later runtime proposal must define staged evaluation identity,
+  pending-node eligibility, provisional estimates, priority changes, completion
+  ordering, recovery, and budget settlement before asynchronous work begins.</li>
+</ul>
 <h2 id="milestone-11-trusted-distribution">Milestone 11: trusted distribution<a class="headerlink" href="#milestone-11-trusted-distribution" title="Permanent link">&para;</a></h2>
 <p><strong>Status: Design—not shipped.</strong> Tracked by #10.</p>
 <p>The subordinate <a href="../design/m11-trusted-concurrency/">M11 design record</a> owns

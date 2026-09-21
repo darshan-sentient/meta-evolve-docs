@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1975,6 +2005,8 @@
       
         
       
+        
+      
     
     
     
@@ -2085,7 +2117,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2141,7 +2201,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3740,6 +3800,12 @@ walkthroughs by application and execution requirements.</p>
 <td><a href="../learn/llm-prompt/">Routing prompt</a>, <a href="../applications/meeting-notes/">extraction case study</a></td>
 </tr>
 <tr>
+<td>Improve an illustration</td>
+<td>SVG source</td>
+<td>Rendered image scored by a separate agent</td>
+<td><a href="../build-patterns/feedback-descent/">SVG Feedback Descent</a>, <strong>Experimental/live-only</strong></td>
+</tr>
+<tr>
 <td>Repair code</td>
 <td>Source files</td>
 <td>Fixed tests</td>
@@ -3752,10 +3818,16 @@ walkthroughs by application and execution requirements.</p>
 <td><a href="../build-patterns/evoskill/">Skill library</a></td>
 </tr>
 <tr>
+<td>Improve a playbook</td>
+<td>Named instruction rules</td>
+<td>Answers checked against expected teams</td>
+<td><a href="../guides/playbook-improvement/">Support playbook</a></td>
+</tr>
+<tr>
 <td>Improve a harness</td>
-<td>Allowed harness surfaces</td>
-<td>Bounded task episodes</td>
-<td><a href="../guides/harness-evolution/">Harness evolution</a></td>
+<td>An agent's matching instruction</td>
+<td>Answers checked against fixed expectations</td>
+<td><a href="../guides/harness-evolution/">Help assistant</a>, then <a href="../research/meta-harness/">repository repair</a></td>
 </tr>
 <tr>
 <td>Improve search</td>
@@ -3792,8 +3864,12 @@ walkthroughs by application and execution requirements.</p>
 <h2 id="choose-how-to-run-it">Choose how to run it<a class="headerlink" href="#choose-how-to-run-it" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>In a notebook:</strong> start with the <a href="../start-here/">duration parser</a>,
-  <a href="../learn/llm-prompt/">routing prompt</a>, or <a href="../guides/">task guides</a>.
-  These pages include installation and all definitions; no checkout is needed.</li>
+  <a href="../learn/llm-prompt/">routing prompt</a>, <a href="../guides/skill-composition/">skill document</a>,
+  <a href="../guides/playbook-improvement/">playbook</a>, <a href="../guides/harness-evolution/">help assistant</a>,
+  or <a href="../guides/">task guides</a>.
+  These pages include installation and all definitions; no checkout is needed.
+  For a live generator and visual grader, use the standalone
+  <a href="../downloads/feedback-descent-svg.ipynb">SVG Feedback Descent notebook</a>.</li>
 <li><strong>From a checkout:</strong> the inventory commands below run from the repository root
   after <code>uv sync --locked</code>. <a href="../applications/#checkout-setup">Applications</a>
   supplies the checkout steps; some walkthroughs also provide standalone downloads.</li>
@@ -3809,8 +3885,9 @@ captures as its evidence. Live-only entries require the capabilities stated in t
 <p>A proposer changes the artifact. The evaluator, permissions, outer budget, and
 promotion rule stay outside candidate authority. Search and feedback use
 development evidence; only a separate final check measures outside selection.</p>
-<p>Meeting notes, harness, policy, and autoresearch examples include final checks.
-The source-repair and support-ticket fixtures do not have untouched splits.
+<p>Meeting notes, the advanced Meta-Harness study, policy, and autoresearch examples
+include final checks. The introductory help assistant, source-repair, and
+support-ticket fixtures do not have untouched splits.
 The skill-library walkthrough explains the distinct boundaries of its variants.
 Fixture results establish behavior on supplied cases, not live-model performance.
 Replace the proposer and evaluation cases explicitly when adapting an example;
@@ -4040,6 +4117,14 @@ keep other components fixed while assessing that change.</p>
 <td>Shipped</td>
 <td><code>uv run python examples/agents/prompt_optimization/main.py</code></td>
 <td><code>model_migration</code></td>
+</tr>
+<tr>
+<td><code>feedback_descent_svg</code></td>
+<td>Improve a lighthouse SVG with visual feedback</td>
+<td>Codex login</td>
+<td>Experimental/live-only</td>
+<td><a href="../downloads/feedback-descent-svg.ipynb">Open notebook</a></td>
+<td><a href="../build-patterns/feedback-descent/">Walkthrough</a></td>
 </tr>
 <tr>
 <td><code>model_migration</code></td>

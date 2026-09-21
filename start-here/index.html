@@ -351,10 +351,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-start-with-something-incomplete" class="md-nav__link">
+  <a href="#2-try-the-starting-parser" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Start with something incomplete
+        2. Try the starting parser
       
     </span>
   </a>
@@ -362,10 +362,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-define-how-to-measure-it" class="md-nav__link">
+  <a href="#3-measure-it-with-six-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Define how to measure it
+        3. Measure it with six checks
       
     </span>
   </a>
@@ -373,10 +373,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-simulate-an-agent" class="md-nav__link">
+  <a href="#4-propose-a-correction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Simulate an agent
+        4. Propose a correction
       
     </span>
   </a>
@@ -384,21 +384,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-run-two-revisions" class="md-nav__link">
+  <a href="#5-improve-inspect-and-use-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Run two revisions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-see-what-changed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. See what changed
+        5. Improve, inspect, and use it
       
     </span>
   </a>
@@ -636,6 +625,8 @@
       
         
       
+        
+      
     
     
     
@@ -683,6 +674,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -690,7 +709,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1971,6 +1990,8 @@
       
         
       
+        
+      
     
     
     
@@ -2081,7 +2102,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2137,7 +2186,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3592,10 +3641,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-start-with-something-incomplete" class="md-nav__link">
+  <a href="#2-try-the-starting-parser" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Start with something incomplete
+        2. Try the starting parser
       
     </span>
   </a>
@@ -3603,10 +3652,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-define-how-to-measure-it" class="md-nav__link">
+  <a href="#3-measure-it-with-six-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Define how to measure it
+        3. Measure it with six checks
       
     </span>
   </a>
@@ -3614,10 +3663,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-simulate-an-agent" class="md-nav__link">
+  <a href="#4-propose-a-correction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Simulate an agent
+        4. Propose a correction
       
     </span>
   </a>
@@ -3625,21 +3674,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-run-two-revisions" class="md-nav__link">
+  <a href="#5-improve-inspect-and-use-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Run two revisions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-see-what-changed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. See what changed
+        5. Improve, inspect, and use it
       
     </span>
   </a>
@@ -3708,57 +3746,61 @@
 
 
 <h1 id="start-here-improve-a-duration-parser">Start here: improve a duration parser<a class="headerlink" href="#start-here-improve-a-duration-parser" title="Permanent link">&para;</a></h1>
-<p>This lesson applies an improvement procedure to a duration parser. You supply
-the starting source, a function that proposes revisions, and independent checks
-of the result. Meta-Evolve tries revisions, selects the best measured version,
-and keeps the history.</p>
-<p>This lesson uses a simulated agent with handwritten
-responses. Python actually executes and grades each revision. No SDK, API key,
-or model requests are needed; the scores below describe this simulation.</p>
+<p>Our time tracker thinks four minutes means four seconds. In five short cells,
+you'll measure the bug, try a correction, and use the selected parser.
+The correction is handwritten; Python runs the checks. No model or API key is needed.</p>
+<p><strong>Start with a version → propose a change → test it → inspect what happened.</strong></p>
+<!-- notebook:web-only:start -->
+<p><a href="https://colab.research.google.com/github/sentient-xyz/meta-evolve-docs/blob/main/downloads/parser-quickstart.ipynb">Open in Colab</a>
+· <a href="../downloads/parser-quickstart.ipynb">Download the notebook</a></p>
+<p>Or copy the five Python blocks into a fresh Jupyter notebook.</p>
+<!-- notebook:web-only:end -->
+
+<p>Run the five cells in order. Every definition is below.
+After installation, the example runs offline.</p>
 <p><a id="start-here-build-an-improvement-loop"></a>
 <a id="improve-a-duration-parser"></a>
 <a id="try-it-improve-a-prompt"></a></p>
-<p>If you tried the <a href="../#one-improvement-experiment">quick example</a>, this
-walkthrough uses the same starting parser and six checks. Here we add minutes
-and hours in two separate revisions, so you can see how search builds on the
-best result. Every definition is on this page; you can start in a fresh notebook.</p>
 <h2 id="1-install">1. Install<a class="headerlink" href="#1-install" title="Permanent link">&para;</a></h2>
-<p>Download the <a href="../downloads/meta-evolve.zip">package ZIP</a> from this documentation
-build. The same download is included when you read the docs offline.</p>
-<p>Open a notebook running <strong>Python 3.12 or newer</strong>. Put <code>meta-evolve.zip</code> in
-the notebook's working folder. For a hosted notebook, upload it through the
-file browser; <code>%pwd</code> in a cell shows the working folder.</p>
-<p>Run this cell once to install the library into the notebook's environment.
-Skip it if you already installed this package. Restart the kernel if asked,
-then copy the remaining Python blocks into cells in order.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
+<p>Use a fresh notebook environment running <strong>Python 3.12 or newer</strong>.
+Install directly from the published documentation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sentient</span><span class="o">-</span><span class="n">xyz</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
 </code></pre></div>
-<h2 id="2-start-with-something-incomplete">2. Start with something incomplete<a class="headerlink" href="#2-start-with-something-incomplete" title="Permanent link">&para;</a></h2>
-<p>Our time tracker reads seconds correctly, but treats minutes and hours as
-seconds. The <strong>artifact</strong> is a string containing Python source. <code>SEED</code> is its
-starting version. <code>CONTRACT</code> contains the instructions for revising it.
-The same role can hold a prompt or another value; see
-<a href="../concepts/artifacts/">artifacts and versions</a> for how these values fit the loop.</p>
+<p>If you already imported Meta-Evolve, restart the kernel after installing.
+Then run the remaining cells in order.</p>
+<p><strong>Archived or offline docs:</strong> use the ZIP included with that build. Put
+<code>meta-evolve.zip</code> in the notebook's working folder (<code>%pwd</code> shows it; hosted
+notebooks let you upload files), then run <code>%pip install ./meta-evolve.zip</code>
+instead. Installing from source may still download build tools.</p>
+<p><a id="2-start-with-something-incomplete"></a></p>
+<h2 id="2-try-the-starting-parser">2. Try the starting parser<a class="headerlink" href="#2-try-the-starting-parser" title="Permanent link">&para;</a></h2>
+<p><code>SEED</code> holds the parser's Python source. <code>load_parser</code> executes that source and
+returns its function. Try <code>"4m"</code>: this version reads the number and ignores the unit.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">CONTRACT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Implement parse_seconds(text) for whole-number durations.</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s2">Inputs contain a number followed by s, m, or h, such as &#39;30s&#39; or &#39;2h&#39;.</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s2">Return the duration in seconds as an integer. Return only Python source.</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">SEED</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;def parse_seconds(text):</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s1">    return int(text[:-1])</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s1">&#39;&#39;&#39;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">SEED</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;def parse_seconds(text):</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s1">    return int(text[:-1])</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s1">&#39;&#39;&#39;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_parser</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">namespace</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">exec</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="k">return</span> <span class="n">namespace</span><span class="p">[</span><span class="s2">&quot;parse_seconds&quot;</span><span class="p">]</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4m:&quot;</span><span class="p">,</span> <span class="n">load_parser</span><span class="p">(</span><span class="n">SEED</span><span class="p">)(</span><span class="s2">&quot;4m&quot;</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1"># Output:</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># 4m: 4 seconds</span>
 </code></pre></div>
-<p>For now, inputs are valid whole-number durations with one unit. Compound
-durations, extra spellings, and invalid-input handling can be separate exercises.</p>
 <p><a id="define-what-correct-means"></a>
 <a id="run-the-seed-check"></a>
-<a id="inspect-the-grader"></a></p>
-<h2 id="3-define-how-to-measure-it">3. Define how to measure it<a class="headerlink" href="#3-define-how-to-measure-it" title="Permanent link">&para;</a></h2>
-<p>The <strong>evaluator</strong> compares actual answers with six expected answers. Its score
-is the fraction correct: larger is better. <code>load_parser</code> turns the source string
-into a function that <code>evaluate</code> can call on each test input.</p>
+<a id="inspect-the-grader"></a>
+<a id="3-define-how-to-measure-it"></a></p>
+<h2 id="3-measure-it-with-six-checks">3. Measure it with six checks<a class="headerlink" href="#3-measure-it-with-six-checks" title="Permanent link">&para;</a></h2>
+<p><code>evaluate</code> returns the fraction of correct answers; higher is better.
+Only the two seconds cases pass. These expected answers stay fixed while we
+try a revised parser.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">CASES</span> <span class="o">=</span> <span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="p">(</span><span class="s2">&quot;30s&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="p">(</span><span class="s2">&quot;90s&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
@@ -3769,253 +3811,105 @@ into a function that <code>evaluate</code> can call on each test input.</p>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_parser</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">namespace</span> <span class="o">=</span> <span class="p">{}</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">exec</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">return</span> <span class="n">namespace</span><span class="p">[</span><span class="s2">&quot;parse_seconds&quot;</span><span class="p">]</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">parse</span> <span class="o">=</span> <span class="n">load_parser</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="n">passed</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="k">for</span> <span class="n">text</span><span class="p">,</span> <span class="n">expected</span> <span class="ow">in</span> <span class="n">CASES</span><span class="p">:</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="n">actual</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">:</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>            <span class="n">passed</span> <span class="o">+=</span> <span class="mi">1</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="k">return</span> <span class="n">passed</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting score: </span><span class="si">{</span><span class="n">evaluate</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c1"># Output:</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="c1"># Starting score: 33%</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">parse</span> <span class="o">=</span> <span class="n">load_parser</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">passed</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">for</span> <span class="n">text</span><span class="p">,</span> <span class="n">expected</span> <span class="ow">in</span> <span class="n">CASES</span><span class="p">:</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">actual</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">:</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="n">passed</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="k">return</span> <span class="n">passed</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting: </span><span class="si">{</span><span class="n">evaluate</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span><span class="si">}</span><span class="s2"> checks&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1"># Output:</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="c1"># Starting: 2/6 checks</span>
 </code></pre></div>
-<p>The seed passes the two seconds cases: 2 out of 6. Expected answers stay in the
-evaluator; a proposed source revision does not rewrite them.
-This is the <a href="../concepts/authority/">evaluation boundary</a>: the proposer changes
-the artifact, while the evaluator determines its score independently.</p>
-<p><code>load_parser</code> executes the handwritten source in this notebook. Use this small
-evaluator with reviewed local code. The <a href="../guides/live-parser/">live source example</a>
-uses a bounded child-process grader for model-generated revisions.
-An exception while loading or running a candidate becomes an evaluator failure
-in a run, with no score; this loop does not turn exceptions into wrong answers.</p>
-<h2 id="4-simulate-an-agent">4. Simulate an agent<a class="headerlink" href="#4-simulate-an-agent" title="Permanent link">&para;</a></h2>
-<p>Here are the simulated agent's two possible responses. The first adds minutes;
-the second adds hours. They are ordinary source strings, so you can read exactly
-what will run.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">MINUTES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;def parse_seconds(text):</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s1">    quantity = int(text[:-1])</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s1">    return quantity * 60 if text[-1] == &quot;m&quot; else quantity</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s1">&#39;&#39;&#39;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">COMPLETE</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;def parse_seconds(text):</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s1">    quantity = int(text[:-1])</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s1">    seconds_per_unit = {&quot;s&quot;: 1, &quot;m&quot;: 60, &quot;h&quot;: 3600}</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s1">    return quantity * seconds_per_unit[text[-1]]</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s1">&#39;&#39;&#39;</span>
+<p><a id="4-simulate-an-agent"></a></p>
+<h2 id="4-propose-a-correction">4. Propose a correction<a class="headerlink" href="#4-propose-a-correction" title="Permanent link">&para;</a></h2>
+<p>The missing step is converting minutes and hours to seconds. <code>propose</code> receives
+the current source and returns a proposed revision. Here it always returns this
+handwritten correction; you can replace it with a model call later.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">propose</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">return</span> <span class="s1">&#39;&#39;&#39;def parse_seconds(text):</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s1">    quantity = int(text[:-1])</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s1">    seconds_per_unit = {&quot;s&quot;: 1, &quot;m&quot;: 60, &quot;h&quot;: 3600}</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s1">    return quantity * seconds_per_unit[text[-1]]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s1">&#39;&#39;&#39;</span>
 </code></pre></div>
-<p><code>agent(message)</code> stands in for an SDK call. It selects a response from the
-current source, so rerunning a cell does not advance a hidden response counter.
-The <strong>proposer</strong> builds the message and returns the agent's source text.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">agent</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate source revisions, without a model or a call counter.&quot;&quot;&quot;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">source</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;Current source:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">SEED</span><span class="p">:</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="k">return</span> <span class="n">MINUTES</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="p">(</span><span class="n">MINUTES</span><span class="p">,</span> <span class="n">COMPLETE</span><span class="p">):</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="k">return</span> <span class="n">COMPLETE</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;This simulation only recognizes the tutorial sources.&quot;</span><span class="p">)</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">propose</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONTRACT</span><span class="si">}</span><span class="se">\n</span><span class="s2">Current source:</span><span class="se">\n</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">return</span> <span class="n">agent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<p><a id="four-inputs-one-result"></a>
+<a id="assemble-the-improvement-loop"></a>
+<a id="improvement-ties-and-regressions"></a>
+<a id="5-run-two-revisions"></a>
+<a id="6-see-what-changed"></a>
+<a id="understand-the-result"></a></p>
+<h2 id="5-improve-inspect-and-use-it">5. Improve, inspect, and use it<a class="headerlink" href="#5-improve-inspect-and-use-it" title="Permanent link">&para;</a></h2>
+<p><code>meta.improve</code> evaluates the starting parser, tries one revision (<code>trials=1</code>),
+and keeps the version with the better score. <code>result.best().value</code> gives you
+its source, ready to load and call. You set the checks and the attempt limit;
+the run stops after that one revision attempt.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">summary</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting: </span><span class="si">{</span><span class="n">evaluate</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span><span class="si">}</span><span class="s2"> checks&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected: </span><span class="si">{</span><span class="n">summary</span><span class="o">.</span><span class="n">primary_score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">CASES</span><span class="p">)</span><span class="si">}</span><span class="s2"> checks&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected source:&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">parse_seconds</span> <span class="o">=</span> <span class="n">load_parser</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4m:&quot;</span><span class="p">,</span> <span class="n">parse_seconds</span><span class="p">(</span><span class="s2">&quot;4m&quot;</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># Output:</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1"># Starting: 2/6 checks</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1"># Selected: 6/6 checks</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1"># Selected source:</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1"># def parse_seconds(text):</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1">#     quantity = int(text[:-1])</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="c1">#     seconds_per_unit = {&quot;s&quot;: 1, &quot;m&quot;: 60, &quot;h&quot;: 3600}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="c1">#     return quantity * seconds_per_unit[text[-1]]</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="c1"># 4m: 240 seconds</span>
 </code></pre></div>
-<p>The simulation recognizes these three source strings only. To experiment with
-other revisions, extend its responses and matching conditions. Its handwritten
-choices demonstrate the loop; they do not measure a model's ability to improve code.</p>
-<p><a id="four-inputs-one-result"></a></p>
-<p><a id="assemble-the-improvement-loop"></a>
-<a id="improvement-ties-and-regressions"></a></p>
-<h2 id="5-run-two-revisions">5. Run two revisions<a class="headerlink" href="#5-run-two-revisions" title="Permanent link">&para;</a></h2>
-<p><a class="autorefs autorefs-internal" title="improve" href="../reference/api/#meta_evolve.improve"><code>meta.improve()</code></a> runs the improvement loop and returns its
-history as a <strong>run</strong>. It evaluates the seed, then uses <strong>greedy search</strong>: each proposal starts
-from the best measured version so far. <code>trials=2</code> allows two revision attempts
-after the seed, giving three evaluations here.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">)</span>
-</code></pre></div>
-<p>A tie keeps the earlier winner; a worse revision stays in history without
-becoming the starting point for the next proposal.</p>
-<p>This first run sends the contract and source to the proposer. Supplying recorded
-evaluation feedback is covered in <a href="../learn/05-use-experience/">Give the proposer feedback</a>.</p>
-<p><a id="understand-the-result"></a></p>
-<h2 id="6-see-what-changed">6. See what changed<a class="headerlink" href="#6-see-what-changed" title="Permanent link">&para;</a></h2>
-<p><code>result.trials()</code> lists the seed and every revision attempt. Each successful
-evaluation has a <code>score</code> in <code>attempt.metrics</code>. <code>result.best().value</code> returns the
-selected source string, which we print after the scores.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trials</span><span class="p">()):</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected source:&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Output:</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Version 0: 33%</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Version 1: 67%</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Version 2: 100%</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Selected source:</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># def parse_seconds(text):</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1">#     quantity = int(text[:-1])</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1">#     seconds_per_unit = {&quot;s&quot;: 1, &quot;m&quot;: 60, &quot;h&quot;: 3600}</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1">#     return quantity * seconds_per_unit[text[-1]]</span>
-</code></pre></div>
-<p>The simulated responses determine the proposed code; the evaluator independently
-determines these scores. To use the selected version, turn its source back into
-a function with the same <code>load_parser</code> used by the evaluator:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">parse_seconds</span> <span class="o">=</span> <span class="n">load_parser</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">parse_seconds</span><span class="p">(</span><span class="s2">&quot;4m&quot;</span><span class="p">))</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Output:</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 240</span>
-</code></pre></div>
-<details class="details">
-<summary>How the pieces fit</summary>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>This notebook</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Artifact / seed</td>
-<td>The Python source string <code>SEED</code></td>
-</tr>
-<tr>
-<td>Proposer</td>
-<td><code>propose(source)</code> calls <code>agent(message)</code></td>
-</tr>
-<tr>
-<td>Evaluator</td>
-<td><code>evaluate(source)</code> measures correctness</td>
-</tr>
-<tr>
-<td>Task</td>
-<td>Declares that evaluator and the objective to maximize its score</td>
-</tr>
-<tr>
-<td>Search</td>
-<td>Greedy selection, with two revision attempts</td>
-</tr>
-<tr>
-<td>Experiment</td>
-<td>Combines the task, seed, proposer, and search settings</td>
-</tr>
-<tr>
-<td>Session</td>
-<td>Controls execution when you want to advance one decision at a time</td>
-</tr>
-<tr>
-<td>Run</td>
-<td><code>result</code> provides the recorded history and selected source</td>
-</tr>
-<tr>
-<td>Feedback / experience</td>
-<td>Optional; added in the feedback guide</td>
-</tr>
-<tr>
-<td>External limits</td>
-<td>Fixed cases and the <code>trials</code> allowance</td>
-</tr>
-</tbody>
-</table>
-<p><code>improve()</code> assembles the declaration and completes execution for you.
-<a href="../programming-model/#the-smallest-useful-mental-model">Expand this same parser into core objects</a>
-to configure the task and experiment, advance a session, and inspect its run.</p>
-</details>
+<p>Four minutes now gives <strong>240 seconds</strong>, and the selected parser passes <strong>6/6</strong>
+checks. A tie or a worse revision keeps the earlier winner. These checks cover
+whole-number durations ending in <code>s</code>, <code>m</code>, or <code>h</code>; passing them doesn't establish
+correctness for every possible input.</p>
+<p><code>result</code> keeps the attempted versions and their outcomes in memory. To keep
+that history after Python closes, <a href="../learn/06-persist-run/">save and reopen the run</a>.
+Selecting a parser does not deploy it.</p>
 <h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
-<p>Change <code>trials=2</code> to <code>trials=1</code> and rerun sections 5 and 6. Predict the result:
-two versions, a selected score of 67%, and hours still wrong. With <code>trials=0</code>,
-only the seed is evaluated. Restore <code>trials=2</code> before continuing.</p>
-<p>Passing these six checks does not establish correctness for all inputs. Add a
-case such as <code>("4m", 240)</code> to extend your development checks; keep any final
-evaluation cases separate from search when assessing generalization.</p>
-<p><a id="what-can-you-build"></a></p>
-<p><a id="complete-source"></a>
+<p>Change <code>trials=1</code> to <code>trials=0</code> in cell 5 and rerun that cell. Predict the answer
+before running it: <strong>2/6</strong> checks, and <code>"4m"</code> gives <strong>4 seconds</strong> again. With no
+proposal attempts, the starting parser stays selected. Restore <code>trials=1</code>.</p>
+<p>To try another check, add <code>("4m", 240)</code> to <code>CASES</code> in cell 3 and rerun cells 3
+and 5. The starting score becomes <strong>2/7</strong> and the selected score <strong>7/7</strong>.
+Rerunning all five cells repeats the experiment from the starting parser.</p>
+<p><a id="what-can-you-build"></a>
+<a id="complete-source"></a>
 <a id="keep-the-work"></a>
 <a id="report-your-own-cost"></a>
 <a id="run-with-a-model"></a>
 <a id="the-same-loop-a-different-artifact"></a>
 <a id="verification-and-remaining-work"></a></p>
-<p>Here, the parser was the candidate; its proposer, search rule, and checks stayed
-fixed. To compose a method, choose how revisions are proposed and searched.
-To evolve a method, make a declared part of that procedure the candidate and
-evaluate the outcomes it produces.</p>
-<p>The same pattern works for <a href="../learn/llm-prompt/">routing prompts</a>, skills,
-harnesses, and search procedures. Choose one next step; each guide includes its
-own setup and definitions.</p>
 <h2 id="choose-your-next-step">Choose your next step<a class="headerlink" href="#choose-your-next-step" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>You want to…</th>
-<th>Continue with</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Apply an implemented method to a larger problem</td>
-<td><a href="../research/#use-a-method">Choose a method</a></td>
-</tr>
-<tr>
-<td>Build a method from compatible components</td>
-<td><a href="../research/decomposition/">Compose a method</a></td>
-</tr>
-<tr>
-<td>Improve a research procedure itself</td>
-<td><a href="../learn/autoresearch/">Evolve a method</a></td>
-</tr>
-<tr>
-<td>Understand Task, Experiment, Session, and Run</td>
-<td><a href="../programming-model/#the-smallest-useful-mental-model">Follow the core objects</a></td>
-</tr>
-<tr>
-<td>Adapt the checks to your own task</td>
-<td><a href="../guides/evaluation/">Define what better means</a></td>
-</tr>
-<tr>
-<td>Change which version gets another attempt</td>
-<td><a href="../learn/02-change-search/">Choose what to try next</a></td>
-</tr>
-<tr>
-<td>Use failed checks to guide a revision</td>
-<td><a href="../learn/05-use-experience/">Give the proposer feedback</a></td>
-</tr>
-<tr>
-<td>Replace handwritten revisions with model calls</td>
-<td><a href="../guides/providers/">Use your model SDK</a></td>
-</tr>
-<tr>
-<td>Bound work or stop at a target score</td>
-<td><a href="../guides/limits/">Set limits and stopping conditions</a></td>
-</tr>
-<tr>
-<td>Understand regressions and failed attempts</td>
-<td><a href="../learn/03-inspect-results/">Inspect results and failures</a></td>
-</tr>
-<tr>
-<td>Keep history after closing the notebook</td>
-<td><a href="../learn/06-persist-run/">Save and reopen a run</a></td>
-</tr>
-</tbody>
-</table>
-<p>For the roles behind the code, read the <a href="../concepts/">concepts overview</a>.
-For parameters and return values, use the <a href="../reference/api/">API reference</a>.
-To decide how this fits your project, read <a href="../comparison/">When to use Meta-Evolve</a>.</p>
-<p><a href="../guides/">Choose a guide</a> · <a href="../learn/07-where-next/">Try another application</a></p>
+<ul>
+<li><strong>Make it yours:</strong> <a href="../guides/evaluation/">adapt the evaluator and checks</a>.</li>
+<li><strong>Let a model propose revisions:</strong> <a href="../guides/providers/">connect your SDK</a>.
+  For model-generated Python, follow the <a href="../guides/live-parser/">live parser journey</a>,
+  which uses a bounded child-process grader. This first notebook executes the
+  reviewed, handwritten source directly; execution errors remain failed evaluations.</li>
+</ul>
+<p>Want more control? <a href="../guides/limits/">Set limits</a>,
+<a href="../programming-model/#the-smallest-useful-mental-model">follow the core objects</a>,
+or <a href="../concepts/#glossary">look up a term</a>.</p>
+<p>Explore <a href="../research/">methods</a>, <a href="../research/decomposition/">compose a method</a>,
+or <a href="../learn/autoresearch/">evolve a method</a>. See
+<a href="../comparison/">when to use Meta-Evolve</a> or <a href="../guides/">choose a guide</a>.</p>
+<p>For a saved documentation build, use its matching
+<a href="../downloads/meta-evolve.zip">package ZIP</a> with the local installation route above.</p>
 
 
 

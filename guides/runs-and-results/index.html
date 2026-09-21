@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3820,8 +3880,10 @@ allowances count subsequent attempts. Every successor proposal has its own
 trial and either an artifact plus evaluation or a typed failure.</p>
 <h2 id="search-presets">Search presets<a class="headerlink" href="#search-presets" title="Permanent link">&para;</a></h2>
 <p>For a complete notebook example, <a href="../../learn/02-change-search/">Choose what to try next</a>
-defines a proposer and evaluator, then shows how Greedy and BestOfN select
-different results under the same attempt limit. All setup is on that page.</p>
+compares a handwritten Greedy loop with recorded Greedy and TreeSearch runs.
+It follows their parent choices under the same allowance, then saves and reopens
+the history. The score table is constructed to illustrate the policies;
+all setup is on that page.</p>
 <p>Search changes allocation, not proposer or evaluator semantics:</p>
 <ul>
 <li><a class="autorefs autorefs-internal" title="Greedy

@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3461,10 +3521,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recognize-the-pieces" class="md-nav__link">
+  <a href="#glossary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recognize the pieces
+        Glossary
       
     </span>
   </a>
@@ -3550,13 +3610,12 @@ measures their results. You supply a starting value, a proposer that revises
 it, and an independent evaluator. Search decides what to try next. Meta-Evolve
 records the attempts, measurements, and relationships between versions.</p>
 <p>The <a href="../start-here/">duration-parser walkthrough</a> makes this concrete. Its
-starting parser reads seconds correctly but ignores minutes and hours. Two
-handwritten revisions add the missing behavior. Python evaluates each version
-against the same six checks; these are simulated proposals, not model results.
-The measured progression is <strong>2/6 → 4/6 → 6/6</strong> checks passed.</p>
+starting parser reads seconds correctly but ignores minutes and hours. One
+handwritten revision adds the missing behavior. Python evaluates both versions
+against the same six checks: <strong>2/6 → 6/6</strong> checks passed.</p>
 <p>An <strong>improvement procedure</strong>, or <strong>method</strong>, combines proposal and search
 decisions to try changes under the declared evaluation and work allowance.
-Here it uses handwritten revisions and Greedy search. Other methods can use
+Here it uses a handwritten revision and Greedy search. Other methods can use
 different proposal rules, feedback, or several stages of search.</p>
 <h2 id="follow-one-run">Follow one run<a class="headerlink" href="#follow-one-run" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Evaluate seed; record outcome
@@ -3581,50 +3640,64 @@ version; it is not assigned a low score.</p>
 <p>Search can branch from different parents or retain weaker stepping stones.
 It can stop with the seed still selected, or with no successful evaluation.
 The parser's improving chain is one measured trajectory through this loop.</p>
-<h2 id="recognize-the-pieces">Recognize the pieces<a class="headerlink" href="#recognize-the-pieces" title="Permanent link">&para;</a></h2>
+<p><a id="recognize-the-pieces"></a></p>
+<h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h2>
+<p>These names describe the pieces of a run. Follow a term for more detail.</p>
 <table>
 <thead>
 <tr>
-<th>Role</th>
-<th>In the parser walkthrough</th>
+<th>Term</th>
+<th>Plain meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Artifact / seed</td>
-<td>Python source in a string; <code>SEED</code> is the starting version</td>
+<td><a id="artifact"></a><a href="artifacts/">Artifact</a></td>
+<td>The thing you want to improve—a prompt, skill document, program, or agent setup.</td>
 </tr>
 <tr>
-<td>Improvement procedure</td>
-<td>Handwritten source revisions combined with bounded Greedy search</td>
+<td><a id="seed"></a><a href="artifacts/">Seed</a></td>
+<td>The starting version, such as the parser that ignores minutes and hours.</td>
 </tr>
 <tr>
-<td>Proposer</td>
-<td><code>propose(source)</code> returns a proposed replacement</td>
+<td><a id="version"></a><a href="artifacts/#keep-versions-and-their-parents">Version</a></td>
+<td>One recorded form of the artifact. Revisions keep their links to the versions they came from.</td>
 </tr>
 <tr>
-<td>Evaluator</td>
-<td><code>evaluate(source)</code> measures correctness against six expected answers</td>
+<td><a id="proposer"></a><a href="search/#the-proposer-creates-a-candidate">Proposer</a></td>
+<td>The function that suggests a revision, using handwritten rules or your model SDK.</td>
 </tr>
 <tr>
-<td>Task</td>
-<td>Declares that evaluator and the objective that prefers a higher score</td>
+<td><a id="evaluator"></a><a href="evidence/">Evaluator</a></td>
+<td>The independent function that measures a version against your checks.</td>
 </tr>
 <tr>
-<td>Search</td>
-<td>Greedy chooses the best measured version so far as the next parent</td>
+<td><a id="score"></a><a href="evidence/">Score</a></td>
+<td>An evaluation measurement, such as checks passed. Your objective says whether higher or lower is better.</td>
 </tr>
 <tr>
-<td>Feedback / experience</td>
-<td>Optional observations supplied explicitly to the proposer</td>
+<td><a id="trial"></a><a href="failures/">Trial</a></td>
+<td>One attempt and its recorded outcome. The <code>trials=</code> allowance counts proposal attempts after the seed evaluation.</td>
 </tr>
 <tr>
-<td>Work allowance</td>
-<td>Two proposal attempts after the seed evaluation; explicit budgets can impose additional ceilings</td>
+<td><a id="search"></a><a href="search/#search-chooses-the-parent">Search</a></td>
+<td>The rule for choosing which version to revise next and when to stop.</td>
 </tr>
 <tr>
-<td>Retained results</td>
-<td>A <code>Run</code> containing versions, measurements, outcomes, and usage</td>
+<td><a id="run"></a><a href="history/">Run / history</a></td>
+<td>One execution and its recorded versions, measurements, failures, and work used. History stays in memory unless you configure saving.</td>
+</tr>
+<tr>
+<td><a id="feedback"></a><a href="experience/">Feedback</a></td>
+<td>Prior observations explicitly supplied to help the proposer, such as failed checks. Recording them alone does not supply them.</td>
+</tr>
+<tr>
+<td><a id="harness"></a><a href="../guides/harness-evolution/">Harness</a></td>
+<td>The setup around an agent: its instructions, tools, and rules for working. Only declared parts can be revised.</td>
+</tr>
+<tr>
+<td><a id="meta-evolution"></a><a href="meta-evolution/">Meta-evolution</a></td>
+<td>Improving how improvements are made—for example, revising repair instructions and measuring the repairs they produce.</td>
 </tr>
 </tbody>
 </table>

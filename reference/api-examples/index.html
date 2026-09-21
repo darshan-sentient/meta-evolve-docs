@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -2822,6 +2882,17 @@
     <span class="md-ellipsis">
       
         Ties, regressions, and the selected result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-objective-on-the-short-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One objective on the short path
       
     </span>
   </a>
@@ -3662,6 +3733,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#one-objective-on-the-short-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One objective on the short path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ordered-objectives-and-satisfaction" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3879,6 +3961,43 @@ its artifact, metrics, evidence, and usage. Neither means â€œthe last attempt.â€
   " href="../api/#meta_evolve.BestOfN"><code>BestOfN</code></a> always proposes from the seed, even when a
 successor ranks better. Enabled feedback can still carry earlier observations;
 independent parent selection does not imply statistically independent model calls.</p>
+<h2 id="one-objective-on-the-short-path">One objective on the short path<a class="headerlink" href="#one-objective-on-the-short-path" title="Permanent link">&para;</a></h2>
+<p>Pass one <a class="autorefs autorefs-internal" title="Maximize
+
+
+  
+      dataclass
+  " href="../api/#meta_evolve.Maximize"><code>Maximize</code></a> or <a class="autorefs autorefs-internal" title="Minimize
+
+
+  
+      dataclass
+  " href="../api/#meta_evolve.Minimize"><code>Minimize</code></a>
+as <code>improve(objective=...)</code>. A scalar evaluator measures that objective's named
+metric. Here the evaluator returns distance from three; minimizing <code>error</code>
+stops as soon as that distance reaches zero:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">closest</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">objective</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;selected:&quot;</span><span class="p">,</span> <span class="n">closest</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error:&quot;</span><span class="p">,</span> <span class="n">closest</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">])</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">closest</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">closest</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">closest</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># Output:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># selected: 3</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># error: 0</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1"># proposals: 3 evaluations: 4</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># stop: objective_satisfied</span>
+</code></pre></div>
+<p>A mapping or <code>EvaluationResult</code> must instead contain the exact declared metric.
+A missing measurement is a typed evaluation failure. <code>objective=None</code> keeps
+the default <code>Maximize("score")</code> with no satisfaction target. If the seed meets
+an explicit target, search stops after its evaluation, even with <code>trials=0</code>.</p>
 <h2 id="ordered-objectives-and-satisfaction">Ordered objectives and satisfaction<a class="headerlink" href="#ordered-objectives-and-satisfaction" title="Permanent link">&para;</a></h2>
 <p><a class="autorefs autorefs-internal" title="Task
 
@@ -3892,28 +4011,28 @@ retained without changing the selection rule.</p>
 <p>The first objective controls default ranking and built-in satisfaction stopping.
 <code>Maximize(..., satisfy=x)</code> accepts values at least <code>x</code>; <code>Minimize</code> accepts values
 at most <code>x</code>. A target on a secondary objective is not another stopping condition.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">measure_tradeoff</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;quality&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">tradeoff</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">evaluator</span><span class="o">=</span><span class="n">measure_tradeoff</span><span class="p">,</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">meta</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="p">),</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">))</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;primary winner:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lowest cost:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">best</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">overview</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1"># Output:</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1"># primary winner: 2</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1"># lowest cost: 0</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1"># proposals: 2</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c1"># stop: objective_satisfied</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">measure_tradeoff</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;quality&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">tradeoff</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="n">evaluator</span><span class="o">=</span><span class="n">measure_tradeoff</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">meta</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="p">),</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">))</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;primary winner:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lowest cost:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">best</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">tradeoff</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">overview</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1"># Output:</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1"># primary winner: 2</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1"># lowest cost: 0</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># proposals: 2</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="c1"># stop: objective_satisfied</span>
 </code></pre></div>
 <p>The seed already meets the secondary cost target, but the run continues until
 quality reaches two. Querying <code>best("cost")</code> afterward ranks the retained history
@@ -3931,17 +4050,17 @@ This declaration does not request Pareto or joint multi-objective optimization.<
 <p>When the task bounds both proposals and evaluations, passing only
 <code>Budget(evaluations=2)</code> tightens evaluations and retains the trial ceiling.
 Inspect the resolved budget to see both limits:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">task</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">evaluations</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">tighter</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">evaluations</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">limited</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">tighter</span><span class="p">)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;retained proposal ceiling:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">declaration</span><span class="o">.</span><span class="n">effective_budget</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">overview</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Output:</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># retained proposal ceiling: 4</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># proposals: 1 evaluations: 2</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># stop: budget_exhausted</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">task</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">evaluations</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">tighter</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">evaluations</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">limited</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">tighter</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;retained proposal ceiling:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">declaration</span><span class="o">.</span><span class="n">effective_budget</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">limited</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">overview</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Output:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># retained proposal ceiling: 4</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># proposals: 1 evaluations: 2</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># stop: budget_exhausted</span>
 </code></pre></div>
 <p><code>Budget()</code> retains every task limit. Explicit widening, such as
 <code>Budget(evaluations=6)</code> against this task's five-evaluation ceiling, raises
@@ -3953,13 +4072,13 @@ partial overrides.</p>
 <code>Budget.trials</code> when <code>max_trials</code> is omitted or <code>None</code>. Without that ceiling,
 they use 20, or 100 for TreeSearch. An explicit integer is a voluntary stop.
 <code>improve(trials=...)</code> keeps its integer-only default of 20.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">allowance</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">25</span><span class="p">))</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">for</span> <span class="n">search</span> <span class="ow">in</span> <span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(),</span> <span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">)):</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">allowance</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="n">search</span><span class="p">))</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Output:</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># proposals: 25 evaluations: 26</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># proposals: 20 evaluations: 21</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">allowance</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">25</span><span class="p">))</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">for</span> <span class="n">search</span> <span class="ow">in</span> <span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(),</span> <span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">)):</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">allowance</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="n">search</span><span class="p">))</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Output:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># proposals: 25 evaluations: 26</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># proposals: 20 evaluations: 21</span>
 </code></pre></div>
 <p>See <a href="../../guides/migrate-to-0.2/">Migrate to 0.2</a> to retain earlier work amounts.</p>
 <h2 id="proposer-arguments-and-feedback">Proposer arguments and feedback<a class="headerlink" href="#proposer-arguments-and-feedback" title="Permanent link">&para;</a></h2>
@@ -3971,28 +4090,29 @@ they use 20, or 100 for TreeSearch. An explicit integer is a voluntary stop.
       dataclass
   " href="../api/#meta_evolve.ProposerContext"><code>ProposerContext</code></a> with <code>(parent, *, context)</code>.
 Ordinary optional arguments retain their Python defaults:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">scale_candidate</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">return</span> <span class="n">parent</span> <span class="o">*</span> <span class="n">scale</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">scaled</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">scale_candidate</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">scaled</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Output:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># 2</span>
-</code></pre></div>
-<p>Request framework state explicitly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">advance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="k">return</span> <span class="n">parent</span> <span class="o">+</span> <span class="n">context</span><span class="o">.</span><span class="n">step</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">scale_candidate</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="k">return</span> <span class="n">parent</span> <span class="o">*</span> <span class="n">scale</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">advanced</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">advance</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">advanced</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">scaled</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">scale_candidate</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">scaled</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Output:</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># 3</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># 2</span>
 </code></pre></div>
-<p>To receive feedback, declare <code>Experiment(context=AncestorsOnly(...))</code> and accept
-the keyword-only <code>context</code>. Read <code>context.bundle.records</code> or its bounded <code>.rendered</code>
-text. Pushed feedback is off by default; recording scores or evidence alone does
+<p>Request framework state explicitly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">advance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="k">return</span> <span class="n">parent</span> <span class="o">+</span> <span class="n">context</span><span class="o">.</span><span class="n">step</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">advanced</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">advance</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">advanced</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Output:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># 3</span>
+</code></pre></div>
+<p>To receive feedback, pass <code>context=RecentAncestors(...)</code> to <code>improve()</code> or
+<code>Experiment</code> and accept the keyword-only <code>context</code> in the proposer.
+Read <code>context.evidence.latest(kind)</code> or the bundle's
+bounded <code>.rendered</code> text. Pushed feedback is off by default; recording evidence alone does
 not enable it. <a class="autorefs autorefs-internal" title="PullAccess
 
 
@@ -4003,6 +4123,39 @@ audited reader as <code>context.experience</code>. Follow the
 <a href="../../learn/05-use-experience/">feedback guide</a> for a complete example.
 The <a href="../../guides/callback-context-migration/">migration guide</a> covers existing
 positional callbacks and registered histories.</p>
+<p>This bounded loop uses exact evaluator evidence to propose the next value.
+Two records hold one evidence item and its evaluation in this example; a
+different evaluator may need a larger bound. One rendered character deliberately
+demonstrates that structured evidence remains available when text is clipped.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">feedback_score</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">},</span> <span class="n">evidence</span><span class="o">=</span><span class="p">(</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="n">meta</span><span class="o">.</span><span class="n">EvidenceDraft</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;feedback&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">}),</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="p">))</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">feedback_revision</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">item</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evidence</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;feedback&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="k">return</span> <span class="n">parent</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">ProposalResult</span><span class="p">(</span><span class="n">candidate</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>                               <span class="n">derived_from</span><span class="o">=</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">ref</span><span class="p">,))</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="n">feedback_run</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">feedback_revision</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">feedback_score</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>    <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;selected:&quot;</span><span class="p">,</span> <span class="n">feedback_run</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposals:&quot;</span><span class="p">,</span> <span class="n">feedback_run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>      <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">feedback_run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="c1"># Output:</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="c1"># selected: 6</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="c1"># proposals: 6 evaluations: 7</span>
+</code></pre></div>
+<p><code>latest()</code> raises <code>meta_evolve.errors.ContextDisabled</code> with pushed context off;
+an enabled policy with no selected match returns <code>None</code>. Check <code>.enabled</code> when
+feedback is an optional dependency. The <a href="../../guides/experience/">experience guide</a>
+explains selection order, provenance, and upgrading durable histories.</p>
 <h2 id="plain-values-and-result-records">Plain values and result records<a class="headerlink" href="#plain-values-and-result-records" title="Permanent link">&para;</a></h2>
 <p>A proposer can return a candidate directly; an evaluator can return a scalar
 or metric mapping. Use <a class="autorefs autorefs-internal" title="ProposalResult
@@ -4018,32 +4171,32 @@ or metric mapping. Use <a class="autorefs autorefs-internal" title="ProposalResu
       dataclass
   " href="../api/#meta_evolve.EvaluationResult"><code>EvaluationResult</code></a> when you also need observations,
 usage, or typed failures. Their maps are frozen on construction.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">propose_with_usage</span><span class="p">(</span><span class="n">parent</span><span class="p">):</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">ProposalResult</span><span class="p">(</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="n">candidate</span><span class="o">=</span><span class="n">parent</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="n">hypothesis</span><span class="o">=</span><span class="s2">&quot;A larger value should score higher.&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="n">usage</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Resources</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">spend_micros</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="p">)</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_with_evidence</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>        <span class="n">metrics</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">},</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        <span class="n">evidence</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">EvidenceDraft</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">}),),</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="p">)</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="n">recorded</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_usage</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_evidence</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">)</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">selected</span> <span class="o">=</span> <span class="n">recorded</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span>
-<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value:&quot;</span><span class="p">,</span> <span class="n">selected</span><span class="o">.</span><span class="n">artifact</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;score:&quot;</span><span class="p">,</span> <span class="n">selected</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">])</span>
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evidence:&quot;</span><span class="p">,</span> <span class="n">selected</span><span class="o">.</span><span class="n">evidence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tokens:&quot;</span><span class="p">,</span> <span class="n">recorded</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;spend:&quot;</span><span class="p">,</span> <span class="n">recorded</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">spend_micros</span><span class="p">)</span>
-<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="c1"># Output:</span>
-<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="c1"># value: 1 score: 1</span>
-<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="c1"># evidence: 1</span>
-<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="c1"># tokens: 5 spend: None</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">propose_with_usage</span><span class="p">(</span><span class="n">parent</span><span class="p">):</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">ProposalResult</span><span class="p">(</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="n">candidate</span><span class="o">=</span><span class="n">parent</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        <span class="n">hypothesis</span><span class="o">=</span><span class="s2">&quot;A larger value should score higher.&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="n">usage</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Resources</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">spend_micros</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="p">)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_with_evidence</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        <span class="n">metrics</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">},</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        <span class="n">evidence</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">EvidenceDraft</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">}),),</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="p">)</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="n">recorded</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_usage</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_evidence</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="p">)</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="n">selected</span> <span class="o">=</span> <span class="n">recorded</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value:&quot;</span><span class="p">,</span> <span class="n">selected</span><span class="o">.</span><span class="n">artifact</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;score:&quot;</span><span class="p">,</span> <span class="n">selected</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">])</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evidence:&quot;</span><span class="p">,</span> <span class="n">selected</span><span class="o">.</span><span class="n">evidence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tokens:&quot;</span><span class="p">,</span> <span class="n">recorded</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;spend:&quot;</span><span class="p">,</span> <span class="n">recorded</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">spend_micros</span><span class="p">)</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="c1"># Output:</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="c1"># value: 1 score: 1</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="c1"># evidence: 1</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="c1"># tokens: 5 spend: None</span>
 </code></pre></div>
 <p>The token amount above is a declared fixture, not measured provider activity.
 Rich results take <a class="autorefs autorefs-internal" title="Resources
@@ -4058,20 +4211,20 @@ Passing the old <code>Usage</code> value to a rich result raises at construction
 <p>Project <code>inner.usage().resources</code>, then add the evaluator's own costs once.
 Here each outer evaluation runs one inner proposal reporting five tokens and
 unknown spend, then adds two tokens of its own. Inner counts remain inner:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_procedure</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">inner</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_usage</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="n">metrics</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">inner</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">},</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="n">usage</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Resources</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">inner</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">resources</span><span class="p">,</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="p">)</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">nested</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_procedure</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;outer proposals:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tokens:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;spend:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">spend_micros</span><span class="p">)</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="c1"># Output:</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1"># outer proposals: 1 evaluations: 2</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="c1"># tokens: 14 spend: None</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_procedure</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">inner</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_usage</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>        <span class="n">metrics</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">inner</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">},</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        <span class="n">usage</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Resources</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">inner</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">resources</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">nested</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_procedure</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;outer proposals:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="p">,</span> <span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tokens:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;spend:&quot;</span><span class="p">,</span> <span class="n">nested</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">spend_micros</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="c1"># Output:</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1"># outer proposals: 1 evaluations: 2</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="c1"># tokens: 14 spend: None</span>
 </code></pre></div>
 <h2 id="unknown-spend-and-monetary-ceilings">Unknown spend and monetary ceilings<a class="headerlink" href="#unknown-spend-and-monetary-ceilings" title="Permanent link">&para;</a></h2>
 <p><code>Resources(spend_micros=0)</code> means known free work. <code>None</code> means an unknown bill;
@@ -4079,21 +4232,21 @@ adding an unknown amount makes the aggregate unknown. Estimates belong in
 evidence. One micro-USD is one millionth of a US dollar.</p>
 <p>With no monetary ceiling, the preceding run can evaluate its successor.
 Under a monetary ceiling, an unknown proposal charge prevents further work:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">unknown_spend</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_evidence</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">spend_micros</span><span class="o">=</span><span class="mi">100</span><span class="p">)),</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_usage</span><span class="p">,</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">))</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;states:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">attempt</span><span class="o">.</span><span class="n">state</span> <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">trials</span><span class="p">()])</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;candidate retained:&quot;</span><span class="p">,</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">trials</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">artifact</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;best measured:&quot;</span><span class="p">,</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">overview</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># Output:</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># states: [&#39;evaluated&#39;, &#39;unevaluated&#39;]</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># candidate retained: 1</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># best measured: 0</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1"># stop: accounting_unavailable</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">unknown_spend</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_evidence</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Budget</span><span class="p">(</span><span class="n">spend_micros</span><span class="o">=</span><span class="mi">100</span><span class="p">)),</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_usage</span><span class="p">,</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">))</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;states:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">attempt</span><span class="o">.</span><span class="n">state</span> <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">trials</span><span class="p">()])</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;candidate retained:&quot;</span><span class="p">,</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">trials</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">artifact</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;best measured:&quot;</span><span class="p">,</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">best</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop:&quot;</span><span class="p">,</span> <span class="n">unknown_spend</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span><span class="o">.</span><span class="n">overview</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">)</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="c1"># Output:</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># states: [&#39;evaluated&#39;, &#39;unevaluated&#39;]</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># candidate retained: 1</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1"># best measured: 0</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="c1"># stop: accounting_unavailable</span>
 </code></pre></div>
 <p>The proposed value is retained, but was never evaluated. It cannot replace the
 measured seed. If the evaluator instead reports unknown spend, its completed
@@ -4108,28 +4261,28 @@ SDK request nor guarantee a provider hard spending cap. See
 data from <code>meta_evolve.domain</code>, not exceptions to raise. Return them directly,
 or attach one to a result record. A failed proposal omits <code>candidate</code>; a failed
 evaluation omits <code>metrics</code>. Contradictory records raise <code>ValueError</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">unavailable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span><span class="n">failure</span><span class="o">=</span><span class="n">EvaluatorFailure</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;grader unavailable&quot;</span><span class="p">))</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">failed</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">unavailable</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">failed</span><span class="o">.</span><span class="n">best</span><span class="p">()</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">except</span> <span class="n">meta</span><span class="o">.</span><span class="n">NoSuccessfulEvaluation</span><span class="p">:</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No successful evaluation&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;state:&quot;</span><span class="p">,</span> <span class="n">failed</span><span class="o">.</span><span class="n">trials</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">report</span> <span class="o">=</span> <span class="n">failed</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">evaluation_count</span><span class="p">)</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rankability:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">rankability</span><span class="p">)</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;score:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">primary_score</span><span class="p">,</span> <span class="s2">&quot;lineage:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">winning_lineage</span><span class="p">)</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lifecycle:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">lifecycle</span><span class="p">)</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="c1"># Output:</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1"># No successful evaluation</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="c1"># state: evaluation_failed</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="c1"># evaluations: 1</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="c1"># rankability: unrankable</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="c1"># score: None lineage: ()</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="c1"># lifecycle: complete</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">unavailable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">return</span> <span class="n">meta</span><span class="o">.</span><span class="n">EvaluationResult</span><span class="p">(</span><span class="n">failure</span><span class="o">=</span><span class="n">EvaluatorFailure</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;grader unavailable&quot;</span><span class="p">))</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">failed</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">unavailable</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">failed</span><span class="o">.</span><span class="n">best</span><span class="p">()</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">except</span> <span class="n">meta</span><span class="o">.</span><span class="n">NoSuccessfulEvaluation</span><span class="p">:</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No successful evaluation&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;state:&quot;</span><span class="p">,</span> <span class="n">failed</span><span class="o">.</span><span class="n">trials</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">report</span> <span class="o">=</span> <span class="n">failed</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evaluations:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">evaluation_count</span><span class="p">)</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rankability:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">rankability</span><span class="p">)</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;score:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">primary_score</span><span class="p">,</span> <span class="s2">&quot;lineage:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">winning_lineage</span><span class="p">)</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lifecycle:&quot;</span><span class="p">,</span> <span class="n">report</span><span class="o">.</span><span class="n">lifecycle</span><span class="p">)</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="c1"># Output:</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># No successful evaluation</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="c1"># state: evaluation_failed</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="c1"># evaluations: 1</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="c1"># rankability: unrankable</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="c1"># score: None lineage: ()</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="c1"># lifecycle: complete</span>
 </code></pre></div>
 <p><a class="autorefs autorefs-internal" href="../api/#meta_evolve.NoSuccessfulEvaluation"><code>NoSuccessfulEvaluation</code></a> is an exception:
 <code>best()</code>, <code>best_trial()</code>, and default-winner <code>lineage()</code> raise it when nothing

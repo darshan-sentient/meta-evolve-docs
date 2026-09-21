@@ -585,6 +585,8 @@
       
         
       
+        
+      
     
     
     
@@ -632,6 +634,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -639,7 +669,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1920,6 +1950,8 @@
       
         
       
+        
+      
     
     
     
@@ -2030,7 +2062,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2086,7 +2146,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3611,7 +3671,7 @@ comes from different representations, revision logic, and experiment schedules.<
 <thead>
 <tr>
 <th>Choice</th>
-<th>Feedback Descent lab</th>
+<th>SVG Feedback Descent</th>
 <th>ACE fixture</th>
 <th>Meta-Harness fixture</th>
 </tr>
@@ -3619,50 +3679,52 @@ comes from different representations, revision logic, and experiment schedules.<
 <tbody>
 <tr>
 <td>Artifact</td>
-<td>Prompt text</td>
+<td>SVG source string</td>
 <td>Itemized JSON playbook</td>
 <td>Planner text and context settings</td>
 </tr>
 <tr>
 <td>Revision</td>
-<td>Edit a preferred seed using comparison feedback</td>
+<td>Revise the best drawing using its visual critique</td>
 <td>Curate or add an entry from development lessons</td>
 <td>Cite authorized observations and change one surface</td>
 </tr>
 <tr>
 <td>Selection</td>
-<td>Fixed compare/edit/measure schedule</td>
+<td>Greedy on a fixed rubric score</td>
 <td>Greedy on private solved fraction</td>
 <td>Greedy development, then private selection</td>
 </tr>
 <tr>
 <td>Feedback</td>
-<td>One pairwise rationale</td>
+<td>Incumbent's recorded visual critique</td>
 <td>Explicit development lessons</td>
 <td>Governed diagnosis and audited prior-source pull</td>
 </tr>
 <tr>
 <td>Evaluation</td>
-<td>Exact answer on one development case</td>
+<td>Separate Codex agent grades rendered PNG</td>
 <td>Inner tagging tasks, then consolidation and held-out checks</td>
 <td>Inner repository repairs with independent hidden tests</td>
 </tr>
 <tr>
 <td>Missing paper behavior</td>
-<td>Iterative rationale history and preference updates</td>
+<td>Pairwise preference and rationale-history update rules</td>
 <td>Learned reflection, online adaptation, semantic deduplication</td>
 <td>General harness-code search and Pareto return</td>
 </tr>
 <tr>
 <td>Evidence</td>
-<td>Injected-runner tests; live integration required</td>
+<td>Live SDK path with deterministic injected-agent tests</td>
 <td>Deterministic fixture</td>
 <td>Deterministic fixture with durable phase records</td>
 </tr>
 </tbody>
 </table>
-<p>Complete pages: <a href="../../learn/research-labs/01-feedback-descent/">Feedback Descent</a>,
+<p>Complete pages: <a href="../../build-patterns/feedback-descent/">Feedback Descent</a>,
 <a href="../ace/">ACE</a>, <a href="../meta-harness/">Meta-Harness</a>.</p>
+<p>The separate <a href="../../learn/research-labs/01-feedback-descent/">SealQA prompt lab</a>
+retains its fixed pairwise comparison, one prompt edit, and exact-answer check.</p>
 <h2 id="run-two-compositions">Run two compositions<a class="headerlink" href="#run-two-compositions" title="Permanent link">&para;</a></h2>
 <p>The context-evolution example assembles two methods over an inner agent:
 one adds skill documents; the other curates addressable playbook entries.
@@ -3679,8 +3741,8 @@ This demonstrates component reuse, not a performance ranking between papers.</p>
 The skill result contains <code>skills/interest.md</code> and <code>skills/leases.md</code>.
 The playbook run reports its development lessons, private selection,
 consolidation, and a separate held-out check. Each reports its own work.
-The <a href="../../build-patterns/evoskill/#setup-and-run">skill walkthrough</a> retains
-the full output, and <a href="../ace/">ACE</a> explains the playbook's four phases.</p>
+The <a href="https://github.com/sentient-xyz/meta-evolve/tree/main/examples/research/context_evolution">legacy context README</a>
+retains the full fixture output, and <a href="../ace/">ACE</a> explains the playbook's four phases.</p>
 <p>This is the skill method's actual experiment declaration; its definitions
 live in the checked-out example above:</p>
 <div class="highlight"><span class="filename">skill_context.py · evolve_skills · experiment (excerpt)</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
@@ -3703,8 +3765,9 @@ selection, consolidation, and final evaluation in <code>study_playbook</code>.
 Those additional stages do not disappear into the search preset.</p>
 <p>To adapt the skill method, replace its authored documents and task suite with
 your domain's content and checks, then supply your declared agent through the
-same interface. The <a href="../../build-patterns/evoskill/#replace-the-fixture">complete adaptation instructions</a>
-identify the source files and SDK boundary. To change the procedure being
+same interface. For failure-driven discovery with real agents, the
+<a href="../../build-patterns/evoskill/">EvoSkill walkthrough</a> uses Claude SDK roles and
+OfficeQA grading over native skill folders. To change the procedure being
 evaluated, continue with <a href="../../learn/autoresearch/">AutoResearch</a>.</p>
 <h2 id="try-another-paper">Try another paper<a class="headerlink" href="#try-another-paper" title="Permanent link">&para;</a></h2>
 <p>Complete the <a href="../gepa/#your-turn-gepa">GEPA transfer exercise and worked answer</a>.

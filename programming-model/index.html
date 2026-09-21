@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -2939,6 +2999,34 @@
     <span class="md-ellipsis">
       
         Execution contracts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Execution contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reopen-saved-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reopen saved history
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selected-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selected evidence
       
     </span>
   </a>
@@ -3996,6 +4084,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Execution contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reopen-saved-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reopen saved history
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selected-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selected evidence
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4366,13 +4482,51 @@ smallest run declaration is:</p>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
 </code></pre></div>
 <p><a class="autorefs autorefs-internal" title="improve" href="../reference/api/#meta_evolve.improve"><code>improve()</code></a> assembles a task, an experiment, and bounded
 Greedy search. It evaluates the seed, tries up to <code>trials</code> proposed revisions,
 and returns a <code>Run</code> containing the history. An attempt need not improve the
 score; the seed can remain the selected result.</p>
+<p>The keyword-only signature is
+<code>improve(*, seed, proposer, evaluator, trials=20, storage=None, random_seed=0,
+objective=None, context=None) -&gt; Run</code>.</p>
+<p><code>objective</code> accepts one <a class="autorefs autorefs-internal" title="Maximize
+
+
+  
+      dataclass
+  " href="../reference/api/#meta_evolve.Maximize"><code>Maximize</code></a> or
+<a class="autorefs autorefs-internal" title="Minimize
+
+
+  
+      dataclass
+  " href="../reference/api/#meta_evolve.Minimize"><code>Minimize</code></a>; <code>None</code> uses <code>Maximize("score")</code> without a
+satisfaction target. A scalar evaluator measures the selected objective's
+metric. A mapping or <code>EvaluationResult</code> must contain that exact metric;
+missing measurements become typed evaluation failures. A seed meeting an
+explicit target stops after one evaluation with no proposals, even at
+<code>trials=0</code>; an unsatisfied seed at that limit stops at the proposal allowance.</p>
+<p><code>context</code> accepts an explicit bounded policy, such as
+<a class="autorefs autorefs-internal" title="RecentAncestors
+
+
+  
+      dataclass
+  " href="../reference/api/#meta_evolve.RecentAncestors"><code>RecentAncestors</code></a>. <code>None</code> and <code>NoMemory()</code> supply
+no pushed feedback. A proposer requests <code>(parent, *, context)</code> and reads
+<code>context.evidence.latest(kind)</code> from the selected bundle; disabled access raises
+<code>ContextDisabled</code>, while an enabled policy with no match returns <code>None</code>.
+This setting does not enable pulled experience. See the
+<a href="../reference/api-examples/#one-objective-on-the-short-path">single-objective example</a>
+and <a href="../learn/05-use-experience/">feedback lesson</a>.</p>
+<p>These optional keywords preserve existing calls and lower to <code>Task.objectives</code>
+and <code>Experiment.context</code>. <code>trials</code> remains a nonnegative integer (not <code>None</code> or
+a boolean); storage defaults to isolated memory and randomness to seed zero.
+Malformed declarations fail before evaluation or committed run facts. Saving
+local history does not make a run resumable.</p>
 <p>The objects below let you configure and control that same loop. Each execution
 starts from the same seed in separate default in-memory storage; it does not
 continue the previous run.</p>
@@ -4408,7 +4562,7 @@ as the first run:</p>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span>
 </code></pre></div>
 <p>The declaration is immutable and starts no search. Optional context and
@@ -4439,7 +4593,7 @@ attempt, and <code>usage()</code> reports work consumed.</p>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">paced_result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Output:</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Evaluations after start: 1</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># After one step: 67%</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># After one step: 100%</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># Evaluations so far: 2</span>
 </code></pre></div>
 <p><code>run(experiment)</code> completes this lifecycle for you. Stepping gives you control
@@ -4487,7 +4641,7 @@ methods does not advance search.</p>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">parse_seconds</span> <span class="o">=</span> <span class="n">load_parser</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4m:&quot;</span><span class="p">,</span> <span class="n">parse_seconds</span><span class="p">(</span><span class="s2">&quot;4m&quot;</span><span class="p">))</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># Output:</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># [&#39;33%&#39;, &#39;67%&#39;, &#39;100%&#39;]</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># [&#39;33%&#39;, &#39;100%&#39;]</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># 4m: 240</span>
 </code></pre></div>
 <p>These are the same measured results as the original <code>improve()</code> call and the
@@ -4534,6 +4688,22 @@ existing run. Its frozen <a class="autorefs autorefs-internal" title="RunSummary
 <td><code>evaluation_count</code></td>
 <td>All committed evaluations, including failures and the evaluated seed</td>
 </tr>
+<tr>
+<td><code>primary_objective</code>, <code>baseline_score</code></td>
+<td>Primary objective and successful seed measurement; failed or pending seed measurements are absent</td>
+</tr>
+<tr>
+<td><code>failure_count</code></td>
+<td>Distinct attempts with a committed typed proposal/evaluation failure, including a failed seed</td>
+</tr>
+<tr>
+<td><code>storage_is_durable</code>, <code>storage_location</code></td>
+<td>Durability and optional location of the handle at capture; a custom durable store may have no path</td>
+</tr>
+<tr>
+<td><code>capabilities</code></td>
+<td>Recorded execution mode and resume capability, without verifying current compatibility or permission</td>
+</tr>
 </tbody>
 </table>
 <p>The seed can win, zero and negative scores remain measurements, and a stopped
@@ -4542,6 +4712,25 @@ seed, and component provenance remain available in every state. Pending work
 does not contribute a guessed charge. Summary, usage, and inspection also work
 before a distributed seed evaluation completes. Missing runs raise <code>RunNotFound</code>;
 invalid history retains its typed integrity error.</p>
+<p>Capture while storage is open: <code>snapshot = result.summary()</code>. <code>print(snapshot)</code>
+produces bounded text; a notebook displays escaped HTML when <code>snapshot</code> is its
+cell's final expression. Both remain usable after storage closes or disappears.
+They omit decoded artifact values, evidence bodies, and manifests. Programmatic
+fields retain their full values; a frozen summary does not make arbitrary decoded
+custom objects deeply immutable.</p>
+<p>The report separates completion, successful measurement, and improvement. It
+compares the baseline and selected scores in the primary objective's direction;
+a tie is no improvement, and an absent measurement means improvement is
+unavailable. Proposal counts exclude the seed; evaluation counts include it
+when evaluated. Typed failures keep their costs. Task spend and context/pull
+usage remain separate, and unknown spend remains unknown.</p>
+<p>History is reported at capture: memory-only history is not saved durably, and
+a saved history does not grant resume permission. Recorded resume support is
+not a current compatibility check; a complete run has no continuation pending.
+<code>repr(result)</code> shows its identifier without I/O. Explicit queries, including
+another <code>summary()</code>, still require accessible storage and retain their real
+errors. See <a href="../learn/03-inspect-results/">result inspection</a> and
+<a href="../learn/06-persist-run/">storage lifetime</a>.</p>
 <p><code>best()</code>, <code>best_trial()</code>, and default <code>lineage()</code> still require a successful
 evaluation. <code>compare(other)</code> requires one on each side, reading left then right,
 before applying its existing declaration checks. Incomplete runs may be compared
@@ -4549,6 +4738,9 @@ if both rank; two missing scores never constitute a tie. Each side uses one
 validated snapshot, without promising an atomic read across independent stores.</p>
 <p>Direct <code>RunSummary</code> construction requires keyword-only <code>lifecycle</code>,
 <code>rankability</code>, and <code>stop_reason</code>; existing positional fields keep their order.
+The six report metadata fields above are optional keywords defaulting to
+<code>None</code> (unknown). Supplied facts participate in record equality; an old-style
+manual summary can therefore differ from a fully populated captured summary.
 See the <a href="../guides/run-summary-migration/">summary migration guide</a> for constructor
 invariants and CLI behavior. A returned summary certifies neither improvement
 nor resumability.</p>
@@ -4563,11 +4755,15 @@ nor resumability.</p>
 <tbody>
 <tr>
 <td>Measure candidates differently</td>
-<td>The evaluator supplied to <code>Task</code></td>
+<td><code>improve(evaluator=...)</code> or <code>Task.evaluator</code></td>
 </tr>
 <tr>
-<td>Prefer another metric or set a target</td>
-<td><code>Task.objectives</code></td>
+<td>Prefer one metric or set a target</td>
+<td><code>improve(objective=...)</code> or <code>Task.objectives</code></td>
+</tr>
+<tr>
+<td>Supply bounded feedback</td>
+<td><code>improve(context=...)</code> or <code>Experiment.context</code></td>
 </tr>
 <tr>
 <td>Generate different revisions</td>
@@ -4585,7 +4781,7 @@ nor resumability.</p>
 </table>
 <p>To change a declaration, construct a new value, reusing the components that
 still apply. <a href="../learn/02-change-search/">Search</a> demonstrates reusing a task and
-proposer with another policy. The <a href="../learn/llm-prompt/">routing lesson</a> applies
+proposal rules with another policy. The <a href="../learn/llm-prompt/">routing lesson</a> applies
 the same callable path to instruction text.</p>
 <h2 id="execution-contracts">Execution contracts<a class="headerlink" href="#execution-contracts" title="Permanent link">&para;</a></h2>
 <p>Evaluation, budgets, and permissions remain outside candidate authority.
@@ -4649,6 +4845,60 @@ execution authority. <code>Storage.durable(path)</code> is durable and writable;
 returns the maximum committed event sequence, or <code>0</code> when that well-formed id
 has no events. The latter is a polling result, not authoritative run loading:
 opening a required missing run still raises <code>RunNotFound</code>.</p>
+<h3 id="reopen-saved-history">Reopen saved history<a class="headerlink" href="#reopen-saved-history" title="Permanent link">&para;</a></h3>
+<p><a class="autorefs autorefs-internal" title="open_run(path, *, run_id=None, registry=None)" href="../reference/api/#meta_evolve.open_run"><code>open_run(path, *, run_id=None, registry=None)</code></a> owns a
+read-only storage handle and yields the existing <code>Run</code> in a <code>with</code> block.
+<code>path</code> is the directory passed to <code>Storage.durable()</code>. An explicit <code>RunId</code> or
+ID string selects only that run; a missing selected run raises <code>RunNotFound</code> without
+fallback. ID strings must be nonempty and have no outer whitespace. Other ID
+types and invalid registries raise <code>TypeError</code>; malformed strings raise
+<code>ValueError</code>.</p>
+<p>With <code>run_id=None</code>, an empty store raises <code>RunNotFound</code>, a single run is
+selected, and multiple runs raise
+<a class="autorefs autorefs-internal" href="../reference/api/#meta_evolve.RunSelectionRequired"><code>RunSelectionRequired</code></a>. Its <code>run_ids</code> tuple
+lists available identities lexically, not chronologically. Selection occurs
+once; later additions do not retarget the handle. Argument validation, opening,
+and authoritative history validation happen on context entry. Incomplete and
+unsuccessful histories remain readable; missing, corrupt, and incompatible
+storage retain their existing typed errors.</p>
+<p>Storage closes on normal exit or error. Capture <code>summary()</code>, <code>inspect()</code>, or
+<code>usage()</code> inside the block for use afterward; the live <code>Run</code> still requires
+open storage for queries. Queries can observe later commits, while each summary
+or inspection captures one validated frontier. <code>registry=</code> supplies custom
+artifact codecs for decoded queries; entry validation and <code>usage()</code> do not
+require those codecs. A missing codec raises <code>CapabilityError</code> when decoding is
+requested. Reopening neither executes components nor resumes or migrates a run.
+Committed history is unchanged; SQLite may maintain WAL sidecars. See the
+<a href="../guides/durability/#reopen">durability guide</a> for lifetime and storage details.</p>
+<h2 id="selected-evidence">Selected evidence<a class="headerlink" href="#selected-evidence" title="Permanent link">&para;</a></h2>
+<p><code>context.evidence.latest(kind)</code> returns the last matching evidence in the
+already selected bundle's canonical order. Its immutable item exposes <code>data</code>,
+<code>kind</code>, <code>uri</code>, <code>ref</code>, <code>logical_step</code>, and <code>event_sequence</code>; <code>ref</code> can be cited in
+an explicit <code>ProposalResult.derived_from</code>. Same-step matches follow bundle
+order. Both proposer and evaluator evidence qualify; a label does not certify
+authorship, success, or a relationship to the current parent.</p>
+<p><code>context.evidence.enabled</code> reports the pushed-policy declaration. <code>None</code> and
+<code>NoMemory()</code> are disabled: calling <code>latest()</code> raises
+<a class="autorefs autorefs-internal" title="meta_evolve.errors.ContextDisabled" href="../reference/api/#meta_evolve.errors.ContextDisabled"><code>ContextDisabled</code></a>, a <code>CapabilityError</code>,
+at use rather than repeatedly failing proposals. An enabled selection with no
+matching record returns <code>None</code>. Use an explicit enabled check when feedback is
+optional. Manually constructed <code>ProposerContext</code> values must supply
+<code>context_policy</code> to enable this accessor; bundle contents/reason are not proof
+of a declaration. Separately declared pull access does not enable it.</p>
+<p><a class="autorefs autorefs-internal" title="RecentAncestors
+
+
+  
+      dataclass
+  " href="../reference/api/#meta_evolve.RecentAncestors"><code>RecentAncestors</code></a> retains the newest accessible
+ancestor records within <code>max_records</code>, returning them in canonical order.
+<code>AncestorsOnly@1</code> still retains the oldest records, and <code>BestSibling</code> keeps its
+existing ranking. No preset promises matching evidence under every bound.
+<code>context.evidence.truncated</code> mirrors the committed aggregate flag: omitted
+records or clipped rendering. <code>max_chars</code> bounds rendered text, not item data.
+Lookup performs no I/O, grants no access, and never merges pull observations.
+See the <a href="../learn/05-use-experience/">feedback lesson</a> and
+<a href="../guides/experience/#upgrading-bounded-feedback">source/migration implications</a>.</p>
 <h2 id="proposer-callback-arguments">Proposer callback arguments<a class="headerlink" href="#proposer-callback-arguments" title="Permanent link">&para;</a></h2>
 <p>Plain callbacks receive the parent positionally. Only a named keyword-only
 <code>context</code> requests <a class="autorefs autorefs-internal" title="ProposerContext
@@ -4697,12 +4947,13 @@ and comparison views. <code>compare_policies</code> is the single root convenien
 <li><a href="../guides/">Choose a guide</a> — task-oriented routes through the public API.</li>
 <li><a href="../guides/evaluation/">Define what better means</a> — evaluators, named metrics, and objectives in a fresh notebook.</li>
 <li><a href="../guides/limits/">Set limits and stopping conditions</a> — proposal allowances, satisfaction, and evaluation ceilings.</li>
-<li><a href="../learn/02-change-search/">Choose what to try next</a> — a standalone notebook comparison of Greedy and BestOfN.</li>
+<li><a href="../learn/02-change-search/">Choose what to try next</a> — a standalone notebook comparing a handwritten loop, Greedy, and TreeSearch, with recorded parent choices and saved history.</li>
 <li><a href="../learn/03-inspect-results/">Inspect results and failures</a> — a standalone notebook guide; <a href="../guides/runs-and-results/">Runs and results</a> owns detailed query views.</li>
 <li><a href="../guides/evaluation-and-budgets/">Evaluation and budgets</a> — objectives, evidence, usage, and typed failures.</li>
 <li><a href="../guides/experience/">Learning from experience</a> — no memory, pushed context, audited pull, and derivation.</li>
 <li><a href="../learn/06-persist-run/">Save and reopen a run</a> — a standalone notebook guide; <a href="../guides/durability/">Durability</a> owns recovery and resume.</li>
 <li><a href="../guides/providers/">Use your model SDK</a> — a standalone notebook; <a href="../reference/sdk-boundary/">SDK accounting and tools</a> owns detailed wrapper patterns.</li>
+<li><a href="../build-patterns/feedback-descent/">Improve an SVG with visual feedback</a> — a self-contained Jupyter notebook with a live Codex generator, separate grader, Greedy, and recorded feedback.</li>
 <li><a href="../guides/cli/">Command line</a> — run, list, inspect, resume, compare, and browse.</li>
 <li><a href="../guides/browser/">Local run browser</a> — optional server-rendered read-only inspection.</li>
 <li><a href="../guides/extensions/">Extensions</a> — codecs, registries, component identity, and conformance.</li>
@@ -4856,6 +5107,13 @@ boundary. Scientific and network directions are explicitly separated under
 A common expansion should remain one Task, one Experiment, and one
 <code>meta.run(experiment)</code> call. New internal protocols must not make that public
 story larger.</p>
+<p>The small path accepts individual declarative values with obvious defaults and
+existing owners. Every additional keyword needs an explicit requirement and
+acceptance gate. The selected extensions are one objective and pushed context.
+Multiple objectives, artifact/environment declarations, budgets, custom search,
+registry, execution mode, and pulled experience use the expanded path. A budget
+on <code>improve()</code> would require a separate decision about its interaction with
+<code>trials</code>; there is no generic options bag.</p>
 
 
 

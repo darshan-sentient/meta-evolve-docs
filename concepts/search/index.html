@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1838,6 +1868,8 @@
       
         
       
+        
+      
     
     
     
@@ -1948,7 +1980,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2004,7 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3635,53 +3695,28 @@ Calling <code>run(experiment)</code> executes that declaration. The
 shows the fields together before execution starts.</p>
 <h2 id="the-proposer-creates-a-candidate">The proposer creates a candidate<a class="headerlink" href="#the-proposer-creates-a-candidate" title="Permanent link">&para;</a></h2>
 <p>In the <a href="../../start-here/">parser walkthrough</a>, <code>propose(source)</code> receives source
-and returns replacement source. Its simulated agent has two handwritten fixes:
-given the seed, add minutes; given the minutes version, add hours too.</p>
+and returns one handwritten replacement that adds minutes and hours support.</p>
 <p>A real proposer can instead call your model SDK. In either case, the returned
 revision is a candidate. The <a href="../evidence/">evaluator</a> measures its performance;
 a confident explanation from the proposer is not a passing result.</p>
 <h2 id="search-chooses-the-parent">Search chooses the parent<a class="headerlink" href="#search-chooses-the-parent" title="Permanent link">&para;</a></h2>
 <p>The <strong>parent</strong> is the version supplied to an attempt. The
-<a href="../../learn/02-change-search/">search guide</a> runs the same parser components
-with two policies and two proposal attempts each:</p>
-<table>
-<thead>
-<tr>
-<th>Policy</th>
-<th>First proposal</th>
-<th>Second proposal</th>
-<th>Selected parser</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Greedy</td>
-<td>Seed → minutes version</td>
-<td>Minutes version → complete version</td>
-<td>Handles seconds, minutes, and hours</td>
-</tr>
-<tr>
-<td>BestOfN</td>
-<td>Seed → minutes version</td>
-<td>Seed → minutes version again</td>
-<td>Handles seconds and minutes</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Greedy</strong> builds on the best measured version so far. <strong>BestOfN</strong> starts each
-proposal from the seed while retaining the best measured result. Both evaluate
-the seed and both proposed revisions in this example.</p>
-<p>BestOfN repeats a revision here because the handwritten proposer returns the
-same source for the same input. A model may return different revisions. This
-example exposes the policies' choices; it does not establish which policy
-will perform better with your model or task.</p>
+<a href="../../learn/02-change-search/">search guide</a> compares a handwritten Greedy loop
+with recorded runs using <strong>Greedy</strong> and <strong>TreeSearch</strong>. Each run uses the same
+starting value, proposal rules, evaluator, and allowance.</p>
+<p>Greedy builds on the best measured version so far. TreeSearch also allocates
+attempts to other branches. In the lesson, an initially weaker version leads
+to the best result. Its deliberately constructed score table illustrates
+parent selection; it is not a benchmark or a reason to expect TreeSearch to
+perform better on your task. The recorded attempts show which parent each
+policy chose and what happened next.</p>
 <h2 id="an-attempt-need-not-improve-the-result">An attempt need not improve the result<a class="headerlink" href="#an-attempt-need-not-improve-the-result" title="Permanent link">&para;</a></h2>
 <p>For these policies, a strictly better measured revision replaces the selected
 version. A tie keeps the earlier winner, and a regression stays in history
 without becoming the winner. A failed measurement contributes no score to
 compare. The seed can remain the best result throughout a run.</p>
-<p>The first-run <code>improve()</code> call uses bounded Greedy search. <code>trials=2</code> allows
-two proposal attempts after the seed evaluation. An explicit <code>Experiment</code>
+<p>The first-run <code>improve()</code> call uses bounded Greedy search. <code>trials=1</code> allows
+one proposal attempt after the seed evaluation. An explicit <code>Experiment</code>
 lets you choose a policy; its attempt allowance is still subject to the
 experiment's <a href="../budgets/">budgets and stopping conditions</a>.</p>
 <h2 id="search-and-feedback-answer-different-questions">Search and feedback answer different questions<a class="headerlink" href="#search-and-feedback-answer-different-questions" title="Permanent link">&para;</a></h2>
@@ -3689,8 +3724,9 @@ experiment's <a href="../budgets/">budgets and stopping conditions</a>.</p>
 prior observations to supply</strong> with that version. Selecting a parent does
 not automatically provide its failed checks to the proposer. Configure
 <a href="../experience/">feedback</a> when the proposer should use those observations.</p>
-<p>The shipped population, specialist, and tree presets offer other ways to
-allocate attempts. Their declarations and selection rules belong in the
+<p>Other shipped presets include independent attempts from the seed with
+<strong>BestOfN</strong>, population search, and specialist retention. Their declarations
+and selection rules belong in the
 <a href="../../guides/runs-and-results/#search-presets">search reference</a>.</p>
 <p><strong>Try it:</strong> <a href="../../learn/02-change-search/">Choose what to try next</a>.
 <strong>Reference:</strong> <a href="../../guides/runs-and-results/">Runs and search</a> and

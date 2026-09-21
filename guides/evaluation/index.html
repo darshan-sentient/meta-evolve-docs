@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1955,6 +1985,8 @@
       
         
       
+        
+      
     
     
     
@@ -2065,7 +2097,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2121,7 +2181,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3798,7 +3858,7 @@ Its choice depends on the source, without a hidden response counter.</p>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONTRACT</span><span class="si">}</span><span class="se">\n</span><span class="s2">Current source:</span><span class="se">\n</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">&quot;</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="k">return</span> <span class="n">agent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
-<p>The <a href="../../start-here/">Start here walkthrough</a> explains this parser in full.
+<p>The <a href="../../start-here/">Start here walkthrough</a> introduces the starting parser.
 You can close this section once its cells have run.</p>
 </details>
 <p><a id="2-choose-the-answers-that-matter"></a></p>
@@ -3903,64 +3963,68 @@ checks. Recording <code>hours</code> makes that gap visible. It does not automat
 hours accuracy a selection objective.</p>
 <p><a id="5-declare-which-metric-determines-better"></a></p>
 <h2 id="4-declare-which-metric-determines-better">4. Declare which metric determines better<a class="headerlink" href="#4-declare-which-metric-determines-better" title="Permanent link">&para;</a></h2>
-<p><a class="autorefs autorefs-internal" title="Task
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.Task"><code>meta.Task</code></a> holds the evaluator and its objectives.
+<p>Pass one objective to <a class="autorefs autorefs-internal" title="improve" href="../../reference/api/#meta_evolve.improve"><code>meta.improve()</code></a>.
 <a class="autorefs autorefs-internal" title="Maximize
 
 
   
       dataclass
-  " href="../../reference/api/#meta_evolve.Maximize"><code>meta.Maximize</code></a> selects higher values of a named metric.
-<a class="autorefs autorefs-internal" title="Experiment
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.Experiment"><code>meta.Experiment</code></a> combines that task with the seed,
-proposer, and search policy; <a class="autorefs autorefs-internal" title="run" href="../../reference/api/#meta_evolve.run"><code>meta.run()</code></a> executes it.</p>
-<p>Use one proposal attempt here so the hours gap remains visible. <strong>Greedy</strong>
-search builds on the best measured version, just as <code>improve()</code> does by default.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">metrics_experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_metrics</span><span class="p">,</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">),),</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="p">),</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">)</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">metrics_result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">metrics_experiment</span><span class="p">)</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">selected</span> <span class="o">=</span> <span class="n">metrics_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall: </span><span class="si">{</span><span class="n">selected</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">; hours: </span><span class="si">{</span><span class="n">selected</span><span class="p">[</span><span class="s1">&#39;hours&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Output:</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1"># Overall: 67%; hours: 0%</span>
-</code></pre></div>
-<p>The selected parser is <code>MINUTES</code>, because <code>score</code> is the objective. Every metric
-remains available for inspection, including the hours result that did not improve.
-If your evaluator uses a name other than <code>score</code>, declare the matching objective.</p>
-<p>For a measurement where less is better, use
+  " href="../../reference/api/#meta_evolve.Maximize"><code>meta.Maximize</code></a> selects higher values of a named metric;
 <a class="autorefs autorefs-internal" title="Minimize
 
 
   
       dataclass
-  " href="../../reference/api/#meta_evolve.Minimize"><code>meta.Minimize</code></a>. Python's <code>replace</code> copies a declaration
-with selected fields changed. Here it changes only the objective:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">errors_task</span> <span class="o">=</span> <span class="n">replace</span><span class="p">(</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">metrics_experiment</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="s2">&quot;wrong_answers&quot;</span><span class="p">),),</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">)</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">errors_result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">replace</span><span class="p">(</span><span class="n">metrics_experiment</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="n">errors_task</span><span class="p">))</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected wrong answers:&quot;</span><span class="p">,</span> <span class="n">errors_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;wrong_answers&quot;</span><span class="p">])</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Output:</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Selected wrong answers: 2</span>
+  " href="../../reference/api/#meta_evolve.Minimize"><code>meta.Minimize</code></a> selects lower values.</p>
+<p>Use one proposal attempt here so the hours gap remains visible. <strong>Greedy</strong>
+search builds on the best measured version, just as <code>improve()</code> does by default.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">metrics_result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_metrics</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">objective</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">selected</span> <span class="o">=</span> <span class="n">metrics_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall: </span><span class="si">{</span><span class="n">selected</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">; hours: </span><span class="si">{</span><span class="n">selected</span><span class="p">[</span><span class="s1">&#39;hours&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Output:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Overall: 67%; hours: 0%</span>
+</code></pre></div>
+<p>The selected parser is <code>MINUTES</code>, because <code>score</code> is the objective. Every metric
+remains available for inspection, including the hours result that did not improve.
+If your evaluator uses a name other than <code>score</code>, declare the matching objective.
+A scalar evaluator measures the declared objective directly; a mapping must
+include its exact name. See the <a href="../../reference/api-examples/#one-objective-on-the-short-path">scalar minimization example</a>.</p>
+<p>For reusable declarations or several ordered objectives, use
+<a class="autorefs autorefs-internal" title="Task
+
+
+  
+      dataclass
+  " href="../../reference/api/#meta_evolve.Task"><code>meta.Task</code></a> and <a class="autorefs autorefs-internal" title="Experiment
+
+
+  
+      dataclass
+  " href="../../reference/api/#meta_evolve.Experiment"><code>meta.Experiment</code></a>.
+This expanded declaration executes the same search:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">metrics_experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_metrics</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">),),</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="p">),</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">expanded_metrics</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">metrics_experiment</span><span class="p">)</span>
+</code></pre></div>
+<p>For a measurement where less is better, change the objective to <code>Minimize</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">errors_result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_metrics</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">objective</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="s2">&quot;wrong_answers&quot;</span><span class="p">),</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected wrong answers:&quot;</span><span class="p">,</span> <span class="n">errors_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;wrong_answers&quot;</span><span class="p">])</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># Output:</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Selected wrong answers: 2</span>
 </code></pre></div>
 <p>With these fixed six cases, fewer wrong answers and a higher overall score
 select the same revision. Other measurements, such as runtime, may reward

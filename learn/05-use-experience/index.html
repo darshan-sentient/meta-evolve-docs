@@ -503,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +552,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../research-labs/01-feedback-descent/" class="md-nav__link">
         
   
@@ -557,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    SealQA prompt adaptation
   
 
     
@@ -1955,6 +1985,8 @@
       
         
       
+        
+      
     
     
     
@@ -2065,7 +2097,35 @@
   <span class="md-ellipsis">
     
   
-    Compose a skill experiment
+    Improve a support agent's skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improve a support agent's playbook
   
 
     
@@ -2121,7 +2181,7 @@
   <span class="md-ellipsis">
     
   
-    Improve a prompt
+    SVG Feedback Descent
   
 
     
@@ -3747,6 +3807,9 @@ and compare the results.</p>
 </table>
 <p>The proposer chooses handwritten revisions; Python executes and grades them.
 No model, SDK, or credentials are needed.</p>
+<p>Here, <strong>feedback</strong> means evaluator observations supplied to the proposer.
+The API's broader <strong>experience</strong> vocabulary also covers other authorized
+history and <a href="../../concepts/experience/">explicit pull access</a>.</p>
 <p><strong>To run this page:</strong> expand the required setup, copy its Python blocks into
 notebook cells, and run them from top to bottom. Then run the examples below
 in order. Every definition is here; no other page needs to be executed.
@@ -3806,7 +3869,7 @@ the source locally; use these checks with the reviewed, handwritten code here.</
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s1">    return quantity * seconds_per_unit[text[-1]]</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s1">&#39;&#39;&#39;</span>
 </code></pre></div>
-<p>The <a href="../../start-here/">Start here walkthrough</a> explains this parser in full.
+<p>The <a href="../../start-here/">Start here walkthrough</a> introduces the starting parser.
 You can close this section once its cells have run.</p>
 </details>
 <p><a id="record-what-failed"></a></p>
@@ -3850,48 +3913,61 @@ evaluation with no score.</p>
 <p><a id="4-use-the-failed-checks-to-choose-a-revision"></a></p>
 <h2 id="2-use-the-failed-checks-to-choose-a-revision">2. Use the failed checks to choose a revision<a class="headerlink" href="#2-use-the-failed-checks-to-choose-a-revision" title="Permanent link">&para;</a></h2>
 <p><a id="put-authorized-history-in-the-message"></a></p>
-<p>A proposer can accept a second argument, <code>context</code>. <code>context.bundle.records</code>
-contains the history selected for this proposal. Select our <code>"failed-cases"</code>
-evidence, then take the most recent observation: <code>logical_step</code> is its position
-in the run. Older ancestors may still have failures we have already fixed.</p>
+<p>A proposer requests keyword-only <code>context</code>. <code>context.evidence.latest("failed-cases")</code>
+returns the last matching evidence in the selected bundle, with its contents in
+<code>.data</code>. Older ancestors may still have failures we have already fixed.</p>
 <p>This proposer fixes minutes if any minute checks failed, then hours if any hour
 checks failed. If there is no feedback, or nothing failed, it returns the source
 unchanged. That rule makes the effect of feedback visible.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">propose_with_feedback</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">observations</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="n">record</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">records</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;evidence&quot;</span> <span class="ow">and</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;failed-cases&quot;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="p">]</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">latest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">observations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">record</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">logical_step</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="k">if</span> <span class="n">latest</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="k">return</span> <span class="n">source</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">failed_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">case</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">latest</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;failures&quot;</span><span class="p">]]</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">failed_inputs</span><span class="p">):</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="k">return</span> <span class="n">MINUTES</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">failed_inputs</span><span class="p">):</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="k">return</span> <span class="n">COMPLETE</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="k">return</span> <span class="n">source</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">evidence</span><span class="o">.</span><span class="n">enabled</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="k">return</span> <span class="n">source</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">latest</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evidence</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;failed-cases&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">if</span> <span class="n">latest</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="k">return</span> <span class="n">source</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">failed_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">case</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">latest</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;failures&quot;</span><span class="p">]]</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">failed_inputs</span><span class="p">):</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="k">return</span> <span class="n">MINUTES</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">failed_inputs</span><span class="p">):</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="k">return</span> <span class="n">COMPLETE</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">return</span> <span class="n">source</span>
 </code></pre></div>
 <p>This is a small rule-based demonstration, with two known fixes. The proposer
 uses the recorded checks; it does not call the evaluator itself. With a model,
 you would put relevant observations into your SDK request. The bundle also
-provides <code>context.bundle.rendered</code> when you want its text rendering.</p>
+provides <code>context.bundle.rendered</code> when you want its text rendering.
+The enabled check deliberately makes feedback optional for the comparison
+below. Calling <code>latest()</code> with feedback disabled instead raises
+<code>meta_evolve.errors.ContextDisabled</code>. A declared policy with no matching
+selected evidence returns <code>None</code>. Both proposers and evaluators can record
+evidence; this example reserves <code>"failed-cases"</code> for its evaluator.</p>
 <p><a id="change-the-feedback-declaration"></a>
 <a id="declare-the-feedback-policy"></a></p>
 <p><a id="5-supply-feedback-and-run"></a></p>
 <h2 id="3-supply-feedback-and-run">3. Supply feedback and run<a class="headerlink" href="#3-supply-feedback-and-run" title="Permanent link">&para;</a></h2>
 <p>Recording evidence does not automatically send it to the proposer.
-<a class="autorefs autorefs-internal" title="AncestorsOnly
+<a class="autorefs autorefs-internal" title="RecentAncestors
 
 
   
       dataclass
-  " href="../../reference/api/#meta_evolve.AncestorsOnly"><code>meta.AncestorsOnly</code></a> selects prior history from the
-current parent's lineage, including its own evaluation. Rejected siblings are
+  " href="../../reference/api/#meta_evolve.RecentAncestors"><code>meta.RecentAncestors</code></a> selects recent prior records
+from the current parent's lineage. Rejected siblings are
 outside that ancestry. <code>max_records</code> limits the structured records;
-<code>max_chars</code> limits their text rendering.</p>
-<p><a class="autorefs autorefs-internal" title="Experiment
+<code>max_chars</code> limits their text rendering. Selected records retain canonical order.
+A small record limit can still omit evidence; latest means latest in this
+bundle, not necessarily the current parent's feedback. <code>AncestorsOnly</code> remains
+available when you want oldest-record retention instead.</p>
+<p>For one bounded run, pass an objective and the policy directly to <code>improve()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">simple_feedback</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_feedback</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_feedback</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">objective</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">16_000</span><span class="p">),</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span>
+</code></pre></div>
+<p>The expanded declaration below is equivalent and can be reused.
+<a class="autorefs autorefs-internal" title="Experiment
 
 
   
@@ -3903,7 +3979,7 @@ and search settings. <a class="autorefs autorefs-internal" title="Task
   
       dataclass
   " href="../../reference/api/#meta_evolve.Task"><code>meta.Task</code></a> holds the evaluator;
-its default objective maximizes <code>score</code>. <a class="autorefs autorefs-internal" title="Greedy
+here the objective maximizes <code>score</code> and stops at <code>1.0</code>. <a class="autorefs autorefs-internal" title="Greedy
 
 
   
@@ -3911,42 +3987,45 @@ its default objective maximizes <code>score</code>. <a class="autorefs autorefs-
   " href="../../reference/api/#meta_evolve.Greedy"><code>meta.Greedy</code></a>
 builds on the best measured version so far, allowing two proposal attempts here.
 <a class="autorefs autorefs-internal" title="run" href="../../reference/api/#meta_evolve.run"><code>meta.run()</code></a> executes this declaration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">feedback_experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_feedback</span><span class="p">,</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_feedback</span><span class="p">),</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">AncestorsOnly</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">16_000</span><span class="p">),</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">)</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">feedback_result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">feedback_experiment</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">feedback_experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_feedback</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">task</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span><span class="n">evaluator</span><span class="o">=</span><span class="n">evaluate_with_feedback</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>                   <span class="n">objectives</span><span class="o">=</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="n">satisfy</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),)),</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">search</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">16_000</span><span class="p">),</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">feedback_result</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">feedback_experiment</span><span class="p">)</span>
 </code></pre></div>
 <p><a id="run-and-inspect"></a>
 <a id="inspect-the-observations"></a></p>
 <p><a id="6-read-the-checks-and-the-result"></a></p>
 <h2 id="4-read-the-checks-and-the-result">4. Read the checks and the result<a class="headerlink" href="#4-read-the-checks-and-the-result" title="Permanent link">&para;</a></h2>
-<p><code>trials()</code> lists the seed evaluation followed by each attempted revision.
-Each attempt's <code>evidence</code> contains its recorded observations.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">first_attempt</span> <span class="o">=</span> <span class="n">feedback_result</span><span class="o">.</span><span class="n">trials</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">first_attempt</span><span class="o">.</span><span class="n">evidence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;failures&quot;</span><span class="p">]:</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span><span class="si">!r}</span><span class="s2">: expected </span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">&#39;expected&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">&#39;actual&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Output:</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># &#39;2m&#39;: expected 120, got 2</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># &#39;3m&#39;: expected 180, got 3</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># &#39;1h&#39;: expected 3600, got 1</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># &#39;2h&#39;: expected 7200, got 2</span>
+<p><code>trials()</code> lists the seed followed by each attempted revision.
+Each entry's <code>evidence</code> contains its recorded observations. The proposal count
+in <code>usage().trials</code> excludes the seed; <code>usage().evaluations</code> includes its
+evaluation. These runs make two proposals and three evaluations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">first_attempt</span> <span class="o">=</span> <span class="n">feedback_result</span><span class="o">.</span><span class="n">trials</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">first_attempt</span><span class="o">.</span><span class="n">evidence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;failures&quot;</span><span class="p">]:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span><span class="si">!r}</span><span class="s2">: expected </span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">&#39;expected&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">&#39;actual&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Output:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># &#39;2m&#39;: expected 120, got 2</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># &#39;3m&#39;: expected 180, got 3</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># &#39;1h&#39;: expected 3600, got 1</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># &#39;2h&#39;: expected 7200, got 2</span>
 </code></pre></div>
 <p>The seed's minute failures lead to <code>MINUTES</code>. Its remaining hour failures lead
 to <code>COMPLETE</code>. <code>best_trial()</code> returns the selected attempt and its measurements.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feedback_result</span><span class="o">.</span><span class="n">trials</span><span class="p">()):</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">failures</span> <span class="o">=</span> <span class="n">attempt</span><span class="o">.</span><span class="n">evidence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;failures&quot;</span><span class="p">]</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">; &quot;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>          <span class="sa">f</span><span class="s2">&quot;failed checks: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected score: </span><span class="si">{</span><span class="n">feedback_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># Output:</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Version 0: 33%; failed checks: 4</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Version 1: 67%; failed checks: 2</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Version 2: 100%; failed checks: 0</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># Selected score: 100%</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feedback_result</span><span class="o">.</span><span class="n">trials</span><span class="p">()):</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">failures</span> <span class="o">=</span> <span class="n">attempt</span><span class="o">.</span><span class="n">evidence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;failures&quot;</span><span class="p">]</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">; &quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>          <span class="sa">f</span><span class="s2">&quot;failed checks: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected score: </span><span class="si">{</span><span class="n">feedback_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># Output:</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Version 0: 33%; failed checks: 4</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># Version 1: 67%; failed checks: 2</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Version 2: 100%; failed checks: 0</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Selected score: 100%</span>
 </code></pre></div>
 <p>The evaluator and cases stayed fixed. The proposer used observations to choose
 source, and independent evaluation determined whether that choice helped.</p>
@@ -3954,17 +4033,17 @@ source, and independent evaluation determined whether that choice helped.</p>
 <p>Turn feedback off while keeping the same task, seed, proposer, and search.
 Python's <code>replace</code> copies a declaration with only the named field changed.
 Predict the score before running:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">without_feedback</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">replace</span><span class="p">(</span><span class="n">feedback_experiment</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With feedback: </span><span class="si">{</span><span class="n">feedback_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Without feedback: </span><span class="si">{</span><span class="n">without_feedback</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluations in each run:&quot;</span><span class="p">,</span> <span class="n">feedback_result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>      <span class="n">without_feedback</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># Output:</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># With feedback: 100%</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Without feedback: 33%</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="c1"># Evaluations in each run: 3 3</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">without_feedback</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">replace</span><span class="p">(</span><span class="n">feedback_experiment</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With feedback: </span><span class="si">{</span><span class="n">feedback_result</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Without feedback: </span><span class="si">{</span><span class="n">without_feedback</span><span class="o">.</span><span class="n">best_trial</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluations in each run:&quot;</span><span class="p">,</span> <span class="n">feedback_result</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>      <span class="n">without_feedback</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Output:</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># With feedback: 100%</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Without feedback: 33%</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># Evaluations in each run: 3 3</span>
 </code></pre></div>
 <p>Without supplied observations, this proposer returns the seed unchanged twice.
 The evaluator still records failed checks, but the proposer does not receive
@@ -3973,10 +4052,17 @@ comes from the explicit rule above; it is not a prediction of model performance
 or accuracy beyond these six development checks.</p>
 <h2 id="why-isnt-my-proposer-receiving-feedback">Why isn't my proposer receiving feedback?<a class="headerlink" href="#why-isnt-my-proposer-receiving-feedback" title="Permanent link">&para;</a></h2>
 <p>Recording evidence and supplying it are separate steps. Declare a context policy,
-then read its selected records in the proposer. <code>AncestorsOnly</code> includes the
-parent's observations and ancestors, subject to the declared bounds; it does
-not include rejected siblings. In this example, use the latest failed checks
-so an older failure does not undo a fix.</p>
+then read <code>context.evidence.latest(kind)</code> in the proposer. Check <code>.enabled</code> for
+disabled context and the exact evidence label for an enabled lookup with no
+match. <code>RecentAncestors</code> favors newer ancestor records; rejected siblings remain
+outside that ancestry. In this example the bounds retain the full selected
+history, so the latest failed checks reflect the current parent.</p>
+<p><code>context.evidence.truncated</code> means records were omitted or rendered text was
+clipped. It cannot distinguish those causes. <code>max_chars=0</code> still leaves selected
+structured evidence readable, while <code>max_records=1</code> may retain only an evaluation
+and omit its evidence. Inspect the selected bundle and its bounds before
+treating an older match as current-parent feedback. The accessor never fetches
+missing history or merges separately authorized pull observations.</p>
 <p>For your own task, record actionable observations in the evaluator and adapt
 the proposer to use them. A model proposer must put the selected observations
 into its SDK request. Keep the evaluator and budget fixed while comparing
