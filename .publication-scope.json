@@ -365,12 +365,12 @@
     "stylesheets/extra.css": "44a8763907078e6c014ff6c6878c4a53a94ca7a36c57fbebeda08f74b8b5596a",
     "stylesheets/home.css": "9c0387cd5fe105e464abc63fd84abe818cd787672694fcaa62784d032d427f86"
   },
-  "previous_docs_commit": "b84472158b93bf664c5f55c5af67b90b5133abe3",
+  "previous_docs_commit": "477aa4e4c93ecc5b73c3707b8070fa0b0508399c",
   "retained_immutable_downloads": {
     "downloads/meta-harness/0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947/example.zip": "0a2537d8f2f64adc6a80bab66116bd2471bfa3015b97ac0b4953112d93019947"
   },
   "scope": "Complete documentation build from the merged source: reader navigation, example gallery, parser-to-live-SVG journey, and agent extension contracts",
-  "source_commit": "eee8e2e73037878a74f70cd4f6e032edac09028b",
+  "source_commit": "74bbc84c637078d79351fd6ca4bf9268b0747a46",
   "source_repository": "https://github.com/sentient-xyz/meta-evolve",
   "verification": {
     "model_calls": 0,
