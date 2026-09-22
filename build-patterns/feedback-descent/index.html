@@ -3727,8 +3727,11 @@
 <p><a id="improve-a-prompt-from-evaluation-feedback"></a></p>
 <h1 id="feedback-descent-a-lighthouse-in-the-storm">Feedback Descent: a lighthouse in the storm<a class="headerlink" href="#feedback-descent-a-lighthouse-in-the-storm" title="Permanent link">&para;</a></h1>
 <p><strong>What it does.</strong> Feedback Descent turns written feedback into the next revision, without training the model.</p>
-<p><strong>How it works.</strong> An evaluator explains what worked and what to change; an editor uses that feedback to revise the strongest candidates.
-Read the <a href="https://ai.stanford.edu/blog/feedback-descent/">Stanford AI Lab introduction</a> for the idea and visual examples, or the <a href="https://arxiv.org/abs/2511.07919">paper</a> for its pairwise-comparison method.</p>
+<p><strong>How it works.</strong> An evaluator explains what worked and what to change; an editor
+uses that feedback to revise the strongest candidates. Read the
+<a href="https://ai.stanford.edu/blog/feedback-descent/">Stanford AI Lab introduction</a>
+for the idea and visual examples, or the <a href="https://arxiv.org/abs/2511.07919">paper</a>
+for its pairwise-comparison method.</p>
 <p>Here, two live agents draw and critique <strong>a lighthouse in a storm at high tide</strong>. We use rubric scores and Greedy selection: six revisions follow the seed.
 The highest-scoring SVG stays selected. This adaptation works with
 any artifact you can represent, revise, and evaluate.</p>
@@ -4018,8 +4021,8 @@ final attempt scored lower. A new run may produce different images and scores.</
 </li>
 </ul>
 </div>
-<p><a id="what-the-evidence-establishes"></a></p>
-<p>Select any image to open its SVG. The capture used <strong>193,724 reported tokens</strong>,
+<p><a id="what-the-evidence-establishes"></a>
+Select any image to open its SVG. The capture used <strong>193,724 reported tokens</strong>,
 including the initial generation; billed spend is unknown.
 <a href="../../assets/feedback-descent-svg/results.json">Recorded scores and usage</a> accompany
 the images. Scores reflect this grader's judgment. Invalid output stays a failure;

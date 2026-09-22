@@ -3604,10 +3604,15 @@ closed. The next guide applies the same save/reopen calls to a search comparison
 </table>
 <p>The revisions are handwritten; Python executes and grades them. No model,
 SDK, or credentials are needed.</p>
+<!-- notebook:web-only:start -->
+<p><a href="https://colab.research.google.com/github/sentient-xyz/meta-evolve-docs/blob/main/downloads/parser-persistence.ipynb">Open in Colab</a>
+· <a href="../../downloads/parser-persistence.ipynb">Download the notebook</a></p>
 <p><strong>To run this page:</strong> expand the required setup and run its cells in order,
 then save the run in section 1. <strong>Stop and restart the kernel</strong> at section 2;
 continue with only the reopening cell and export cells. Every definition is
 here; no other page needs to be executed.</p>
+<!-- notebook:web-only:end -->
+
 <p><a id="set-up-this-page"></a>
 <a id="complete-source"></a>
 <a id="1-install"></a>
@@ -3700,7 +3705,9 @@ same revisions without a hidden response counter.</p>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">return</span> <span class="n">agent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
 <p>The <a href="../../start-here/">Start here walkthrough</a> introduces the starting parser.
-You can close this section once its cells have run.</p>
+<!-- notebook:web-only:start -->
+You can close this section once its cells have run.
+<!-- notebook:web-only:end --></p>
 </details>
 <p><a id="save-the-run"></a>
 <a id="save-a-seed-run-then-exit"></a>
@@ -3859,7 +3866,7 @@ It needs no live run or open storage handle.</p>
 directory when you want to reopen the run. You can regenerate <code>selected.py</code>
 from that history by rerunning sections 2 and 3.</p>
 <h2 id="change-and-predict">Change and predict<a class="headerlink" href="#change-and-predict" title="Permanent link">&para;</a></h2>
-<p>After the restart, expand the required setup and rerun its definition cells
+<p>After the restart, rerun the setup definition cells
 (the installation need not repeat). Keep a note of the earlier <code>run_directory</code>.
 Change <code>trials=2</code> to <code>trials=1</code> in section 1 and predict the retained score and
 work count. Save another run, restart again, then reopen and export using

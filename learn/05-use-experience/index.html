@@ -3596,7 +3596,7 @@ and compare the results.</p>
 </tr>
 <tr>
 <td><a href="#declare-the-feedback-policy">Supply prior observations</a></td>
-<td><code>AncestorsOnly</code></td>
+<td><code>RecentAncestors</code></td>
 </tr>
 <tr>
 <td><a href="#change-and-predict">Compare with feedback off</a></td>
@@ -3609,23 +3609,31 @@ No model, SDK, or credentials are needed.</p>
 <p>Here, <strong>feedback</strong> means evaluator observations supplied to the proposer.
 The API's broader <strong>experience</strong> vocabulary also covers other authorized
 history and <a href="../../concepts/experience/">explicit pull access</a>.</p>
+<!-- notebook:web-only:start -->
+<p><a href="https://colab.research.google.com/github/sentient-xyz/meta-evolve-docs/blob/main/downloads/parser-feedback.ipynb">Open in Colab</a>
+· <a href="../../downloads/parser-feedback.ipynb">Download the notebook</a></p>
 <p><strong>To run this page:</strong> expand the required setup, copy its Python blocks into
 notebook cells, and run them from top to bottom. Then run the examples below
 in order. Every definition is here; no other page needs to be executed.
 Rerunning the cells repeats the same results.</p>
+<!-- notebook:web-only:end -->
+
 <p><a id="set-up-this-page"></a>
 <a id="complete-shared-source"></a>
 <a id="1-install"></a>
 <a id="2-define-the-parser-and-its-checks"></a></p>
 <details class="note">
 <summary>Required setup for a fresh notebook</summary>
-<p><strong>Install.</strong> Use <strong>Python 3.12 or newer</strong>. Download the
-<a href="../../downloads/meta-evolve.zip">package ZIP</a> into your notebook's working
-folder. For hosted notebooks, upload it through the file browser; <code>%pwd</code>
-shows the working folder. The ZIP is also included in offline docs builds.
-Run this installation once; restart the kernel if asked before continuing.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
+<p>Use a fresh notebook environment running <strong>Python 3.12 or newer</strong>.
+Install directly from the published documentation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sentient</span><span class="o">-</span><span class="n">xyz</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
 </code></pre></div>
+<p>If you already imported Meta-Evolve, restart the kernel after installing.
+Then run the remaining cells in order.</p>
+<p><strong>Archived or offline docs:</strong> use the ZIP included with that build. Put
+<code>meta-evolve.zip</code> in the notebook's working folder (<code>%pwd</code> shows it; hosted
+notebooks let you upload files), then run <code>%pip install ./meta-evolve.zip</code>
+instead. Installing from source may still download build tools.</p>
 <p><strong>Starting source and instructions.</strong> <code>SEED</code> reads a duration's number but
 ignores its unit. <code>CONTRACT</code> tells the proposer what the parser should do.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
@@ -3669,7 +3677,9 @@ the source locally; use these checks with the reviewed, handwritten code here.</
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s1">&#39;&#39;&#39;</span>
 </code></pre></div>
 <p>The <a href="../../start-here/">Start here walkthrough</a> introduces the starting parser.
-You can close this section once its cells have run.</p>
+<!-- notebook:web-only:start -->
+You can close this section once its cells have run.
+<!-- notebook:web-only:end --></p>
 </details>
 <p><a id="record-what-failed"></a></p>
 <p><a id="3-record-useful-feedback"></a></p>
@@ -3765,27 +3775,8 @@ available when you want oldest-record retention instead.</p>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">16_000</span><span class="p">),</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span>
 </code></pre></div>
-<p>The expanded declaration below is equivalent and can be reused.
-<a class="autorefs autorefs-internal" title="Experiment
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.Experiment"><code>meta.Experiment</code></a> combines the seed, proposer, task,
-and search settings. <a class="autorefs autorefs-internal" title="Task
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.Task"><code>meta.Task</code></a> holds the evaluator;
-here the objective maximizes <code>score</code> and stops at <code>1.0</code>. <a class="autorefs autorefs-internal" title="Greedy
-
-
-  
-      dataclass
-  " href="../../reference/api/#meta_evolve.Greedy"><code>meta.Greedy</code></a>
-builds on the best measured version so far, allowing two proposal attempts here.
-<a class="autorefs autorefs-internal" title="run" href="../../reference/api/#meta_evolve.run"><code>meta.run()</code></a> executes this declaration.</p>
+<p>Run the equivalent expanded declaration below; we will reuse it to compare
+feedback on and off.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">feedback_experiment</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">proposer</span><span class="o">=</span><span class="n">propose_with_feedback</span><span class="p">,</span>
@@ -3856,12 +3847,8 @@ disabled context and the exact evidence label for an enabled lookup with no
 match. <code>RecentAncestors</code> favors newer ancestor records; rejected siblings remain
 outside that ancestry. In this example the bounds retain the full selected
 history, so the latest failed checks reflect the current parent.</p>
-<p><code>context.evidence.truncated</code> means records were omitted or rendered text was
-clipped. It cannot distinguish those causes. <code>max_chars=0</code> still leaves selected
-structured evidence readable, while <code>max_records=1</code> may retain only an evaluation
-and omit its evidence. Inspect the selected bundle and its bounds before
-treating an older match as current-parent feedback. The accessor never fetches
-missing history or merges separately authorized pull observations.</p>
+<p>For missing or truncated observations, see the
+<a href="../../guides/experience/#pushed-context">context bounds reference</a>.</p>
 <p>For your own task, record actionable observations in the evaluator and adapt
 the proposer to use them. A model proposer must put the selected observations
 into its SDK request. Keep the evaluator and budget fixed while comparing

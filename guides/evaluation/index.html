@@ -3602,19 +3602,27 @@ see <a href="../../concepts/authority/">evaluation authority</a>.</p>
 </table>
 <p>The revisions are handwritten. Python executes and grades
 them; no model, SDK, or credentials are needed.</p>
+<!-- notebook:web-only:start -->
+<p><a href="https://colab.research.google.com/github/sentient-xyz/meta-evolve-docs/blob/main/downloads/parser-evaluation.ipynb">Open in Colab</a>
+· <a href="../../downloads/parser-evaluation.ipynb">Download the notebook</a></p>
 <p><strong>To run this page:</strong> expand the required setup and run its cells from top to
 bottom, then run the examples below in order. Every definition is here; no
 other page needs to be executed. Rerunning the cells repeats the same results.</p>
+<!-- notebook:web-only:end -->
+
 <p><a id="1-install"></a></p>
 <details class="note">
 <summary>Required setup for a fresh notebook</summary>
-<p><strong>Install.</strong> Use <strong>Python 3.12 or newer</strong>. Download the
-<a href="../../downloads/meta-evolve.zip">package ZIP</a> into your notebook's working
-folder. For hosted notebooks, upload it through the file browser; <code>%pwd</code>
-shows the working folder. The ZIP is also included in offline docs builds.
-Install once; restart the kernel if asked before continuing.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
+<p>Use a fresh notebook environment running <strong>Python 3.12 or newer</strong>.
+Install directly from the published documentation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sentient</span><span class="o">-</span><span class="n">xyz</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
 </code></pre></div>
+<p>If you already imported Meta-Evolve, restart the kernel after installing.
+Then run the remaining cells in order.</p>
+<p><strong>Archived or offline docs:</strong> use the ZIP included with that build. Put
+<code>meta-evolve.zip</code> in the notebook's working folder (<code>%pwd</code> shows it; hosted
+notebooks let you upload files), then run <code>%pip install ./meta-evolve.zip</code>
+instead. Installing from source may still download build tools.</p>
 <p><strong>Starting source.</strong> <code>SEED</code> reads a duration's number but ignores its unit.
 <code>CONTRACT</code> tells the proposer what the parser should do.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
@@ -3658,7 +3666,9 @@ Its choice depends on the source, without a hidden response counter.</p>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="k">return</span> <span class="n">agent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
 <p>The <a href="../../start-here/">Start here walkthrough</a> introduces the starting parser.
-You can close this section once its cells have run.</p>
+<!-- notebook:web-only:start -->
+You can close this section once its cells have run.
+<!-- notebook:web-only:end --></p>
 </details>
 <p><a id="2-choose-the-answers-that-matter"></a></p>
 <h2 id="1-choose-the-answers-that-matter">1. Choose the answers that matter<a class="headerlink" href="#1-choose-the-answers-that-matter" title="Permanent link">&para;</a></h2>
