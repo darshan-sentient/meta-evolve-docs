@@ -4005,11 +4005,11 @@ fingerprint. Their complete definitions are expandable on this page.</p>
 <td>The source string in <code>SEED</code>; each replacement is a new version</td>
 </tr>
 <tr>
-<td>Proposer</td>
+<td><a href="../../reference/api/#proposers-and-evaluators">Proposer</a></td>
 <td><code>propose</code> sends the current source, full contract, and authorized observations to <code>client.generate</code></td>
 </tr>
 <tr>
-<td>Task / evaluator and objectives</td>
+<td>Task / <a href="../../reference/api/#proposers-and-evaluators">evaluator</a> and objectives</td>
 <td><code>evaluate</code> runs development inputs and returns their passing fraction; <code>Maximize</code> requests a score of <code>1.0</code></td>
 </tr>
 <tr>
@@ -4017,8 +4017,12 @@ fingerprint. Their complete definitions are expandable on this page.</p>
 <td><code>Greedy</code> expands the best measured candidate, with at most three revisions</td>
 </tr>
 <tr>
-<td>Feedback / experience</td>
+<td><a href="../../reference/api/#feedback-and-memory">Feedback / experience</a></td>
 <td><code>AncestorsOnly</code> supplies committed ancestor records; the proposer extracts only the selected parent's case observations</td>
+</tr>
+<tr>
+<td><a href="../../reference/api/#results-and-inspection">Result</a></td>
+<td><code>Run</code> provides the selected source, attempts, evidence, and usage</td>
 </tr>
 <tr>
 <td>External limits</td>

@@ -3749,11 +3749,11 @@ any artifact you can represent, revise, and evaluate.</p>
 <td>SVG source rendered as an image</td>
 </tr>
 <tr>
-<td>Proposer</td>
+<td><a href="../../reference/api/#proposers-and-evaluators">Proposer</a></td>
 <td><code>revise</code> uses the selected parent's critique to rewrite its SVG</td>
 </tr>
 <tr>
-<td>Evaluator</td>
+<td><a href="../../reference/api/#proposers-and-evaluators">Evaluator</a></td>
 <td><code>grade</code> returns a rubric score and written feedback</td>
 </tr>
 <tr>
@@ -3761,7 +3761,7 @@ any artifact you can represent, revise, and evaluate.</p>
 <td><code>improve()</code> supplies Greedy: higher scores replace the parent</td>
 </tr>
 <tr>
-<td>Result</td>
+<td><a href="../../reference/api/#results-and-inspection">Result</a></td>
 <td>Selected SVG, all seven images, critiques, scores, and usage</td>
 </tr>
 </tbody>
@@ -3900,7 +3900,7 @@ conversation. Its score drives selection; its feedback guides revision.</p>
 <h3 id="4-try-six-revisions">4. Try six revisions<a class="headerlink" href="#4-try-six-revisions" title="Permanent link">&para;</a></h3>
 <p><code>meta.improve</code> evaluates the seed, then tries six revisions with <strong>Greedy</strong> search.
 Higher scores replace the parent; ties and lower scores keep the earlier best.
-<code>RecentAncestors</code> supplies the selected parent's feedback.</p>
+<a href="../../reference/api/#feedback-and-memory">RecentAncestors</a> supplies the selected parent's feedback.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">improve</span><span class="p">(</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">seed</span><span class="o">=</span><span class="n">seed_svg</span><span class="p">,</span> <span class="n">proposer</span><span class="o">=</span><span class="n">revise</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">grade</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">context</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">RecentAncestors</span><span class="p">(</span><span class="n">max_records</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">4000</span><span class="p">),</span>
