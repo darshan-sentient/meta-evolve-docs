@@ -192,20 +192,6 @@ body { font-kerning: normal; }
   font-size: 0.8rem;
 }
 
-/* The home page is an introduction to the book, with a simple chapter index. */
-.me-hero { border-bottom: 1px solid var(--me-border); margin-bottom: 1.4rem; padding: 0.5rem 0 1.6rem; }
-.me-hero h1 { font-size: clamp(2rem, 5vw, 2.6rem); margin-bottom: 0.65rem; }
-.me-hero p { max-width: 36rem; }
-.me-hero > p:not(.me-kicker) { font-size: 0.95rem; }
-.me-hero .me-kicker {
-  color: var(--md-default-fg-color--light);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  margin: 0 0 0.8rem;
-  text-transform: uppercase;
-}
-
 .md-typeset .md-button {
   border: 1px solid var(--me-border);
   border-radius: var(--me-radius);
@@ -227,14 +213,6 @@ body { font-kerning: normal; }
   background: var(--md-accent-fg-color);
   border-color: var(--md-accent-fg-color);
   color: var(--md-default-bg-color);
-}
-
-.me-hero .md-button { margin: 0.4rem 0.4rem 0 0; }
-.me-chip {
-  color: var(--md-default-fg-color--light);
-  display: inline-block;
-  font-size: 0.7rem;
-  margin: 0 0.8rem 0.4rem 0;
 }
 
 .md-typeset .grid.cards > ol > li,

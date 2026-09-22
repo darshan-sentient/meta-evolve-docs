@@ -1,11 +1,25 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Page moved</title></head><body><h1 id="page-moved">Page moved<a class="headerlink" href="#page-moved" title="Permanent link">&para;</a></h1>
-<p><a href="../../design/user-owned-sdk-boundary/">Continue to the maintained page</a></p>
-<p id="migrate-to-a-user-owned-sdk-wrapper"><a href="../../design/user-owned-sdk-boundary/#removal-and-evidence-policy">migrate to a user owned sdk wrapper</a></p><script>
-const redirect = {"target": "../../design/user-owned-sdk-boundary/", "fragments": {"migrate-to-a-user-owned-sdk-wrapper": "../../design/user-owned-sdk-boundary/#removal-and-evidence-policy"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+<p><a href="../../reference/sdk-boundary/#provider-migration">Continue to the maintained page</a></p>
+<p id="migrate-to-a-user-owned-sdk-wrapper"><a href="../../reference/sdk-boundary/#provider-migration">migrate to a user owned sdk wrapper</a></p><script>
+(() => {
+const redirect = {"target": "../../reference/sdk-boundary/#provider-migration", "fragments": {"migrate-to-a-user-owned-sdk-wrapper": "../../reference/sdk-boundary/#provider-migration"}};
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>

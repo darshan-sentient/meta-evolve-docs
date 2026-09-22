@@ -6,7 +6,7 @@
 
 <p id="gepa"><a href="../research/gepa/">gepa</a></p>
 
-<p id="feedback-descent"><a href="../build-patterns/feedback-descent/">feedback descent</a></p>
+<p id="feedback-descent"><a href="../build-patterns/feedback-descent/#feedback-descent-a-lighthouse-in-the-storm">feedback descent</a></p>
 
 <p id="autodata"><a href="../learn/research-labs/02-autodata/">autodata</a></p>
 
@@ -69,11 +69,25 @@
 <p id="memory-provenance-and-infrastructure"><a href="../research/#memory-context-and-skills">memory provenance and infrastructure</a></p>
 
 <p id="research-questions-for-meta-evolve"><a href="../research/transfer/">research questions for meta evolve</a></p><script>
-const redirect = {"target": "../research/", "fragments": {"experience-graphs-trellis": "../research/experience-graphs--trellis/", "dspy": "../research/dspy/", "gepa": "../research/gepa/", "feedback-descent": "../build-patterns/feedback-descent/", "autodata": "../learn/research-labs/02-autodata/", "evoskill": "../build-patterns/evoskill/", "ace": "../research/ace/", "meta-harness": "../research/meta-harness/", "self-harness": "../research/self-harness/", "ahe": "../research/ahe/", "shepherd": "../research/shepherd/", "asari-inference-stack-optimization": "../research/asari-inference-stack-optimization/", "adrs": "../research/adrs/", "recursive-self-improvement-survey": "../research/recursive-self-improvement-survey/", "aide2": "../research/aide2/", "alphaevolve": "../research/alphaevolve/", "funsearch": "../research/funsearch/", "openevolve": "../research/openevolve/", "evox": "../research/evox/", "group-evolving-agents": "../research/group-evolving-agents/", "agent0-and-dr-zero": "../research/#systems-scientific-discovery-and-evaluation", "aero": "../research/aero/", "coral": "../research/coral/", "quality-diversity-and-island-models": "../research/quality-diversity-and-island-models/", "memgpt": "../research/memgpt/", "graphiti-and-structured-memory": "../research/graphiti-and-structured-memory/", "event-sourcing-and-content-addressing": "../research/event-sourcing-and-content-addressing/", "research-and-systems-references": "../research/", "experience-and-cumulative-improvement": "../research/#memory-context-and-skills", "programming-and-optimizing-lm-systems": "../research/#prompts-and-instructions", "evolutionary-and-meta-level-search": "../research/#search-and-meta-evolution", "self-generated-curricula-and-model-updates": "../research/#systems-scientific-discovery-and-evaluation", "multi-agent-code-and-workflow-optimization": "../research/#workflows-and-harnesses", "memory-provenance-and-infrastructure": "../research/#memory-context-and-skills", "research-questions-for-meta-evolve": "../research/transfer/"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+(() => {
+const redirect = {"target": "../research/", "fragments": {"experience-graphs-trellis": "../research/experience-graphs--trellis/", "dspy": "../research/dspy/", "gepa": "../research/gepa/", "feedback-descent": "../build-patterns/feedback-descent/#feedback-descent-a-lighthouse-in-the-storm", "autodata": "../learn/research-labs/02-autodata/", "evoskill": "../build-patterns/evoskill/", "ace": "../research/ace/", "meta-harness": "../research/meta-harness/", "self-harness": "../research/self-harness/", "ahe": "../research/ahe/", "shepherd": "../research/shepherd/", "asari-inference-stack-optimization": "../research/asari-inference-stack-optimization/", "adrs": "../research/adrs/", "recursive-self-improvement-survey": "../research/recursive-self-improvement-survey/", "aide2": "../research/aide2/", "alphaevolve": "../research/alphaevolve/", "funsearch": "../research/funsearch/", "openevolve": "../research/openevolve/", "evox": "../research/evox/", "group-evolving-agents": "../research/group-evolving-agents/", "agent0-and-dr-zero": "../research/#systems-scientific-discovery-and-evaluation", "aero": "../research/aero/", "coral": "../research/coral/", "quality-diversity-and-island-models": "../research/quality-diversity-and-island-models/", "memgpt": "../research/memgpt/", "graphiti-and-structured-memory": "../research/graphiti-and-structured-memory/", "event-sourcing-and-content-addressing": "../research/event-sourcing-and-content-addressing/", "research-and-systems-references": "../research/", "experience-and-cumulative-improvement": "../research/#memory-context-and-skills", "programming-and-optimizing-lm-systems": "../research/#prompts-and-instructions", "evolutionary-and-meta-level-search": "../research/#search-and-meta-evolution", "self-generated-curricula-and-model-updates": "../research/#systems-scientific-discovery-and-evaluation", "multi-agent-code-and-workflow-optimization": "../research/#workflows-and-harnesses", "memory-provenance-and-infrastructure": "../research/#memory-context-and-skills", "research-questions-for-meta-evolve": "../research/transfer/"}};
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>

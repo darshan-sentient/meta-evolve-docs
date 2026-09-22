@@ -35,11 +35,25 @@
 <p id="evidence-dependencies-and-ownership"><a href="../sealqa-feedback-descent/#evidence-dependencies-and-ownership">evidence dependencies and ownership</a></p>
 
 <p id="complete-supporting-source"><a href="../sealqa-feedback-descent/#complete-supporting-source">complete supporting source</a></p><script>
+(() => {
 const redirect = {"target": "../../../build-patterns/feedback-descent/#feedback-descent-a-lighthouse-in-the-storm", "fragments": {"feedback-descent-improve-a-prompt-from-textual-feedback": "../../../build-patterns/feedback-descent/#feedback-descent-a-lighthouse-in-the-storm", "the-concrete-problem": "../../../build-patterns/feedback-descent/#1-describe-the-scene", "the-idea": "../../../build-patterns/feedback-descent/#components-of-the-loop", "from-meta-evolve-principles-to-this-algorithm": "../../../build-patterns/feedback-descent/#components-of-the-loop", "how-the-implementation-moves-data": "../../../build-patterns/feedback-descent/#3-revise-using-feedback", "walkthrough-one-improvement-cycle-in-four-phases": "../../../build-patterns/feedback-descent/#components-of-the-loop", "minimal-runnable-mechanism": "../../../build-patterns/feedback-descent/#set-up", "how-to-read-the-result": "../../../build-patterns/feedback-descent/#the-recorded-run", "change-and-predict": "../../../build-patterns/feedback-descent/#try-your-own-scene", "the-five-sessions": "../sealqa-feedback-descent/#the-five-sessions", "structured-evidence": "../sealqa-feedback-descent/#structured-evidence", "leakage-and-validity-checklist": "../sealqa-feedback-descent/#leakage-and-validity-checklist", "what-the-paper-does": "../sealqa-feedback-descent/#what-the-paper-does", "the-actual-inner-experiment": "../sealqa-feedback-descent/#the-actual-inner-experiment", "optional-live-integration": "../sealqa-feedback-descent/#optional-live-integration", "source-and-ownership": "../sealqa-feedback-descent/#source-and-ownership", "evidence-dependencies-and-ownership": "../sealqa-feedback-descent/#evidence-dependencies-and-ownership", "complete-supporting-source": "../sealqa-feedback-descent/#complete-supporting-source"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>
