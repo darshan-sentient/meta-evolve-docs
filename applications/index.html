@@ -3722,8 +3722,10 @@ first experiment entirely in a notebook, choose a lesson from
 <h3 id="maximise-llm-prompt-cache-hits">Maximise LLM prompt-cache hits<a class="headerlink" href="#maximise-llm-prompt-cache-hits" title="Permanent link">&para;</a></h3>
 <p><a href="llm-sql/">Complete LLM-SQL walkthrough</a> · <strong>Experimental/live-only</strong> ·
 Python 3.12+. Copy the walkthrough cells into a fresh notebook. Scoring the
-GRG seed needs no API key and should print about <code>0.6961</code>; the improve loop
-needs <code>OPENROUTER_API_KEY</code>. One recorded run reached <code>0.7268</code>.</p>
+GRG seed needs no API key and prints a hit rate of about <code>0.713</code>; the improve
+loop needs <code>OPENROUTER_API_KEY</code>. A recorded six-trial run with
+<code>glm-5.3-flash</code> raised the combined score from <code>0.6961</code> to
+<code>0.7171</code> while the cache hit rate <em>fell</em>. Read the page for why.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-sys-1" name="__codelineno-sys-1" href="#__codelineno-sys-1"></a>jupyter<span class="w"> </span>notebook<span class="w"> </span>applications/llm-sql/ADRS_LLM_SQL_MetaEvolve.ipynb
 </code></pre></div>
 <p>The <a href="llm-sql/ADRS_LLM_SQL_MetaEvolve.ipynb">reference notebook</a> is those same
