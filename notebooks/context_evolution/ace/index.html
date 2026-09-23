@@ -23,7 +23,7 @@
     
     
       
-        <title>A context playbook, evolved - Meta-Evolve</title>
+        <title>ACE: improve an agent's playbook - Meta-Evolve</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-context-playbook-evolved" class="md-skip">
+        <a href="#ace-improve-an-agents-playbook" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A context playbook, evolved
+              ACE: improve an agent's playbook
             
           </span>
         </div>
@@ -3348,10 +3348,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-identity-is-the-whole-point" class="md-nav__link">
+  <a href="#components-of-the-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why identity is the whole point
+        Components of the loop
       
     </span>
   </a>
@@ -3359,10 +3359,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#three-splits-two-tagging-policies" class="md-nav__link">
+  <a href="#1-prepare-the-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Three splits, two tagging policies
+        1. Prepare the example
       
     </span>
   </a>
@@ -3370,10 +3370,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-that-one-call-did" class="md-nav__link">
+  <a href="#2-read-the-starting-playbook" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What that one call did
+        2. Read the starting playbook
       
     </span>
   </a>
@@ -3381,10 +3381,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#four-ways-to-be-unrankable" class="md-nav__link">
+  <a href="#3-learn-from-the-missed-answers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Four ways to be unrankable
+        3. Learn from the missed answers
       
     </span>
   </a>
@@ -3392,10 +3392,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-split-that-did-not-finish-has-no-score" class="md-nav__link">
+  <a href="#4-follow-the-two-revisions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A split that did not finish has no score
+        4. Follow the two revisions
       
     </span>
   </a>
@@ -3403,10 +3403,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#change-and-predict" class="md-nav__link">
+  <a href="#5-keep-a-smaller-playbook" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Change and predict
+        5. Keep a smaller playbook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-check-fresh-disclosures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Check fresh disclosures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-change-a-lesson-and-predict-the-edit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Change a lesson and predict the edit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-the-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading the evidence
       
     </span>
   </a>
@@ -3888,25 +3921,71 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=question">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-00">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="a-context-playbook-evolved">A context playbook, evolved<a class="anchor-link" href="#a-context-playbook-evolved">¶</a></h1><p>The EvoSkill sibling evolves prose an agent reads whole. This one evolves a
-<em>playbook</em>: canonical JSON whose entries carry stable logical identities, so a
-single entry can be amended or retired without losing its history -- and without
-rewriting the other entries.</p>
-<p>Same boundary as the sibling, same deterministic fixture agent, no credential.
-The <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/examples/research/context_evolution/README.md">example README</a> is the canonical explanation.</p>
-<p>The whole lifecycle is one call, so that is what comes first. Everything after
-it inspects the result.</p>
+<p><a id="a-context-playbook-evolved"></a>
+<a id="ace-improve-an-itemized-playbook"></a></p>
+<h1 id="ace-improve-an-agents-playbook">ACE: improve an agent's playbook<a class="anchor-link" href="#ace-improve-an-agents-playbook">¶</a></h1><p><strong>What it does.</strong> ACE improves reusable instructions one rule at a time,
+preserving useful entries while correcting, retiring, or adding others.</p>
+<p><strong>How it works.</strong> A Generator attempts a task, a Reflector extracts lessons,
+and a Curator edits the playbook. Later attempts use the revised rules.</p>
+<p><strong>In this example.</strong> A financial-tagging agent starts with the wrong interest
+convention and no lease convention. Follow two revisions, inspect the changed
+rules, and check the final playbook on fresh disclosures.</p>
+<p>The saved outputs come from deterministic Python agents.
+No credentials or model calls are needed. This is a mechanism demonstration
+inspired by <a href="https://arxiv.org/abs/2510.04618">ACE</a>, with authored lessons and curation.</p>
+<p><a id="component-worksheet"></a></p>
+<h2 id="components-of-the-loop">Components of the loop<a class="anchor-link" href="#components-of-the-loop">¶</a></h2><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact</td>
+<td>A JSON playbook with an identity, section, rule, and status for each entry</td>
+</tr>
+<tr>
+<td>Proposer</td>
+<td><code>revise(lessons)</code> amends and retires entries, then adds a missing rule</td>
+</tr>
+<tr>
+<td>Evaluator</td>
+<td><code>playbook_suite(agent)</code> checks answers against fixed company conventions</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>Greedy evaluates the seed and tries two revisions on the private split</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Selected rules, revision history, consolidation checks, and held-out answers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attempt → lesson → edit a rule → check a fresh task.</strong></p>
+<p><a href="https://sentient-xyz.github.io/meta-evolve-docs/downloads/ace-playbook.ipynb"><strong>Download notebook</strong></a>
+· <a href="https://sentient-xyz.github.io/meta-evolve-docs/downloads/context-example.zip">Complete source</a>
+· <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/examples/research/context_evolution/ace_display.py">Display helpers</a></p>
+<p>Seven cells take you through the study and a small exercise. The page and notebook
+share the same cells and recorded outputs. Setup downloads the library and a
+checksum-verified example archive; subsequent cells run locally.</p>
+<p><a id="setup-and-run"></a></p>
+<h2 id="1-prepare-the-example">1. Prepare the example<a class="anchor-link" href="#1-prepare-the-example">¶</a></h2><p>Use a Python 3.12+ Jupyter kernel on macOS or Linux. Run these cells in order,
+or copy them into an empty notebook. Setup needs internet access; a checkout
+and companion-file uploads are unnecessary.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=load-example">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-01">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -3924,47 +4003,53 @@ it inspects the result.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sentient</span><span class="o">-</span><span class="n">xyz</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">evolve</span><span class="o">.</span><span class="n">zip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">sha256</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
 
-<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
-    <span class="n">path</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">"pyproject.toml"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
-<span class="p">)</span>
-<span class="n">example</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="s2">"examples/research/context_evolution"</span>
-<span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">example</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">example</span><span class="p">))</span>
+<span class="n">source_url</span> <span class="o">=</span> <span class="s2">"https://sentient-xyz.github.io/meta-evolve-docs/downloads/context/92c3688fd94dc264d0bf0be2f3ce8f7690ce463799c86467bf714da2d2a1f443/example.zip"</span>
+<span class="n">archive</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">source_url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">sha256</span><span class="p">(</span><span class="n">archive</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"92c3688fd94dc264d0bf0be2f3ce8f7690ce463799c86467bf714da2d2a1f443"</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Example download does not match this notebook."</span><span class="p">)</span>
+<span class="n">support</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"ace-playbook-"</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">archive</span><span class="p">))</span> <span class="k">as</span> <span class="n">bundle</span><span class="p">:</span>
+    <span class="n">bundle</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">support</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">support</span> <span class="o">/</span> <span class="s2">"examples/research/context_evolution"</span><span class="p">))</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">ace_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">PLAYBOOK_FIXTURE_AGENT</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ace_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">PLAYBOOK_CALL_CEILING</span><span class="p">,</span> <span class="n">PLAYBOOK_FIXTURE_AGENT</span><span class="p">,</span> <span class="n">SEED_PLAYBOOK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ace_study</span><span class="w"> </span><span class="kn">import</span> <span class="n">study_playbook</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ace_display</span><span class="w"> </span><span class="kn">import</span> <span class="n">answers</span><span class="p">,</span> <span class="n">changes</span><span class="p">,</span> <span class="n">consolidation_view</span><span class="p">,</span> <span class="n">entries</span><span class="p">,</span> <span class="n">lessons_view</span><span class="p">,</span> <span class="n">revisions</span>
 
-<span class="n">study</span> <span class="o">=</span> <span class="n">study_playbook</span><span class="p">(</span><span class="n">PLAYBOOK_FIXTURE_AGENT</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"selected:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">selected</span><span class="o">.</span><span class="n">identities</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"after consolidation:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">playbook</span><span class="o">.</span><span class="n">identities</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"held out:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">held_out</span><span class="o">.</span><span class="n">solved</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"failures:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">failures</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ready · deterministic fixture · no model calls"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import sys
+<div class="clipboard-copy-txt" id="cell-1">%pip install -q https://sentient-xyz.github.io/meta-evolve-docs/downloads/meta-evolve.zip
+from hashlib import sha256
+from io import BytesIO
 from pathlib import Path
+import sys, tempfile
+from urllib.request import urlopen
+from zipfile import ZipFile
 
-root = next(
-    path for path in (Path.cwd(), *Path.cwd().parents)
-    if (path / "pyproject.toml").exists()
-)
-example = root / "examples/research/context_evolution"
-if str(example) not in sys.path:
-    sys.path.insert(0, str(example))
+source_url = "https://sentient-xyz.github.io/meta-evolve-docs/downloads/context/92c3688fd94dc264d0bf0be2f3ce8f7690ce463799c86467bf714da2d2a1f443/example.zip"
+archive = urlopen(source_url, timeout=30).read()
+if sha256(archive).hexdigest() != "92c3688fd94dc264d0bf0be2f3ce8f7690ce463799c86467bf714da2d2a1f443":
+    raise RuntimeError("Example download does not match this notebook.")
+support = Path(tempfile.mkdtemp(prefix="ace-playbook-"))
+with ZipFile(BytesIO(archive)) as bundle:
+    bundle.extractall(support)
+sys.path.insert(0, str(support / "examples/research/context_evolution"))
 
-from ace_context import PLAYBOOK_FIXTURE_AGENT
+from IPython.display import HTML, display
+from ace_context import PLAYBOOK_CALL_CEILING, PLAYBOOK_FIXTURE_AGENT, SEED_PLAYBOOK
 from ace_study import study_playbook
+from ace_display import answers, changes, consolidation_view, entries, lessons_view, revisions
 
-study = study_playbook(PLAYBOOK_FIXTURE_AGENT)
-
-print("selected:", study.selected.identities)
-print("after consolidation:", study.playbook.identities)
-print("held out:", study.held_out.solved)
-print("failures:", study.failures)</div>
+print("Ready · deterministic fixture · no model calls")</div>
 </div>
 </div>
 </div>
@@ -3976,10 +4061,7 @@ print("failures:", study.failures)</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>selected: ('interest-element', 'scale-in-thousands', 'lease-element')
-after consolidation: ('interest-element', 'lease-element')
-held out: 1.0
-failures: ()
+<pre>Ready · deterministic fixture · no model calls
 </pre>
 </div>
 </div>
@@ -3987,21 +4069,22 @@ failures: ()
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=representation-heading">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-02">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="why-identity-is-the-whole-point">Why identity is the whole point<a class="anchor-link" href="#why-identity-is-the-whole-point">¶</a></h2><p>A playbook is one <code>meta.Text</code> holding canonical JSON -- sorted keys, no spare
-whitespace -- so two equal playbooks have byte-identical digests. Each entry
-keeps its identity across an amendment, and retiring one keeps it in the record
-instead of deleting it.</p>
+<p><a id="the-concrete-problem"></a></p>
+<h2 id="2-read-the-starting-playbook">2. Read the starting playbook<a class="anchor-link" href="#2-read-the-starting-playbook">¶</a></h2><p>Northwind uses its own taxonomy elements for cash interest and operating leases.
+The starting manual names the generic interest element and an unsupported scaling
+rule. It says nothing about leases. These are the instructions we will improve;
+the agent and the grading rules stay fixed.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=canonical-json">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-03">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4019,39 +4102,9 @@ instead of deleting it.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">meta_evolve</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meta</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">playbook</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">playbook_codec</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">codec</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ace_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEED_PLAYBOOK</span>
-
-<span class="n">encoded</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">SEED_PLAYBOOK</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"schema:"</span><span class="p">,</span> <span class="n">playbook</span><span class="o">.</span><span class="n">SCHEMA</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"seed items:"</span><span class="p">,</span> <span class="n">SEED_PLAYBOOK</span><span class="o">.</span><span class="n">identities</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"round trip is byte-identical:"</span><span class="p">,</span>
-      <span class="n">codec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">codec</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">))</span> <span class="o">==</span> <span class="n">encoded</span><span class="p">)</span>
-
-<span class="n">item</span> <span class="o">=</span> <span class="n">SEED_PLAYBOOK</span><span class="o">.</span><span class="n">by_identity</span><span class="p">()[</span><span class="s2">"interest-element"</span><span class="p">]</span>
-<span class="n">amended</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">amended</span><span class="p">(</span><span class="s2">"Cash interest is tagged nwi:InterestPaidNetOfCapitalized."</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"identity survives an amendment:"</span><span class="p">,</span> <span class="n">amended</span><span class="o">.</span><span class="n">identity</span> <span class="o">==</span> <span class="n">item</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"retiring keeps the record:"</span><span class="p">,</span> <span class="n">amended</span><span class="o">.</span><span class="n">retired</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">entries</span><span class="p">(</span><span class="n">SEED_PLAYBOOK</span><span class="p">)))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">import meta_evolve as meta
-
-import playbook
-import playbook_codec as codec
-from ace_context import SEED_PLAYBOOK
-
-encoded = codec.encode(SEED_PLAYBOOK)
-print("schema:", playbook.SCHEMA)
-print("seed items:", SEED_PLAYBOOK.identities)
-print("round trip is byte-identical:",
-      codec.encode(codec.decode(encoded)) == encoded)
-
-item = SEED_PLAYBOOK.by_identity()["interest-element"]
-amended = item.amended("Cash interest is tagged nwi:InterestPaidNetOfCapitalized.")
-print("identity survives an amendment:", amended.identity == item.identity)
-print("retiring keeps the record:", amended.retired().status)</div>
+<div class="clipboard-copy-txt" id="cell-2">display(HTML(entries(SEED_PLAYBOOK)))</div>
 </div>
 </div>
 </div>
@@ -4062,38 +4115,77 @@ print("retiring keeps the record:", amended.retired().status)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>schema: context-playbook-v1
-seed items: ('interest-element', 'scale-in-thousands')
-round trip is byte-identical: True
-identity survives an amendment: True
-retiring keeps the record: retired
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<style>
+.ace-study { color: inherit; line-height: 1.65; margin: 1.1rem 0 1.7rem; overflow-wrap: anywhere; }
+.ace-study * { box-sizing: border-box; }
+.ace-study .ace-grid { display: grid; gap: .8rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.ace-study .ace-card { border: 1px solid var(--me-border, #919a9560);
+  border-radius: .3rem; padding: 1rem 1.1rem; min-width: 0; }
+.ace-study .ace-retired { border-style: dashed; }
+.ace-study .ace-label { font-size: .78em; letter-spacing: .04em;
+  text-transform: uppercase; margin: 0 0 .5rem; }
+.ace-study .ace-label code { text-transform: none; letter-spacing: normal; }
+.ace-study p { margin: .4rem 0 .8rem; }
+.ace-study p:last-child { margin-bottom: 0; }
+.ace-study code { font-size: .85em; white-space: normal !important; overflow-wrap: anywhere; }
+.ace-study .ace-caption { font-size: .88em; }
+.ace-study .ace-change { border-inline-start: 3px solid var(--md-accent-fg-color, #538b80);
+  padding-inline-start: 1rem; margin: 1rem 0; }
+.ace-study .ace-before { text-decoration: line-through; }
+.ace-study table { border-collapse: collapse; width: 100%; font-size: .9em; }
+.ace-study th, .ace-study td { text-align: left; padding: .65rem .8rem;
+  border-bottom: 1px solid var(--me-border, #919a9560); vertical-align: top; }
+.ace-study .ace-selected { font-weight: 600; }
+.ace-study details { margin: 1rem 0; }
+.ace-study summary { cursor: pointer; }
+.ace-study pre { overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; }
+</style><div class="ace-study"><div class="ace-grid"><div class="ace-card ace-active"><p class="ace-label">debt · active</p><p>Cash interest is tagged us-gaap:InterestPaid.</p><p><code>interest-element</code></p></div><div class="ace-card ace-active"><p class="ace-label">presentation · active</p><p>Scale every tagged amount to thousands before filing.</p><p><code>scale-in-thousands</code></p></div></div><details><summary>Inspect the playbook JSON</summary><pre>{
+  "items": [
+    {
+      "content": "Cash interest is tagged us-gaap:InterestPaid.",
+      "id": "interest-element",
+      "section": "debt",
+      "status": "active"
+    },
+    {
+      "content": "Scale every tagged amount to thousands before filing.",
+      "id": "scale-in-thousands",
+      "section": "presentation",
+      "status": "active"
+    }
+  ],
+  "schema": "context-playbook-v1"
+}</pre></details></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=splits-heading">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-04">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="three-splits-two-tagging-policies">Three splits, two tagging policies<a class="anchor-link" href="#three-splits-two-tagging-policies">¶</a></h2><p>The same two policies appear in every split, over <em>differently worded</em>
-disclosures. That is deliberate: an entry earns its keep by carrying one
-filer's policy to a note nobody has read yet, so the private and held-out
-rollouts must not be the development ones renamed.</p>
-<p>Development failures are the only thing a proposer is allowed to learn from, and
-only the ones that <strong>finished and were wrong</strong> -- a rollout that faulted is not
-evidence, so it buys no feedback. The held-out split runs once, after
-selection.</p>
+<p><a id="follow-the-two-levels"></a>
+<a id="the-actual-experiment"></a>
+<a id="what-that-one-call-did"></a>
+<a id="three-splits-two-tagging-policies"></a></p>
+<h2 id="3-learn-from-the-missed-answers">3. Learn from the missed answers<a class="anchor-link" href="#3-learn-from-the-missed-answers">¶</a></h2><p><code>study_playbook</code> runs <strong>development → private search → consolidation → held out</strong>
+once, in that order. Its <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/examples/research/context_evolution/ace_search.py">search declaration</a>
+uses an ordinary <code>meta.Experiment</code> with a bounded Greedy policy. The remaining
+displays read this study; they do not rerun phases.</p>
+<p>First, inspect the seed's two development answers. The fixture follows the
+conventions it is given. Python publishes the authored lesson for each completed
+wrong answer; only these development lessons reach the curator.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=splits">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-05">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4111,19 +4203,13 @@ selection.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ace_rollouts</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rollouts</span>
-
-<span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="p">(</span><span class="n">rollouts</span><span class="o">.</span><span class="n">DEVELOPMENT</span><span class="p">,</span> <span class="n">rollouts</span><span class="o">.</span><span class="n">PRIVATE</span><span class="p">,</span> <span class="n">rollouts</span><span class="o">.</span><span class="n">HELD_OUT</span><span class="p">):</span>
-    <span class="n">tasks</span> <span class="o">=</span> <span class="n">rollouts</span><span class="o">.</span><span class="n">rollouts_in</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">split</span><span class="si">:</span><span class="s2">12</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="p">[(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">answer</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-                          <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">])</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">study</span> <span class="o">=</span> <span class="n">study_playbook</span><span class="p">(</span><span class="n">PLAYBOOK_FIXTURE_AGENT</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">answers</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">development</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">lessons_view</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">lessons</span><span class="p">)))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">import ace_rollouts as rollouts
-
-for split in (rollouts.DEVELOPMENT, rollouts.PRIVATE, rollouts.HELD_OUT):
-    tasks = rollouts.rollouts_in(split)
-    print(f"{split:12}", [(task.name, task.target, task.answer.strip())
-                          for task in tasks])</div>
+<div class="clipboard-copy-txt" id="cell-3">study = study_playbook(PLAYBOOK_FIXTURE_AGENT)
+display(HTML(answers(study.development)))
+display(HTML(lessons_view(study.lessons)))</div>
 </div>
 </div>
 </div>
@@ -4134,42 +4220,52 @@ for split in (rollouts.DEVELOPMENT, rollouts.PRIVATE, rollouts.HELD_OUT):
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>development  [('debt-note', 'note_09_debt.tag', 'nwi:InterestPaidNetOfCapitalized'), ('lease-note', 'note_14_leases.tag', 'nwi:OperatingLeaseCostExcludingShortTerm')]
-private      [('cash-flows', 'note_22_cash_flows.tag', 'nwi:InterestPaidNetOfCapitalized'), ('commitments', 'note_18_commitments.tag', 'nwi:OperatingLeaseCostExcludingShortTerm')]
-held-out     [('borrowings', 'note_07_borrowings.tag', 'nwi:InterestPaidNetOfCapitalized'), ('right-of-use', 'note_11_right_of_use.tag', 'nwi:OperatingLeaseCostExcludingShortTerm')]
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="ace-study"><p><strong>Development · 0% solved</strong></p><div class="ace-grid"><div class="ace-card"><p class="ace-label">debt-note · Needs correction</p><p class="ace-caption">Answer</p><p><code>us-gaap:InterestPaid</code></p><p class="ace-caption">Expected</p><p><code>nwi:InterestPaidNetOfCapitalized</code></p><details><summary>Read the task</summary><pre># Note 9 -- Debt
+
+Cash paid for interest, net of $6 million capitalized,
+was $214 million.
+
+Tag that amount: write the XBRL element name into
+note_09_debt.tag.
+</pre></details></div><div class="ace-card"><p class="ace-label">lease-note · Needs correction</p><p class="ace-caption">Answer</p><p><code>us-gaap:LeaseCost</code></p><p class="ace-caption">Expected</p><p><code>nwi:OperatingLeaseCostExcludingShortTerm</code></p><details><summary>Read the task</summary><pre># Note 14 -- Leases
+
+Operating lease cost, excluding short-term leases,
+was $88 million.
+
+Tag that amount: write the XBRL element name into
+note_14_leases.tag.
+</pre></details></div></div></div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="ace-study"><div class="ace-change"><p class="ace-label">Published lesson · <code>interest-element</code></p><p>Cash interest disclosed net of capitalized interest is tagged with the filer's extension element nwi:InterestPaidNetOfCapitalized. us-gaap:InterestPaid is the gross standard element and is not what Northwind reports on this line.</p></div><div class="ace-change"><p class="ace-label">Published lesson · <code>lease-element</code></p><p>Operating lease cost stated excluding short-term leases is tagged with the filer's extension element nwi:OperatingLeaseCostExcludingShortTerm. us-gaap:LeaseCost is the total including finance leases, so it overstates this line.</p></div></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=lifecycle-heading">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="what-that-one-call-did">What that one call did<a class="anchor-link" href="#what-that-one-call-did">¶</a></h2><p>Development, search, consolidation, held out -- in the one order they are valid
-in. <code>study_playbook</code> owns that order, so a caller cannot skip the consolidation
-re-score or run held-out before selection, and nothing below re-drives a phase:
-it all reads off the <code>study</code> from the first cell.</p>
-<p>The seed is a tagging manual that is already wrong in two different ways: it
-names the standard element where this filer uses its own extension, and it
-carries a presentation rule nothing in the evidence supports. So the first proposal has to
-<em>curate</em> -- amend the rescuable entry, retire the unsupported one -- before the
-second can grow the playbook.</p>
-<p>The result also carries the <em>curator's declaration</em>. A local component is named
-by module and qualname, so two closures from one factory compare equal; the
-curator therefore declares a digest over the published lesson manifest, and two
-runs given different lessons cannot record the same proposer and the same run
-id while producing different playbooks.</p>
+<p><a id="the-revision-mechanism"></a></p>
+<h2 id="4-follow-the-two-revisions">4. Follow the two revisions<a class="anchor-link" href="#4-follow-the-two-revisions">¶</a></h2><p>The first proposal amends the interest rule and retires the unsupported scale
+entry. The next adds the lease rule. Each version answers two differently worded
+<strong>private</strong> disclosures; Greedy keeps the best measured playbook and stops at 100%.
+Private answers and held-out tasks never enter the published development lessons.</p>
+<p>The table reports those private scores. The diffs below it show the actual rule
+text, keyed by the same entry identities throughout the run.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=study">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-07">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4187,35 +4283,9 @@ id while producing different playbooks.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ace_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">PLAYBOOK_CALL_CEILING</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"development:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">development</span><span class="o">.</span><span class="n">solved</span><span class="p">,</span>
-      <span class="s2">"-&gt; lessons:"</span><span class="p">,</span> <span class="p">[</span><span class="n">lesson</span><span class="o">.</span><span class="n">identity</span> <span class="k">for</span> <span class="n">lesson</span> <span class="ow">in</span> <span class="n">study</span><span class="o">.</span><span class="n">lessons</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"trial scores:"</span><span class="p">,</span> <span class="p">[</span><span class="n">trial</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">"solved"</span><span class="p">]</span> <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="n">study</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">trials</span><span class="p">()])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"active:"</span><span class="p">,</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">identity</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">study</span><span class="o">.</span><span class="n">selected</span><span class="o">.</span><span class="n">active</span><span class="p">()])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"consolidated:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">consolidation</span><span class="o">.</span><span class="n">accepted</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">consolidation</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span>
-      <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">consolidation</span><span class="o">.</span><span class="n">playbook</span><span class="o">.</span><span class="n">identities</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"curator:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">curator</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"| named only:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">curator</span><span class="o">.</span><span class="n">name_only</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"nothing left name-only:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">name_only_components</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"all four phases cost:"</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span> <span class="s2">"evaluations and"</span><span class="p">,</span>
-      <span class="n">study</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">"reported tokens (the fixture reports none)"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"worst-case wrapper calls:"</span><span class="p">,</span> <span class="n">PLAYBOOK_CALL_CEILING</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">revisions</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">run</span><span class="p">)))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">from ace_context import PLAYBOOK_CALL_CEILING
-
-print("development:", study.development.solved,
-      "-&gt; lessons:", [lesson.identity for lesson in study.lessons])
-print("trial scores:", [trial.metrics["solved"] for trial in study.run.trials()])
-print("active:", [item.identity for item in study.selected.active()])
-print("consolidated:", study.consolidation.accepted, study.consolidation.reason,
-      "-&gt;", study.consolidation.playbook.identities)
-
-print("curator:", study.curator.name, "| named only:", study.curator.name_only)
-print("nothing left name-only:", study.run.summary().name_only_components)
-print("all four phases cost:", study.usage.evaluations, "evaluations and",
-      study.usage.tokens, "reported tokens (the fixture reports none)")
-print("worst-case wrapper calls:", PLAYBOOK_CALL_CEILING)</div>
+<div class="clipboard-copy-txt" id="cell-4">display(HTML(revisions(study.run)))</div>
 </div>
 </div>
 </div>
@@ -4226,35 +4296,30 @@ print("worst-case wrapper calls:", PLAYBOOK_CALL_CEILING)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>development: 0.0 -&gt; lessons: ['interest-element', 'lease-element']
-trial scores: [0.0, 0.5, 1.0]
-active: ['interest-element', 'lease-element']
-consolidated: True neutral -&gt; ('interest-element', 'lease-element')
-curator: context-evolution:playbook-curator | named only: False
-nothing left name-only: ()
-all four phases cost: 3 evaluations and 0 reported tokens (the fixture reports none)
-worst-case wrapper calls: 14
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="ace-study"><table class="ace-table"><thead><tr><th scope="col">Version</th><th scope="col">Private solved</th><th scope="col">Result</th></tr></thead><tbody><tr><td>Seed</td><td>0%</td><td><span>Evaluated</span></td></tr><tr><td>Revision 1</td><td>50%</td><td><span>Evaluated</span></td></tr><tr><td>Revision 2</td><td>100%</td><td><span class="ace-selected">Selected</span></td></tr></tbody></table><p><strong>Revision 1</strong></p><div class="ace-study"><div class="ace-change"><p class="ace-label">Amended · <code>interest-element</code></p><p class="ace-before">Cash interest is tagged us-gaap:InterestPaid.</p><p>Cash interest disclosed net of capitalized interest is tagged with the filer's extension element nwi:InterestPaidNetOfCapitalized. us-gaap:InterestPaid is the gross standard element and is not what Northwind reports on this line.</p></div><div class="ace-change"><p class="ace-label">Retired · <code>scale-in-thousands</code></p><p class="ace-before">Scale every tagged amount to thousands before filing.</p></div></div><p><strong>Revision 2</strong></p><div class="ace-study"><div class="ace-change"><p class="ace-label">Added · <code>lease-element</code></p><p>Operating lease cost stated excluding short-term leases is tagged with the filer's extension element nwi:OperatingLeaseCostExcludingShortTerm. us-gaap:LeaseCost is the total including finance leases, so it overstates this line.</p></div></div></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=outcomes-heading">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="four-ways-to-be-unrankable">Four ways to be unrankable<a class="anchor-link" href="#four-ways-to-be-unrankable">¶</a></h2><p>A low score means <em>the playbook was wrong</em>. None of these do, so none of them is
-allowed to be a low score. Two are about the candidate:</p>
+<h2 id="5-keep-a-smaller-playbook">5. Keep a smaller playbook<a class="anchor-link" href="#5-keep-a-smaller-playbook">¶</a></h2><p>Retirement stops an entry being included in the agent's instructions while keeping
+it in the candidate's record. After selection, consolidation proposes removing
+retired entries and independently checks both versions on the private split.
+Here the checks are neutral, so the pruned playbook is accepted. Earlier versions
+still contain the retired entry.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=outcomes-candidate">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-09">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4272,49 +4337,11 @@ allowed to be a low score. Two are about the candidate:</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ace_sessions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sessions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ace_episodes</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate_playbook</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">inner_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">InnerAgent</span>
-
-<span class="n">invalid</span> <span class="o">=</span> <span class="n">evaluate_playbook</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">"not a playbook at all"</span><span class="p">),</span>
-                            <span class="n">PLAYBOOK_FIXTURE_AGENT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"invalid -&gt;"</span><span class="p">,</span> <span class="n">invalid</span><span class="o">.</span><span class="n">failure</span><span class="o">.</span><span class="n">details</span><span class="p">[</span><span class="s2">"kind"</span><span class="p">],</span>
-      <span class="s2">"| metrics:"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">invalid</span><span class="o">.</span><span class="n">metrics</span><span class="p">))</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">silent_agent</span><span class="p">(</span><span class="n">_instructions</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">propose</span><span class="p">(</span><span class="n">_tree</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"wrapper produced nothing"</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">propose</span>
-
-
-<span class="n">silent</span> <span class="o">=</span> <span class="n">sessions</span><span class="o">.</span><span class="n">run_split</span><span class="p">(</span><span class="n">rollouts</span><span class="o">.</span><span class="n">PRIVATE</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">selected</span><span class="p">,</span>
-                            <span class="n">InnerAgent</span><span class="p">(</span><span class="n">build</span><span class="o">=</span><span class="n">silent_agent</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"silent-v1"</span><span class="p">,</span>
-                                       <span class="n">revision</span><span class="o">=</span><span class="s2">"silent-v1"</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"wrapper -&gt;"</span><span class="p">,</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">fault</span><span class="o">.</span><span class="n">kind</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">fault</span> <span class="ow">in</span> <span class="n">silent</span><span class="o">.</span><span class="n">unfinished</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">consolidation_view</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">consolidation</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">entries</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">playbook</span><span class="p">)))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">import ace_sessions as sessions
-from ace_episodes import evaluate_playbook
-from inner_agent import InnerAgent
-
-invalid = evaluate_playbook(meta.Text("not a playbook at all"),
-                            PLAYBOOK_FIXTURE_AGENT)
-print("invalid -&gt;", invalid.failure.details["kind"],
-      "| metrics:", dict(invalid.metrics))
-
-
-def silent_agent(_instructions):
-    def propose(_tree, *, context):
-        raise RuntimeError("wrapper produced nothing")
-
-    return propose
-
-
-silent = sessions.run_split(rollouts.PRIVATE, study.selected,
-                            InnerAgent(build=silent_agent, model="silent-v1",
-                                       revision="silent-v1"))
-print("wrapper -&gt;", {name: fault.kind for name, fault in silent.unfinished.items()})</div>
+<div class="clipboard-copy-txt" id="cell-5">display(HTML(consolidation_view(study.consolidation)))
+display(HTML(entries(study.playbook)))</div>
 </div>
 </div>
 </div>
@@ -4325,39 +4352,76 @@ print("wrapper -&gt;", {name: fault.kind for name, fault in silent.unfinished.it
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>invalid -&gt; invalid | metrics: {}
-wrapper -&gt; {'cash-flows': 'wrapper-failed', 'commitments': 'wrapper-failed'}
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="ace-study"><table class="ace-table"><thead><tr><th scope="col">Matched private check</th><th scope="col">Solved</th></tr></thead><tbody><tr><td>Selected playbook</td><td>100%</td></tr><tr><td>Pruned playbook</td><td>100%</td></tr></tbody></table><p><strong>Accepted · neutral</strong></p></div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<style>
+.ace-study { color: inherit; line-height: 1.65; margin: 1.1rem 0 1.7rem; overflow-wrap: anywhere; }
+.ace-study * { box-sizing: border-box; }
+.ace-study .ace-grid { display: grid; gap: .8rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.ace-study .ace-card { border: 1px solid var(--me-border, #919a9560);
+  border-radius: .3rem; padding: 1rem 1.1rem; min-width: 0; }
+.ace-study .ace-retired { border-style: dashed; }
+.ace-study .ace-label { font-size: .78em; letter-spacing: .04em;
+  text-transform: uppercase; margin: 0 0 .5rem; }
+.ace-study .ace-label code { text-transform: none; letter-spacing: normal; }
+.ace-study p { margin: .4rem 0 .8rem; }
+.ace-study p:last-child { margin-bottom: 0; }
+.ace-study code { font-size: .85em; white-space: normal !important; overflow-wrap: anywhere; }
+.ace-study .ace-caption { font-size: .88em; }
+.ace-study .ace-change { border-inline-start: 3px solid var(--md-accent-fg-color, #538b80);
+  padding-inline-start: 1rem; margin: 1rem 0; }
+.ace-study .ace-before { text-decoration: line-through; }
+.ace-study table { border-collapse: collapse; width: 100%; font-size: .9em; }
+.ace-study th, .ace-study td { text-align: left; padding: .65rem .8rem;
+  border-bottom: 1px solid var(--me-border, #919a9560); vertical-align: top; }
+.ace-study .ace-selected { font-weight: 600; }
+.ace-study details { margin: 1rem 0; }
+.ace-study summary { cursor: pointer; }
+.ace-study pre { overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; }
+</style><div class="ace-study"><div class="ace-grid"><div class="ace-card ace-active"><p class="ace-label">debt · active</p><p>Cash interest disclosed net of capitalized interest is tagged with the filer's extension element nwi:InterestPaidNetOfCapitalized. us-gaap:InterestPaid is the gross standard element and is not what Northwind reports on this line.</p><p><code>interest-element</code></p></div><div class="ace-card ace-active"><p class="ace-label">leases · active</p><p>Operating lease cost stated excluding short-term leases is tagged with the filer's extension element nwi:OperatingLeaseCostExcludingShortTerm. us-gaap:LeaseCost is the total including finance leases, so it overstates this line.</p><p><code>lease-element</code></p></div></div><details><summary>Inspect the playbook JSON</summary><pre>{
+  "items": [
+    {
+      "content": "Cash interest disclosed net of capitalized interest is tagged with the filer's extension element nwi:InterestPaidNetOfCapitalized. us-gaap:InterestPaid is the gross standard element and is not what Northwind reports on this line.",
+      "id": "interest-element",
+      "section": "debt",
+      "status": "active"
+    },
+    {
+      "content": "Operating lease cost stated excluding short-term leases is tagged with the filer's extension element nwi:OperatingLeaseCostExcludingShortTerm. us-gaap:LeaseCost is the total including finance leases, so it overstates this line.",
+      "id": "lease-element",
+      "section": "leases",
+      "status": "active"
+    }
+  ],
+  "schema": "context-playbook-v1"
+}</pre></details></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=evidence-heading">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>And two are about the <em>evidence</em> rather than the candidate. A file that is gone
-cannot be judged, and an exhausted session is nobody's evidence about anything.</p>
-<p>Both refusals happen where the rule is. The check itself refuses an absent
-target rather than returning <code>0.0</code> and letting the caller relabel the total
-afterwards -- which it used to, leaving the <em>inner</em> run holding a successful
-evaluation of zero underneath an outcome that said unverifiable. <code>reported</code>
-below is the library's own failure kind, so you can see the refusal crossing
-the real boundary rather than being inferred from a missing file.</p>
-<p>The timeout is a real <code>TimeoutFailure</code> for the same reason. An earlier version
-of this example classified timeouts with a hand-written object whose <code>kind</code> no
-shipped class carries, so a genuine timeout was reported as the wrapper's fault
-and every test agreed.</p>
+<h2 id="6-check-fresh-disclosures">6. Check fresh disclosures<a class="anchor-link" href="#6-check-fresh-disclosures">¶</a></h2><p>The accepted playbook now tags the held-out <strong>borrowings</strong> and <strong>right-of-use</strong>
+notes. These tasks were evaluated only after selection and consolidation.
+This reports final behavior on two authored cases; it is not a held-out
+before/after comparison or a claim about benchmark gains.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=outcomes-evidence">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4375,65 +4439,17 @@ and every test agreed.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">meta_evolve.domain</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeoutFailure</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">meta_evolve.ports</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProposalResult</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">deleting_agent</span><span class="p">(</span><span class="n">_instructions</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Returns a candidate, but drops the file the check reads."""</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">propose</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">tree</span><span class="p">)({</span><span class="s2">"README.md"</span><span class="p">:</span> <span class="n">tree</span><span class="p">[</span><span class="s2">"README.md"</span><span class="p">]})</span>
-
-    <span class="k">return</span> <span class="n">propose</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">timing_out</span><span class="p">(</span><span class="n">_instructions</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">propose</span><span class="p">(</span><span class="n">_tree</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">ProposalResult</span><span class="p">(</span><span class="n">failure</span><span class="o">=</span><span class="n">TimeoutFailure</span><span class="p">(</span>
-            <span class="n">message</span><span class="o">=</span><span class="s2">"the session exceeded its wall budget"</span><span class="p">,</span>
-            <span class="n">details</span><span class="o">=</span><span class="p">{</span><span class="s2">"reason"</span><span class="p">:</span> <span class="s2">"wall clock"</span><span class="p">},</span>
-        <span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">propose</span>
-
-
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">build</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">"deleted"</span><span class="p">,</span> <span class="n">deleting_agent</span><span class="p">),</span> <span class="p">(</span><span class="s2">"timed out"</span><span class="p">,</span> <span class="n">timing_out</span><span class="p">)):</span>
-    <span class="n">split</span> <span class="o">=</span> <span class="n">sessions</span><span class="o">.</span><span class="n">run_split</span><span class="p">(</span><span class="n">rollouts</span><span class="o">.</span><span class="n">PRIVATE</span><span class="p">,</span> <span class="n">study</span><span class="o">.</span><span class="n">selected</span><span class="p">,</span>
-                               <span class="n">InnerAgent</span><span class="p">(</span><span class="n">build</span><span class="o">=</span><span class="n">build</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">-v1"</span><span class="p">,</span>
-                                          <span class="n">revision</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">-v1"</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> -&gt;"</span><span class="p">,</span> <span class="p">{</span><span class="n">task</span><span class="p">:</span> <span class="p">(</span><span class="n">fault</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span> <span class="n">fault</span><span class="o">.</span><span class="n">reported</span><span class="p">)</span>
-                         <span class="k">for</span> <span class="n">task</span><span class="p">,</span> <span class="n">fault</span> <span class="ow">in</span> <span class="n">split</span><span class="o">.</span><span class="n">unfinished</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">answers</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">held_out</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"All phases: </span><span class="si">{</span><span class="n">study</span><span class="o">.</span><span class="n">sessions</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">PLAYBOOK_CALL_CEILING</span><span class="si">}</span><span class="s2"> fixture calls"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Search: </span><span class="si">{</span><span class="n">study</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">evaluations</span><span class="si">}</span><span class="s2"> evaluations · </span><span class="si">{</span><span class="n">study</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span><span class="o">.</span><span class="n">trials</span><span class="si">}</span><span class="s2"> revisions"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Reported usage: </span><span class="si">{</span><span class="n">study</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">tokens</span><span class="si">}</span><span class="s2"> tokens · </span><span class="si">{</span><span class="n">study</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">spend_micros</span><span class="si">}</span><span class="s2"> spend_micros"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Retained failures: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">failures</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">from meta_evolve.domain import TimeoutFailure
-from meta_evolve.ports import ProposalResult
-
-
-def deleting_agent(_instructions):
-    """Returns a candidate, but drops the file the check reads."""
-
-    def propose(tree, *, context):
-        return type(tree)({"README.md": tree["README.md"]})
-
-    return propose
-
-
-def timing_out(_instructions):
-    def propose(_tree, *, context):
-        return ProposalResult(failure=TimeoutFailure(
-            message="the session exceeded its wall budget",
-            details={"reason": "wall clock"},
-        ))
-
-    return propose
-
-
-for name, build in (("deleted", deleting_agent), ("timed out", timing_out)):
-    split = sessions.run_split(rollouts.PRIVATE, study.selected,
-                               InnerAgent(build=build, model=f"{name}-v1",
-                                          revision=f"{name}-v1"))
-    print(f"{name} -&gt;", {task: (fault.kind, fault.reported)
-                         for task, fault in split.unfinished.items()})</div>
+<div class="clipboard-copy-txt" id="cell-6">display(HTML(answers(study.held_out)))
+print(f"All phases: {study.sessions}/{PLAYBOOK_CALL_CEILING} fixture calls")
+print(f"Search: {study.run.usage().evaluations} evaluations · {study.run.usage().trials} revisions")
+print(f"Reported usage: {study.usage.tokens} tokens · {study.usage.spend_micros} spend_micros")
+print(f"Retained failures: {len(study.failures)}")</div>
 </div>
 </div>
 </div>
@@ -4444,9 +4460,31 @@ for name, build in (("deleted", deleting_agent), ("timed out", timing_out)):
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="ace-study"><p><strong>Held-out · 100% solved</strong></p><div class="ace-grid"><div class="ace-card"><p class="ace-label">borrowings · Pass</p><p class="ace-caption">Answer</p><p><code>nwi:InterestPaidNetOfCapitalized</code></p><p class="ace-caption">Expected</p><p><code>nwi:InterestPaidNetOfCapitalized</code></p><details><summary>Read the task</summary><pre># Note 7 -- Borrowings
+
+Cash interest paid, net of $4 million capitalized,
+was $96 million.
+
+Tag that amount: write the XBRL element name into
+note_07_borrowings.tag.
+</pre></details></div><div class="ace-card"><p class="ace-label">right-of-use · Pass</p><p class="ace-caption">Answer</p><p><code>nwi:OperatingLeaseCostExcludingShortTerm</code></p><p class="ace-caption">Expected</p><p><code>nwi:OperatingLeaseCostExcludingShortTerm</code></p><details><summary>Read the task</summary><pre># Note 11 -- Right-of-use assets
+
+Operating lease cost for the year, excluding short-term
+arrangements, was $63 million.
+
+Tag that amount: write the XBRL element name into
+note_11_right_of_use.tag.
+</pre></details></div></div></div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>deleted -&gt; {'cash-flows': ('unverifiable', 'evaluator_failure'), 'commitments': ('unverifiable', 'evaluator_failure')}
-timed out -&gt; {'cash-flows': ('infrastructure-failed', 'timeout'), 'commitments': ('infrastructure-failed', 'timeout')}
+<pre>All phases: 14/14 fixture calls
+Search: 3 evaluations · 2 revisions
+Reported usage: 0 tokens · 0 spend_micros
+Retained failures: 0
 </pre>
 </div>
 </div>
@@ -4454,21 +4492,25 @@ timed out -&gt; {'cash-flows': ('infrastructure-failed', 'timeout'), 'commitment
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=partial-heading">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="a-split-that-did-not-finish-has-no-score">A split that did not finish has no score<a class="anchor-link" href="#a-split-that-did-not-finish-has-no-score">¶</a></h2><p>One success beside one timeout is not <code>1.0</code>. Averaging whatever finished would
-be a claim about the playbook that the evidence does not support, so a partial
-split refuses to summarise itself -- and the study names the phase and the kind
-instead.</p>
+<p><code>study.usage</code> covers all four phases; <code>study.run.usage()</code> covers search only.
+The fixture reports zero model usage. Its fourteen calls include development,
+private search, both consolidation checks, and held-out work.</p>
+<p><a id="change-and-predict"></a></p>
+<h2 id="7-change-a-lesson-and-predict-the-edit">7. Change a lesson and predict the edit<a class="anchor-link" href="#7-change-a-lesson-and-predict-the-edit">¶</a></h2><p>Give the curator a different interest convention. Before running the cell,
+predict whether it amends the existing entry or appends a conflicting one.
+This is a local proposal exercise: it shows the edit without evaluating or
+replacing the study's selected playbook.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=partial">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ace-13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4486,65 +4528,33 @@ instead.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ace_outcomes</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">outcomes</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ace_curation</span><span class="w"> </span><span class="kn">import</span> <span class="n">revise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ace_rollouts</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lesson</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playbook_codec</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode</span><span class="p">,</span> <span class="n">encode</span>
 
-<span class="n">calls</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"n"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">flaky</span><span class="p">(</span><span class="n">instructions</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Fails one session, after selection is already over."""</span>
-
-    <span class="n">inner</span> <span class="o">=</span> <span class="n">PLAYBOOK_FIXTURE_AGENT</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">instructions</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">propose</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="n">calls</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">inner</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span> <span class="k">if</span> <span class="n">calls</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">13</span> <span class="k">else</span> <span class="n">ProposalResult</span><span class="p">(</span>
-            <span class="n">failure</span><span class="o">=</span><span class="n">TimeoutFailure</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">"out of time"</span><span class="p">,</span>
-                                   <span class="n">details</span><span class="o">=</span><span class="p">{</span><span class="s2">"reason"</span><span class="p">:</span> <span class="s2">"wall clock"</span><span class="p">})</span>
-        <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">propose</span>
-
-
-<span class="n">partial</span> <span class="o">=</span> <span class="n">study_playbook</span><span class="p">(</span>
-    <span class="n">InnerAgent</span><span class="p">(</span><span class="n">build</span><span class="o">=</span><span class="n">flaky</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"flaky-v1"</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="s2">"flaky-v1"</span><span class="p">)</span>
+<span class="n">lesson</span> <span class="o">=</span> <span class="n">Lesson</span><span class="p">(</span>
+    <span class="n">identity</span><span class="o">=</span><span class="s2">"interest-element"</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">"debt"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"nwi:InterestPaidGross"</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">"Cash interest is tagged nwi:InterestPaidGross, before capitalization."</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"held-out complete:"</span><span class="p">,</span> <span class="n">partial</span><span class="o">.</span><span class="n">held_out</span><span class="o">.</span><span class="n">is_complete</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">partial</span><span class="o">.</span><span class="n">held_out</span><span class="o">.</span><span class="n">solved</span>
-<span class="k">except</span> <span class="n">outcomes</span><span class="o">.</span><span class="n">SplitIncomplete</span> <span class="k">as</span> <span class="n">refusal</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"refused:"</span><span class="p">,</span> <span class="n">refusal</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"failures:"</span><span class="p">,</span> <span class="n">partial</span><span class="o">.</span><span class="n">failures</span><span class="p">)</span>
+<span class="n">proposal</span> <span class="o">=</span> <span class="n">revise</span><span class="p">((</span><span class="n">lesson</span><span class="p">,))(</span><span class="n">encode</span><span class="p">(</span><span class="n">SEED_PLAYBOOK</span><span class="p">),</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">proposal</span><span class="o">.</span><span class="n">failure</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">proposal</span><span class="o">.</span><span class="n">failure</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">changes</span><span class="p">(</span><span class="n">SEED_PLAYBOOK</span><span class="p">,</span> <span class="n">decode</span><span class="p">(</span><span class="n">proposal</span><span class="o">.</span><span class="n">candidate</span><span class="p">))))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">import ace_outcomes as outcomes
+<div class="clipboard-copy-txt" id="cell-7">from ace_curation import revise
+from ace_rollouts import Lesson
+from playbook_codec import decode, encode
 
-calls = {"n": 0}
-
-
-def flaky(instructions):
-    """Fails one session, after selection is already over."""
-
-    inner = PLAYBOOK_FIXTURE_AGENT.build(instructions)
-
-    def propose(tree, *, context):
-        calls["n"] += 1
-        return inner(tree, context=context) if calls["n"] != 13 else ProposalResult(
-            failure=TimeoutFailure(message="out of time",
-                                   details={"reason": "wall clock"})
-        )
-
-    return propose
-
-
-partial = study_playbook(
-    InnerAgent(build=flaky, model="flaky-v1", revision="flaky-v1")
+lesson = Lesson(
+    identity="interest-element", section="debt", marker="nwi:InterestPaidGross",
+    content="Cash interest is tagged nwi:InterestPaidGross, before capitalization.",
 )
-print("held-out complete:", partial.held_out.is_complete)
-try:
-    partial.held_out.solved
-except outcomes.SplitIncomplete as refusal:
-    print("refused:", refusal)
-print("failures:", partial.failures)</div>
+proposal = revise((lesson,))(encode(SEED_PLAYBOOK), context=None)
+if proposal.failure:
+    print(proposal.failure)
+else:
+    display(HTML(changes(SEED_PLAYBOOK, decode(proposal.candidate))))</div>
 </div>
 </div>
 </div>
@@ -4555,44 +4565,87 @@ print("failures:", partial.failures)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>held-out complete: False
-refused: the held-out split did not finish: borrowings: infrastructure-failed (wall clock)
-failures: (StudyFailure(phase='held-out', name='borrowings', kind='infrastructure-failed', detail='wall clock'),)
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="ace-study"><div class="ace-change"><p class="ace-label">Amended · <code>interest-element</code></p><p class="ace-before">Cash interest is tagged us-gaap:InterestPaid.</p><p>Cash interest is tagged nwi:InterestPaidGross, before capitalization.</p></div><div class="ace-change"><p class="ace-label">Retired · <code>scale-in-thousands</code></p><p class="ace-before">Scale every tagged amount to thousands before filing.</p></div></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=exercise">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ace-14">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="change-and-predict">Change and predict<a class="anchor-link" href="#change-and-predict">¶</a></h2><p>This runs in a cell too. <code>revise</code> takes the published lessons and <em>nothing
-else</em>, so you can hand it your own and watch curation decide -- no repository
-file to edit, no kernel to restart.</p>
-<p>Give it a lesson that contradicts an entry the seed already states, and predict
-which of three things happens before you run it: does the mechanism amend that
-entry, retire it, or append a second one that disagrees?</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ace_curation</span><span class="w"> </span><span class="kn">import</span> <span class="n">revise</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ace_rollouts</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lesson</span>
-
-<span class="n">contradiction</span> <span class="o">=</span> <span class="n">Lesson</span><span class="p">(</span>
-    <span class="n">identity</span><span class="o">=</span><span class="s2">"interest-element"</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">"debt"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"nwi:InterestPaidGross"</span><span class="p">,</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">"Cash interest is tagged nwi:InterestPaidGross, before capitalization."</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">revise</span><span class="p">((</span><span class="n">contradiction</span><span class="p">,))(</span><span class="n">codec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">SEED_PLAYBOOK</span><span class="p">),</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="p">[(</span><span class="n">item</span><span class="o">.</span><span class="n">identity</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">status</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">codec</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">candidate</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">]</span>
-</pre></div>
-<p>Which of the three would you <em>want</em>? And if the proposal is refused instead,
-read <code>result.failure</code> -- a refused transition is an outcome here, not a crash.</p>
-<p>The EvoSkill sibling is in <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/docs/notebooks/context_evolution/evoskill.ipynb"><code>evoskill.ipynb</code></a>.</p>
-<p>Neither notebook reproduces its paper's system, benchmarks, transfer results, or
-reported gains. They demonstrate a mechanism.</p>
+<p><a id="what-the-paper-does"></a>
+<a id="evidence-and-limitations"></a></p>
+<h2 id="reading-the-evidence">Reading the evidence<a class="anchor-link" href="#reading-the-evidence">¶</a></h2><p>The saved private scores progress from <strong>0% → 50% → 100%</strong>. The corrected
+interest entry keeps its identity, the scale entry is retired before being
+pruned, and a new lease entry supplies the missing convention.</p>
+<p>The <a href="https://arxiv.org/html/2510.04618v3#S3">paper's Generator / Reflector / Curator system</a>
+uses learned reflection and incremental context updates. Here Python supplies
+the lessons and edits. Learned reflection, semantic retrieval/deduplication,
+helpful/harmful counters, and online adaptation are outside this demonstration.</p>
+<p><a id="why-identity-is-the-whole-point"></a></p>
+<details markdown="1"><summary>Identity, authority, and saved runs</summary>
+<p>Entries retain their logical identities across amendments and retirement.
+Canonical JSON gives equal playbooks equal bytes. The curator declares its
+development lessons; the evaluator declares its fixed agent, split membership,
+and budgets. Candidates control only playbook content.</p>
+<p>The notebook uses in-memory storage. Passing <code>storage=meta.Storage.durable(path)</code>
+to <code>study_playbook</code> saves the <strong>outer search</strong> for reopening. Development,
+consolidation, and held-out outcomes remain on the returned study; they are
+not persisted or resumable phases. See the
+<a href="https://sentient-xyz.github.io/meta-evolve-docs/guides/durability/">storage contract</a>.</p>
+</details>
+<p><a id="four-ways-to-be-unrankable"></a>
+<a id="a-split-that-did-not-finish-has-no-score"></a></p>
+<details markdown="1"><summary>Failures remain different from wrong answers</summary>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>invalid</code></td>
+<td>The candidate is not a valid playbook or transition</td>
+</tr>
+<tr>
+<td><code>wrapper-failed</code></td>
+<td>The agent did not produce a usable answer</td>
+</tr>
+<tr>
+<td><code>unverifiable</code></td>
+<td>The target needed for checking is absent</td>
+</tr>
+<tr>
+<td><code>infrastructure-failed</code></td>
+<td>A timeout or infrastructure fault prevented measurement</td>
+</tr>
+</tbody>
+</table>
+<p>A completed wrong answer scores zero. These failures carry no rankable score.
+An incomplete split refuses an aggregate rather than averaging its successful
+rollouts. All phases retain their failures and reported usage; focused
+<a href="https://github.com/sentient-xyz/meta-evolve/blob/main/tests/test_context_evolution_ace_failures.py">failure tests</a>
+exercise these boundaries.</p>
+</details>
+<p><a id="complete-supporting-source"></a></p>
+<p>For the script, run <code>uv run python examples/research/context_evolution/main.py --sibling ace</code>
+from a checkout. The <a href="https://github.com/sentient-xyz/meta-evolve/blob/main/examples/research/context_evolution/README.md">example README</a>
+covers the source layout, fixture command, and <code>InnerAgent</code> boundary for your own SDK.
+<a href="https://github.com/sentient-xyz/meta-evolve/tree/main/examples/research/context_evolution">Browse the source</a>
+to inspect each stage.</p>
+<p>For a smaller introduction, <a href="https://sentient-xyz.github.io/meta-evolve-docs/guides/playbook-improvement/">improve a support agent's playbook</a>
+with six tickets and one revision per recorded mistake.</p>
+<p><a href="https://github.com/sentient-xyz/meta-evolve/blob/main/docs/notebooks/context_evolution/evoskill.ipynb">EvoSkill notebook</a>
+· <a href="https://sentient-xyz.github.io/meta-evolve-docs/build-patterns/feedback-descent/">Feedback Descent</a>
+· <a href="https://sentient-xyz.github.io/meta-evolve-docs/examples/">Explore examples</a></p>
 </div>
 </div>
 </div>
