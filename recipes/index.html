@@ -1,13 +1,27 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Page moved</title></head><body><h1 id="page-moved">Page moved<a class="headerlink" href="#page-moved" title="Permanent link">&para;</a></h1>
 <p><a href="../examples/">Continue to the maintained page</a></p>
-<p id="build-an-improvement-loop"><a href="../examples/#choose-what-to-improve">build an improvement loop</a></p>
+<p id="build-an-improvement-loop"><a href="../examples/#start-small">build an improvement loop</a></p>
 
-<p id="keep-the-evaluation-boundary-visible"><a href="../examples/#keep-the-evaluation-boundary-visible">keep the evaluation boundary visible</a></p><script>
-const redirect = {"target": "../examples/", "fragments": {"build-an-improvement-loop": "../examples/#choose-what-to-improve", "keep-the-evaluation-boundary-visible": "../examples/#keep-the-evaluation-boundary-visible"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+<p id="keep-the-evaluation-boundary-visible"><a href="../concepts/authority/">keep the evaluation boundary visible</a></p><script>
+(() => {
+const redirect = {"target": "../examples/", "fragments": {"build-an-improvement-loop": "../examples/#start-small", "keep-the-evaluation-boundary-visible": "../concepts/authority/"}};
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>

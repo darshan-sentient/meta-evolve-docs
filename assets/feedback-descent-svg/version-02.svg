@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#071522"/><stop offset=".55" stop-color="#1b3441"/><stop offset="1" stop-color="#46616a"/>
+  </linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#174552"/><stop offset=".5" stop-color="#0a2938"/><stop offset="1" stop-color="#041722"/>
+  </linearGradient>
+  <linearGradient id="plateau" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#718184"/><stop offset=".35" stop-color="#52686d"/><stop offset="1" stop-color="#172e38"/>
+  </linearGradient>
+  <linearGradient id="cliff" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#52676c"/><stop offset=".45" stop-color="#2d4851"/><stop offset="1" stop-color="#081c28"/>
+  </linearGradient>
+  <linearGradient id="beam" x1="0" x2="1">
+    <stop stop-color="#ffd979" stop-opacity=".7"/>
+    <stop offset=".5" stop-color="#ffc24e" stop-opacity=".28"/>
+    <stop offset="1" stop-color="#ffd979" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="rain" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#d2e6e0" stop-opacity=".55"/>
+    <stop offset="1" stop-color="#6c9da2" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="20"/></filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="9"/></filter>
+</defs>
+
+<rect width="1000" height="1000" fill="url(#sky)"/>
+
+<path d="M0 180Q130 90 275 176T520 150T765 174T1000 118V0H0Z" fill="#06111d" opacity=".9"/>
+<path d="M0 295Q130 205 286 267T570 236T1000 245V150Q830 95 665 145T330 132T0 180Z" fill="#122531" opacity=".95"/>
+<path d="M-30 390Q115 315 275 354T530 335T770 352T1030 310L1030 475Q850 423 690 455T350 432T-30 474Z" fill="#273e49"/>
+<path d="M-20 455Q135 391 290 424T560 408T820 425T1020 392" fill="none" stroke="#789094" stroke-width="12" opacity=".22"/>
+
+<path d="M0 476Q120 415 246 461T505 448T758 471T1000 431V1000H0Z" fill="url(#sea)"/>
+<path d="M0 552Q150 484 286 536T548 526T790 550T1000 503" fill="none" stroke="#719a9b" stroke-width="12" opacity=".55"/>
+<path d="M0 655Q140 585 322 642T620 635T1000 599" fill="none" stroke="#356b76" stroke-width="17" opacity=".7"/>
+<path d="M0 790Q160 707 375 770T720 755T1000 714" fill="none" stroke="#1d4b59" stroke-width="24"/>
+
+<!-- distant crashing waves -->
+<path d="M-25 694Q65 568 173 603Q233 620 286 691Q333 601 401 574Q466 550 510 635Q555 520 643 540Q720 556 744 649Q805 548 898 582Q972 611 1025 708V1000H-25Z" fill="#061a27"/>
+<path d="M-15 686Q75 578 171 610Q235 630 283 699Q335 615 399 594Q458 574 505 644Q558 540 637 553Q706 561 741 653Q805 572 886 596Q972 620 1017 720" fill="none" stroke="#9fc5c2" stroke-width="11" opacity=".8"/>
+<path d="M23 681Q106 613 181 635M304 685Q361 630 416 625M541 637Q599 580 663 601M770 648Q841 597 906 634" fill="none" stroke="#eef4e8" stroke-width="10" opacity=".82"/>
+
+<!-- enlarged plateau -->
+<path d="M126 594L179 440L221 403L715 403L773 451L824 597L755 655L206 653Z" fill="url(#plateau)"/>
+<path d="M179 440L221 397L708 397L739 416L773 451L188 457Z" fill="#829194"/>
+<path d="M188 457L773 451L748 486L207 492Z" fill="#2e4951"/>
+<path d="M207 492L748 486L719 531L242 540Z" fill="#62787b"/>
+<path d="M242 540L719 531L685 578L275 592Z" fill="#344f57"/>
+<path d="M275 592L685 578L755 655L207 653Z" fill="#1b3540"/>
+
+<!-- ledges and rock faces -->
+<path d="M188 457L237 480L219 597L160 621Z" fill="#405b62"/>
+<path d="M237 480L319 498L300 610L219 597Z" fill="#587075"/>
+<path d="M319 498L408 501L397 620L300 610Z" fill="#2b4751"/>
+<path d="M408 501L507 500L520 616L397 620Z" fill="#4a656b"/>
+<path d="M507 500L611 494L638 601L520 616Z" fill="#29444e"/>
+<path d="M611 494L748 486L788 614L638 601Z" fill="#3f5960"/>
+<path d="M210 548L298 561M313 573L397 584M426 547L511 557M541 568L633 555M665 529L735 518" stroke="#91a5a2" stroke-width="7" opacity=".48"/>
+<path d="M174 626L239 608L302 621L389 605L470 626L559 606L642 621L736 604" fill="none" stroke="#a6b5ad" stroke-width="7" opacity=".45"/>
+<path d="M143 644Q330 680 789 640" fill="none" stroke="#c0ccc1" stroke-width="6" opacity=".42"/>
+
+<!-- lighthouse -->
+<path d="M390 426L390 190L610 190L610 426Z" fill="#cbd4c8"/>
+<path d="M404 210L596 210L596 426L404 426Z" fill="#eff1d7"/>
+<path d="M404 247H596M404 286H596M404 325H596M404 364H596M404 403H596" stroke="#6b8181" stroke-width="7"/>
+<path d="M441 190V426M482 190V426M523 190V426M563 190V426" stroke="#657b7d" stroke-width="6"/>
+<path d="M376 426H624L638 450H362Z" fill="#122832"/>
+<path d="M381 181H619L604 205H396Z" fill="#0c202b"/>
+<path d="M398 166H602L619 181H381Z" fill="#7d8c86"/>
+<path d="M420 151Q500 124 580 151L602 166H398Z" fill="#263d42"/>
+<path d="M421 151Q500 132 579 151" fill="none" stroke="#d1bd7d" stroke-width="9"/>
+<path d="M430 141V111H570V141" fill="#172b34" stroke="#a8b2a1" stroke-width="5"/>
+<rect x="449" y="108" width="102" height="45" rx="7" fill="#ffd064"/>
+<path d="M449 108H551L570 141H430Z" fill="#ffe09a" opacity=".58"/>
+<path d="M425 103H575" stroke="#aab5a6" stroke-width="9"/>
+<path d="M500 102V76" stroke="#aab5a6" stroke-width="5"/>
+<path d="M500 77Q531 66 550 78" fill="none" stroke="#c4d0bd" stroke-width="4"/>
+
+<!-- dramatic beacon -->
+<path d="M450 128L-80 230L-80 438L450 163Z" fill="url(#beam)" filter="url(#glow)"/>
+<path d="M550 128L1080 235L1080 438L550 163Z" fill="url(#beam)" filter="url(#glow)"/>
+<path d="M450 133L-40 255L-40 335L450 157Z" fill="#ffd36d" opacity=".17"/>
+<path d="M550 133L1040 252L1040 335L550 157Z" fill="#ffd36d" opacity=".17"/>
+
+<!-- foreground storm clouds -->
+<path d="M50 215Q190 117 342 176Q438 214 516 165Q622 98 750 151Q875 204 1035 126" fill="none" stroke="#152d3a" stroke-width="54" opacity=".9"/>
+<path d="M-20 300Q105 214 232 252Q322 279 410 239Q510 194 620 233Q756 282 1025 202" fill="none" stroke="#0b1b28" stroke-width="38" opacity=".88"/>
+<path d="M-30 366Q118 295 250 330Q355 359 462 321T700 325T1035 292" fill="none" stroke="#3c5660" stroke-width="26" opacity=".55"/>
+
+<!-- dense rain -->
+<g stroke="url(#rain)" stroke-width="5" opacity=".62">
+<path d="M34 142L-52 407M82 181L8 421M132 128L45 391M181 177L105 431M234 143L158 379M282 190L205 438M334 146L255 391M379 201L305 438"/>
+<path d="M622 151L545 407M671 124L588 400M722 166L643 435M773 130L688 401M825 177L746 442M876 134L794 405M927 181L844 429M981 142L895 414"/>
+<path d="M470 232L407 430M532 218L470 418M585 248L520 438"/>
+</g>
+
+<!-- explosive foam and spray -->
+<g fill="#e7f1e8">
+<path d="M0 722Q68 655 143 678Q194 693 223 748Q159 717 101 744Q49 758 0 722Z" opacity=".88"/>
+<path d="M236 710Q298 635 365 658Q414 673 438 722Q366 688 310 724Q270 734 236 710Z" opacity=".9"/>
+<path d="M506 690Q578 594 657 620Q713 637 748 692Q678 657 615 690Q559 711 506 690Z" opacity=".92"/>
+<path d="M750 709Q824 621 894 651Q961 675 1008 735Q927 690 862 728Q799 751 750 709Z" opacity=".88"/>
+</g>
+<g fill="#fff4d5" opacity=".85">
+<circle cx="69" cy="648" r="7"/><circle cx="111" cy="620" r="5"/><circle cx="177" cy="658" r="8"/>
+<circle cx="302" cy="625" r="6"/><circle cx="374" cy="641" r="8"/><circle cx="568" cy="604" r="7"/>
+<circle cx="641" cy="581" r="5"/><circle cx="713" cy="617" r="8"/><circle cx="842" cy="626" r="6"/>
+<circle cx="923" cy="649" r="8"/>
+</g>
+<path d="M15 738Q82 704 153 729M266 724Q347 684 418 718M536 701Q630 650 717 689M784 723Q887 677 979 723" fill="none" stroke="#fff2d1" stroke-width="11" opacity=".8"/>
+
+<path d="M0 824Q130 765 258 808T500 806T748 818T1000 775V1000H0Z" fill="#041722"/>
+<path d="M0 867Q153 805 292 848T570 847T1000 817" fill="none" stroke="#285866" stroke-width="19"/>
+<path d="M0 939Q165 878 335 920T665 914T1000 884" fill="none" stroke="#173d4a" stroke-width="14"/>
+</svg>

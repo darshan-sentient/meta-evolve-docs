@@ -13,11 +13,25 @@
 <p id="complete-shared-source"><a href="../../guides/limits/#2-define-the-experiments-inputs">complete shared source</a></p>
 
 <p id="add-a-satisfaction-threshold"><a href="../../guides/limits/#4-stop-when-the-score-is-good-enough">add a satisfaction threshold</a></p><script>
+(() => {
 const redirect = {"target": "../../guides/limits/", "fragments": {"define-good-enough": "../../guides/limits/#4-stop-when-the-score-is-good-enough", "set-up-this-page": "../../guides/limits/#1-install", "change-the-objective-declaration": "../../guides/limits/#4-stop-when-the-score-is-good-enough", "run-with-a-different-target": "../../guides/limits/#change-and-predict", "change-and-predict": "../../guides/limits/#change-and-predict", "complete-shared-source": "../../guides/limits/#2-define-the-experiments-inputs", "add-a-satisfaction-threshold": "../../guides/limits/#4-stop-when-the-score-is-good-enough"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>

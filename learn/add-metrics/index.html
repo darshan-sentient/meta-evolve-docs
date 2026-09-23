@@ -17,11 +17,25 @@
 <p id="return-named-measurements"><a href="../../guides/evaluation/#4-report-named-measurements">return named measurements</a></p>
 
 <p id="run-with-the-new-evaluator"><a href="../../guides/evaluation/#5-declare-which-metric-determines-better">run with the new evaluator</a></p><script>
+(() => {
 const redirect = {"target": "../../guides/evaluation/", "fragments": {"add-metrics": "../../guides/evaluation/#define-what-better-means", "set-up-this-page": "../../guides/evaluation/#1-install", "measure-the-same-evidence-in-two-groups": "../../guides/evaluation/#4-report-named-measurements", "replace-the-evaluator-in-the-existing-experiment": "../../guides/evaluation/#5-declare-which-metric-determines-better", "optionally-optimize-with-these-metrics": "../../guides/evaluation/#5-declare-which-metric-determines-better", "change-and-predict": "../../guides/evaluation/#change-and-predict", "complete-shared-source": "../../guides/evaluation/#2-choose-the-answers-that-matter", "return-named-measurements": "../../guides/evaluation/#4-report-named-measurements", "run-with-the-new-evaluator": "../../guides/evaluation/#5-declare-which-metric-determines-better"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>

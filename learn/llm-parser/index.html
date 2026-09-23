@@ -27,11 +27,25 @@
 <p id="report-your-own-cost"><a href="../../guides/live-parser/#report-your-own-cost">report your own cost</a></p>
 
 <p id="verification-and-remaining-work"><a href="../../guides/live-parser/#verification-and-remaining-work">verification and remaining work</a></p><script>
+(() => {
 const redirect = {"target": "../../start-here/", "fragments": {"start-here-improve-a-duration-parser": "../../start-here/#start-here-improve-a-duration-parser", "define-what-correct-means": "../../guides/live-parser/#define-what-correct-means", "run-the-seed-check": "../../guides/live-parser/#run-the-seed-check", "assemble-the-improvement-loop": "../../guides/live-parser/#assemble-the-improvement-loop", "improvement-ties-and-regressions": "../../guides/live-parser/#improvement-ties-and-regressions", "inspect-the-grader": "../../guides/live-parser/#inspect-the-grader", "run-with-a-model": "../../guides/live-parser/#run-with-a-model", "understand-the-result": "../../guides/live-parser/#understand-the-result", "keep-the-work": "../../guides/live-parser/#keep-the-work", "change-and-predict": "../../guides/live-parser/#change-and-predict", "the-same-loop-a-different-artifact": "../../guides/live-parser/#the-same-loop-a-different-artifact", "complete-source": "../../guides/live-parser/#complete-source", "report-your-own-cost": "../../guides/live-parser/#report-your-own-cost", "verification-and-remaining-work": "../../guides/live-parser/#verification-and-remaining-work"}};
-let fragment = window.location.hash.slice(1);
-try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
-const destination = Object.hasOwn(redirect.fragments, fragment)
-  ? redirect.fragments[fragment]
-  : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
-window.location.replace(destination);
+function followRedirect() {
+  let fragment = window.location.hash.slice(1);
+  try { fragment = decodeURIComponent(fragment); } catch { /* Preserve malformed hashes. */ }
+  const destination = Object.hasOwn(redirect.fragments, fragment)
+    ? redirect.fragments[fragment]
+    : redirect.target === null ? null
+    : redirect.target + (redirect.target.includes('#') ? '' : window.location.hash);
+  if (destination !== null) window.location.replace(destination);
+}
+if (redirect.target === null) {
+  const script = document.currentScript;
+  window.addEventListener('hashchange', function onHashChange() {
+    // Material replaces article scripts during instant navigation.
+    if (script.isConnected) followRedirect();
+    else window.removeEventListener('hashchange', onHashChange);
+  });
+}
+followRedirect();
+})();
 </script></body></html>

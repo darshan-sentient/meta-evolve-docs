@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apply, compose, and evolve methods for optimization, research, and scientific discovery in Python">
+        <meta name="description" content="A Python framework for improving solutions and the methods that produce them through independent evaluation">
       
       
       
         <link rel="canonical" href="https://sentient-xyz.github.io/meta-evolve-docs/research/adrs/">
       
       
-        <link rel="prev" href="../meta-harness/">
+        <link rel="prev" href="../../applications/slug-inputs/">
       
       
-        <link rel="next" href="../model-discovery-agent/">
+        <link rel="next" href="../../applications/llm-sql/">
       
       
         
@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../stylesheets/home.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -85,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adrs" class="md-skip">
+        <a href="#improve-a-scheduler" class="md-skip">
           Skip to content
         </a>
       
@@ -281,6 +283,70 @@
   
   
   
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../start-here/" class="md-nav__link">
         
@@ -289,7 +355,7 @@
   <span class="md-ellipsis">
     
   
-    Start here
+    First experiment
   
 
     
@@ -301,12 +367,18 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
   
-  
-    
   
   
   
@@ -331,26 +403,30 @@
       
         
       
+        
+      
+        
+      
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../guides/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    Methods
+    Guides
   
 
     
@@ -367,12 +443,12 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Methods
+    Guides
   
 
           </label>
@@ -387,14 +463,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../decomposition/" class="md-nav__link">
+      <a href="../../guides/evaluation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Compose a method
+    Define what better means
   
 
     
@@ -415,14 +491,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../transfer/" class="md-nav__link">
+      <a href="../../learn/05-use-experience/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Compare and adapt methods
+    Give the proposer feedback
   
 
     
@@ -443,14 +519,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learn/autoresearch/" class="md-nav__link">
+      <a href="../../learn/03-inspect-results/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Evolve a research procedure
+    Inspect results and failures
   
 
     
@@ -471,14 +547,98 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/policy-evolution/" class="md-nav__link">
+      <a href="../../guides/limits/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Evolve a search policy
+    Set limits and stopping conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/06-persist-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Save and reopen a run
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/02-change-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choose what to try next
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/providers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use your model SDK
   
 
     
@@ -513,17 +673,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Prompts and data
+    Advanced composition
   
 
     
@@ -534,12 +694,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompts and data
+    Advanced composition
   
 
           </label>
@@ -552,14 +712,464 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learn/research-labs/01-feedback-descent/" class="md-nav__link">
+      <a href="../../adding-an-artifact-domain/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Feedback Descent
+    Add an artifact domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decomposition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compose a method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choosing and upgrading
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Choosing and upgrading
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When to use Meta-Evolve
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/migrate-to-0.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrate to 0.2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore all examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Images, prompts, and data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Images, prompts, and data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVG Feedback Descent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/llm-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routing prompt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/live-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/meeting-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/research-labs/sealqa-feedback-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SealQA prompt adaptation
   
 
     
@@ -613,6 +1223,8 @@
                 
   
   
+    
+  
   
   
     
@@ -621,151 +1233,6 @@
         
       
         
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Skills and agents
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Skills and agents
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ace/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ACE playbook
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../build-patterns/evoskill/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Skill evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../meta-harness/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-Harness
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
       
         
       
@@ -781,17 +1248,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Systems and discovery
+    Code and systems
   
 
     
@@ -802,16 +1269,128 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Systems and discovery
+    Code and systems
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/04-improve-source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source repair
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/live-parser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live parser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/sql-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/slug-inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Find a slug defect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -880,13 +1459,113 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#research-question" class="md-nav__link">
+  <a href="#run-it-in-jupyter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Research question
+        Run it in Jupyter
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Run it in Jupyter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-the-complete-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Download the complete study
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-check-this-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Check this runtime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-run-and-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Run and compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-selected-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the selected program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-one-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change one line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-inspect-the-governed-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced: inspect the governed study
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced: inspect the governed study">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#research-question-adrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research question: ADRS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -895,17 +1574,6 @@
     <span class="md-ellipsis">
       
         Component mapping
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#capabilities-dependencies-and-evidence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Capabilities, dependencies, and evidence
       
     </span>
   </a>
@@ -928,324 +1596,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../model-discovery-agent/" class="md-nav__link">
+      <a href="../../applications/llm-sql/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Model discovery proposal
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../design/scientific-direction/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Scientific direction
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../guides/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guides
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Guides
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../comparison/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    When to use Meta-Evolve
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Build an experiment
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Build an experiment
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/evaluation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Define what better means
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/02-change-search/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Choose what to try next
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/05-use-experience/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Give the proposer feedback
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/providers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Use your model SDK
+    Prompt-cache hits
   
 
     
@@ -1275,6 +1633,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1300,7 +1666,7 @@
   <span class="md-ellipsis">
     
   
-    Control and understand a run
+    Skills and agents
   
 
     
@@ -1316,7 +1682,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Control and understand a run
+    Skills and agents
   
 
           </label>
@@ -1329,14 +1695,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/limits/" class="md-nav__link">
+      <a href="../../guides/skill-composition/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set limits and stopping conditions
+    Support skill
   
 
     
@@ -1357,14 +1723,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learn/03-inspect-results/" class="md-nav__link">
+      <a href="../../guides/playbook-improvement/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Inspect results and failures
+    Support playbook
   
 
     
@@ -1385,14 +1751,126 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learn/06-persist-run/" class="md-nav__link">
+      <a href="../../guides/harness-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Save and reopen a run
+    Help assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-patterns/evoskill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSkill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACE playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta-Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta-harness-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness audit reference
   
 
     
@@ -1422,6 +1900,10 @@
   
     
     
+      
+        
+      
+        
       
         
       
@@ -1445,7 +1927,7 @@
   <span class="md-ellipsis">
     
   
-    Advanced composition
+    Procedures
   
 
     
@@ -1461,7 +1943,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Advanced composition
+    Procedures
   
 
           </label>
@@ -1474,14 +1956,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/harness-evolution/" class="md-nav__link">
+      <a href="../../guides/policy-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Improve an agent's harness
+    Policy evolution
   
 
     
@@ -1502,563 +1984,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../adding-an-artifact-domain/" class="md-nav__link">
+      <a href="../../learn/autoresearch/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Add an artifact domain
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Examples
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Examples
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Choose an example
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/07-where-next/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Apply the pattern elsewhere
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../applications/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Applications
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Applications
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../applications/meeting-notes/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Extract meeting actions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../applications/sql-migrations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Build a SQL migration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../applications/slug-inputs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Find a slug defect
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/llm-prompt/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Improve a routing prompt
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../applications/ideas/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Application ideas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models and agents
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models and agents
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/live-parser/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Live parser example
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/live-prompt/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Live routing example
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/skill-composition/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Compose a skill experiment
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../learn/04-improve-source/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Improve a real file
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../build-patterns/feedback-descent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Improve a prompt
+    AutoResearch
   
 
     
@@ -2100,6 +2033,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compare and adapt methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2126,6 +2087,8 @@
       
         
           
+        
+      
         
       
         
@@ -2152,7 +2115,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -2174,14 +2137,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2228,14 +2191,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/search/" class="md-nav__link">
+      <a href="../../concepts/meta-evolution/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Proposals and search
+    Meta-evolution
   
 
     
@@ -2284,6 +2247,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority and promotion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/experience/" class="md-nav__link">
         
   
@@ -2292,6 +2283,34 @@
     
   
     Feedback and experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposals and search
   
 
     
@@ -2354,10 +2373,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
             
   
   
@@ -2375,8 +2394,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2456,38 +2475,8 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../concepts/meta-evolution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Meta-evolution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
-      
-        
       
         
       
@@ -2503,10 +2492,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
             
   
   
@@ -2524,8 +2513,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2550,34 +2539,6 @@
     
   
     Identity and lineage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/authority/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authority and promotion
   
 
     
@@ -2683,6 +2644,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2691,10 +2656,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -2712,8 +2677,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2766,6 +2731,62 @@
     
   
     Shipped API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/api-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API examples and edge cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/example-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example commands
   
 
     
@@ -2862,10 +2883,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
         
           
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
             
   
   
@@ -2883,8 +2904,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3065,10 +3086,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
         
           
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
             
   
   
@@ -3086,8 +3107,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3221,6 +3242,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3229,7 +3254,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -3251,14 +3276,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3389,6 +3414,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application ideas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../design/" class="md-nav__link">
         
   
@@ -3472,13 +3553,113 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#research-question" class="md-nav__link">
+  <a href="#run-it-in-jupyter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Research question
+        Run it in Jupyter
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Run it in Jupyter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-the-complete-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Download the complete study
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-check-this-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Check this runtime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-run-and-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Run and compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-selected-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the selected program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-one-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change one line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-inspect-the-governed-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced: inspect the governed study
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced: inspect the governed study">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#research-question-adrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research question: ADRS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3487,17 +3668,6 @@
     <span class="md-ellipsis">
       
         Component mapping
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#capabilities-dependencies-and-evidence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Capabilities, dependencies, and evidence
       
     </span>
   </a>
@@ -3530,10 +3700,10 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="../../examples/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Methods
+    Examples
   </span>
 
         </a>
@@ -3548,10 +3718,10 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../../learn/04-improve-source/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Systems and discovery
+    Code and systems
   </span>
 
         </a>
@@ -3586,71 +3756,307 @@
   
 
 
-<h1 id="adrs">ADRS<a class="headerlink" href="#adrs" title="Permanent link">&para;</a></h1>
-<p><strong>Status: Shipped.</strong> The local systems-optimization example is a deterministic,
-fixture-only mechanism inspired by <a href="https://arxiv.org/abs/2512.14806">ADRS</a>.</p>
-<h2 id="research-question">Research question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h2>
-<p>Can verifier-guided program revisions improve a systems algorithm?</p>
-<p>The example evolves a load-balancing scheduler and measures imbalance and probe
-work in an evaluator-owned simulator. It does not reproduce the paper's ten
-systems case studies, demonstrate a live model proposer, or establish hardware
-speedups.</p>
+<p><a id="adrs"></a></p>
+<h1 id="improve-a-scheduler">Improve a scheduler<a class="headerlink" href="#improve-a-scheduler" title="Permanent link">&para;</a></h1>
+<p>Jobs of different sizes arrive at a group of workers. Where should each job go?
+Our starting program takes turns: worker 0, worker 1, and so on. That is cheap,
+but when large jobs arrive at regular intervals, the same workers get overloaded.</p>
+<p>Try a small change: <strong>look at two workers and choose the less busy one.</strong>
+Here, <code>load()</code> asks for a worker's current load: one <strong>probe</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">choose</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">first</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">pick</span><span class="p">()</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">second</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">pick</span><span class="p">()</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">if</span> <span class="n">second</span> <span class="o">==</span> <span class="n">first</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">second</span> <span class="o">=</span> <span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">cluster</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">return</span> <span class="n">first</span> <span class="k">if</span> <span class="n">cluster</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="k">else</span> <span class="n">second</span>
+</code></pre></div>
+<p>The fixed simulator runs this Python code on development workloads:</p>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th style="text-align: right;">Load imbalance ↓</th>
+<th style="text-align: right;">Probes per job ↓</th>
+<th style="text-align: right;">Quality ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starting round-robin</td>
+<td style="text-align: right;">0.2071</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.7929</td>
+</tr>
+<tr>
+<td>Inspect every worker</td>
+<td style="text-align: right;">0.0381</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.8219</td>
+</tr>
+<tr>
+<td>Inspect two workers</td>
+<td style="text-align: right;">0.0464</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.9136</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two probes buy much better balance than the starting program.</strong> Inspecting
+every worker balances jobs a little better, but takes seven probes per job here.
+The two-worker program offers the better tradeoff under the fixed score:
+<code>quality = max(0, 1 - imbalance - 0.02 * probes_per_job)</code>.
+Imbalance is zero for an even distribution and one when a single worker gets
+everything. These measurements describe this simulator, not hardware speed.</p>
+<p><strong>What it does.</strong> ADRS searches for better programs using evaluation feedback.
+<strong>How it works.</strong> A proposer revises source, an evaluator measures it, and search
+retains useful candidates. Here the revisions are handwritten, including mistakes;
+the fixed simulator measures every attempt.</p>
+<h2 id="run-it-in-jupyter">Run it in Jupyter<a class="headerlink" href="#run-it-in-jupyter" title="Permanent link">&para;</a></h2>
+<p>Use a <strong>fresh Jupyter kernel with Python 3.12 or newer</strong>, on macOS with usable
+<code>sandbox-exec</code>, or Linux with usable <strong>Landlock ABI 3+</strong>. The runtime must allow
+confined child processes. The third cell checks that they really work before
+the study starts. Hosted notebooks, including Colab, are not verified here.</p>
+<p>Save the notebook in an ordinary project folder, outside your Python installation
+and, on Linux, outside <code>/tmp</code>, <code>/var/tmp</code>, <code>/usr</code>, and other system directories.
+Its downloaded code needs a protected location; temporary execution workspaces
+are created separately. No model key, GPU, or repository checkout is needed.</p>
+<!-- notebook:web-only:start -->
+<p><a href="../../downloads/systems-optimization.ipynb">Download the notebook</a> ·
+<a href="../../downloads/systems-example.zip">Complete example</a> ·
+<a href="../../notebooks/systems_optimization/systems_optimization/">Executed notebook</a></p>
+<!-- notebook:web-only:end -->
+
+<p>Run these four cells in order. Installation and download use the same published
+documentation build. An archived copy also works: put its <code>meta-evolve.zip</code> and
+<code>systems-example.zip</code> beside the notebook; the cells find them automatically.
+Installation may download build tools. Restart the kernel first if you have
+already imported Meta-Evolve or this example.</p>
+<h3 id="1-install">1. Install<a class="headerlink" href="#1-install" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">downloads</span> <span class="o">=</span> <span class="s2">&quot;https://sentient-xyz.github.io/meta-evolve-docs/downloads/&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">package</span> <span class="o">=</span> <span class="s2">&quot;./meta-evolve.zip&quot;</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;meta-evolve.zip&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="k">else</span> <span class="n">downloads</span> <span class="o">+</span> <span class="s2">&quot;meta-evolve.zip&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="p">{</span><span class="n">package</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="2-download-the-complete-study">2. Download the complete study<a class="headerlink" href="#2-download-the-complete-study" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">archive</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;systems-example.zip&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">if</span> <span class="n">archive</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">study_bytes</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">downloads</span> <span class="o">+</span> <span class="s2">&quot;systems-example.zip&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="n">study_bytes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">study_root</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;scheduler-example&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">study_bytes</span><span class="p">))</span> <span class="k">as</span> <span class="n">bundle</span><span class="p">:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">bundle</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">study_root</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">study_root</span><span class="p">))</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="kn">from</span><span class="w"> </span><span class="nn">examples.research.systems_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">command</span><span class="p">,</span> <span class="n">confinement</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Complete study downloaded and imported.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="3-check-this-runtime">3. Check this runtime<a class="headerlink" href="#3-check-this-runtime" title="Permanent link">&para;</a></h3>
+<p>This probe starts a confined Python process and checks that it cannot read
+the downloaded workload file. It is setup, outside the study's measured work.
+If it fails, the following cells leave the study stopped and explain the remedy.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">runtime_ready</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">protected</span> <span class="o">=</span> <span class="n">study_root</span> <span class="o">/</span> <span class="s2">&quot;examples/research/systems_optimization/workloads.py&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">probe</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;import errno, pathlib, sys</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s2">try:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s2">    pathlib.Path(sys.argv[1]).read_bytes()</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s2">except PermissionError as error:</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s2">    if error.errno not in (errno.EACCES, errno.EPERM):</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s2">        raise</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s2">    print(&#39;protected&#39;)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s2">else:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s2">    raise SystemExit(&#39;Workloads were readable: confinement did not hold.&#39;)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="n">protected</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">is_relative_to</span><span class="p">(</span><span class="n">study_root</span><span class="p">):</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;An older example is imported; restart the kernel.&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;scheduler-check-&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">workspace</span><span class="p">:</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="n">checked</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>            <span class="p">[</span><span class="o">*</span><span class="n">confinement</span><span class="o">.</span><span class="n">launcher</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">workspace</span><span class="p">)),</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>             <span class="s2">&quot;-I&quot;</span><span class="p">,</span> <span class="s2">&quot;-B&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">probe</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">protected</span><span class="p">)],</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>            <span class="n">cwd</span><span class="o">=</span><span class="n">workspace</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>        <span class="p">)</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    <span class="k">if</span> <span class="n">checked</span><span class="o">.</span><span class="n">returncode</span> <span class="ow">or</span> <span class="n">checked</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;protected&quot;</span><span class="p">:</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">((</span><span class="n">checked</span><span class="o">.</span><span class="n">stderr</span> <span class="ow">or</span> <span class="n">checked</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;Probe failed.&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="n">runtime_ready</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ready: Python </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">confinement</span><span class="o">.</span><span class="n">mechanism</span><span class="p">()</span><span class="si">}</span><span class="s2"> enforced.&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">,</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">TimeoutExpired</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Study stopped: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Use local Jupyter on macOS or Linux with the confinement listed above.&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keep the notebook outside system/temp folders and the Python installation.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><a id="development-search"></a></p>
+<h3 id="4-run-and-compare">4. Run and compare<a class="headerlink" href="#4-run-and-compare" title="Permanent link">&para;</a></h3>
+<p>The study evaluates the seed and eight revisions, then selects and checks a
+program on separate workloads. Below are its development measurements.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">show_measurements</span><span class="p">(</span><span class="n">attempt</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="k">if</span> <span class="n">attempt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: no measured candidate&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="k">return</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">attempt</span><span class="o">.</span><span class="n">rankable</span><span class="p">:</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">failure_kind</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">outcome</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="k">return</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">metrics</span> <span class="o">=</span> <span class="n">attempt</span><span class="o">.</span><span class="n">metrics</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">:</span><span class="s2">24</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;imbalance&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">9.4f</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>          <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;work&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">7.1f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">9.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">selected_source</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">if</span> <span class="n">runtime_ready</span><span class="p">:</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;scheduler-run-&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">run_example</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="n">chosen</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">decision</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">chosen</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="k">if</span> <span class="n">chosen</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>            <span class="n">trial</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">trials</span><span class="p">()</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>                         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">logical_step</span> <span class="o">==</span> <span class="n">chosen</span><span class="o">.</span><span class="n">logical_step</span><span class="p">)</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>            <span class="n">selected_source</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">artifact</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;scheduler.py&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="n">development</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">candidate</span><span class="p">:</span> <span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">decision</span><span class="o">.</span><span class="n">development</span><span class="p">}</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Development workload       Imbalance  Probes   Quality&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="p">(</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>        <span class="p">(</span><span class="s2">&quot;round-robin (seed)&quot;</span><span class="p">,</span> <span class="s2">&quot;Starting round-robin&quot;</span><span class="p">),</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>        <span class="p">(</span><span class="s2">&quot;least-loaded-scan&quot;</span><span class="p">,</span> <span class="s2">&quot;Inspect every worker&quot;</span><span class="p">),</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>        <span class="p">(</span><span class="s2">&quot;power-of-two-choices&quot;</span><span class="p">,</span> <span class="s2">&quot;Inspect two workers&quot;</span><span class="p">),</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    <span class="p">):</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>        <span class="n">show_measurements</span><span class="p">(</span><span class="n">development</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">label</span><span class="p">)</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Study not started. Resolve the runtime check above first.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Rerunning starts a fresh study. Temporary storage is cleaned up even on failure.</p>
+<p><a id="published-selection"></a><a id="final-comparison"></a></p>
+<h2 id="check-the-selected-program">Check the selected program<a class="headerlink" href="#check-the-selected-program" title="Permanent link">&para;</a></h2>
+<p>Development feedback helps propose changes. <strong>Selection</strong> tests eligible programs
+on a different, published workload after proposing ends. <strong>Final checking</strong> tests
+only the starting and selected programs after selection. Keeping those phases
+separate prevents treating a development score as a result on new jobs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">decision</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">decision</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected on the selection workload:&quot;</span><span class="p">,</span> <span class="n">decision</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">winner</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">comparison</span> <span class="o">=</span> <span class="n">decision</span><span class="o">.</span><span class="n">comparison</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">if</span> <span class="n">comparison</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No program was selected; no final comparison was made.&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final workload             Imbalance  Probes   Quality&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">show_measurements</span><span class="p">(</span><span class="n">comparison</span><span class="o">.</span><span class="n">baseline</span><span class="p">,</span> <span class="s2">&quot;Starting round-robin&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">show_measurements</span><span class="p">(</span><span class="n">comparison</span><span class="o">.</span><span class="n">selected</span><span class="p">,</span> <span class="s2">&quot;Selected program&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final verdict:&quot;</span><span class="p">,</span> <span class="n">comparison</span><span class="o">.</span><span class="n">verdict</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="k">if</span> <span class="n">selected_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Selected scheduler.py:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">selected_source</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run the study after the runtime check passes.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The selected program is <code>power-of-two-choices</code>. On the final workload, imbalance
+falls from <strong>0.2088 to 0.0794</strong>, using <strong>two probes instead of zero</strong>; quality
+rises from <strong>0.7912 to 0.8806</strong>. These results do not establish production gains.</p>
+<h2 id="change-one-line">Change one line<a class="headerlink" href="#change-one-line" title="Permanent link">&para;</a></h2>
+<p>What if the comparison used <code>&gt;=</code> instead of <code>&lt;=</code>, choosing the <em>busier</em> worker?
+Change the selected source and run it through the same fixed development
+evaluator. This optional check runs separately from the recorded study above.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">examples.research.systems_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution</span><span class="p">,</span> <span class="n">surface</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">if</span> <span class="n">selected_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;&lt;=&quot;</span> <span class="ow">in</span> <span class="n">selected_source</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">edited_source</span> <span class="o">=</span> <span class="n">selected_source</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">measured</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">surface</span><span class="o">.</span><span class="n">with_scheduler</span><span class="p">(</span><span class="n">edited_source</span><span class="p">),</span> <span class="s2">&quot;development&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="k">if</span> <span class="n">measured</span><span class="o">.</span><span class="n">failure</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Edit rejected:&quot;</span><span class="p">,</span> <span class="n">measured</span><span class="o">.</span><span class="n">failure</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span> <span class="n">measured</span><span class="o">.</span><span class="n">failure</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Edited program on the development workload:&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;imbalance&quot;</span><span class="p">,</span> <span class="s2">&quot;work&quot;</span><span class="p">,</span> <span class="s2">&quot;quality&quot;</span><span class="p">):</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">measured</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This exercise needs a selected program with the &lt;= comparison.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Both comparisons use two probes. Reversing the comparison lowers quality from
+<strong>0.9136 to 0.7731</strong>. Change the replacement back to <code>"&lt;="</code> and rerun this cell:
+quality returns to <strong>0.9136</strong>. You can also set <code>edited_source = "not valid Python!"</code>
+to see a typed rejection. Keep the evaluator fixed as you change the program.</p>
+<p><a id="performed-work"></a><a id="replay-from-the-directory-alone"></a></p>
+<h2 id="advanced-inspect-the-governed-study">Advanced: inspect the governed study<a class="headerlink" href="#advanced-inspect-the-governed-study" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rejected revisions from the original study (no score):&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">decision</span><span class="o">.</span><span class="n">development</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">attempt</span><span class="o">.</span><span class="n">rankable</span><span class="p">:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">candidate</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">failure_kind</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">attempt</span><span class="o">.</span><span class="n">outcome</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluations by phase:&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">decision</span><span class="o">.</span><span class="n">accounting</span><span class="o">.</span><span class="n">evaluations</span><span class="p">))</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scenario runs by phase:&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">decision</span><span class="o">.</span><span class="n">accounting</span><span class="o">.</span><span class="n">scenario_runs</span><span class="p">))</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All replay checks:&quot;</span><span class="p">,</span> <span class="nb">all</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">replayed</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decision digest:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">decision_digest</span><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run the study after the runtime check passes.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>These counts cover the original study, before the optional edit check.
+<code>private</code> names selection; <code>held_out</code> names final checking. Replay verifies the
+retained history without rerunning any scheduler. To retain the store, run this
+command from <code>scheduler-example/</code> with a new output directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>examples/research/systems_optimization/main.py<span class="w"> </span>--output<span class="w"> </span>saved-study
+</code></pre></div>
+<p><a id="what-the-directory-does-not-prove"></a></p>
+<p>The <a href="https://github.com/sentient-xyz/meta-evolve/tree/main/examples/research/systems_optimization">complete study source</a>
+explains identities, accounting, and the file-access boundary. Confinement does
+not claim general network or hostile-process isolation.</p>
+<p><a id="research-question"></a></p>
+<h3 id="research-question-adrs">Research question: ADRS<a class="headerlink" href="#research-question-adrs" title="Permanent link">&para;</a></h3>
+<p>Can verifier-guided revisions improve a systems algorithm? This shipped,
+fixture-only study is inspired by <a href="https://arxiv.org/abs/2512.14806">ADRS</a>.
+It is not a reproduction of ADRS, its ten case studies, or live-model gains.
+Use the <a href="../decomposition/#the-worksheet">paper-reading worksheet</a> to map the
+research mechanism onto the components below.</p>
 <h2 id="component-mapping">Component mapping<a class="headerlink" href="#component-mapping" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Role</th>
-<th>Local implementation / boundary</th>
+<th>Maintained study</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Artifact / seed</td>
-<td>A bounded <code>SourceTree</code> containing <code>scheduler.py</code></td>
+<td><code>SourceTree</code> containing the round-robin <code>scheduler.py</code></td>
 </tr>
 <tr>
 <td>Proposer</td>
-<td>A deterministic fixture proposes scheduler revisions in a confined child process</td>
+<td>Eight authored revisions, produced in confined child processes</td>
 </tr>
 <tr>
-<td>Task / evaluator and objectives</td>
-<td>Fixed simulator measures correctness, imbalance, and probe work; failures remain typed outcomes</td>
+<td>Evaluator / objective</td>
+<td>Fixed simulator; maximize quality from imbalance and probes</td>
 </tr>
 <tr>
 <td>Search</td>
-<td><code>BestOfN</code> evaluates eight proposals after the seed under the development workload</td>
+<td><code>Greedy</code> with eight proposal attempts after the seed</td>
 </tr>
 <tr>
-<td>Feedback / experience</td>
-<td>Development observations and verifier failures; later workload files are inaccessible to proposer and candidate child processes</td>
+<td>Feedback</td>
+<td>Development observations and verifier failures</td>
 </tr>
 <tr>
 <td>External controls</td>
-<td>Evaluator-owned workload splits, confinement, budgets, selection, and final comparison</td>
+<td>Workload splits, confinement, budgets, selection, final checking</td>
 </tr>
 <tr>
 <td>Retained results</td>
-<td>Durable development trials plus a decision record containing later attempts, evidence, counts, timing, and provenance</td>
+<td>Durable development history plus later measurements and decision record</td>
 </tr>
 </tbody>
 </table>
-<h2 id="capabilities-dependencies-and-evidence">Capabilities, dependencies, and evidence<a class="headerlink" href="#capabilities-dependencies-and-evidence" title="Permanent link">&para;</a></h2>
-<p>Run the example from the repository root:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/research/systems_optimization
-</code></pre></div>
-<p>The fixture selects on a published post-search workload, then compares the seed
-and selected scheduler on a separate final workload. Replay reads the retained
-store and decision record without executing either component. Failed proposals
-remain attempts without consuming evaluations; even an entirely failed search
-retains a replayable decision and its usage.</p>
-<p>The <a href="https://github.com/sentient-xyz/meta-evolve/tree/main/examples/research/systems_optimization">example and its platform requirements</a>
-describe Linux Landlock and macOS confinement, authority limits, and the exact
-fixture evidence. The <a href="../../notebooks/systems_optimization/systems_optimization/">executed notebook</a>
-walks through the same governed command. Scope and acceptance are tracked in
-<a href="https://github.com/sentient-xyz/meta-evolve/issues/195">#195 B2</a> and the
-<a href="../../milestones/#issue-195-b2-systems-optimization-example">milestone record</a>.</p>
-<p>Source checked on 2026-09-15: <a href="https://arxiv.org/abs/2512.14806">primary abstract/report</a>.
-Local evidence establishes this fixture's mechanism, not the upstream results.</p>
+<p><a id="capabilities-dependencies-and-evidence"></a></p>
+<p>Scope and acceptance remain in <a href="https://github.com/sentient-xyz/meta-evolve/issues/195">#195 B2</a>
+and the <a href="../../milestones/#issue-195-b2-systems-optimization-example">milestone record</a>.
+Source checked on 2026-09-15: <a href="https://arxiv.org/abs/2512.14806">primary report</a>.</p>
 
 
 
@@ -3688,7 +4094,7 @@ Local evidence establishes this fixture's mechanism, not the upstream results.</
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../meta-harness/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Meta-Harness">
+          <a href="../../applications/slug-inputs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Find a slug defect">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3698,20 +4104,20 @@ Local evidence establishes this fixture's mechanism, not the upstream results.</
                 Previous
               </span>
               <div class="md-ellipsis">
-                Meta-Harness
+                Find a slug defect
               </div>
             </div>
           </a>
         
         
           
-          <a href="../model-discovery-agent/" class="md-footer__link md-footer__link--next" aria-label="Next: Model discovery proposal">
+          <a href="../../applications/llm-sql/" class="md-footer__link md-footer__link--next" aria-label="Next: Prompt-cache hits">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Model discovery proposal
+                Prompt-cache hits
               </div>
             </div>
             <div class="md-footer__button md-icon">
