@@ -1,6 +1,6 @@
 """OpenCodeAgent: a Meta-Evolve proposer backed by an OpenCode coding agent.
 
-Meta-Evolve calls ``agent(parent, context)`` once per trial. The agent gets a private
+Meta-Evolve calls ``agent(parent, context=...)`` once per trial. The agent gets a private
 workspace holding the parent as ``candidate.py``, plus what the search remembers. It
 edits the file and checks it with ``prism-check``. The best version that passed (or,
 if none passed, the file as left) becomes the proposal, and Meta-Evolve scores it.
@@ -168,7 +168,7 @@ class OpenCodeAgent:
             raise RuntimeError("opencode serve exited before it started listening")
         self.client = Opencode(base_url=url, timeout=self.timeout_seconds, max_retries=0)
 
-    def __call__(self, parent, context):
+    def __call__(self, parent, *, context):
         parent = str(parent)
         prompt = (
             f"{TASK}\n## Current program (candidate.py)\n```python\n{parent}```\n\n"
