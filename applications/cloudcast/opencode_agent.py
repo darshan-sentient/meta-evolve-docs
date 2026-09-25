@@ -1,6 +1,6 @@
 """OpenCodeAgent: a Meta-Evolve proposer backed by an OpenCode coding agent.
 
-Meta-Evolve calls ``agent(parent, context)`` once per trial. Each trial runs one fresh
+Meta-Evolve calls ``agent(parent, context=...)`` once per trial. Each trial runs one fresh
 ``opencode run`` session in a private workspace holding the parent as ``candidate.py``. The
 prompt carries the task, the parent's scores, and a digest of what the search remembers,
 including the best other trial's code. The agent edits the file and checks it with
@@ -194,7 +194,7 @@ class OpenCodeAgent:
         self.first_step = {}  # source -> the trial that first produced it
         self.proposals = {}   # trial -> the source it proposed
 
-    def __call__(self, parent, context):
+    def __call__(self, parent, *, context):
         parent = str(parent)
         step = int(context.step)
         workspace = self._workspace(parent, step)
