@@ -3715,7 +3715,7 @@ needed.</p>
 <h2 id="set-up">Set up<a class="headerlink" href="#set-up" title="Permanent link">&para;</a></h2>
 <p>Use a Python 3.12+ Jupyter kernel. Set <code>OPENROUTER_API_KEY</code> for the model calls;
 scoring the seed needs no key. Install the dependencies:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="s2">"pandas&gt;=2.1"</span> <span class="n">networkx</span> <span class="s2">"meta-evolve @ git+https://github.com/sentient-xyz/meta-evolve.git"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="s2">"pandas&gt;=2.1,&lt;3"</span> <span class="n">networkx</span> <span class="s2">"meta-evolve @ git+https://github.com/sentient-xyz/meta-evolve.git"</span>
 </code></pre></div>
 <p>Rows of a table are serialized left to right and sent to an LLM. A row prefix that
 already appeared is served from the prompt cache, so <strong>column order decides how
