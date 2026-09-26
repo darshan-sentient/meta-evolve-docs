@@ -177,7 +177,7 @@ class OpenCodeAgent:
         if self.server is None:
             self._start_server()
         candidate, report, wall = self._ask_agent(parent, prompt, context.step)
-        usage = meta.Usage(tokens=report["tokens"], wall_seconds=wall,
+        usage = meta.Resources(tokens=report["tokens"], wall_seconds=wall,
                            spend_micros=math.ceil(report["cost_usd"] * 1_000_000))
         evidence = (meta.EvidenceDraft(kind="opencode-session", data=report),)
         if candidate.strip() == parent.strip():
