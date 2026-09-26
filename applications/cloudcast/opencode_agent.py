@@ -375,5 +375,5 @@ class OpenCodeAgent:
             errors.append("OpenCode produced no completed agent step")
         report = {"completed_steps": steps, "tokens": tokens, "cost_usd": cost, "timed_out": timed_out,
                   "error": " | ".join(errors) or None}
-        usage = meta.Usage(tokens=tokens, spend_micros=math.ceil(cost * 1_000_000), wall_seconds=wall)
+        usage = meta.Resources(tokens=tokens, spend_micros=math.ceil(cost * 1_000_000), wall_seconds=wall)
         return report, "\n".join(texts).strip(), usage
